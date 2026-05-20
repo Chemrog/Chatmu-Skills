@@ -52,12 +52,23 @@ No generic advice. No hallucinated data. Just real industry intelligence calibra
 
 To use these Skills, make sure you have these three simple things:
 
-1. **A Chatmu Account** — [Sign up for free at chatmu.io](https://chatmu.io) to access the music database.
+1. **A Chatmu Account** — [Sign up for free at chatmu.io](https://chatmu.io) to get your music dashboard.
 2. **Claude.ai Account** — Any Claude.ai account (free or paid) works perfectly!
-3. **Your Chatmu MCP Link** — This is the magic link that connects Claude to your actual music data. If you haven't done it yet, follow the [Quick MCP Setup Guide](https://chatmu.io/help/chatmu) to add this SSE URL to your Claude:
-   ```
-   https://mcp-chatmu.aaatmi.com/mcp?key=YOUR_CHATMU_API_KEY
-   ```
+3. **Your Chatmu MCP connected to Claude** — This is the magic bridge that connects Claude's brain to your actual real-time music data. Setting it up takes less than 2 minutes!
+
+   ### 🔌 How to Connect Chatmu MCP to Claude
+   
+   1. **Sign in** to your dashboard at [chatmu.io](https://chatmu.io).
+   2. In the left panel, click on **`<kbd>Chatmu API</kbd>`**.
+   3. A window titled **"Connect to Claude via MCP"** will pop up. Click **`<kbd>Yes, start tutorial</kbd>`** to follow the interactive guide, or simply:
+      * Click the pink **`<kbd>Nuevo</kbd>`** button on the right to generate a new key.
+      * **Name your key** (e.g. *Claude Desktop*) so you remember what it is for.
+      * *(Optional)* Set an **Expiration Date** for security (or leave it blank so it never expires). Then click **`<kbd>Guardar</kbd>`**.
+   4. Find your new key in the list and click the **`<kbd>Copiar para Claude</kbd>`** button. This copies the exact connection code you need.
+   5. Go directly to Claude's Connector Settings:
+      * Open **[Claude.ai Connectors Settings](https://claude.ai/customize/connectors)** in your browser.
+      * *(Alternatively, in Claude.ai, click your **Profile avatar** in the bottom-left ➔ **`<kbd>Customize</kbd>`** ➔ **`<kbd>Connectors</kbd>`**).*
+   6. Click the **`<kbd>Add custom connector</kbd>`** button, enter a name (e.g. *Chatmu MCP*), **paste** the code you copied in Step 4, and save!
 
 ---
 
