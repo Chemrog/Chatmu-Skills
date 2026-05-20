@@ -296,6 +296,19 @@ Festival pitch is slightly different from venue pitch:
 
 ---
 
+## OUTPUT FORMAT — NON-NEGOTIABLE
+
+NEVER write pitches, CRM lists, or promoter outreach as plain text blocks.
+You MUST render the entire outreach manager as a premium, interactive Outreach CRM & Booking Kanban Board in a self-contained TSX code block (Claude Artifact).
+
+The React Component MUST include:
+- An interactive Kanban Board with columns: "Prospects", "Contacted", "Negotiating", and "Confirmed". Columns should contain stylized venue cards with capacity badges and last contact timestamps. Users can simulate status changes.
+- An interactive Email Pitch Composer tab: users can edit and preview the pitch email in real-time, customize subject lines, select from booking pitch styles (e.g. Professional, Artist-to-Promoter), and click "Copy Email" to copy to clipboard.
+- A statistics scorecard panel showing outreach conversion rates.
+- Text outside the Artifact should only be a brief 1-2 sentence status update.
+
+---
+
 ## MCP TOOLS USED BY THIS SKILL
 
 **Artist data:** `search_chatmu_artists_db`, `artist_current_stats`, `artist_top_geographic_data`, `RAG_artist_context`

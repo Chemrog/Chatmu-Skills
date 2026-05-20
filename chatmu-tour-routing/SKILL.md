@@ -350,6 +350,20 @@ Always mention booking lead time based on tour timeline:
 
 ---
 
+## OUTPUT FORMAT — NON-NEGOTIABLE
+
+NEVER plan a tour stop list as plain text, plain tables, or boring lists.
+You MUST render the entire tour itinerary as a highly polished, interactive Multi-Stop Tour Route Planner in a self-contained TSX code block (Claude Artifact).
+
+The React Component MUST include:
+- A visual Tour Map Itinerary showing sequential pins representing stops (Anchor date, Stop 2, Stop 3, etc.) connected by directional indicators.
+- An interactive stop details panel: users click on a stop card to see details (venue capacity, monthly listeners in that city, projected attendance, viability status, and driving distance).
+- A Tour Budget Dynamic Calculator widget showing projected gross income (ticket price * projected attendance) vs travel costs, with interactive ticket price and merch spend sliders.
+- A booking email pitch composer with placeholders that automatically updates based on the selected stop.
+- Text outside the Artifact should only be a brief 1-2 sentence executive briefing.
+
+---
+
 ## MCP TOOLS USED BY THIS SKILL
 
 **Audience:** `search_chatmu_artists_db`, `artist_top_geographic_data`, `artist_current_stats`, `RAG_artist_context`

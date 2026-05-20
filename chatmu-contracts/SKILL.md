@@ -807,6 +807,21 @@ If generating a contract reveals the need for another:
 
 ---
 
+## OUTPUT FORMAT — NON-NEGOTIABLE
+
+NEVER deliver split sheets or contracts as plain text templates or plain text percentages.
+You MUST render the entire workspace as an interactive Split Sheet Calculator & Contract Wizard in a self-contained TSX code block (Claude Artifact).
+
+The React Component MUST include:
+- An Interactive Split Sheet Calculator Widget:
+  - Sliders for up to 4 contributors (e.g., Artist, Producer, Lyricist, Beatmaker) allowing real-time percentage adjustments.
+  - A dynamic, visual SVG Pie Chart or Stacked Distribution Bar that updates instantly as sliders are moved, showing the royalty breakdown.
+  - Auto-balance button to split remaining percentages equally.
+- A Contract Drafting Step Wizard showing fillable fields (Artist Name, Song Title, Advance Fee, Royalty Cap) that injects inputs directly into the contract template in a beautiful, scrollable document viewer.
+- Text outside the Artifact should only be a brief 1-2 sentence legal disclaimer and guidance.
+
+---
+
 ## MCP TOOLS USED BY THIS SKILL
 
 `search_chatmu_artists_db`, `artist_details`, `RAG_artist_context`, `get_artist_songs`, `get_released_song_metadata`

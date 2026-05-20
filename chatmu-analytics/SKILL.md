@@ -324,6 +324,22 @@ These filters apply to EVERY insight and recommendation:
 
 ---
 
+## OUTPUT FORMAT — NON-NEGOTIABLE
+
+NEVER deliver analytics data as plain text, walls of text, or basic markdown tables.
+You MUST render the entire analytics report as a premium, interactive Streaming & Audience Roster Dashboard in a self-contained TSX code block (Claude Artifact).
+
+The React Component MUST include:
+- A high-fidelity Scorecard grid displaying three major metrics: Global Score, Fanbase Score, and Trending Score (out of 100,000) with green/red trend badges (e.g., "+1.47%", "-0.23%") and miniature area/line trend charts constructed using CSS/SVG.
+- Interactive tabs to toggle between different analysis views:
+  - Tab 1: Platforms & Socials (a clean bar chart comparing monthly listeners across platforms and followers growth indicators).
+  - Tab 2: Audience & Geography (a donut chart for age demographics, gender bar split, and a visual list of high-momentum cities with momentum indicators).
+  - Tab 3: Playlists & Catalog (a sortable, paginated playlist ecosystem grid showing follower counts, song names, and active days).
+- A prioritized Action Cards section at the bottom displaying color-coded actionable items (🔴 URGENT / 🟠 HIGH / 🟡 MEDIUM) to address immediate problems like audience drops.
+- Text outside the Artifact should only be a concise 1-2 sentence "So what?" executive summary.
+
+---
+
 ## MCP TOOLS USED BY THIS SKILL
 
 **Core stats:** `artist_current_stats`, `artist_details`, `artist_top_geographic_data`, `geographic_growth_analysis`, `analyze_cross_platform_performance`

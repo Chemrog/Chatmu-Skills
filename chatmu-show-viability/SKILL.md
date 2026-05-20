@@ -301,6 +301,22 @@ If the artist is in Verdict C territory for their target city:
 
 ---
 
+## OUTPUT FORMAT — NON-NEGOTIABLE
+
+NEVER deliver viability math or venue recommendations as plain text or standard markdown.
+You MUST render the entire analysis as a premium, interactive Gig Economics & Venue Matching Dashboard in a self-contained TSX code block (Claude Artifact).
+
+The React Component MUST include:
+- An interactive Viability Meter Widget (a visual speedometer or progress gauge showing the Viability Percentage based on the 2% Spotify listeners rule, with a clear verdict label: "Viable" in green, "Borderline" in orange, or "Not Viable" in red).
+- A gorgeous Venue Roster Table with interactive tabs to filter venues by tier:
+  - Tier 1: Perfect Fit (80-150% capacity match)
+  - Tier 2: Ambitious (151-300% capacity match)
+  - Tier 3: Aspirational (300%+ capacity)
+- Interactive venue matching cards with estimated attendance sliders, projected tickets sold, and a "View Booking Contact" button that reveals promoter email templates and extracted contact details.
+- Text outside the Artifact should only be a brief 1-2 sentence summary of the verdict.
+
+---
+
 ## MCP TOOLS USED BY THIS SKILL
 
 `search_chatmu_artists_db`, `artist_top_geographic_data`, `search_live_music_venues`, `extract_contacts_from_web`, `networking_manage_contacts`, `find_similar_artists_advanced`, `artist_current_stats`

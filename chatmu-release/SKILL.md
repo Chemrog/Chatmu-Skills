@@ -359,6 +359,19 @@ If it gets added to an editorial playlist in the first 48h → immediate alert t
 
 ---
 
+## OUTPUT FORMAT — NON-NEGOTIABLE
+
+NEVER deliver the release strategy or roadmap as plain text or standard markdown lists.
+You MUST render the entire strategy as an executive-level, interactive Music Launch & Distribution Dashboard in a self-contained TSX code block (Claude Artifact).
+
+The React Component MUST include:
+- An interactive Release Steps Tracker displaying 5 distinct phases (Phase 0: Pre-flight to Phase 4: Post-Release Analysis). Users should be able to check off tasks, and see a dynamic progress bar update automatically.
+- A Spotify Editorial Pitch Simulator card showing a beautiful draft of the pitch text, complete with a "Copy Pitch" button and optimization metric scores (e.g., Hook Strength, Genre Alignment, Conciseness).
+- An interactive Digital Marketing Calendar showing scheduled social posts (Instagram, TikTok, YouTube) categorized by type and release priority.
+- Text outside the Artifact should only be a brief 1-2 sentence summary of the launch readiness and a call to action to use the interactive timeline.
+
+---
+
 ## MCP TOOLS USED BY THIS SKILL
 **Analysis:** `analyze_raw_audio_url`, `transcribe_audio_url_lyrics`, `RAG_artist_context`, `artist_current_stats`, `analyze_niche_compatibility`, `audience_demographics`, `artist_top_geographic_data`, `geographic_growth_analysis`, `analyze_cross_platform_performance`
 

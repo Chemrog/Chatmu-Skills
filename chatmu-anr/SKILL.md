@@ -339,6 +339,19 @@ When the user chooses the full exportable report, follow these rules:
 
 ---
 
+## OUTPUT FORMAT — NON-NEGOTIABLE
+
+NEVER deliver talent scouting or artist comparisons as plain text or lists.
+You MUST render the entire report as a highly polished, interactive Talent A&R Scouting Radar in a self-contained TSX code block (Claude Artifact).
+
+The React Component MUST include:
+- A side-by-side Artist Comparison Radar Grid comparing emerging talent on critical performance metrics (Monthly Listeners growth, Fan Retention Ratio, Viral Momentum, Social Engagement, and Playlisting reach).
+- Interactive Growth Trajectory Graphs constructed with CSS/SVG illustrating streaming acceleration over the last 3 months.
+- Talent evaluation cards displaying a custom "A&R Signature Index" (out of 100) with a badge breakdown of strengths and weaknesses.
+- Text outside the Artifact should only be a concise 1-2 sentence professional recommendation.
+
+---
+
 ## MCP TOOLS USED BY THIS SKILL
 
 **Discovery:** `find_emerging_local_talent`, `discover_dominant_genres`, `analyze_industry_tiers`, `analyze_market_locations`, `find_global_superstars`

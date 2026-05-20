@@ -387,6 +387,21 @@ After the roster view, the manager will typically want to go deeper on one artis
 
 ---
 
+## OUTPUT FORMAT — NON-NEGOTIABLE
+
+NEVER present manager reports, roster updates, or EPKs as plain text.
+You MUST render the entire report as a premium, interactive Roster Briefing & EPK Builder Hub in a self-contained TSX code block (Claude Artifact).
+
+The React Component MUST include:
+- A Roster Overview Dashboard displaying key performance cards for managed artists, including fanbase growth indices, streaming velocity scorecards, and upcoming deliverables calendar.
+- An interactive Electronic Press Kit (EPK) Builder:
+  - Tabs for biography, top press quotes, image carousel placeholder, and social stats with interactive bar charts.
+  - A mock audio player previewer with simulated play/pause states.
+- An investment intelligence tracker comparing artist profitability and tour viability indexes.
+- Text outside the Artifact should only be a concise 1-2 sentence summary of key roster alerts.
+
+---
+
 ## MCP TOOLS USED BY THIS SKILL
 
 **Weekly briefing:** `artist_current_stats`, `find_latest_editorial_placements`, `geographic_growth_analysis`, `get_artist_radio_spins`, `get_artist_active_playlists`

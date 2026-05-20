@@ -252,6 +252,22 @@ If any of these come up during onboarding, acknowledge them and hand off cleanly
 
 ---
 
+## OUTPUT FORMAT — NON-NEGOTIABLE
+
+NEVER deliver the onboarding response as plain text or lists. 
+You MUST render the entire onboarding response as a highly polished, interactive React dashboard in a self-contained TSX code block (Claude Artifact).
+
+The React Component MUST include:
+- A warm, stylized Hero Card with the artist\'s profile photo placeholder and loaded metadata.
+- A visual Onboarding Steps Wizard showing:
+  - Step 1: Welcome Snapshot (a curated grid showing monthly listeners, top city, and career stage with trend color tags).
+  - Step 2: Context Discovery (a clickable, interactive accordion showing what Chatmu already knows about them).
+  - Step 3: Core Recommendation (a glowing, pink glassmorphic card representing "The First Move").
+- "The First Move" card must have a primary Action Button (e.g. "Launch Release Flow" or "Check Deep Analytics") that triggers the downstream skill in a highly visual way.
+- Text outside the Artifact should only be a brief 1-2 sentence greeting and a call to action to interact with the dashboard.
+
+---
+
 ## MCP TOOLS USED BY THIS SKILL
 
 `get_saved_artists_for_distribution`, `search_chatmu_artists_db`, `artist_details`, `artist_current_stats`, `artist_top_geographic_data`, `RAG_artist_context`
