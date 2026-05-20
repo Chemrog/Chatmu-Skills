@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./assets/hero_banner.png" alt="Chatmu Skills Banner" width="75%">
+  <img src="./assets/hero_banner.png" alt="Chatmu Skills Banner" width="500">
 </p>
 
 
