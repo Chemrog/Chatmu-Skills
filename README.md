@@ -48,30 +48,55 @@ No generic advice. No hallucinated data. Just real industry intelligence calibra
 
 ---
 
-## Requirements
+## 📋 What You Need Before Starting (Requirements)
 
-Before installing any Skill:
+To use these Skills, make sure you have these three simple things:
 
-1. **A Chatmu account** — [sign up free at chatmu.io](https://chatmu.io)
-2. **The Chatmu MCP connected to Claude** — follow the [MCP setup guide](https://chatmu.io/help/chatmu) to connect via SSE:
+1. **A Chatmu Account** — [Sign up for free at chatmu.io](https://chatmu.io) to access the music database.
+2. **Claude.ai Account** — Any Claude.ai account (free or paid) works perfectly!
+3. **Your Chatmu MCP Link** — This is the magic link that connects Claude to your actual music data. If you haven't done it yet, follow the [Quick MCP Setup Guide](https://chatmu.io/help/chatmu) to add this SSE URL to your Claude:
    ```
    https://mcp-chatmu.aaatmi.com/mcp?key=YOUR_CHATMU_API_KEY
    ```
-3. **Claude.ai** with Skills enabled (any plan)
 
 ---
 
-## How to install a Skill
+## 🚀 How to Install a Skill (Super Simple Guide)
 
-Claude Skills can be imported instantly using the packaged `.zip` files provided in this repository:
+Claude Skills let you import specialized "music brains" instantly in less than 60 seconds! Follow this step-by-step guide:
 
-1. Download the `.zip` file for the skill you want to install (see the library table below for direct download links).
-2. Go to **Claude.ai** → **Settings** → **Capabilities** and ensure **Code Execution** is enabled.
-3. Navigate to **Customize** → **Skills**.
-4. Click the **"+"** or **Create Skill** button.
-5. Click **Upload a skill** and select the downloaded `.zip` file.
-6. Make sure the **Chatmu MCP** is active and connected.
-7. Start a new chat — your expert is ready!
+### 📥 Step 1: Download your Skill ZIP
+Look at the **Skill Library** tables below. Find the skill you want and click the link in the **"Import to Claude (Download ZIP)"** column.
+
+> [!WARNING]
+> **⚠️ CRITICAL FOR MAC / SAFARI USERS:** 
+> Do **NOT** double-click or unzip the downloaded file! Safari might automatically unzip it for you. If it does, right-click the unzipped folder and select **"Compress"** to turn it back into a `.zip` file. Claude **MUST** receive a raw `.zip` file.
+
+---
+
+### 👤 Step 2: Open Claude & Navigate to Settings
+1. Go to [Claude.ai](https://claude.ai) and make sure you are logged in.
+2. Look at the **bottom-left corner** of your screen and click on your **Profile Name/Avatar**.
+3. In the menu that pops up, click on **`<kbd>Customize</kbd>`** and then click on **`<kbd>Skills</kbd>`**.
+
+> [!TIP]
+> **💡 First time using Skills?**
+> Make sure **Code Execution** is turned on! In that same settings menu, go to **`<kbd>Settings</kbd>`** ➔ **`<kbd>Capabilities</kbd>`** and ensure **Code Execution** is checked.
+
+---
+
+### ⚙️ Step 3: Upload the ZIP
+1. Click the **`<kbd>Create Skill</kbd>`** button (or the **`+`** icon) on the top-right corner of the Skills dashboard.
+2. In the skill creator window, look at the top right and click **`<kbd>Upload a skill</kbd>`**.
+3. Select the `.zip` file you downloaded in Step 1.
+4. The system will automatically populate all the details! Click **`<kbd>Save</kbd>`** or **`<kbd>Publish</kbd>`** at the bottom.
+
+---
+
+### 🎵 Step 4: Start a New Chat and Jam!
+1. Start a **new conversation** on Claude.ai.
+2. Type a message like: *"Hey, run an onboarding session!"* or *"Analyze my Spotify streams."*
+3. Claude will automatically activate the Skill, connect to your Chatmu MCP, and build a beautiful interactive dashboard for you!
 
 *Alternatively, you can create a skill manually by copying the entire content of the `SKILL.md` file (including the frontmatter `---` lines at the top) and pasting it into the Claude Skill creator.*
 
@@ -81,8 +106,8 @@ Claude Skills can be imported instantly using the packaged `.zip` files provided
 
 ### For Artists
 
-| Skill | Directory | Direct Download (.zip) | Description |
-|-------|-----------|------------------------|-------------|
+| Skill | Directory | Import to Claude (Download ZIP) | Description |
+|-------|-----------|---------------------------------|-------------|
 | 🎯 **Onboarding** | [`chatmu-onboarding/`](./chatmu-onboarding) | [chatmu-onboarding.zip](https://github.com/Chemrog/Chatmu-Skills/raw/main/zips/chatmu-onboarding.zip) | First contact — understands who you are, where you're at, and points you to the right next step. |
 | 🚀 **Release Flow** | [`chatmu-release/`](./chatmu-release) | [chatmu-release.zip](https://github.com/Chemrog/Chatmu-Skills/raw/main/zips/chatmu-release.zip) | Full launch workflow: song analysis → date → distribution → contracts → content strategy → post-release. |
 | 📊 **Analytics** | [`chatmu-analytics/`](./chatmu-analytics) | [chatmu-analytics.zip](https://github.com/Chemrog/Chatmu-Skills/raw/main/zips/chatmu-analytics.zip) | Deep analysis of your streams, audience, geography, playlists, content, and catalog. |
@@ -90,8 +115,8 @@ Claude Skills can be imported instantly using the packaged `.zip` files provided
 
 ### For Industry Professionals
 
-| Skill | Directory | Direct Download (.zip) | Description |
-|-------|-----------|------------------------|-------------|
+| Skill | Directory | Import to Claude (Download ZIP) | Description |
+|-------|-----------|---------------------------------|-------------|
 | 💼 **Music Manager** | [`chatmu-manager/`](./chatmu-manager) | [chatmu-manager.zip](https://github.com/Chemrog/Chatmu-Skills/raw/main/zips/chatmu-manager.zip) | Weekly briefings, investment intelligence, press kit generation, roster overview, strategic direction. |
 | 🎟️ **Booking Agency** | [`chatmu-booking/`](./chatmu-booking) | [chatmu-booking.zip](https://github.com/Chemrog/Chatmu-Skills/raw/main/zips/chatmu-booking.zip) | Venue discovery, contact extraction, booking pitches, CRM, full outreach workflow. |
 | 🗺️ **Tour Routing** | [`chatmu-tour-routing/`](./chatmu-tour-routing) | [chatmu-tour-routing.zip](https://github.com/Chemrog/Chatmu-Skills/raw/main/zips/chatmu-tour-routing.zip) | Audience-first tour planning: anchor dates, optimized route, venue search, venue outreach. |
