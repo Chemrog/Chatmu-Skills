@@ -1,30 +1,7 @@
-```
-            ****      *           
-          **     ***+   +++       
-       * *                ++      
-    **   +                 ++     
-   **                      ++     
-   **      *****   *+++++    ++   
-    **    *  **** ++ +++++     +  
-  **      *  **** ++ +++++   ++   
-  **        ****+    ++++    ++    
-  **             +++++        +    
-   ***+                      ++    
-      ++                    ++     
-      ++                    ++     
-       *+*  +++     +++    ++      
-          ++  ++  +++  ====        
-```
+<p align="center">
+  <img src="./assets/hero_banner.png" alt="Chatmu Skills Banner" width="100%">
+</p>
 
-```
-    ▄▄▄▄   ▄▄                                               
-  ██▀▀▀▀█  ██                    ██                         
- ██▀       ██▄████▄   ▄█████▄  ███████   ████▄██▄  ██    ██ 
- ██        ██▀   ██   ▀ ▄▄▄██    ██      ██ ██ ██  ██    ██ 
- ██▄       ██    ██  ▄██▀▀▀██    ██      ██ ██ ██  ██    ██ 
-  ██▄▄▄▄█  ██    ██  ██▄▄▄███    ██▄▄▄   ██ ██ ██  ██▄▄▄███ 
-    ▀▀▀▀   ▀▀    ▀▀   ▀▀▀▀ ▀▀     ▀▀▀▀   ▀▀ ▀▀ ▀▀   ▀▀▀▀ ▀▀ 
-```
 
 # Chatmu Skills — Claude AI Skill Library
 
@@ -112,6 +89,10 @@ Look at the **Skill Library** tables below. Find the skill you want and click th
 *Alternatively, you can create a skill manually by copying the entire content of the `SKILL.md` file (including the frontmatter `---` lines at the top) and pasting it into the Claude Skill creator.*
 
 ---
+
+<p align="center">
+  <img src="./assets/artist_studio.png" alt="Artist Studio" width="50%">
+</p>
 
 ## Skill Library
 
@@ -243,6 +224,36 @@ Found a bug in a Skill? Want to translate one to another language? Have a workfl
 2. Make your changes
 3. Open a PR with a clear description of what changed and why
 4. Tag it with the relevant role: `artist`, `manager`, `booking`, `anr`
+
+---
+
+```text
+            ****      *           
+          **     ***+   +++       
+       * *                ++      
+    **   +                 ++     
+   **                      ++     
+   **      *****   *+++++    ++   
+    **    *  **** ++ +++++     +  
+  **      *  **** ++ +++++   ++   
+  **        ****+    ++++    ++    
+  **             +++++        +    
+   ***+                      ++    
+      ++                    ++     
+      ++                    ++     
+       *+*  +++     +++    ++      
+          ++  ++  +++  ====        
+```
+
+```text
+    ▄▄▄▄   ▄▄                                               
+  ██▀▀▀▀█  ██                    ██                         
+ ██▀       ██▄████▄   ▄█████▄  ███████   ████▄██▄  ██    ██ 
+ ██        ██▀   ██   ▀ ▄▄▄██    ██      ██ ██ ██  ██    ██ 
+ ██▄       ██    ██  ▄██▀▀▀██    ██      ██ ██ ██  ██    ██ 
+  ██▄▄▄▄█  ██    ██  ██▄▄▄███    ██▄▄▄   ██ ██ ██  ██▄▄▄███ 
+    ▀▀▀▀   ▀▀    ▀▀   ▀▀▀▀ ▀▀     ▀▀▀▀   ▀▀ ▀▀ ▀▀   ▀▀▀▀ ▀▀ 
+```
 
 ---
 
