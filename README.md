@@ -32,7 +32,7 @@
 
 Official collection of Claude Skills for the Chatmu MCP. Install the skill that matches your role, connect the Chatmu MCP, and unlock a specialized AI expert built specifically for your workflow in the music industry.
 
-**[chatmu.io](https://chatmu.io)** · **[Get the MCP](https://chatmu.io/pricing)** · **[Docs](https://chatmu.io/help)**
+**[chatmu.io](https://chatmu.io)** · **[Get the MCP](https://chatmu.io/pricing)** · **[Docs](https://chatmu.io/help/chatmu)**
 
 ---
 
@@ -53,7 +53,7 @@ No generic advice. No hallucinated data. Just real industry intelligence calibra
 Before installing any Skill:
 
 1. **A Chatmu account** — [sign up free at chatmu.io](https://chatmu.io)
-2. **The Chatmu MCP connected to Claude** — follow the [MCP setup guide](https://chatmu.io/help) to connect via SSE:
+2. **The Chatmu MCP connected to Claude** — follow the [MCP setup guide](https://chatmu.io/help/chatmu) to connect via SSE:
    ```
    https://mcp-chatmu.aaatmi.com/mcp?key=YOUR_CHATMU_API_KEY
    ```
