@@ -238,7 +238,6 @@ Found a bug in a Skill? Want to translate one to another language? Have a workfl
 ## Credits
 
 Created by **[Chema Rodríguez](https://instagram.com/chemarodriguezx)** & the [Chatmu](https://chatmu.io) team.  
-Powered by [Claude](https://claude.ai) + the Chatmu MCP.  
 **AI for the industry. Humans for the music.**
 
 ---
