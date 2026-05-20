@@ -9,7 +9,7 @@ compatibility: claude.ai
 **Version:** 1.0
 **Required MCP:** Chatmu MCP
 **For:** Booking agents and agencies managing artist live bookings
-**Repository:** github.com/chatmu/skills
+**Repository:** github.com/Chemrog/Chatmu-Skills
 
 ---
 
@@ -320,5 +320,5 @@ Festival pitch is slightly different from venue pitch:
 5. Make sure the **Chatmu MCP** is connected and active
 6. Works best alongside **skill-tour-routing-en.md** when planning full multi-city tours
 
-**Official repository:** github.com/chatmu/skills
+**Official repository:** github.com/Chemrog/Chatmu-Skills
 **Support:** chatmu.io

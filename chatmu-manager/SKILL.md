@@ -9,7 +9,7 @@ compatibility: claude.ai
 **Version:** 1.0
 **Required MCP:** Chatmu MCP
 **For:** Music managers running one artist or a full roster
-**Repository:** github.com/chatmu/skills
+**Repository:** github.com/Chemrog/Chatmu-Skills
 
 ---
 
@@ -414,5 +414,5 @@ After the roster view, the manager will typically want to go deeper on one artis
 6. For best results, use alongside **skill-analytics-en.md** for deeper single-metric dives when needed
 7. For preskit generation, Claude Design produces the best visual output
 
-**Official repository:** github.com/chatmu/skills
+**Official repository:** github.com/Chemrog/Chatmu-Skills
 **Support:** chatmu.io

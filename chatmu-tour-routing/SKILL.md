@@ -10,7 +10,7 @@ compatibility: claude.ai
 **Required MCP:** Chatmu MCP
 **For:** Artists, managers, and booking agents planning a multi-city tour
 **Requires:** skill-show-viability-en.md logic is embedded here — this skill can run standalone
-**Repository:** github.com/chatmu/skills
+**Repository:** github.com/Chemrog/Chatmu-Skills
 
 ---
 
@@ -368,5 +368,5 @@ Always mention booking lead time based on tour timeline:
 5. Make sure the **Chatmu MCP** is connected and active
 6. Works best after **skill-show-viability-en.md** — viability check first, full routing second
 
-**Official repository:** github.com/chatmu/skills
+**Official repository:** github.com/Chemrog/Chatmu-Skills
 **Support:** chatmu.io

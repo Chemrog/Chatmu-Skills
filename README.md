@@ -83,20 +83,20 @@ Claude Skills can be imported instantly using the packaged `.zip` files provided
 
 | Skill | Directory | Direct Download (.zip) | Description |
 |-------|-----------|------------------------|-------------|
-| 🎯 **Onboarding** | [`chatmu-onboarding/`](./chatmu-onboarding) | [chatmu-onboarding.zip](https://github.com/chatmu/skills/raw/main/zips/chatmu-onboarding.zip) | First contact — understands who you are, where you're at, and points you to the right next step. |
-| 🚀 **Release Flow** | [`chatmu-release/`](./chatmu-release) | [chatmu-release.zip](https://github.com/chatmu/skills/raw/main/zips/chatmu-release.zip) | Full launch workflow: song analysis → date → distribution → contracts → content strategy → post-release. |
-| 📊 **Analytics** | [`chatmu-analytics/`](./chatmu-analytics) | [chatmu-analytics.zip](https://github.com/chatmu/skills/raw/main/zips/chatmu-analytics.zip) | Deep analysis of your streams, audience, geography, playlists, content, and catalog. |
-| 🎤 **Show Viability** | [`chatmu-show-viability/`](./chatmu-show-viability) | [chatmu-show-viability.zip](https://github.com/chatmu/skills/raw/main/zips/chatmu-show-viability.zip) | Data-backed answer to "can I play [city]?" using the industry-standard 2% rule. |
+| 🎯 **Onboarding** | [`chatmu-onboarding/`](./chatmu-onboarding) | [chatmu-onboarding.zip](https://github.com/Chemrog/Chatmu-Skills/raw/main/zips/chatmu-onboarding.zip) | First contact — understands who you are, where you're at, and points you to the right next step. |
+| 🚀 **Release Flow** | [`chatmu-release/`](./chatmu-release) | [chatmu-release.zip](https://github.com/Chemrog/Chatmu-Skills/raw/main/zips/chatmu-release.zip) | Full launch workflow: song analysis → date → distribution → contracts → content strategy → post-release. |
+| 📊 **Analytics** | [`chatmu-analytics/`](./chatmu-analytics) | [chatmu-analytics.zip](https://github.com/Chemrog/Chatmu-Skills/raw/main/zips/chatmu-analytics.zip) | Deep analysis of your streams, audience, geography, playlists, content, and catalog. |
+| 🎤 **Show Viability** | [`chatmu-show-viability/`](./chatmu-show-viability) | [chatmu-show-viability.zip](https://github.com/Chemrog/Chatmu-Skills/raw/main/zips/chatmu-show-viability.zip) | Data-backed answer to "can I play [city]?" using the industry-standard 2% rule. |
 
 ### For Industry Professionals
 
 | Skill | Directory | Direct Download (.zip) | Description |
 |-------|-----------|------------------------|-------------|
-| 💼 **Music Manager** | [`chatmu-manager/`](./chatmu-manager) | [chatmu-manager.zip](https://github.com/chatmu/skills/raw/main/zips/chatmu-manager.zip) | Weekly briefings, investment intelligence, press kit generation, roster overview, strategic direction. |
-| 🎟️ **Booking Agency** | [`chatmu-booking/`](./chatmu-booking) | [chatmu-booking.zip](https://github.com/chatmu/skills/raw/main/zips/chatmu-booking.zip) | Venue discovery, contact extraction, booking pitches, CRM, full outreach workflow. |
-| 🗺️ **Tour Routing** | [`chatmu-tour-routing/`](./chatmu-tour-routing) | [chatmu-tour-routing.zip](https://github.com/chatmu/skills/raw/main/zips/chatmu-tour-routing.zip) | Audience-first tour planning: anchor dates, optimized route, venue search, venue outreach. |
-| 🔍 **A&R Intelligence** | [`chatmu-anr/`](./chatmu-anr) | [chatmu-anr.zip](https://github.com/chatmu/skills/raw/main/zips/chatmu-anr.zip) | Emerging artist discovery, label status checks, market intelligence, comparison reports. |
-| 📄 **Music Contracts** | [`chatmu-contracts/`](./chatmu-contracts) | [chatmu-contracts.zip](https://github.com/chatmu/skills/raw/main/zips/chatmu-contracts.zip) | Professional-grade music industry contracts (split sheets, producer agreements, work for hire). |
+| 💼 **Music Manager** | [`chatmu-manager/`](./chatmu-manager) | [chatmu-manager.zip](https://github.com/Chemrog/Chatmu-Skills/raw/main/zips/chatmu-manager.zip) | Weekly briefings, investment intelligence, press kit generation, roster overview, strategic direction. |
+| 🎟️ **Booking Agency** | [`chatmu-booking/`](./chatmu-booking) | [chatmu-booking.zip](https://github.com/Chemrog/Chatmu-Skills/raw/main/zips/chatmu-booking.zip) | Venue discovery, contact extraction, booking pitches, CRM, full outreach workflow. |
+| 🗺️ **Tour Routing** | [`chatmu-tour-routing/`](./chatmu-tour-routing) | [chatmu-tour-routing.zip](https://github.com/Chemrog/Chatmu-Skills/raw/main/zips/chatmu-tour-routing.zip) | Audience-first tour planning: anchor dates, optimized route, venue search, venue outreach. |
+| 🔍 **A&R Intelligence** | [`chatmu-anr/`](./chatmu-anr) | [chatmu-anr.zip](https://github.com/Chemrog/Chatmu-Skills/raw/main/zips/chatmu-anr.zip) | Emerging artist discovery, label status checks, market intelligence, comparison reports. |
+| 📄 **Music Contracts** | [`chatmu-contracts/`](./chatmu-contracts) | [chatmu-contracts.zip](https://github.com/Chemrog/Chatmu-Skills/raw/main/zips/chatmu-contracts.zip) | Professional-grade music industry contracts (split sheets, producer agreements, work for hire). |
 
 ---
 
@@ -105,7 +105,7 @@ Claude Skills can be imported instantly using the packaged `.zip` files provided
 This repository is organized to follow the official Claude Skills specification:
 
 ```
-chatmu/skills (GitHub repo)
+Chemrog/Chatmu-Skills (GitHub repo)
 ├── README.md                 ← Main documentation and links
 ├── zips/                     ← Pre-packaged ZIP files for easy installation
 │   ├── chatmu-onboarding.zip

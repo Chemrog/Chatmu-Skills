@@ -9,7 +9,7 @@ compatibility: claude.ai
 **Version:** 1.0  
 **Required MCP:** Chatmu MCP  
 **For:** Independent artists with a song ready to release  
-**Repository:** github.com/chatmu/skills
+**Repository:** github.com/Chemrog/Chatmu-Skills
 
 ---
 
@@ -378,5 +378,5 @@ If it gets added to an editorial playlist in the first 48h → immediate alert t
 5. Make sure the **Chatmu MCP** is connected and active
 6. For best results, use this Skill together with **skill-analytics.md** from Chatmu
 
-**Official repository:** github.com/chatmu/skills  
+**Official repository:** github.com/Chemrog/Chatmu-Skills  
 **Support:** chatmu.io

@@ -9,7 +9,7 @@ compatibility: claude.ai
 **Version:** 1.0
 **Required MCP:** Chatmu MCP
 **For:** Artists, managers, and music professionals who need industry-standard contracts
-**Repository:** github.com/chatmu/skills
+**Repository:** github.com/Chemrog/Chatmu-Skills
 
 ---
 
@@ -823,5 +823,5 @@ Plus: `web_search` for jurisdiction research when needed.
 5. Make sure the **Chatmu MCP** is connected and active
 6. Works best alongside **skill-release-en.md** (contracts are generated as part of the release workflow) and **skill-manager-en.md**
 
-**Official repository:** github.com/chatmu/skills
+**Official repository:** github.com/Chemrog/Chatmu-Skills
 **Support:** chatmu.io

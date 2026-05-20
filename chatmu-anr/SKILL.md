@@ -9,7 +9,7 @@ compatibility: claude.ai
 **Version:** 1.0
 **Required MCP:** Chatmu MCP
 **For:** A&Rs, label executives, and talent scouts who sign based on signals, not gut feeling
-**Repository:** github.com/chatmu/skills
+**Repository:** github.com/Chemrog/Chatmu-Skills
 
 ---
 
@@ -363,5 +363,5 @@ When the user chooses the full exportable report, follow these rules:
 5. Make sure the **Chatmu MCP** is connected and active
 6. For best results, use alongside **skill-analytics-en.md** for deeper artist analysis when needed
 
-**Official repository:** github.com/chatmu/skills
+**Official repository:** github.com/Chemrog/Chatmu-Skills
 **Support:** chatmu.io

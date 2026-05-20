@@ -9,7 +9,7 @@ compatibility: claude.ai
 **Version:** 1.0
 **Required MCP:** Chatmu MCP
 **For:** Artists using Chatmu for the first time, or anyone who doesn't know where to start
-**Repository:** github.com/chatmu/skills
+**Repository:** github.com/Chemrog/Chatmu-Skills
 
 ---
 
@@ -266,5 +266,5 @@ If any of these come up during onboarding, acknowledge them and hand off cleanly
 5. Make sure the **Chatmu MCP** is connected and active
 6. **Install order matters:** Install this skill first, then `skill-release-en.md` and `skill-analytics-en.md` — the Onboarding Skill hands off to both
 
-**Official repository:** github.com/chatmu/skills
+**Official repository:** github.com/Chemrog/Chatmu-Skills
 **Support:** chatmu.io

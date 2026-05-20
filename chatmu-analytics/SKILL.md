@@ -9,7 +9,7 @@ compatibility: claude.ai
 **Version:** 1.0  
 **Required MCP:** Chatmu MCP  
 **For:** Artists, managers, and labels who want to understand what's working and what to do next  
-**Repository:** github.com/chatmu/skills
+**Repository:** github.com/Chemrog/Chatmu-Skills
 
 ---
 
@@ -352,5 +352,5 @@ These filters apply to EVERY insight and recommendation:
 5. Make sure the **Chatmu MCP** is connected and active
 6. For best results, use this Skill together with **skill-release-en.md** from Chatmu — when analytics identifies an opportunity, the Release Skill handles execution
 
-**Official repository:** github.com/chatmu/skills  
+**Official repository:** github.com/Chemrog/Chatmu-Skills  
 **Support:** chatmu.io

@@ -9,7 +9,7 @@ compatibility: claude.ai
 **Version:** 1.0
 **Required MCP:** Chatmu MCP
 **For:** Artists, managers, and booking agents evaluating whether a live show in a specific city makes sense
-**Repository:** github.com/chatmu/skills
+**Repository:** github.com/Chemrog/Chatmu-Skills
 
 ---
 
@@ -315,5 +315,5 @@ If the artist is in Verdict C territory for their target city:
 5. Make sure the **Chatmu MCP** is connected and active
 6. Works best alongside **skill-tour-routing-en.md** — once you know which cities are viable, Tour Routing plans the full route
 
-**Official repository:** github.com/chatmu/skills
+**Official repository:** github.com/Chemrog/Chatmu-Skills
 **Support:** chatmu.io
