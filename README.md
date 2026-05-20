@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./assets/hero_banner.png" alt="Chatmu Skills Banner" width="100%">
+  <img src="./assets/hero_banner.png" alt="Chatmu Skills Banner" width="75%">
 </p>
 
 
@@ -89,10 +89,6 @@ Look at the **Skill Library** tables below. Find the skill you want and click th
 *Alternatively, you can create a skill manually by copying the entire content of the `SKILL.md` file (including the frontmatter `---` lines at the top) and pasting it into the Claude Skill creator.*
 
 ---
-
-<p align="center">
-  <img src="./assets/artist_studio.png" alt="Artist Studio" width="50%">
-</p>
 
 ## Skill Library
 
