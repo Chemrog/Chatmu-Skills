@@ -1,7 +1,10 @@
 ---
 name: chatmu-tour-routing
 description: >
-  Use when planning multiple concert tour stops, optimized routes, mapping anchor dates, or finding sequential tour locations. Trigger phrases: plan a tour, tour routing, anchor dates, optimize tour stops, tour schedule, concert routing.
+  Use when planning multiple concert tour stops, optimized routes,
+  mapping anchor dates, or finding sequential tour locations.
+  Trigger phrases: "plan a tour", "tour routing", "anchor dates",
+  "optimize tour stops", "tour schedule", "concert routing".
 compatibility: claude.ai
 ---
 

@@ -1,7 +1,10 @@
 ---
 name: chatmu-analytics
 description: >
-  Use when checking artist numbers, streaming performance, audience demographics, listener location, or weekly briefings. Trigger phrases: how am I doing, check my streams, Spotify stats, analyze numbers, weekly stats, demographic analysis.
+  Use when checking artist numbers, streaming performance,
+  audience demographics, listener location, or weekly briefings.
+  Trigger phrases: "how am I doing", "check my streams",
+  "Spotify stats", "analyze numbers", "weekly stats", "demographic analysis".
 compatibility: claude.ai
 ---
 

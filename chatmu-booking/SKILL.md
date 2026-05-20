@@ -1,7 +1,10 @@
 ---
 name: chatmu-booking
 description: >
-  Use when searching for live music venues, extracting venue contact details, writing booking pitch emails, or managing booking outreach CRM. Trigger phrases: search venues, booking pitch, contact extraction, contact promoter, outreach email.
+  Use when searching for live music venues, extracting venue contact details,
+  writing booking pitch emails, or managing booking outreach CRM.
+  Trigger phrases: "search venues", "booking pitch", "contact extraction",
+  "contact promoter", "outreach email".
 compatibility: claude.ai
 ---
 

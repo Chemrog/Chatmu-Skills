@@ -1,7 +1,10 @@
 ---
 name: chatmu-release
 description: >
-  Use when the artist is launching a song, distributing music, planning a release strategy, needs a Spotify pitch, or wants to distribute master copy. Trigger phrases: launch a song, release music, Spotify pitch, upload to Spotify, release date.
+  Use when the artist is launching a song, distributing music,
+  planning a release strategy, needs a Spotify pitch, or wants to distribute master copy.
+  Trigger phrases: "launch a song", "release music", "Spotify pitch",
+  "upload to Spotify", "release date".
 compatibility: claude.ai
 ---
 

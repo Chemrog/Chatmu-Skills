@@ -1,7 +1,10 @@
 ---
 name: chatmu-anr
 description: >
-  Use when scouting emerging talent, checking label rosters, researching record label histories, or analyzing industry tier structures. Trigger phrases: A&R scouting, talent discovery, check label history, find emerging artists, artist comparison.
+  Use when scouting emerging talent, checking label rosters,
+  researching record label histories, or analyzing industry tier structures.
+  Trigger phrases: "A&R scouting", "talent discovery",
+  "check label history", "find emerging artists", "artist comparison".
 compatibility: claude.ai
 ---
 

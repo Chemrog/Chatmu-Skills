@@ -1,7 +1,10 @@
 ---
 name: chatmu-onboarding
 description: >
-  Use when the user is new to Chatmu, wants to connect their artist profile, onboarding their artist, or doesn't know where to start. Trigger phrases: new to Chatmu, where do I start, onboarding my artist, setup profile.
+  Use when the user is new to Chatmu, wants to connect their artist profile,
+  onboarding their artist, or doesn't know where to start.
+  Trigger phrases: "new to Chatmu", "where do I start",
+  "onboarding my artist", "setup profile".
 compatibility: claude.ai
 ---
 
