@@ -86,10 +86,10 @@ Look at the **Skill Library** tables below. Find the skill you want and click th
 ---
 
 ### ⚙️ Step 3: Upload the ZIP
-1. Click the **`<kbd>Create Skill</kbd>`** button (or the **`+`** icon) on the top-right corner of the Skills dashboard.
-2. In the skill creator window, look at the top right and click **`<kbd>Upload a skill</kbd>`**.
-3. Select the `.zip` file you downloaded in Step 1.
-4. The system will automatically populate all the details! Click **`<kbd>Save</kbd>`** or **`<kbd>Publish</kbd>`** at the bottom.
+1. Click the **`+`** icon (located on the left panel, next to *Personal skills* in the *Skills* list).
+2. Click on **`<kbd>Create skill</kbd>`** in the dropdown menu, and select **`<kbd>Upload a skill</kbd>`** from the side-menu.
+3. A popup window titled **"Upload skill"** will appear. Simply **drag and drop** the `.zip` file you downloaded in Step 1 into the box, or click inside it to select the file from your computer.
+4. Claude will automatically read the package and fill in all the details! Finally, click **`<kbd>Publish</kbd>`** (or save) to activate your new music expert!
 
 ---
 
