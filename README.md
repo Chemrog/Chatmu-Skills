@@ -59,16 +59,16 @@ To use these Skills, make sure you have these three simple things:
    ### 🔌 How to Connect Chatmu MCP to Claude
    
    1. **Sign in** to your dashboard at [chatmu.io](https://chatmu.io).
-   2. In the left panel, click on **`<kbd>Chatmu API</kbd>`**.
-   3. A window titled **"Connect to Claude via MCP"** will pop up. Click **`<kbd>Yes, start tutorial</kbd>`** to follow the interactive guide, or simply:
-      * Click the pink **`<kbd>Nuevo</kbd>`** button on the right to generate a new key.
+   2. In the left panel, click on **<kbd>Chatmu API</kbd>**.
+   3. A window titled **"Connect to Claude via MCP"** will pop up. Click **<kbd>Yes, start tutorial</kbd>** to follow the interactive guide, or simply:
+      * Click the pink **<kbd>Nuevo</kbd>** button on the right to generate a new key.
       * **Name your key** (e.g. *Claude Desktop*) so you remember what it is for.
-      * *(Optional)* Set an **Expiration Date** for security (or leave it blank so it never expires). Then click **`<kbd>Guardar</kbd>`**.
-   4. Find your new key in the list and click the **`<kbd>Copiar para Claude</kbd>`** button. This copies the exact connection code you need.
+      * *(Optional)* Set an **Expiration Date** for security (or leave it blank so it never expires). Then click **<kbd>Guardar</kbd>**.
+   4. Find your new key in the list and click the **<kbd>Copiar para Claude</kbd>** button. This copies the exact connection code you need.
    5. Go directly to Claude's Connector Settings:
       * Open **[Claude.ai Connectors Settings](https://claude.ai/customize/connectors)** in your browser.
-      * *(Alternatively, in Claude.ai, click your **Profile avatar** in the bottom-left ➔ **`<kbd>Customize</kbd>`** ➔ **`<kbd>Connectors</kbd>`**).*
-   6. Click the **`<kbd>Add custom connector</kbd>`** button, enter a name (e.g. *Chatmu MCP*), **paste** the code you copied in Step 4, and save!
+      * *(Alternatively, in Claude.ai, click your **Profile avatar** in the bottom-left ➔ **<kbd>Customize</kbd>** ➔ **<kbd>Connectors</kbd>**).*
+   6. Click the **<kbd>Add custom connector</kbd>** button, enter a name (e.g. *Chatmu MCP*), **paste** the code you copied in Step 4, and save!
 
 ---
 
@@ -88,19 +88,19 @@ Look at the **Skill Library** tables below. Find the skill you want and click th
 ### 👤 Step 2: Open Claude & Navigate to Settings
 1. Go to [Claude.ai](https://claude.ai) and make sure you are logged in.
 2. Look at the **bottom-left corner** of your screen and click on your **Profile Name/Avatar**.
-3. In the menu that pops up, click on **`<kbd>Customize</kbd>`** and then click on **`<kbd>Skills</kbd>`**.
+3. In the menu that pops up, click on **<kbd>Customize</kbd>** and then click on **<kbd>Skills</kbd>**.
 
 > [!TIP]
 > **💡 First time using Skills?**
-> Make sure **Code Execution** is turned on! In that same settings menu, go to **`<kbd>Settings</kbd>`** ➔ **`<kbd>Capabilities</kbd>`** and ensure **Code Execution** is checked.
+> Make sure **Code Execution** is turned on! In that same settings menu, go to **<kbd>Settings</kbd>** ➔ **<kbd>Capabilities</kbd>** and ensure **Code Execution** is checked.
 
 ---
 
 ### ⚙️ Step 3: Upload the ZIP
 1. Click the **`+`** icon (located on the left panel, next to *Personal skills* in the *Skills* list).
-2. Click on **`<kbd>Create skill</kbd>`** in the dropdown menu, and select **`<kbd>Upload a skill</kbd>`** from the side-menu.
+2. Click on **<kbd>Create skill</kbd>** in the dropdown menu, and select **<kbd>Upload a skill</kbd>** from the side-menu.
 3. A popup window titled **"Upload skill"** will appear. Simply **drag and drop** the `.zip` file you downloaded in Step 1 into the box, or click inside it to select the file from your computer.
-4. Claude will automatically read the package and fill in all the details! Finally, click **`<kbd>Publish</kbd>`** (or save) to activate your new music expert!
+4. Claude will automatically read the package and fill in all the details! Finally, click **<kbd>Publish</kbd>** (or save) to activate your new music expert!
 
 ---
 
@@ -248,7 +248,7 @@ Found a bug in a Skill? Want to translate one to another language? Have a workfl
 
 ## Credits
 
-Created by **[Chema Rodríguez](https://instagram.com/chemarodriguezx)** & the [Chatmu](https://chatmu.io) team.  
+Created by **[Chema Rodríguez](https://instagram.com/chema_rodriguez.mp3)** & the [Chatmu](https://chatmu.io) team.  
 **AI for the industry. Humans for the music.**
 
 ---
