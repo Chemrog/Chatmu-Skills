@@ -41,6 +41,8 @@ Before using any tools, understand this is the real industry workflow. Every ste
 
 **Step 7 — Deal structure reality check:** Independent artists almost never get a guarantee on early tours. Most deals are door deals (% of ticket sales) or flat small guarantees. The skill is honest about this.
 
+**Step 8 — Tour Manager Handoff & Logistics Reality Check:** Real-world tours for mid-tier artists rarely book all at once. Shows often arise "piecemeal" (one-by-one). The Tour Manager must step in to coordinate with booking, evaluate travel fatigue, and build the ultimate "Road Book" and "Day Sheets" (minute-by-minute) once all details (vessels/flights, hotels, transport) are confirmed.
+
 ---
 
 ## RULE #1 — Audience defines the route, always
@@ -160,7 +162,7 @@ Ask for confirmation before building the full route.
 
 ---
 
-## STEP 4 — Route sequencing (no backtracking)
+## STEP 4 — Route sequencing & TM Fatigue Check
 
 With anchors confirmed, build the sequence using geographic logic:
 
@@ -194,6 +196,23 @@ DAY 7  — [Date] — Travel day       [Monterrey → home]
 **Gap-fill logic:** If there's a travel day of 8+ hours, check if there's a borderline city along that route. If yes: *"There's a 9-hour drive between [City A] and [City B]. [Intermediate City] sits right in the middle and you have [X] listeners there — enough for a small 50-person show. Adding it turns a lost day into an extra show. Want me to include it?"*
 
 **Rest day logic:** Automatically insert a rest day after every 4 consecutive show days. If the artist's timeline doesn't allow it, flag it: *"This routing has 5 shows in a row with no break. That's doable but hard on vocals. Want me to adjust, or are you okay with the intensity?"*
+
+**Tour Manager (TM) Logistics & Fatigue Safety Check:**
+Always analyze the physical demand of travel on the crew. Insert a **[TM Logistics Alert 🚨]** if any of the following arise:
+- Over 6 hours driving on a show day.
+- Less than 12 hours of rest between load-out in one city and lobby call in the next.
+- Flights across international borders followed immediately by a show.
+- Back-to-back shows without a rest day for 5+ days.
+*Example output:*
+> 🚨 **[TM Logistics Alert]**: The segment between Tapachula and Bogotá involves a flight connection and immediate load-in on the same day. This represents extreme crew fatigue. Consider inserting a rest day in Bogotá before showtime or securing early hotel check-in.
+
+**Real-World "Piecemeal Booking" Adaptability:**
+In the real world, shows do not always book in a perfect sequence. Often, isolated show opportunities arise one-by-one (e.g., a high-paying show in a distant city).
+If the user asks: *"We just got offered a show in Bogotá on [Date], but we are playing Tapachula the day before. Should we take it?"*
+Run a **Suboptimal Route Feasibility Check**:
+1. **Financial Feasibility:** Compare the proposed fee/guarantee against the estimated travel expenses for the entire crew (last-minute flights, excess baggage fees for gear, local logistics, hotel rooms).
+2. **Logistical Feasibility:** Verify travel flight connection availability and buffer time for airport transfers, customs, and load-in.
+3. **Mitigation / Routing Repair:** If they accept the show, immediately recommend booking 1-2 adjacent "pop-up" shows (e.g., Medellín or Cali) to create a small geographic leg, amortizing the flight costs.
 
 ---
 
@@ -294,6 +313,50 @@ NOTES
 
 ---
 
+## STEP 8 — Road Book & Day Sheet (Run of Show) Builder
+
+Once the tour itinerary is agreed upon and shows begin locking in, transition from Booking Agent mode to Tour Manager mode. Offer to generate a **Road Book Template** and detailed **Day Sheets (Run of Show)** for the confirmed dates.
+
+### 8a — Crew & Roster Setup
+Generate a template for the crew. Instruct the user to fill in these essential roles:
+- **Tour Manager (TM):** Logistics, hotels, settlements, curfew, scheduling.
+- **Front of House (FOH) Engineer:** Sound engineer for the audience.
+- **Monitor Engineer:** Sound engineer for artist ear monitors/stage wedges.
+- **Stage Manager / Backline Tech:** Gear setup and stage flow.
+- **Artist & Musicians:** The performing group.
+
+### 8b — Travel & Lodging Placeholder Tracker
+For each show, generate a structured template for the TM to track:
+- **Vessel / Flight Details:** Flight #, Departure/Arrival time, Airport, Confirmation #.
+- **Ground Transfers:** Rental van pickup details, local shuttle, driver contact info.
+- **Hotel Details:** Hotel name, Address, Phone, Check-in/out times, Rooming list allocations.
+
+### 8c — Day Sheet / Run of Show (ROS) Timeline
+For any active show day, generate a highly detailed, minute-by-minute schedule. Standard timeline structure to present:
+
+```
+DAY SHEET — [Date] — [City] @ [Venue Name]
+
+09:00 — TM Hotel Check-out & Ground Transfer Lobby Call
+11:00 — Travel: [Previous City] → [Current City] (Arrive at Hotel)
+13:00 — Hotel Check-in & Crew Rest / Lunch
+15:00 — Load-In: Production crew arrives at venue. Stage setup, backline build.
+16:30 — Soundcheck (Band Call): Artist onstage. Monitor check first, then FOH.
+18:00 — Soundcheck end. Production briefing & Stage clear.
+18:30 — Dinner / Catering & Artist Dressing Room prep.
+19:30 — DOORS OPEN (Background music, merch stand open).
+20:00 — Support Act onstage (30-45 min set).
+20:45 — Changeover (Clear stage, final line-check).
+21:15 — HEADLINER SHOWTIME (Artist onstage).
+22:45 — Show end. Curfew & Merch signing/meet-and-greet.
+23:15 — Load-Out: Gear pack, TM settlement with venue promoter.
+00:15 — Load-Out end. Ground transfer to Hotel / Lobby Call for overnight drive.
+```
+
+Ask the user: *"Would you like me to generate a personalized Road Book template or a minute-by-minute Day Sheet for [Specific Date/City]?"*
+
+---
+
 ## DEAL STRUCTURE BRIEFING
 
 Always include this when the artist hasn't mentioned it — most indie artists don't know how venue deals work:
@@ -322,9 +385,9 @@ Always mention booking lead time based on tour timeline:
 ## WHAT THIS SKILL DOES NOT DO
 
 - Does not confirm show viability for a single city → use `skill-show-viability-en.md`
-- Does not manage day-of-show logistics (riders, load-in, settlements) → that's tour management software
-- Does not negotiate contracts → flag when a deal term needs human review
-- Does not book flights or hotels → out of MCP scope, recommend the artist handles or hires a tour manager for this
+- Does not directly manage active, real-time day-of-show settlements, rider orders, or catering changes → it provides the structured **Road Book & Day Sheet templates** for the Tour Manager to use on the road.
+- Does not negotiate contracts → flag when a deal term needs human review.
+- Does not purchase flights or book hotels directly → out of MCP scope, it generates the placeholders and logistical trackers for the Tour Manager.
 
 ---
 
@@ -358,6 +421,11 @@ You MUST render the entire tour itinerary as a highly polished, interactive Mult
 The React Component MUST include:
 - A visual Tour Map Itinerary showing sequential pins representing stops (Anchor date, Stop 2, Stop 3, etc.) connected by directional indicators.
 - An interactive stop details panel: users click on a stop card to see details (venue capacity, monthly listeners in that city, projected attendance, viability status, and driving distance).
+- A **TM Logistics Alert Dashboard**: A visual indicator of crew fatigue/stress (Green/Yellow/Red status) for each leg of the tour, based on travel distances and lack of rest days.
+- A **Road Book & Run of Show Interactive Hub**:
+  - A tab to view the generated **Day Sheet (Run of Show)** for the selected stop.
+  - Interactive sliders or dropdowns to adjust showtimes (e.g. Doors Open, Band Showtime, Soundcheck) which dynamically recalculate and update the minute-by-minute day schedule.
+  - A simple Crew Manager sub-widget where users can add/edit crew member roles and contact numbers.
 - A Tour Budget Dynamic Calculator widget showing projected gross income (ticket price * projected attendance) vs travel costs, with interactive ticket price and merch spend sliders.
 - A booking email pitch composer with placeholders that automatically updates based on the selected stop.
 - Text outside the Artifact should only be a brief 1-2 sentence executive briefing.
