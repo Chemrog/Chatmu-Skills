@@ -355,22 +355,36 @@ Note: the curator pitch must mention: song name, artist, release date, what it's
 
 ## PHASE 4 — Launch (week 0)
 
-**Goal:** Maximize impact in the first 48 hours. These are algorithmically the most important.
+**Goal:** Maximize impact in the first 48 hours and maintain momentum throughout the critical first 3 weeks.
 
-### Launch day
+### Launch Day Operations
+1. **Platform Audit:** Confirm the song is live on platforms using `get_artist_songs` with sortBy: releaseDate.
+2. **Spotify for Artists:** Verify the song appears correctly on their dashboard.
+3. **Email Marketing Blast:** Draft and send an immediate launch newsletter (using Mailchimp, Too Lost, etc.) announcing the release in a close, personal tone.
+4. **Live Stream Launch:** Recommend the artist does a live stream (TikTok/IG) presenting the song and video.
+   - *Communication Rule:* On launch day, **do not ask for critiques or opinions**. Keep it simple and ask only: *"Did you listen to the track yet?"*
+5. **Editorial Placements:** Run `find_latest_editorial_placements` to check if it entered any editorial playlists from day one.
 
-1. Confirm the song is live on platforms: `get_artist_songs` with sortBy: releaseDate
-2. Verify the Spotify for Artists profile shows the song correctly
-3. Activate all social media content scheduled for that day
-4. `find_latest_editorial_placements` → check if it entered any editorial playlist from day 1
+### First 48 Hours — Monitoring
+- `artist_current_stats` → track streams, saves, and follower spikes.
+- `get_artist_active_playlists` → scan for user-curated and algorithmic playlists.
+- `find_latest_editorial_placements` → check for updates.
+*Editorial Win Alert:* If it gets added to an editorial playlist in the first 48h, notify immediately: *"You got added to [playlist name] on [platform] with [X] followers. This is the moment to push more content and ride that algorithm."*
 
-### First 48 hours — monitoring
+### Week +1 — The Opinions Audit
+Exactly 7 days after the release:
+1. **Analyze early data:** Look at the WoW stats using `artist_current_stats`.
+2. **Opinions Campaign:** Guide the artist to ask their audience for honest feedback on their socials:
+   - *"What did you think of the track?"*
+   - *"What was your favorite lyric/part?"*
+   - This drives organic comment sections and shows the artist values their community.
 
-- `artist_current_stats` → streams, saves, followers
-- `get_artist_active_playlists` → did it get added to playlists?
-- `find_latest_editorial_placements` → new editorial playlists
-
-If it gets added to an editorial playlist in the first 48h → immediate alert to the artist: *"You got added to [playlist name] on [platform] with [X] followers. This is the moment to push more content and ride that algorithm."*
+### Weeks +2 & +3 — Indirect Hook Saturation & Collaborative Promos
+Do not let the launch cool down, but avoid being invasive or spammy (never just repeat "listen to my song").
+- **Non-Invasive Marketing:** Maintain the organic pressure indirectly. Use point-of-view (POV) content formats, aesthetic visual clips, or highly engaging lifestyle photos of the artist (strong visuals drive high passive traffic back to the profile link without sounding desperate).
+- **Waterfall Collaboration Rules (If Album/EP with Collaborators):**
+  - **Prior Single Releases:** Ensure collaborations are released as *pre-album singles* (previews) so their streams accumulate on the track, boosting the album's algorithm instantly on drop day.
+  - **Dedicated Collaborator Campaigns:** Do not bundle all collaborators into a single post. Generate a dedicated joint Instagram Collab post and a separate story carousel for *each* collaborator, explaining the joint story and the creative process behind that specific track.
 
 ---
 

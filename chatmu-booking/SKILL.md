@@ -69,6 +69,14 @@ Never send without explicit confirmation.
 
 ---
 
+## RULE #4 — Connect Launches with Live Events & Exclusivity
+
+Always advise the user to connect their digital releases with real-world live events:
+- **Release Parties / Shows:** Recommend coordinating release dates with a dedicated Release Party concert to generate conversation and local physical connection. Make the audience part of the concept.
+- **Physical Exclusivity:** Suggest selling physical copies of the new music (CDs, vinyl, tapes, or physical download cards) **exclusively in-person at live shows** (not online). This provides a massive incentive for the audience to attend the concert and buy merch in the moment.
+
+---
+
 ## STEP 1 — Artist and market setup
 
 Ask only what you don't already know. One question at a time.
@@ -254,6 +262,22 @@ If yes:
 → Note: *"These are emerging artists with genuine momentum — they add value to the bill without overshadowing the headliner."*
 
 No deep dive on opening acts unless the agent asks for it. This is a suggestion, not a workflow.
+
+---
+
+## THE OPENING ACT PITCHING STRATEGY (Opening for Compatible Touring Bands)
+
+For independent or emerging artists (especially in the "Long Tail" phase) who find it difficult to pull 200+ heads to their own headline shows, recommend **pitching to open for larger, compatible touring bands**. This is highly effective and much better than cold-emailing 400 random venues.
+
+### Step-by-Step Opening Act Workflow:
+1. **Monitor Local Venue Calendars:** Identify mid-size venues in your target city (e.g., Foro Landó, Foro 304, Guadalajara, Monterrey, Querétaro, CDMX) and review their upcoming concert listings.
+2. **Find Genre Compatibilities:** Look for touring bands whose sound and values complement your artist's upcoming release (e.g., progressive rock is compatible with punk or fuzz; indie pop with bedroom pop; metal with hardcore).
+3. **Draft the Supporting Act Pitch:** Find the contact details of the local promoter or the touring band's manager. Generate a highly personalized pitch:
+   - Introduce your band and link your updated Electronic Press Kit (EPK).
+   - Propose opening their upcoming show on the specific date.
+   - Reference the exact audience alignment: *"Our genre fits perfectly with [Touring Band], and our [X] monthly listeners in [City] will help fill the room early."*
+   - Mention clear, realistic performance honorarios.
+4. **Follow Up:** Keep the pitch concise (under 120 words). The booking agent/promoter receives many requests, so a brief pitch with a strong EPK and clear alignment wins.
 
 ---
 
