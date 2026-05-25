@@ -100,11 +100,22 @@ For each collaborator:
 - `artist_top_geographic_data` — are their fans in cities that complement the main artist?
 - Note whether their audiences complement each other geographically or demographically — this will inform the strategy
 
+### 0E — Audit the previous release
+
+Before designing a new marketing plan, analyze the performance of the artist's previous release:
+1. Identify the last released song using `get_artist_songs` or asking the user.
+2. Ask the user (or pull metrics from `artist_current_stats` around that release window):
+   - *"What was your last released song, and how did it perform?"*
+   - *"What marketing strategies did you use? (e.g., TikTok videos, playlist pitching, paid ads, or direct messaging)"*
+   - *"What worked best that we can replicate? What didn't work that we should avoid this time?"*
+3. Extract these marketing drivers to define what to scale up and what to discontinue.
+
 ### Phase 0 Output
 
 Generate a brief summary called **"Release Context"** with:
 - Project name
 - Main artist + detected stage
+- Previous Release Audit: Key lessons learned (what worked to replicate, what failed to avoid)
 - Collaborators and their strategic value
 - Mood and essence of the song (2-3 lines)
 - Current audience and target audience
@@ -255,42 +266,52 @@ Remember to verify whether the producer has already transferred the beat rights 
 
 ### 3A — Build the content plan
 
-The strategy changes COMPLETELY based on stage:
+The strategy changes COMPLETELY based on stage, but incorporates a core **"Hook Testing & Song Burning"** strategy for emerging/mid-tier artists:
+
+**"Burn the Song" Hook Testing Strategy (Critical for Aspiring & Growing stages, 0 to 300K listeners):**
+- **Week -3 to -2 (Testing Phase):** Select 2-3 different 30-second hooks of the song. Create short-form videos (TikTok/Reels) testing each hook under different visual concepts (e.g., pure lip-sync, aesthetic backdrops, raw performance, behind-the-scenes). Monitor audience reaction (likes, comments, shares, audio creations).
+- **Week -2 to -1 (Saturation Phase):** Once the winning hook is identified, **"burn" that exact fragment** by repeating it in at least 5-10 different scenarios (different outfits, settings, lip-syncs, text overlays) to drive familiarity and pre-saves before the song drops.
+- **Week -1 (3-4 days before launch):** Announce the official release date, focusing strictly on the winning hook.
+
+**Stage-Specific Adaptations:**
 
 **Aspiring:**
-- Focus on TikTok and Reels with the strongest hook from the song
-- 3 variations of the same hook — let the algorithm decide which one lands
-- No elaborate production needed — authenticity > technical quality
-- Suggested frequency: 5–7 posts per week in the launch week
-- Goal: new eyes, not streams
+- Focus on TikTok and Reels with the strongest hook from the song.
+- Apply the **"Burn the Song"** strategy (testing hooks and saturating the winner).
+- No elaborate production needed — authenticity, raw lip-syncs, and consistency > technical quality.
+- **High-Frequency Rule:** Post at least **2 short-form contents daily** starting Week -1 and continuing for the first **20 days** post-launch.
+- Goal: new eyes and organic audio creations, not streams.
 
 **Growing:**
-- Content mix: behind the scenes, creative process, snippets, content related to the song's theme
-- Stories for existing audience + Reels/TikTok for new audience
-- Frequency: 3–5 weekly posts + daily stories
-- Goal: convert curious followers into real fans
+- Content mix: creative process, snippets using the winning hook, and thematic lifestyle contents.
+- Stories for the existing audience + Reels/TikTok for new audiences.
+- **High-Frequency Rule:** Maintain the **2 posts daily** schedule for the first 20 days.
+- **Videoclip Timing:** If an official music video is planned, **delay its release to 2 weeks after** the audio launch. This creates a "double-peak" campaign lifecycle (Audio Peak at Week 0, Video Peak at Week 2), rather than exhausting all assets on day one.
+- Goal: convert curious followers into real fans.
 
 **Established:**
-- Structured campaign with specific moments: announcement → teaser → snippet → pre-save → launch
-- Serialized content that tells a story
-- Activation in the cities where they have the most fans (`artist_top_geographic_data`)
-- Goal: maximize impact in the first 48 hours
+- Structured campaign with specific moments: announcement → teaser → snippet → pre-save → launch.
+- Serialized content that tells a story, leveraging the winning pre-tested hook.
+- Activation in the cities where they have the most fans (`artist_top_geographic_data`).
+- Goal: maximize impact in the first 48 hours.
 
 **Top 1%:**
-- The strategy is almost inverted: less is more
-- One carefully executed teaser can generate more anticipation than 10 posts
-- Focus on authenticity and narrative, not volume
-- Goal: make the release feel like an event
+- The strategy is almost inverted: less is more.
+- One carefully executed teaser can generate more anticipation than 10 posts.
+- Focus on authenticity and narrative, not volume.
+- Goal: make the release feel like an event.
 
 ### 3B — Content calendar
 
-Generate a table with the calendar from week -4 to launch day:
+Generate a table with the calendar from week -3 to launch day:
 
 | Date | Platform | Content type | Description | Goal |
 |------|----------|-------------|-------------|------|
-| ... | TikTok | Snippet + hook | ... | ... |
-| ... | IG Reels | BTS production | ... | ... |
-| ... | IG Stories | Poll/question | ... | ... |
+| **Week -3** | TikTok/Reels | Hook A/B Test | Test Hook #1 vs Hook #2 | Identify the winning fragment |
+| **Week -2** | TikTok/Reels | Hook Saturation | Replicate winning hook in setup A | Drive organic audio familiarity |
+| **Week -2** | TikTok/Reels | Hook Saturation | Replicate winning hook in setup B | Build pre-saves |
+| **Week -1** | IG Stories/TikTok | Official Announcement | 3-4 days out, teaser and date drop | Direct call to action |
+| **Launch Week**| TikTok/Reels | Launch Saturation | Focus entirely on the winning hook | Drive first-day streams |
 
 Include: TikTok, Instagram Feed, Instagram Reels, Instagram Stories, YouTube Shorts if applicable.
 
