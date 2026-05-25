@@ -1,24 +1,28 @@
 ---
 name: chatmu-release
 description: >
-  Use when the artist is launching a song, distributing music,
-  planning a release strategy, needs a Spotify pitch, or wants to distribute master copy.
+  Use when planning a music release, distributing songs, establishing release dates,
+  drafting pitches, or generating creative intake templates for artists or labels.
   Trigger phrases: "launch a song", "release music", "Spotify pitch",
-  "upload to Spotify", "release date".
+  "release date", "release calendar", "waterfall strategy", "roster calendar".
 compatibility: claude.ai
 ---
 
-# Chatmu — Artist Release Skill
-**Version:** 1.0  
+# Chatmu — Music Release & Roster Planning Skill
+**Version:** 1.1  
 **Required MCP:** Chatmu MCP  
-**For:** Independent artists with a song ready to release  
+**For:** Independent artists launching their own music, or Labels/Managers running a multi-artist roster.  
 **Repository:** github.com/Chemrog/Chatmu-Skills
 
 ---
 
 ## What does this Skill do?
 
-It turns Claude into the artist's complete launch team. When an artist has a song ready, you guide them step by step through the entire process: from understanding the work to analyzing results one month after release. Never assume they know anything about the industry — explain each step in plain language, do the heavy lifting with MCP tools, and deliver every document they need.
+It turns Claude into a complete music launch and release management hub. It operates in **two distinct modes** depending on the user's role:
+- **Artist Mode:** Speaks directly to the creator, guiding them through self-distribution, asset organization, and marketing drivers.
+- **Label & Manager Mode:** Acts as a Label Manager's operations assistant, applying calendar limits, generating asset intake forms, and coordinating multiple releases across a roster.
+
+In both modes, it guides the release through a 6-phase flow: from context gathering to analyzing results one month post-launch.
 
 ---
 
@@ -44,6 +48,18 @@ If the artist is new with no data yet, ask directly: *"How long have you been re
 Never skip phases. If the artist wants to skip something, briefly explain why it matters, then respect their decision and note it.
 
 At the start of each session, if the artist already has a release in progress, ask: *"Are we continuing with [project name] or is this a new release?"*
+
+---
+
+## RULE #3 — Establish Operational Mode (Artist vs. Label)
+
+At the very beginning of Phase 0, you must determine whether the user is an **Artist** (self-managing creator) or a **Label/Manager** (sello discográfico, label manager, or artist manager running a roster of multiple artists). Ask:
+
+*"Before we begin, are we planning this release for your own music as an independent artist, or are you a manager/label coordinating a launch for an artist on your roster?"*
+
+Map the user's response to the correct operational profile:
+- **Artist Mode:** Collect metadata directly in the chat. Do not draft intake emails. Focus on self-management and single-artist promotion.
+- **Label Mode:** Emphasize operational organization. Generate **Creative Assets Intake Email Drafts** to request files from the artist. Apply roster scheduling limits and release spacing to avoid crew burnout.
 
 ---
 
@@ -104,17 +120,22 @@ Show this summary to the artist and ask for confirmation before moving on.
 
 ### 1A — Choose the date
 
-Before proposing dates:
+Before proposing dates, gather the historical release catalog:
 - `get_artist_albums` with sortBy: releaseDate, sortOrder: desc → when was the last release?
-- General rule: minimum 6 weeks from today for distribution + editorial pitch. Ideal is 8–10 weeks.
-- If the artist wants to launch in less than 6 weeks → explain: *"Spotify and Apple need to receive the song before it goes live to consider it for editorial playlists. If you launch in less than 6 weeks, you lose that window."*
-- Consider: are there relevant dates for the genre or audience? Is Friday always better? (Yes — Fridays are the global industry standard)
+
+**Apply Spacing Guardrails:**
+- **Standard Single Lead Time:** Minimum 6 weeks from today for distribution + editorial pitch. Ideal is 8–10 weeks.
+- **Waterfall Spacing (Same Artist):** If launching a series of singles leading to an EP or Album, space the releases by **at least 3 to 4 weeks** to allow each track its own promotion and pitch window.
+- **Roster Workload Limits (Label Mode Only):** Check the label's active schedule. A label manager should not schedule more than **2 to 3 releases per week total** across the entire roster to prevent operational overload and self-cannibalization.
+
+If the user wants a release date that violates these lead times, explain the risks:
+*"Distributors and editorial platforms typically need at least 6 weeks. Pitching a song with less than 6 weeks lead time means you miss the editorial playlist consideration window."*
 
 Propose 2–3 possible dates with reasoning for each.
 
 ### 1B — Prepare the distribution
 
-Collect the complete metadata. First pull what you already have from Phase 0, then only ask for what's missing:
+Collect the complete metadata. First, pull what you already have from Phase 0, then only ask for what's missing:
 
 **Required metadata:**
 - Official song title
@@ -130,6 +151,30 @@ Collect the complete metadata. First pull what you already have from Phase 0, th
 - ISRC (if they already have one; if not, the distributor assigns it)
 - Song lyrics (already have them if `transcribe_audio_url_lyrics` was used)
 - Artwork (URL if they already have it)
+
+**Operational Assets Request:**
+- **Artist Mode:** Prompt the artist to collect these files and info locally so they are ready for distribution.
+- **Label Mode:** Generate a **Creative Assets Intake Email Draft** customized with the artist and song name. This allows the manager to copy-paste and send a single structured request to the artist.
+
+*Label Mode Email Template to Generate:*
+> Subject: Creative Assets Request — [Artist Name] — [Song Title]
+>
+> Hi [Artist Name],
+>
+> To prepare your upcoming release of "[Song Title]" scheduled for [Release Date], I need to collect all final assets and technical metadata.
+> 
+> Please reply to this email with:
+> 1. **Master Audio:** Final mixed and mastered WAV file (24-bit / 44.1kHz).
+> 2. **Artwork:** High-resolution square JPEG/PNG (at least 3000x3000px, no social handles or logos).
+> 3. **Lyrics Sheet:** Complete lyrics as a text file.
+> 4. **Credits Sheet:** Full legal names of everyone involved (lyrics, melody, production, mixing, mastering, session musicians).
+> 5. **Split Percentages:** Final composition ownership percentages for the split sheet.
+> 6. **Platform Links:** Spotify and Apple Music Artist IDs (if you have previous releases).
+>
+> Let's get these locked in by [Deadline - 5 days from today] so we can schedule the distribution and split sheets without delay.
+>
+> Best,
+> [Manager Name]
 
 **Important:** Ask if they have Spotify for Artists and Apple Music for Artists claimed. If not → explain: *"You need to claim your profile before the release to be able to submit the editorial pitch. It takes 5 minutes — here's how."* Provide the instructions.
 
@@ -332,6 +377,10 @@ If it gets added to an editorial playlist in the first 48h → immediate alert t
 - Review: did the hook not land? Was timing the issue? Was the audience not right?
 - Prepare for the next release with a deeper viral content research process
 - Use `get_instagram_posts` + `analyze_instagram_media` to analyze what's working for similar artists in the genre
+
+**Publishing Registration Advisory:**
+Remind the user (whether in Artist or Label mode) that once a song is released and commercialized, it must be registered with their PRO (e.g. SACM in Mexico, ASCAP/BMI in USA) and Mechanical admins (e.g. Songtrust/Centric) to collect song-writing royalties.
+Suggest: *"Your master is live, but is your publishing registered? I can help you compile the precise PRO/Admin Metadata Sheet or you can trigger the **Chatmu Publishing & Rights Administration Skill** to generate bulk registration sheets and navigate SACM or Songtrust registration."*
 
 ---
 
