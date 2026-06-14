@@ -17,9 +17,9 @@
 
 > **AI for the industry. Humans for the music.**
 
-Official collection of Claude Skills for the Chatmu MCP. Install the skill that matches your role, connect the Chatmu MCP, and unlock a specialized AI expert built specifically for your workflow in the music industry.
+Official collection of Claude Skills for the Chatmu 3.5 MCP. Install the skill that matches your role, connect the Chatmu MCP, and unlock a specialized AI expert built specifically for your workflow in the music industry. You can manage and download all your skills directly inside your dashboard at **[chatmu.io](https://chatmu.io)** under the **MCP / Skills** tab in the left panel.
 
-**[chatmu.io](https://chatmu.io)** · **[Get the MCP](https://chatmu.io/pricing)** · **[Docs](https://chatmu.io/help/chatmu)**
+**[chatmu.io](https://chatmu.io)** · **[Dashboard](https://chatmu.io)** · **[Docs](https://chatmu.io/help/chatmu)**
 
 ---
 
@@ -41,21 +41,18 @@ To use these Skills, make sure you have these three simple things:
 
 1. **A Chatmu Account** — [Sign up for free at chatmu.io](https://chatmu.io) to get your music dashboard.
 2. **Claude.ai Account** — Any Claude.ai account (free or paid) works perfectly!
-3. **Your Chatmu MCP connected to Claude** — This is the magic bridge that connects Claude's brain to your actual real-time music data. Setting it up takes less than 2 minutes!
+3. **Your Chatmu 3.5 MCP connected to Claude** — Connect Claude to your real-time music data in seconds via OAuth. You can grab the connection link directly in your dashboard at **[chatmu.io](https://chatmu.io)** in the **MCP / Skills** section!
 
    ### 🔌 How to Connect Chatmu MCP to Claude
    
-   1. **Sign in** to your dashboard at [chatmu.io](https://chatmu.io).
-   2. In the left panel, click on **<kbd>Chatmu API</kbd>**.
-   3. A window titled **"Connect to Claude via MCP"** will pop up. Click **<kbd>Yes, start tutorial</kbd>** to follow the interactive guide, or simply:
-      * Click the pink **<kbd>Nuevo</kbd>** button on the right to generate a new key.
-      * **Name your key** (e.g. *Claude Desktop*) so you remember what it is for.
-      * *(Optional)* Set an **Expiration Date** for security (or leave it blank so it never expires). Then click **<kbd>Guardar</kbd>**.
-   4. Find your new key in the list and click the **<kbd>Copiar para Claude</kbd>** button. This copies the exact connection code you need.
-   5. Go directly to Claude's Connector Settings:
+   1. Go directly to Claude's Connector Settings:
       * Open **[Claude.ai Connectors Settings](https://claude.ai/customize/connectors)** in your browser.
       * *(Alternatively, in Claude.ai, click your **Profile avatar** in the bottom-left ➔ **<kbd>Customize</kbd>** ➔ **<kbd>Connectors</kbd>**).*
-   6. Click the **<kbd>Add custom connector</kbd>** button, enter a name (e.g. *Chatmu MCP*), **paste** the code you copied in Step 4, and save!
+   2. Click the **<kbd>Add custom connector</kbd>** button (or the `+` icon next to Connectors).
+   3. In the URL/endpoint field, enter the Chatmu MCP OAuth URL (which you can copy from the **MCP / Skills** section in your dashboard):
+      * `https://mcp-chatmu.aaatmi.com/mcp-oauth`
+   4. Follow the prompt to authorize Claude to access your Chatmu account. Simply sign in if you aren't already, and approve the connection.
+   5. Once connected, make sure the connector is active and the required tools are enabled in your chat sessions!
 
 ---
 
@@ -120,6 +117,7 @@ Look at the **Skill Library** tables below. Find the skill you want and click th
 | 🗺️ **Tour Routing** | [`chatmu-tour-routing/`](./chatmu-tour-routing) | [chatmu-tour-routing.zip](https://github.com/Chemrog/Chatmu-Skills/raw/main/zips/chatmu-tour-routing.zip) | Audience-first tour planning: anchor dates, optimized route, venue search, venue outreach. |
 | 🔍 **A&R Intelligence** | [`chatmu-anr/`](./chatmu-anr) | [chatmu-anr.zip](https://github.com/Chemrog/Chatmu-Skills/raw/main/zips/chatmu-anr.zip) | Emerging artist discovery, label status checks, market intelligence, comparison reports. |
 | 📄 **Music Contracts** | [`chatmu-contracts/`](./chatmu-contracts) | [chatmu-contracts.zip](https://github.com/Chemrog/Chatmu-Skills/raw/main/zips/chatmu-contracts.zip) | Professional-grade music industry contracts (split sheets, producer agreements, work for hire). |
+| 📖 **Music Publishing** | [`chatmu-publishing/`](./chatmu-publishing) | [chatmu-publishing.zip](https://github.com/Chemrog/Chatmu-Skills/raw/main/zips/chatmu-publishing.zip) | Songwriter registries, PRO metadata sheets, composition splitting, rights administration. |
 
 ---
 
@@ -163,6 +161,9 @@ Are you a booking agent or agency?
 
 Are you an A&R or label executive?
   └── chatmu-anr
+
+Are you a songwriter or publisher?
+  └── chatmu-publishing
 ```
 
 ---
@@ -172,7 +173,7 @@ Are you an A&R or label executive?
 Yes. Claude Skills stack. Recommended combinations:
 
 - **Artist full stack:** Onboarding + Release + Analytics + Show Viability
-- **Manager stack:** Manager + Analytics + Tour Routing + Contracts
+- **Manager stack:** Manager + Analytics + Tour Routing + Contracts + Publishing
 - **Booking stack:** Booking Agency + Tour Routing + Show Viability
 - **A&R stack:** A&R Intelligence + Analytics
 
@@ -196,17 +197,19 @@ This benchmark is used by professional booking agents and managers worldwide. Ch
 
 ## Chatmu MCP — Tool reference
 
-These Skills are built on top of the **Chatmu MCP** — 71 specialized tools that give Claude access to:
+These Skills are built on top of the **Chatmu MCP** — 100+ specialized tools that give Claude access to:
 
-- Real-time streaming data across 27+ platforms
-- Audience demographics and engagement quality
-- Global playlist and editorial tracking
-- Music distribution workflow
-- Venue and festival databases
-- Verified curator contacts
-- AI audio analysis and lyric transcription
-- Cover art generation
-- Email outreach and CRM
+- **Interactive MCP Apps (UI Tools)**: Direct web-based interfaces embedded in your chat for:
+  - **Open Chatmu Catalog Uploader** — Upload music catalogs in bulk.
+  - **Open Chatmu Lyrics Editor** — Visual editor for song lyrics.
+  - **Open Chatmu Song Sorter** — Classify and organize your tracks.
+  - **Open Chatmu Video Creator** — Render custom promotional videos.
+  - **Open Distribution Uploader** — Upload audio assets for release.
+  - **Open Distribution Wizard** — Step-by-step music distribution manager.
+- **Cross-Platform Analytics**: Real-time streaming data across all major music platforms (Spotify, Apple Music, Amazon Music, Deezer, TikTok, YouTube, etc.).
+- **Audience Intelligence**: Demographic details, geographic reach, and fan retention metrics.
+- **Outreach & CRM**: Tour routing, venue discovery, and pitching emails.
+- **A&R Insights**: Emerging talent discovery and label roster research.
 
 Full tool documentation: [chatmu.io/help/api](https://chatmu.io/help/api)
 
@@ -216,6 +219,7 @@ Full tool documentation: [chatmu.io/help/api](https://chatmu.io/help/api)
 
 | Version | Date | Notes |
 |---------|------|-------|
+| 1.1 | June 2026 | Added OAuth support, interactive MCP Apps, cross-platform metrics, and expanded to 10 Skills. |
 | 1.0 | May 2026 | Initial release — 9 Skills across 4 roles |
 
 Skills are versioned independently. Check the header of each file for its current version.

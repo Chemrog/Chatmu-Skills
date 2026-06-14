@@ -9,8 +9,8 @@ compatibility: claude.ai
 ---
 
 # Chatmu — Artist Analytics Skill
-**Version:** 1.0  
-**Required MCP:** Chatmu MCP  
+**Version:** 1.1  
+**Required MCP:** Chatmu 3.5 MCP (100+ tools)  
 **For:** Artists, managers, and labels who want to understand what's working and what to do next  
 **Repository:** github.com/Chemrog/Chatmu-Skills
 
@@ -67,12 +67,14 @@ Run all six sections in order. After each section, include one "So what?" senten
 - `artist_current_stats` (period: 30 days) → global score, fanbase score, trending score, total fanbase, global plays
 - `analyze_cross_platform_performance` → compare Spotify vs Apple Music vs Deezer performance
 - `get_platform_audience` for Spotify, TikTok, and YouTube separately
+- `predict_artist_trajectory` → run predictive model to forecast growth at 1, 3, and 6 months.
 
 ### What to report:
 - Overall momentum: are the three core scores (Global, Fanbase, Trending) going up, stable, or down?
 - Total fanbase across all platforms — headline number
 - Which platform is their strongest? Which is underperforming relative to their size?
 - Any platform showing unusual growth or drop in the last 30 days?
+- **Projected Trajectory:** Growth projections and milestones over the next 1, 3, and 6 months (from predictive engine).
 
 ### Interpretation rules:
 - If Trending score is dropping but Fanbase is stable → the algorithm is cooling off, but existing fans are loyal. Recommendation: new content push.
@@ -90,19 +92,24 @@ One sentence: *"Your strongest platform right now is [X] — [what that means st
 
 ### Tools to run:
 - `audience_demographics` (platforms: all, includeInterests: yes)
-- `analyze_niche_compatibility` (platform: spotify, period: 90)
+- `analyze_niche_compatibility` (platform: all, period: 90)
+- `get_fans_dna_details` → psychographic report & Buyer Persona metrics.
+- `analyze_social_to_streaming_conversion` (social_platform: "instagram_followers" or "tiktok_followers") → check how social growth translates to music streams.
 - `find_similar_artists_advanced` (limit: 5) → who do fans also listen to?
 
 ### What to report:
 - Age breakdown: what's the core age group? Is it the intended audience?
 - Gender split
 - Top 3 interests of the fanbase (from brand affinity and interest data)
+- **Fan DNA Psychographics:** Key personality traits, buyer behavior, and brand alignment.
+- **Social to Streaming Conversion:** Tasa de conversión de seguidores a oyentes. Is their social audience active or passive?
 - Fan retention rate — are people who discover the artist becoming real fans?
 - Which similar artists share this audience? → collaboration opportunity signal
 
 ### Interpretation rules:
 - If the core audience is 18-24 → TikTok-first content strategy
-- If the core audience is 25-34 → Instagram + Spotify editorial focus
+- If the core audience is 25-34 → Instagram + Spotify/Apple Music editorial focus
+- If conversion rate is low → followers aren't translating to streaming plays. Recommend driving direct conversion campaigns (POV clips, links in bio, interactive storytelling).
 - If retention rate is below the genre average → the music is being discovered but not sticking. Problem is likely in the first 30 seconds of songs or in the post-discovery content experience.
 - If notable fans include artists with 100M+ followers → there's a collaboration angle worth exploring
 
@@ -255,7 +262,9 @@ When the artist asks a focused question, skip the full briefing and go straight 
 
 **"How are my playlists doing?"** → Run Section 5 only  
 **"Where am I growing?"** → Run Section 3 only  
-**"Who is my audience?"** → Run Section 2 only  
+**"Who is my audience / What is my Buyer Persona?"** → Run Section 2 only: `audience_demographics` + `get_fans_dna_details`  
+**"Why aren't my social followers translating to streams?"** → Run Section 2 only: `analyze_social_to_streaming_conversion`  
+**"What will my streams/followers look like in 6 months?"** → Run Section 1 only: `predict_artist_trajectory`  
 **"What content is working?"** → Run Section 4 only  
 **"How is [specific song] performing?"** → `get_song_performance_and_charts` + `get_released_song_metadata` for that song  
 **"Should I go on tour?"** → Section 3 deep dive: `artist_top_geographic_data` + `engagement_by_location` + `market_potential_analysis` for top cities  
@@ -342,9 +351,9 @@ The React Component MUST include:
 
 ## MCP TOOLS USED BY THIS SKILL
 
-**Core stats:** `artist_current_stats`, `artist_details`, `artist_top_geographic_data`, `geographic_growth_analysis`, `analyze_cross_platform_performance`
+**Core stats:** `artist_current_stats`, `artist_details`, `artist_top_geographic_data`, `geographic_growth_analysis`, `analyze_cross_platform_performance`, `predict_artist_trajectory`
 
-**Audience:** `audience_demographics`, `analyze_niche_compatibility`, `engagement_by_location`, `find_similar_artists_advanced`
+**Audience:** `audience_demographics`, `analyze_niche_compatibility`, `engagement_by_location`, `find_similar_artists_advanced`, `get_fans_dna_details`, `analyze_social_to_streaming_conversion`
 
 **Content:** `get_instagram_posts`, `analyze_instagram_media`, `get_platform_audience`
 
@@ -358,7 +367,7 @@ The React Component MUST include:
 
 **Market:** `market_potential_analysis`, `RAG_artist_context`
 
-**Tools this Skill does NOT use:** `start_music_distribution_draft`, `patch_distribution_metadata`, `submit_distribution_for_review`, `generate_chatmu_cover_art`, `find_emerging_local_talent`, `analyze_industry_tiers` — those belong to other Skills.
+**Tools this Skill does NOT use:** `start_music_distribution_draft`, `patch_distribution_metadata`, `submit_distribution_for_review`, `generate_workspace_image`, `find_emerging_local_talent`, `analyze_industry_tiers` — those belong to other Skills.
 
 ---
 
@@ -369,7 +378,7 @@ The React Component MUST include:
 3. Paste the content
 4. Suggested name: *"Chatmu — Artist Analytics"*
 5. Make sure the **Chatmu MCP** is connected and active
-6. For best results, use this Skill together with **skill-release-en.md** from Chatmu — when analytics identifies an opportunity, the Release Skill handles execution
+6. For best results, use this Skill together with **chatmu-release** from Chatmu — when analytics identifies an opportunity, the Release Skill handles execution
 
 **Official repository:** github.com/Chemrog/Chatmu-Skills  
 **Support:** chatmu.io

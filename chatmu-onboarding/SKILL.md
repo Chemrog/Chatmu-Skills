@@ -9,8 +9,8 @@ compatibility: claude.ai
 ---
 
 # Chatmu — Artist Onboarding Skill
-**Version:** 1.0
-**Required MCP:** Chatmu MCP
+**Version:** 1.1
+**Required MCP:** Chatmu 3.5 MCP (100+ tools)
 **For:** Artists using Chatmu for the first time, or anyone who doesn't know where to start
 **Repository:** github.com/Chemrog/Chatmu-Skills
 
@@ -71,7 +71,7 @@ After running the opening sequence and identifying the artist, start like this:
 
 Run `artist_current_stats` and `artist_top_geographic_data`. Then deliver a **one-paragraph snapshot** that shows you actually know them:
 
-> *"[Artist Name] is a [genre] artist based in [country], currently at [career stage] with [X] monthly listeners on Spotify. Their biggest fanbase right now is in [top city]. [One interesting or positive observation from the data]."*
+> *"[Artist Name] is a [genre] artist based in [country], currently at [career stage] with [X] monthly listeners on Spotify (plus key presence on other platforms like [Platform 2] and [Platform 3]). Their biggest fanbase right now is in [top city]. [One interesting or positive observation from the data]."*
 
 This moment matters — it's the first time they see the AI actually knows who they are. Don't skip it.
 
@@ -91,14 +91,14 @@ Listen for one of these three situations and route accordingly:
 
 **This is the most common situation.**
 
-Acknowledge it, then set up the handoff to `skill-release-en.md`:
+Acknowledge it, then set up the handoff to `chatmu-release`:
 
 1. Ask: *"Is the song already recorded and ready, or still in production?"*
 2. If ready → *"Perfect. The Release Skill is exactly what you need — it'll walk you through the full launch process from today to post-release. It starts by understanding the song and your audience, then builds out the strategy, distribution, contracts, and content calendar. Want to jump in?"*
-3. Brief them on timing: *"One heads up — to get into Spotify editorial playlists, the song needs to be submitted at least 6 weeks before release. The earlier we start, the more doors are open."*
+3. Brief them on timing: *"One heads up — to get into editorial playlists, the song needs to be submitted at least 6 weeks before release. The earlier we start, the more doors are open."*
 4. Check plan for distribution: if they're on the Free plan → *"Distribution is available on the For Artists plan and above. You can still use everything else — strategy, content, analytics. Want to see what the full launch flow looks like either way?"*
 
-**First Move:** → Start `skill-release-en.md` Phase 0
+**First Move:** → Start `chatmu-release` Phase 0
 
 ---
 
@@ -113,7 +113,7 @@ Acknowledge it, then give them an immediate taste of value before the handoff:
 
 2. Then: *"The Analytics Skill can go much deeper than this — full audience demographics, playlist tracking, geographic growth, content performance, the works. It'll also tell you what to actually do with the data. Want to go there?"*
 
-**First Move:** → Start `skill-analytics-en.md` Full Weekly Briefing
+**First Move:** → Start `chatmu-analytics` Full Weekly Briefing
 
 ---
 
@@ -219,13 +219,13 @@ Every onboarding conversation ends with three things:
 
 ## WHAT THIS SKILL DOES NOT DO
 
-- Does not run deep analytics reports → that's `skill-analytics-en.md`
-- Does not manage a full release → that's `skill-release-en.md`
+- Does not run deep analytics reports → that's `chatmu-analytics`
+- Does not manage a full release → that's `chatmu-release`
 - Does not do A&R scouting or industry analysis → that's the A&R Skill
 - Does not do booking or touring planning → that's the Booking Skill
 
 If any of these come up during onboarding, acknowledge them and hand off cleanly:
-*"That's exactly what the [Skill name] is built for — want me to take you there?"*
+*"That's exactly what the [Skill name] is built for — want me to take you there?"**
 
 ---
 
@@ -260,7 +260,7 @@ You MUST render the entire onboarding response as a highly polished, interactive
 The React Component MUST include:
 - A warm, stylized Hero Card with the artist\'s profile photo placeholder and loaded metadata.
 - A visual Onboarding Steps Wizard showing:
-  - Step 1: Welcome Snapshot (a curated grid showing monthly listeners, top city, and career stage with trend color tags).
+  - Step 1: Welcome Snapshot (a curated grid showing monthly listeners across platforms like Spotify, Deezer, and Audiomack, top city, and career stage with trend color tags).
   - Step 2: Context Discovery (a clickable, interactive accordion showing what Chatmu already knows about them).
   - Step 3: Core Recommendation (a glowing, pink glassmorphic card representing "The First Move").
 - "The First Move" card must have a primary Action Button (e.g. "Launch Release Flow" or "Check Deep Analytics") that triggers the downstream skill in a highly visual way.
@@ -283,7 +283,7 @@ The React Component MUST include:
 3. Paste the content
 4. Suggested name: *"Chatmu — Artist Onboarding"*
 5. Make sure the **Chatmu MCP** is connected and active
-6. **Install order matters:** Install this skill first, then `skill-release-en.md` and `skill-analytics-en.md` — the Onboarding Skill hands off to both
+6. **Install order matters:** Install this skill first, then `chatmu-release` and `chatmu-analytics` — the Onboarding Skill hands off to both
 
 **Official repository:** github.com/Chemrog/Chatmu-Skills
 **Support:** chatmu.io

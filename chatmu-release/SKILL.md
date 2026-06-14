@@ -9,8 +9,8 @@ compatibility: claude.ai
 ---
 
 # Chatmu — Music Release & Roster Planning Skill
-**Version:** 1.1  
-**Required MCP:** Chatmu MCP  
+**Version:** 1.2  
+**Required MCP:** Chatmu 3.5 MCP (100+ tools)  
 **For:** Independent artists launching their own music, or Labels/Managers running a multi-artist roster.  
 **Repository:** github.com/Chemrog/Chatmu-Skills
 
@@ -191,14 +191,19 @@ Collect the complete metadata. First, pull what you already have from Phase 0, t
 
 ### 1C — Distribution
 
-**If distributing with Chatmu:**
-1. `get_saved_artists_for_distribution` → confirm the artist is saved
-2. `start_music_distribution_draft` → get the releaseId
-3. `patch_distribution_metadata` → fill in with all collected metadata
-4. If no artwork → offer to generate it: `generate_chatmu_cover_art` with the detected mood and genre
-5. Check missing_fields → only ask the artist for what's still missing
-6. `submit_distribution_for_review` → confirm submission
-7. Inform: *"Your song is under review. You'll get confirmation in 24–48 hours. Once it shows as 'approved' in Chatmu, you can submit the editorial pitch in Spotify for Artists."*
+**If distributing with Chatmu (OAuth & Interactive Flow):**
+1. `get_saved_artists_for_distribution` → Confirm the artist is in their account.
+2. `start_music_distribution_draft` → Create the draft and get the `releaseId`.
+3. **Cover Art Generation (If needed):** If the artist has no cover art, offer to generate one using `generate_workspace_image` (with `imageType: "cover"`, `aspectRatio: "1:1"`, and the song's genre/mood as inputs). Display the generated image immediately in markdown using `![Workspace Artwork](artworkUrl)`.
+4. **Upload Slot Preparation:** Call `get_distribution_upload_urls` twice for the draft `releaseId` — once with `type: "audio"` and once with `type: "artwork"` — to configure the upload slots.
+5. **Interactive File Uploader:** Call `open_distribution_uploader` using the upload and public URLs from the previous step. Explain to the user in a friendly, artist-focused way that you are opening a panel in the chat window so they can drag and drop their WAV audio and cover art.
+6. **Upload Confirmation & Auto-Hydration:** Once the user notifies you that they've completed the uploads:
+   * Call `confirm_distribution_uploads` with the `releaseId` to lock the files.
+   * Immediately run `analyze_raw_audio_url` and `transcribe_audio_url_lyrics` on the uploaded audio URL to extract BPM, key, duration, and lyrics.
+   * Save all these technical details by calling `patch_distribution_metadata` (including `artworkUrl`, `albumName` set to the song title, and the `tracks` array containing the audio URL and lyrics).
+7. **Interactive Distribution Wizard:** Call `open_distribution_wizard` with the `releaseId` to display the pre-populated multi-step wizard in their chat window, allowing them to verify the release date, territory settings, and songwriter credits.
+8. **Submit:** Confirm submission status with `submit_distribution_for_review`.
+9. Inform: *"Your song has been submitted for review. Once it shows as 'approved' in Chatmu, you can submit the editorial pitch."*
 
 **If distributing with another platform (DistroKid, TuneCore, CD Baby, etc.):**
 Generate the **"Distribution Metadata"** document with all information organized and ready to copy-paste. Clean format, field by field.
@@ -351,6 +356,13 @@ Once the song is approved in distribution:
 
 Note: the curator pitch must mention: song name, artist, release date, what it's about, why it fits the playlist. Maximum 150 words.
 
+### 3E — Visual Video Content Creation (Chatmu 3.5 Studio)
+
+To support the high-frequency content strategy (Reels, TikTok, YouTube Shorts), help the artist design and render promotional videos directly inside the chat workspace:
+1. **Interactive Video Studio:** If the artist wants to customize a video template, pick video loops, or upload custom assets, call `open_chatmu_video_creator` to launch the interactive Visual Video Creator.
+   - If you generated a cover image using `generate_workspace_image`, pass its URL in `preselectedAssets` (e.g., matching the unique element ID like `element-bg-image`) so it preloads instantly.
+2. **Automated Rendering:** If they prefer to render a video directly, use `render_chatmu_video` with a template ID like `simple-waveform` (requires background image), `static-image`, `video-loop` (requires background video), or `sandwich` (requires intro/body/outro loops). Use `list_video_templates` to discover available designs.
+
 ---
 
 ## PHASE 4 — Launch (week 0)
@@ -459,9 +471,11 @@ The React Component MUST include:
 ## MCP TOOLS USED BY THIS SKILL
 **Analysis:** `analyze_raw_audio_url`, `transcribe_audio_url_lyrics`, `RAG_artist_context`, `artist_current_stats`, `analyze_niche_compatibility`, `audience_demographics`, `artist_top_geographic_data`, `geographic_growth_analysis`, `analyze_cross_platform_performance`
 
-**Search:** `search_chatmu_artists_db`, `search_artist`, `get_artist_albums`, `get_artist_songs`, `find_latest_editorial_placements`, `get_artist_active_playlists`
+**Search:** `search_chatmu_artists_db`, `search_artist`, `get_artist_albums`, `get_artist_songs`, `find_latest_editorial_placements`, `get_artist_active_playlists`, `get_artist_distributions`, `get_distribution_draft_details`
 
-**Distribution:** `get_saved_artists_for_distribution`, `start_music_distribution_draft`, `patch_distribution_metadata`, `submit_distribution_for_review`, `generate_chatmu_cover_art`
+**Distribution:** `get_saved_artists_for_distribution`, `start_music_distribution_draft`, `patch_distribution_metadata`, `submit_distribution_for_review`, `generate_workspace_image`, `get_distribution_upload_urls`, `open_distribution_uploader`, `confirm_distribution_uploads`, `open_distribution_wizard`, `delete_distribution_draft`
+
+**Video & Content:** `list_video_templates`, `create_video_template`, `update_video_template`, `render_chatmu_video`, `upload_song_for_create_videos`, `open_chatmu_video_creator`, `list_video_rendering_jobs`
 
 **Networking:** `search_verified_curators`, `networking_manage_pitches`, `networking_manage_campaigns`, `networking_send_email`, `networking_read_inbox`
 
@@ -476,7 +490,7 @@ The React Component MUST include:
 3. Paste the content
 4. Suggested name: *"Chatmu — Release Flow"*
 5. Make sure the **Chatmu MCP** is connected and active
-6. For best results, use this Skill together with **skill-analytics.md** from Chatmu
+6. For best results, use this Skill together with **chatmu-analytics** from Chatmu
 
 **Official repository:** github.com/Chemrog/Chatmu-Skills  
 **Support:** chatmu.io
