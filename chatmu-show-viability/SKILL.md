@@ -30,7 +30,7 @@ This is the benchmark used by professional booking agents and managers worldwide
 
 **A show is economically viable in a city when EITHER of these conditions is met:**
 
-**Condition A:** The artist has **10,000 or more monthly listeners (cross-platform, primarily Spotify)** in that specific city
+**Condition A:** The artist has **10,000 or more monthly Spotify listeners** in that specific city
 → At 10K listeners, a 200-capacity show is realistic and sellable
 
 **Condition B:** **2% of the artist's monthly listeners in that city equals 100 people or more**
@@ -307,7 +307,7 @@ NEVER deliver viability math or venue recommendations as plain text or standard 
 You MUST render the entire analysis as a premium, interactive Gig Economics & Venue Matching Dashboard in a self-contained TSX code block (Claude Artifact).
 
 The React Component MUST include:
-- An interactive Viability Meter Widget (a visual speedometer or progress gauge showing the Viability Percentage based on the 2% monthly listeners rule, with a clear verdict label: "Viable" in green, "Borderline" in orange, or "Not Viable" in red).
+- An interactive Viability Meter Widget (a visual speedometer or progress gauge showing the Viability Percentage based on the 2% Spotify listeners rule, with a clear verdict label: "Viable" in green, "Borderline" in orange, or "Not Viable" in red).
 - A gorgeous Venue Roster Table with interactive tabs to filter venues by tier:
   - Tier 1: Perfect Fit (80-150% capacity match)
   - Tier 2: Ambitious (151-300% capacity match)
