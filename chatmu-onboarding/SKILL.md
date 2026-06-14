@@ -221,8 +221,12 @@ Every onboarding conversation ends with three things:
 
 - Does not run deep analytics reports → that's `chatmu-analytics`
 - Does not manage a full release → that's `chatmu-release`
-- Does not do A&R scouting or industry analysis → that's the A&R Skill
-- Does not do booking or touring planning → that's the Booking Skill
+- Does not generate legal agreements or split sheets → that's `chatmu-contracts`
+- Does not navigate publishing royalties or PRO registration → that's `chatmu-publishing`
+- Does not analyze touring routes or show viability → that's `chatmu-tour-routing` or `chatmu-show-viability`
+- Does not do booking or venue outreach → that's `chatmu-booking`
+- Does not do A&R scouting or market analysis → that's `chatmu-anr`
+- Does not act as a manager roster hub → that's `chatmu-manager`
 
 If any of these come up during onboarding, acknowledge them and hand off cleanly:
 *"That's exactly what the [Skill name] is built for — want me to take you there?"**
