@@ -74,15 +74,15 @@ Explain that PROs only *collect* royalties; they do not legalise authorship. In 
 
 ### STEP 3 — Collect Technical Composition Metadata
 
-Gather the following fields from the user or pull them using `get_released_song_metadata` if the song is already distributed:
+Gather the following fields from the user, pull them using `get_released_song_metadata` if the song is already distributed, or use collaborator/publisher profile tools to search and validate data:
 - Official Song Title
 - Alternative Titles (Spanish translation, English version, or common misspellings)
-- Writer Legal Names (No aliases)
+- Writer Legal Names (No aliases) — validate or find them and their details using `get_collaborator_profile` and `get_collaborator_identifiers`
 - Writer IPI Numbers (if known)
 - Writer Roles (Author: lyrics only / Composer: music only / Both)
 - Writer Splits (% of composition ownership)
 - Performance PRO Affiliation per writer
-- Mechanical Administrator (e.g. Songtrust / Centric / MLC)
+- Mechanical Administrator (e.g. Songtrust / Centric / MLC) — retrieve publisher profiles or platform IDs using `get_publisher_profile` and `get_publisher_identifiers`
 - **Master Reference:** ISRC, release date, main performer name, record label/distributor.
 
 ---
@@ -168,6 +168,10 @@ The React Component MUST include:
 - `networking_get_contacts`
 - `networking_create_contact`
 - `RAG_artist_context`
+- `get_collaborator_profile`
+- `get_collaborator_identifiers`
+- `get_publisher_profile`
+- `get_publisher_identifiers`
 
 ---
 
