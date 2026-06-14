@@ -9,8 +9,8 @@ compatibility: claude.ai
 ---
 
 # Chatmu — Music Contracts Skill
-**Version:** 1.0
-**Required MCP:** Chatmu MCP
+**Version:** 1.1
+**Required MCP:** Chatmu 3.5 MCP (100+ tools)
 **For:** Artists, managers, and music professionals who need industry-standard contracts
 **Repository:** github.com/Chemrog/Chatmu-Skills
 
@@ -839,7 +839,7 @@ Plus: `web_search` for jurisdiction research when needed.
 3. Paste the content
 4. Suggested name: *"Chatmu — Music Contracts"*
 5. Make sure the **Chatmu MCP** is connected and active
-6. Works best alongside **skill-release-en.md** (contracts are generated as part of the release workflow) and **skill-manager-en.md**
+6. Works best alongside **chatmu-release** (contracts are generated as part of the release workflow) and **chatmu-manager**
 
 **Official repository:** github.com/Chemrog/Chatmu-Skills
 **Support:** chatmu.io

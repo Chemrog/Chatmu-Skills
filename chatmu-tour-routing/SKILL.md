@@ -9,10 +9,10 @@ compatibility: claude.ai
 ---
 
 # Chatmu — Tour Routing Skill
-**Version:** 1.0
-**Required MCP:** Chatmu MCP
+**Version:** 1.1
+**Required MCP:** Chatmu 3.5 MCP (100+ tools)
 **For:** Artists, managers, and booking agents planning a multi-city tour
-**Requires:** skill-show-viability-en.md logic is embedded here — this skill can run standalone
+**Requires:** `chatmu-show-viability` logic is embedded here — this skill can run standalone
 **Repository:** github.com/Chemrog/Chatmu-Skills
 
 ---
@@ -67,17 +67,17 @@ Before sending any booking emails, check what the artist has available:
 
 *"Before I send outreach to venues, let me check what email setup you have — do you want to send from your Gmail, or use Chatmu's email system?"*
 
-Run `networking_claim_mail` (action: GET) to check if they have a Chatmu inbox configured.
+Run `networking_get_mail_alias` to check if they have a Chatmu inbox configured.
 
 **If Chatmu email is configured:**
 → Use `networking_send_email` directly. Full automation. Confirm before sending.
 
 **If no Chatmu email but artist mentions Gmail or another provider:**
 → Draft all emails and present them clearly labeled: *"Here are your venue outreach emails — ready to copy into Gmail [or provider]. I've drafted one per venue, personalized for each."*
-→ Optionally save contacts: `networking_manage_contacts` for each venue
+→ Optionally save contacts: `networking_create_contact` (name: [Contact Name], email: [email], role: "Venue/Promoter", venueName: [name])
 
 **If artist wants to set up Chatmu email:**
-→ `networking_claim_mail` (action: POST) → guide them through claiming a handle
+→ `networking_claim_mail_alias` (handle: e.g. "artist-name") → guide them through claiming a handle
 → Then proceed with full automation
 
 Never send emails without explicit confirmation from the artist or manager.
@@ -275,7 +275,7 @@ Keep each pitch under 150 words. Venue booking managers receive hundreds of emai
 
 → If Chatmu email: `networking_send_email` per venue after confirmation
 → If Gmail/other: present all drafts clearly labeled, ready to copy-paste
-→ Save all venue contacts: `networking_manage_contacts` (action: POST, role: "Venue")
+→ Save all venue contacts: `networking_create_contact` (name: [Contact Name], email: [email], role: "Venue/Promoter", venueName: [name])
 
 ---
 
@@ -384,7 +384,7 @@ Always mention booking lead time based on tour timeline:
 
 ## WHAT THIS SKILL DOES NOT DO
 
-- Does not confirm show viability for a single city → use `skill-show-viability-en.md`
+- Does not confirm show viability for a single city → use `chatmu-show-viability`
 - Does not directly manage active, real-time day-of-show settlements, rider orders, or catering changes → it provides the structured **Road Book & Day Sheet templates** for the Tour Manager to use on the road.
 - Does not negotiate contracts → flag when a deal term needs human review.
 - Does not purchase flights or book hotels directly → out of MCP scope, it generates the placeholders and logistical trackers for the Tour Manager.
@@ -438,7 +438,7 @@ The React Component MUST include:
 
 **Venues:** `search_live_music_venues`
 
-**Outreach:** `extract_contacts_from_web`, `networking_send_email`, `networking_manage_contacts`, `networking_claim_mail`, `networking_manage_pitches`
+**Outreach:** `extract_contacts_from_web`, `networking_send_email`, `networking_create_contact`, `networking_get_contacts`, `networking_update_contact`, `networking_delete_contact`, `networking_get_pitches`, `networking_create_pitch`, `networking_delete_pitch`, `networking_get_mail_alias`, `networking_claim_mail_alias`
 
 **Tools this Skill does NOT use:** Distribution tools, playlist tools, A&R scouting tools, audio analysis tools — those belong to other Skills.
 
@@ -451,7 +451,7 @@ The React Component MUST include:
 3. Paste the content
 4. Suggested name: *"Chatmu — Tour Routing"*
 5. Make sure the **Chatmu MCP** is connected and active
-6. Works best after **skill-show-viability-en.md** — viability check first, full routing second
+6. Works best after **chatmu-show-viability** — viability check first, full routing second
 
 **Official repository:** github.com/Chemrog/Chatmu-Skills
 **Support:** chatmu.io

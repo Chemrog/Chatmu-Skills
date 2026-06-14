@@ -9,8 +9,8 @@ compatibility: claude.ai
 ---
 
 # Chatmu — A&R Intelligence Skill
-**Version:** 1.0
-**Required MCP:** Chatmu MCP
+**Version:** 1.1
+**Required MCP:** Chatmu 3.5 MCP (100+ tools)
 **For:** A&Rs, label executives, and talent scouts who sign based on signals, not gut feeling
 **Repository:** github.com/Chemrog/Chatmu-Skills
 
@@ -68,6 +68,7 @@ A&Rs operate at every tier. Adjust the framing accordingly:
    - Career stage target (optional)
 
 2. Run discovery:
+   - `discover_breakout_artists` (platform: e.g. "spotify_listeners", min_growth_percent: 5) → find breakout artists at their inflection point.
    - `find_emerging_local_talent` (location_type: country_code or city, location_value, genre)
    - `discover_dominant_genres` (country_code, sort_by: avg_growth_percentage) → understand what's trending in that market before evaluating artists
 
@@ -354,7 +355,7 @@ The React Component MUST include:
 
 ## MCP TOOLS USED BY THIS SKILL
 
-**Discovery:** `find_emerging_local_talent`, `discover_dominant_genres`, `analyze_industry_tiers`, `analyze_market_locations`, `find_global_superstars`
+**Discovery:** `discover_breakout_artists`, `find_emerging_local_talent`, `discover_dominant_genres`, `analyze_industry_tiers`, `analyze_market_locations`, `find_global_superstars`
 
 **Validation:** `search_chatmu_artists_db`, `artist_details`, `artist_current_stats`, `audience_demographics`, `artist_top_geographic_data`, `analyze_niche_compatibility`, `geographic_growth_analysis`, `engagement_by_location`, `find_similar_artists_advanced`
 
@@ -366,7 +367,7 @@ The React Component MUST include:
 
 **Market:** `market_potential_analysis`, `get_artist_radio_stats`
 
-**Tools this Skill does NOT use:** `start_music_distribution_draft`, `patch_distribution_metadata`, `submit_distribution_for_review`, `generate_chatmu_cover_art`, `transcribe_audio_url_lyrics`, `search_live_music_venues`, `get_festival_complete_data` — those belong to other Skills.
+**Tools this Skill does NOT use:** `start_music_distribution_draft`, `patch_distribution_metadata`, `submit_distribution_for_review`, `generate_workspace_image`, `transcribe_audio_url_lyrics`, `search_live_music_venues`, `get_festival_complete_data` — those belong to other Skills.
 
 ---
 
@@ -377,7 +378,7 @@ The React Component MUST include:
 3. Paste the content
 4. Suggested name: *"Chatmu — A&R Intelligence"*
 5. Make sure the **Chatmu MCP** is connected and active
-6. For best results, use alongside **skill-analytics-en.md** for deeper artist analysis when needed
+6. For best results, use alongside **chatmu-analytics** for deeper artist analysis when needed
 
 **Official repository:** github.com/Chemrog/Chatmu-Skills
 **Support:** chatmu.io

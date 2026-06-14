@@ -9,8 +9,8 @@ compatibility: claude.ai
 ---
 
 # Chatmu — Publishing & Rights Administration Skill
-**Version:** 1.0  
-**Required MCP:** Chatmu MCP  
+**Version:** 1.1  
+**Required MCP:** Chatmu 3.5 MCP (100+ tools)  
 **For:** Songwriters, independent artists, and Label/Catalog Managers looking to collect composition royalties.  
 **Repository:** github.com/Chemrog/Chatmu-Skills
 
@@ -165,7 +165,8 @@ The React Component MUST include:
 - `search_chatmu_artists_db`
 - `get_released_song_metadata`
 - `song_identity_resolver`
-- `networking_manage_contacts`
+- `networking_get_contacts`
+- `networking_create_contact`
 - `RAG_artist_context`
 
 ---

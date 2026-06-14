@@ -9,8 +9,8 @@ compatibility: claude.ai
 ---
 
 # Chatmu — Booking Agency Skill
-**Version:** 1.0
-**Required MCP:** Chatmu MCP
+**Version:** 1.1
+**Required MCP:** Chatmu 3.5 MCP (100+ tools)
 **For:** Booking agents and agencies managing artist live bookings
 **Repository:** github.com/Chemrog/Chatmu-Skills
 
@@ -57,13 +57,13 @@ The agent may already know the artist's numbers. In that case, take their input 
 
 Before sending any booking emails, check what's available:
 
-`networking_claim_mail` (action: GET) → check if a Chatmu inbox is configured
+`networking_get_mail_alias` → check if a Chatmu inbox is configured
 
 **If Chatmu email is configured:** use `networking_send_email` directly. Confirm before sending.
 
 **If no Chatmu email:** *"Do you want to send from your Gmail or another email provider? I'll draft everything ready to send — you just copy and paste. Or I can help you set up a Chatmu email handle right now."*
 
-**If agent wants Chatmu email:** `networking_claim_mail` (action: POST) → guide them through setup, then proceed with full automation.
+**If agent wants Chatmu email:** `networking_claim_mail_alias` (handle: e.g. "agency-name") → guide them through setup, then proceed with full automation.
 
 Never send without explicit confirmation.
 
@@ -138,16 +138,16 @@ Two modes based on agent preference:
 
 **Mode A — Single venue:**
 *"Tell me which venue and I'll get the contact right now."*
-→ `extract_contacts_from_web` with the venue's website
+→ When user selects one → `extract_contacts_from_web` with the venue's website
 → Present: name, email, role if available
-→ Save to CRM: `networking_manage_contacts` (action: POST, role: "Venue", venueName: [name])
+→ Save to CRM: `networking_create_contact` (name: [Contact Name], email: [email], role: "Venue/Promoter", venueName: [name])
 → Confirm save: *"Saved to your Chatmu CRM under Venues."*
 
 **Mode B — All Tier 1 venues at once:**
 *"I'll pull contacts for all [X] Tier 1 venues now."*
 → Run `extract_contacts_from_web` for each Tier 1 venue sequentially
 → Present consolidated contact list
-→ Save all to CRM: `networking_manage_contacts` for each
+→ Save all to CRM using `networking_create_contact` for each
 → Confirm: *"[X] venue contacts saved to your CRM. Ready to pitch."*
 
 Note to agent when running Mode B: *"Each venue contact extraction uses 1 AI credit. Running all [X] Tier 1 venues will use [X] credits. Confirm?"*
@@ -195,7 +195,7 @@ Based on Rule #3 email setup:
 **Chatmu email:**
 *"Ready to send [X] pitches. Confirm and I'll send them all now."*
 → `networking_send_email` per venue upon confirmation
-→ `networking_manage_pitches` if creating a reusable template for this campaign
+→ `networking_create_pitch` if creating a reusable template for this campaign
 
 **Gmail or external:**
 Present all drafts labeled clearly:
@@ -226,7 +226,7 @@ Present any replies with context:
 *"Standard booking follow-up is 5–7 business days after initial pitch. Want me to note that for [venue list] so you know when to follow up?"*
 
 **Update CRM with status:**
-`networking_manage_contacts` (action: PATCH) → add notes on pitch status, reply received, date confirmed, or follow-up needed
+`networking_update_contact` (id: [contactId], notes: [pitch status, reply received...]) → add notes on pitch status, reply received, date confirmed, or follow-up needed
 
 ---
 
@@ -341,7 +341,7 @@ The React Component MUST include:
 
 **Festivals:** `search_chatmu_festivals`, `search_festivals`, `get_festival_complete_data`, `get_edition_lineup`
 
-**CRM & outreach:** `networking_manage_contacts`, `networking_manage_pitches`, `networking_send_email`, `networking_read_inbox`, `networking_claim_mail`, `networking_manage_campaigns`
+**CRM & outreach:** `networking_get_contacts`, `networking_create_contact`, `networking_update_contact`, `networking_delete_contact`, `networking_get_pitches`, `networking_create_pitch`, `networking_delete_pitch`, `networking_manage_campaigns`, `networking_send_email`, `networking_read_inbox`, `networking_get_mail_alias`, `networking_claim_mail_alias`
 
 **Market intelligence:** `discover_dominant_genres`, `analyze_industry_tiers`, `engagement_by_location`, `market_potential_analysis`
 
@@ -358,7 +358,7 @@ The React Component MUST include:
 3. Paste the content
 4. Suggested name: *"Chatmu — Booking Agency"*
 5. Make sure the **Chatmu MCP** is connected and active
-6. Works best alongside **skill-tour-routing-en.md** when planning full multi-city tours
+6. Works best alongside **chatmu-tour-routing** when planning full multi-city tours
 
 **Official repository:** github.com/Chemrog/Chatmu-Skills
 **Support:** chatmu.io

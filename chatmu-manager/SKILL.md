@@ -9,8 +9,8 @@ compatibility: claude.ai
 ---
 
 # Chatmu — Music Manager Skill
-**Version:** 1.0
-**Required MCP:** Chatmu MCP
+**Version:** 1.1
+**Required MCP:** Chatmu 3.5 MCP (100+ tools)
 **For:** Music managers running one artist or a full roster
 **Repository:** github.com/Chemrog/Chatmu-Skills
 
@@ -49,11 +49,11 @@ Every analysis ends with a clear recommendation or action item. Never deliver da
 
 Before sending any outreach (labels, press, promoters):
 
-`networking_claim_mail` (action: GET) → check Chatmu inbox status
+`networking_get_mail_alias` → check Chatmu inbox status
 
 - **Chatmu email configured:** use `networking_send_email` directly, confirm before sending
 - **No Chatmu email:** draft everything ready for Gmail or preferred client
-- **Wants to set up Chatmu email:** `networking_claim_mail` (action: POST) → setup, then proceed
+- **Wants to set up Chatmu email:** `networking_claim_mail_alias` (handle: e.g. "artist-name") → setup, then proceed
 
 Never send without explicit confirmation.
 
@@ -304,12 +304,12 @@ CONTACT
 
 **Triggered by:** "I need to reach out to [labels/press/promoters]", "find me contacts for [type]", "send a pitch to [target]"
 
-`networking_manage_contacts` (action: GET) → check existing CRM first
+`networking_get_contacts` (query: [Target Name/Role]) → check existing CRM first
 → If contact exists: use it
-→ If not: ask for the target details and add it
+→ If not: ask for target details and add using `networking_create_contact`
 
 For outreach campaigns:
-1. `networking_manage_pitches` → check existing templates or create new one
+1. `networking_get_pitches` or `networking_create_pitch` → check existing templates or create a new one
 2. `networking_manage_campaigns` → send to targeted contact category
 3. `networking_read_inbox` → check for replies
 
@@ -416,7 +416,7 @@ The React Component MUST include:
 
 **Roster mode:** `get_saved_artists_for_distribution`, `artist_current_stats`, `find_latest_editorial_placements`
 
-**Networking:** `networking_manage_contacts`, `networking_manage_pitches`, `networking_manage_campaigns`, `networking_send_email`, `networking_read_inbox`, `networking_claim_mail`
+**Networking:** `networking_get_contacts`, `networking_create_contact`, `networking_update_contact`, `networking_delete_contact`, `networking_get_pitches`, `networking_create_pitch`, `networking_delete_pitch`, `networking_manage_campaigns`, `networking_send_email`, `networking_read_inbox`, `networking_get_mail_alias`, `networking_claim_mail_alias`
 
 **Tools this Skill does NOT use:** Distribution tools, audio analysis, A&R scouting tools, venue search — those belong to other Skills.
 
@@ -429,7 +429,7 @@ The React Component MUST include:
 3. Paste the content
 4. Suggested name: *"Chatmu — Music Manager"*
 5. Make sure the **Chatmu MCP** is connected and active
-6. For best results, use alongside **skill-analytics-en.md** for deeper single-metric dives when needed
+6. For best results, use alongside **chatmu-analytics** for deeper single-metric dives when needed
 7. For preskit generation, Claude Design produces the best visual output
 
 **Official repository:** github.com/Chemrog/Chatmu-Skills

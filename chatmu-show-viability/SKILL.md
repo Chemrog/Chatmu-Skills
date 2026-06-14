@@ -9,8 +9,8 @@ compatibility: claude.ai
 ---
 
 # Chatmu — Show Viability & Venue Finder Skill
-**Version:** 1.0
-**Required MCP:** Chatmu MCP
+**Version:** 1.1
+**Required MCP:** Chatmu 3.5 MCP (100+ tools)
 **For:** Artists, managers, and booking agents evaluating whether a live show in a specific city makes sense
 **Repository:** github.com/Chemrog/Chatmu-Skills
 
@@ -30,7 +30,7 @@ This is the benchmark used by professional booking agents and managers worldwide
 
 **A show is economically viable in a city when EITHER of these conditions is met:**
 
-**Condition A:** The artist has **10,000 or more monthly Spotify listeners** in that specific city
+**Condition A:** The artist has **10,000 or more monthly listeners (cross-platform, primarily Spotify)** in that specific city
 → At 10K listeners, a 200-capacity show is realistic and sellable
 
 **Condition B:** **2% of the artist's monthly listeners in that city equals 100 people or more**
@@ -246,13 +246,13 @@ After the map and table, present two options as buttons or clear choices:
 **Option A — "Find contact for one venue"**
 *"Tell me which venue interests you and I'll look up their booking contact."*
 → When user selects one → `extract_contacts_from_web` with the venue's website
-→ Save to contacts: `networking_manage_contacts` (action: POST, role: "Venue", venueName: [name])
+→ Save to contacts: `networking_create_contact` (name: [Promoter/Contact Name], email: [email], role: "Venue/Promoter", venueName: [name])
 
 **Option B — "Find contacts for all Tier 1 venues"**
 *"Want me to pull booking contacts for all the top-tier venues at once?"*
 → Run `extract_contacts_from_web` for each Tier 1 venue
-→ Save all to contacts with role: "Venue"
-→ Confirm: *"Saved [X] venue contacts. You can find them in your Chatmu contacts under 'Venue'."*
+→ Save all to contacts with role: "Venue/Promoter" using `networking_create_contact`
+→ Confirm: *"Saved [X] venue contacts. You can find them in your Chatmu contacts under 'Venue/Promoter'."*
 
 **Why not auto-contact all venues immediately:**
 Each `extract_contacts_from_web` call costs 1 AI credit and takes time. Letting the user choose means they only spend credits on venues they actually care about.
@@ -307,7 +307,7 @@ NEVER deliver viability math or venue recommendations as plain text or standard 
 You MUST render the entire analysis as a premium, interactive Gig Economics & Venue Matching Dashboard in a self-contained TSX code block (Claude Artifact).
 
 The React Component MUST include:
-- An interactive Viability Meter Widget (a visual speedometer or progress gauge showing the Viability Percentage based on the 2% Spotify listeners rule, with a clear verdict label: "Viable" in green, "Borderline" in orange, or "Not Viable" in red).
+- An interactive Viability Meter Widget (a visual speedometer or progress gauge showing the Viability Percentage based on the 2% monthly listeners rule, with a clear verdict label: "Viable" in green, "Borderline" in orange, or "Not Viable" in red).
 - A gorgeous Venue Roster Table with interactive tabs to filter venues by tier:
   - Tier 1: Perfect Fit (80-150% capacity match)
   - Tier 2: Ambitious (151-300% capacity match)
@@ -319,7 +319,7 @@ The React Component MUST include:
 
 ## MCP TOOLS USED BY THIS SKILL
 
-`search_chatmu_artists_db`, `artist_top_geographic_data`, `search_live_music_venues`, `extract_contacts_from_web`, `networking_manage_contacts`, `find_similar_artists_advanced`, `artist_current_stats`
+`search_chatmu_artists_db`, `artist_top_geographic_data`, `search_live_music_venues`, `extract_contacts_from_web`, `networking_create_contact`, `find_similar_artists_advanced`, `artist_current_stats`
 
 **Tools this Skill does NOT use:** Distribution tools, editorial playlist tools, RAG context, A&R discovery tools — those belong to other Skills.
 
@@ -332,7 +332,7 @@ The React Component MUST include:
 3. Paste the content
 4. Suggested name: *"Chatmu — Show Viability"*
 5. Make sure the **Chatmu MCP** is connected and active
-6. Works best alongside **skill-tour-routing-en.md** — once you know which cities are viable, Tour Routing plans the full route
+6. Works best alongside **chatmu-tour-routing** — once you know which cities are viable, Tour Routing plans the full route
 
 **Official repository:** github.com/Chemrog/Chatmu-Skills
 **Support:** chatmu.io
