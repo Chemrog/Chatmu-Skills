@@ -9,7 +9,7 @@ compatibility: claude.ai
 ---
 
 # Chatmu — A&R Intelligence Skill
-**Version:** 1.1
+**Version:** 1.2
 **Required MCP:** Chatmu 3.5 MCP (100+ tools)
 **For:** A&Rs, label executives, and talent scouts who sign based on signals, not gut feeling
 **Repository:** github.com/Chemrog/Chatmu-Skills
@@ -53,6 +53,43 @@ A&Rs operate at every tier. Adjust the framing accordingly:
 - **Mid-tier (10K–100K):** Frame as "validation window" — enough data to make a confident call. Emphasize retention and niche loyalty.
 - **Mainstream (100K–500K):** Frame as "momentum play" — window to sign is closing. Emphasize whether growth is accelerating or plateauing.
 - **Superstar (500K+):** Frame as "market positioning" — signing is complex. Emphasize catalog value and international reach.
+
+---
+
+## RULE #4 — Web search is qualitative-only, and optional
+
+Web search complements the MCP in exactly three areas of A&R work, and nowhere
+else:
+
+1. **Market Intelligence (Module 3)** — to enrich market context with what's
+   happening in the industry right now: which labels are actively signing in a
+   genre, recent label expansions or division launches, press coverage of
+   emerging scenes, festival lineup trends, and cultural movements driving
+   genre growth. The MCP says "the genre grew 34%"; web explains *why* and
+   *who's paying attention*.
+2. **Artist Validation (Module 2)** — to surface recent press coverage, reviews,
+   interviews, podcast mentions, and cultural context beyond what Instagram
+   shows. An A&R needs the narrative around the artist, not just the numbers.
+   The MCP gives streaming signals and social content; web gives the editorial
+   and cultural footprint.
+3. **Label status cross-check (Module 5)** — to supplement `analyze_label_history`
+   with recent signing news, label disputes, or contract expirations that may
+   not yet be reflected in release-level distributor data. The MCP sees
+   distributors on releases; web catches the announcement before the first
+   release on the new label lands.
+
+**Hard limits:**
+- NEVER use web search for streaming counts, listener counts, follower counts,
+  growth percentages, retention rates, or any metric. Those are MCP-only.
+- NEVER blend a web-sourced figure into a report as if it were Chatmu data.
+- If web search is not available, fall back to Claude's reasoning over the MCP
+  data. Every module works without it.
+- When you do use web context, keep it implicit in the analysis — don't cite
+  URLs or "according to the internet" in the deliverable. The report reads as
+  one voice.
+- Web-sourced qualitative context (press mentions, label news, scene trends)
+  may be stated as contextual narrative, but must never be presented as a
+  Chatmu data point.
 
 ---
 
@@ -134,6 +171,13 @@ Generate a structured document titled **"A&R Scouting Report — [Market] — [G
    - `get_instagram_posts` (limit: 10) → what are they posting, how is it performing
    - `analyze_instagram_media` on top 2-3 posts → visual aesthetic, audience response, content quality
 
+6. Optional qualitative context (per RULE #4):
+   - Web search the artist's name for recent press coverage, reviews,
+     interviews, podcast appearances, or editorial mentions. This surfaces
+     cultural footprint and narrative that streaming data alone doesn't
+     capture. Keep it to a brief contextual paragraph — don't let it
+     override the data signals.
+
 ### Output — Quick Briefing format:
 
 **[Artist Name] — Validation Summary**
@@ -172,6 +216,12 @@ Generate **"Artist Intelligence Report — [Artist Name] — [Date]"** with:
 2. `analyze_industry_tiers` (country_code or city, genre optional) → market structure (Developing / Mid-Tier / Mainstream / Superstar breakdown)
 3. `analyze_market_locations` (group_by: country or city, genre optional) → where is this genre being consumed most
 4. `find_global_superstars` (genre optional) → who is dominating the top 1%
+5. Optional qualitative context (per RULE #4):
+   - Web search the market + genre for recent industry moves: label signings,
+     division launches, festival lineup trends, press coverage of emerging
+     scenes, and cultural drivers behind the growth. This gives the A&R the
+     "why" behind the numbers — who's investing, where the attention is
+     moving, and what the press is saying.
 
 ### Key interpretations to always include:
 
@@ -260,6 +310,12 @@ This is a single-tool query. No format question needed — just answer fast.
 > OR: **UNCLEAR** — mixed signals, recommend deeper due diligence
 
 If signed to a major → add: *"Their last release was on [label] in [year]. They're signed, but that's not the end of the story — contracts expire, situations change. Want me to check their recent release activity for any signs of a label split, or flag them to monitor over the next few months?"*
+
+Optional cross-check (per RULE #4): if the label status is ambiguous or mixed,
+web search the artist name + "signing" / "label deal" / "leaves [label]" to
+catch recent industry news that may not yet be reflected in release-level
+distributor data. State any findings as contextual narrative, not as Chatmu
+data.
 
 ---
 
@@ -366,6 +422,10 @@ The React Component MUST include:
 **Content signals:** `get_instagram_posts`, `analyze_instagram_media`, `RAG_artist_context`
 
 **Market:** `market_potential_analysis`, `get_artist_radio_stats`
+
+**Web search:** optional, qualitative-only, scoped to market intelligence,
+artist validation (press/cultural context), and label status cross-check per
+RULE #4. Never a source for figures or metrics.
 
 **Tools this Skill does NOT use:** `start_music_distribution_draft`, `patch_distribution_metadata`, `submit_distribution_for_review`, `generate_workspace_image`, `transcribe_audio_url_lyrics`, `search_live_music_venues`, `get_festival_complete_data` — those belong to other Skills.
 

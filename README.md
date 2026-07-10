@@ -225,6 +225,7 @@ Full tool documentation: [chatmu.io/help/api](https://chatmu.io/help/api)
 
 | Version | Date | Notes |
 |---------|------|-------|
+| 1.3 | July 2026 | Added web search (qualitative context) to `chatmu-anr` — market intelligence, artist validation, label status cross-check. |
 | 1.2 | July 2026 | Added `chatmu-artist-report` Skill (label-facing performance reports). Now 11 Skills. |
 | 1.1 | June 2026 | Added OAuth support, interactive MCP Apps, cross-platform metrics, and expanded to 10 Skills. |
 | 1.0 | May 2026 | Initial release — 9 Skills across 4 roles |
