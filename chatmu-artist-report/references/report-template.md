@@ -1,58 +1,57 @@
-# Reporte de artista — plantilla de referencia
+# Artist Report — Reference Template
 
-> Este archivo es la referencia de formato para el skill `chatmu-artist-report`.
-> Muestra la estructura, el tono y el nivel de detalle esperado en cada una de
-> las 9 secciones. Los corchetes `[...]` indican dónde van los datos reales
-> obtenidos del Chatmu MCP — nunca se inventan.
+> This file is the format reference for the `chatmu-artist-report` skill. It
+> shows the structure, tone, and level of detail expected in each of the 9
+> sections. Brackets `[...]` indicate where real data obtained from the Chatmu
+> MCP goes — never invent figures.
 
 ---
 
-Reporte de [Semanal/Mensual/Lanzamiento] – '[Canción]' | [Artista]
-Corte: [YYYY-MM-DD]
+Report: [Weekly/Monthly/Release] – '[Song]' | [Artist]
+Cutoff: [YYYY-MM-DD]
 
-**Resumen de streams/oyentes**
-[Total de reproducciones del periodo]. [Total de oyentes]. Ratio
-reproducciones/oyente: [X.X] — [una frase: qué indica sobre tipo de escucha].
+**Streams / listeners summary**
+[Total streams for the period]. [Total listeners]. Streams per listener:
+[X.X] — [one sentence: what this indicates about listening type].
 
-**Guardados**
-[Total guardados]. Tasa de guardado: [X.X]%. [Una frase sobre afinidad: >8% buena
-señal / por debajo de referencia / etc.].
+**Saves**
+[Total saves]. Save rate: [X.X]%. [One sentence on affinity: >8% good signal /
+below reference / etc.].
 
-**Fuentes de reproducción**
-Algorítmico: [X]%
+**Stream sources**
+Algorithmic: [X]%
 Editorial: [X]%
-Catálogo propio: [X]%
-Otras: [X]%
-[Una frase sobre dependencia de descubrimiento externo vs. audiencia propia].
+Own catalog: [X]%
+Other: [X]%
+[One sentence on dependence on external discovery vs. own audience].
 
-**Audiencia del artista**
-Active Listeners totales: [X]
-Super Listeners totales: [X]
-Oyentes del track: [X] → [X]% de Active Listeners, [X]% de Super Listeners.
-[Una frase sobre conversión de audiencia propia — el indicador clave para la
-disquera].
+**Artist audience**
+Total Active Listeners: [X]
+Total Super Listeners: [X]
+Track listeners: [X] → [X]% of Active Listeners, [X]% of Super Listeners.
+[One sentence on own-audience conversion — the key indicator for the label].
 
-**Tendencia**
-Streams/día al inicio del periodo: [X]
-Streams/día actuales: [X]
-[O comparación MoM si es mensual]. [Una frase: impulso sostenido / caída /
-estabilización].
+**Trend**
+Streams/day at start of period: [X]
+Streams/day now: [X]
+[Or MoM comparison if monthly]. [One sentence: momentum sustained / dropping /
+stabilizing].
 
-**Estrategia recomendada**
-1. [Recomendación concreta anclada al perfil del oyente — formato, duración,
-   frecuencia, quién aparece, tono]
+**Recommended strategy**
+1. [Concrete recommendation anchored to the listener profile — format,
+   duration, frequency, who appears, tone]
 2. ...
 3. ...
-[Si algo no está funcionando, decirlo directo aquí].
+[If something isn't working, say it directly here].
 
-**Conclusión**
-[3-4 líneas conectando datos con estrategia: qué funciona, qué no, siguiente paso].
+**Conclusion**
+[3-4 lines connecting data with strategy: what works, what doesn't, next step].
 
-**Perfil del oyente ideal**
-Edad: [rango]
-NSE: [nivel]
-Ubicación: [top ciudades/países]
-Motivación principal: [autoexpresión / entretenimiento / pertenencia / etc.]
-Estética visual con la que conecta: [referentes concretos]
-Plataforma/dispositivo de consumo: [ej. TikTok móvil, Spotify desktop]
-Intereses fuera de la música: [marcas, hobbies, comunidades]
+**Ideal listener profile**
+Age: [range]
+Socio-economic level: [level]
+Location: [top cities/countries]
+Main motivation: [self-expression / entertainment / belonging / etc.]
+Visual aesthetic they connect with: [concrete references]
+Platform/device of consumption: [e.g. TikTok mobile, Spotify desktop]
+Interests outside music: [brands, hobbies, communities]
