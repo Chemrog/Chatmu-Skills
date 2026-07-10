@@ -113,6 +113,7 @@ Look at the **Skill Library** tables below. Find the skill you want and click th
 | Skill | Directory | Import to Claude (Download ZIP) | Description |
 |-------|-----------|---------------------------------|-------------|
 | 💼 **Music Manager** | [`chatmu-manager/`](./chatmu-manager) | [chatmu-manager.zip](https://github.com/Chemrog/Chatmu-Skills/raw/main/zips/chatmu-manager.zip) | Weekly briefings, investment intelligence, press kit generation, roster overview, strategic direction. |
+| 📈 **Artist Report** | [`chatmu-artist-report/`](./chatmu-artist-report) | [chatmu-artist-report.zip](https://github.com/Chemrog/Chatmu-Skills/raw/main/zips/chatmu-artist-report.zip) | Formatted performance reports (weekly/monthly/release) for sending to labels — data diagnostic + content strategy. |
 | 🎟️ **Booking Agency** | [`chatmu-booking/`](./chatmu-booking) | [chatmu-booking.zip](https://github.com/Chemrog/Chatmu-Skills/raw/main/zips/chatmu-booking.zip) | Venue discovery, contact extraction, booking pitches, CRM, full outreach workflow. |
 | 🗺️ **Tour Routing** | [`chatmu-tour-routing/`](./chatmu-tour-routing) | [chatmu-tour-routing.zip](https://github.com/Chemrog/Chatmu-Skills/raw/main/zips/chatmu-tour-routing.zip) | Audience-first tour planning: anchor dates, optimized route, venue search, venue outreach. |
 | 🔍 **A&R Intelligence** | [`chatmu-anr/`](./chatmu-anr) | [chatmu-anr.zip](https://github.com/Chemrog/Chatmu-Skills/raw/main/zips/chatmu-anr.zip) | Emerging artist discovery, label status checks, market intelligence, comparison reports. |
@@ -134,6 +135,10 @@ Chemrog/Chatmu-Skills (GitHub repo)
 │   └── ...
 ├── chatmu-onboarding/        ← Skill directory
 │   └── SKILL.md              ← Skill prompt with YAML frontmatter
+├── chatmu-artist-report/     ← Skill directory
+│   ├── SKILL.md
+│   └── references/
+│       └── report-template.md
 ├── chatmu-release/
 │   └── SKILL.md
 ├── chatmu-analytics/
@@ -154,6 +159,7 @@ Are you an artist managing your own career?
 
 Are you a manager?
   └── chatmu-manager
+  └── Reporting to a label?      → chatmu-artist-report
 
 Are you a booking agent or agency?
   └── Booking shows?              → chatmu-booking
@@ -173,7 +179,7 @@ Are you a songwriter or publisher?
 Yes. Claude Skills stack. Recommended combinations:
 
 - **Artist full stack:** Onboarding + Release + Analytics + Show Viability
-- **Manager stack:** Manager + Analytics + Tour Routing + Contracts + Publishing
+- **Manager stack:** Manager + Artist Report + Analytics + Tour Routing + Contracts + Publishing
 - **Booking stack:** Booking Agency + Tour Routing + Show Viability
 - **A&R stack:** A&R Intelligence + Analytics
 
@@ -219,6 +225,7 @@ Full tool documentation: [chatmu.io/help/api](https://chatmu.io/help/api)
 
 | Version | Date | Notes |
 |---------|------|-------|
+| 1.2 | July 2026 | Added `chatmu-artist-report` Skill (label-facing performance reports). Now 11 Skills. |
 | 1.1 | June 2026 | Added OAuth support, interactive MCP Apps, cross-platform metrics, and expanded to 10 Skills. |
 | 1.0 | May 2026 | Initial release — 9 Skills across 4 roles |
 
