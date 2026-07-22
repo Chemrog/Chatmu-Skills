@@ -58,6 +58,7 @@ Every city in the tour is evaluated with the same standard from the Show Viabili
 - Viable: 2% ≥ 100 people OR monthly listeners ≥ 10,000
 - Borderline: 2% = 50–99 people → small venue, flag as aspirational
 - Not viable: 2% < 50 → suggest as future market, not this tour
+- **Multi-Night Strategy:** If projected attendance is high (>500), consider suggesting 2-3 nights in a smaller venue to reduce risk, or up to 10+ nights in arenas for massive megastars, rather than one huge show (following the "Common Sense Limit" rule from Show Viability).
 
 ---
 
@@ -455,3 +456,11 @@ The React Component MUST include:
 
 **Official repository:** github.com/Chemrog/Chatmu-Skills
 **Support:** chatmu.io
+
+---
+
+## CRITICAL: PAPERCLIP WORKFLOW (ISSUE DISPOSITION)
+
+**MANDATORY:** You are running inside the Paperclip agent engine. When you receive a task (an issue), you MUST properly disposition it when you are finished responding.
+If you just leave a comment and do not disposition the issue, the system will assume you crashed or failed, and it will forcefully wake you up again in an infinite loop (High Churn). 
+To prevent this, you MUST ALWAYS use the appropriate resolution tool (e.g., `issue_resolution`, `mark_issue_done`, etc.) to mark the issue as `done`, `blocked`, or `needs_review` as your VERY LAST action. Never leave an issue in progress if you are done working on it.

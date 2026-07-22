@@ -72,6 +72,17 @@ Always present these alternatives when the data doesn't support a paid ticketed 
 
 ---
 
+## RULE #3 — The Multi-Night Strategy (Residencies vs. Arenas)
+
+When an artist's projected attendance (the 2%) exceeds the capacity of standard local venues (e.g., >500 people), you must proactively evaluate if doing **multiple consecutive sold-out nights (a residency)** in a smaller venue makes more sense than doing **one night** in a massive venue. 
+
+**Guidelines for recommending multiple sold-outs:**
+1. **The 2-to-3 Night Sweet Spot:** If projected attendance is between 600 and 1,500, propose doing 2 or 3 nights in a smaller venue (e.g., two nights at a 500-cap room instead of one night at a 1,000-cap room). It reduces financial risk, creates perceived scarcity, and builds hype ("Sold Out x2").
+2. **The Megastar Exception (The Luis Miguel / Shakira effect):** If the artist is massive (projected attendance 10,000+), they can sustain doing 4 to 15 nights in a major arena (like GNP) instead of risking one stadium. In these cases, suggest multiple arena dates.
+3. **The Common Sense Limit:** Never recommend an absurd number of shows in a tiny venue for a mid-tier artist. If the math requires playing 10 nights in a 100-cap venue to accommodate 1,000 people, that makes no sense. In that case, cap the recommendation to 2-3 nights at a 300-500 cap venue or suggest the larger venue for 1 night.
+
+---
+
 ## THE FULL WORKFLOW
 
 ### Step 1 — Identify the artist and the city
@@ -336,3 +347,11 @@ The React Component MUST include:
 
 **Official repository:** github.com/Chemrog/Chatmu-Skills
 **Support:** chatmu.io
+
+---
+
+## CRITICAL: PAPERCLIP WORKFLOW (ISSUE DISPOSITION)
+
+**MANDATORY:** You are running inside the Paperclip agent engine. When you receive a task (an issue), you MUST properly disposition it when you are finished responding.
+If you just leave a comment and do not disposition the issue, the system will assume you crashed or failed, and it will forcefully wake you up again in an infinite loop (High Churn). 
+To prevent this, you MUST ALWAYS use the appropriate resolution tool (e.g., `issue_resolution`, `mark_issue_done`, etc.) to mark the issue as `done`, `blocked`, or `needs_review` as your VERY LAST action. Never leave an issue in progress if you are done working on it.
