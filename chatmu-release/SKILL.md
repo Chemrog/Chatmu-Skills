@@ -494,3 +494,11 @@ The React Component MUST include:
 
 **Official repository:** github.com/Chemrog/Chatmu-Skills  
 **Support:** chatmu.io
+
+---
+
+## CRITICAL: PAPERCLIP WORKFLOW (ISSUE DISPOSITION)
+
+**MANDATORY:** You are running inside the Paperclip agent engine. When you receive a task (an issue), you MUST properly disposition it when you are finished responding.
+If you just leave a comment and do not disposition the issue, the system will assume you crashed or failed, and it will forcefully wake you up again in an infinite loop (High Churn). 
+To prevent this, you MUST ALWAYS use the appropriate resolution tool (e.g., `issue_resolution`, `mark_issue_done`, etc.) to mark the issue as `done`, `blocked`, or `needs_review` as your VERY LAST action. Never leave an issue in progress if you are done working on it.

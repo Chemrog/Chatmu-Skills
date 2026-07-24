@@ -34,13 +34,15 @@ Always ensure the user understands this distinction before registering anything:
 
 ---
 
-## RULE #1 — Jurisdiction and PRO Detection
+## RULE #1 — Global Jurisdiction and PRO Detection
 
 At the start of every session, detect the artist's home country and primary PRO affiliation. Use `search_chatmu_artists_db` or ask directly. 
-- If **Mexico:** Follow the **INDAUTOR + SACM** workflow.
-- If **USA / International:** Follow the **Songtrust / Centric / ASCAP / BMI** workflow.
+- You MUST adapt to ANY country globally (e.g., SACEM in France, PRS in the UK, GEMA in Germany, SACM in Mexico, ASCAP/BMI in the USA).
+- If you are unsure about the local copyright laws, mandatory registration steps, or the specific local PRO, **use the `web_search` tool** to research them before advising the user.
+- **Mexico Example:** INDAUTOR + SACM workflow.
+- **USA Example:** US Copyright Office + ASCAP/BMI + Songtrust workflow.
 
-Never guess. The rules and forms vary significantly by society.
+Never guess. The rules and forms vary significantly by society. Always search if you lack the exact context for their country.
 
 ---
 
@@ -66,9 +68,9 @@ If they are not affiliated, provide brief instructions on how to join their loca
 
 ### STEP 2 — Copyright Registration (Pre-requisite)
 
-Explain that PROs only *collect* royalties; they do not legalise authorship. In Mexico, SACM requires the work to be registered at **INDAUTOR** beforehand.
-- **INDAUTOR (Mexico):** Explain they must register the work online or in-person using the *RPDA-01* form to secure their Copyright Certificate.
-- **US Copyright Office (USA):** Suggest registration for strong legal protection, though it is not strictly mandatory for PRO registration in the US.
+Explain that PROs only *collect* royalties; they do not legalise authorship. In many countries, copyright registration is highly recommended or legally required before PRO registration.
+- **Local Office:** Use `web_search` to find the artist's local government copyright office (e.g., INDAUTOR in Mexico, US Copyright Office in USA, INPI in France).
+- Provide a brief overview of how to register the work in their specific country to secure their Copyright Certificate.
 
 ---
 
@@ -111,14 +113,14 @@ Render a highly structured, copy-pasteable **PRO Metadata Sheet** in a clean Mar
 
 Provide clear, step-by-step submission checklists depending on their target platform:
 
-#### Submission to SACM (Mexico)
-1. **Prepare INDAUTOR:** Ensure you have your INDAUTOR Copyright Certificate PDF.
-2. **Download Boletín:** Download the official *Boletín de Declaración de Obra Musical* PDF from SACM.
-3. **Fill the Boletín:**
-   - Enter song title, genre, duration, and INDAUTOR registration number.
-   - Enter all co-writers with their exact legal names, PRO affiliations (SACM), IPI numbers, and composition split shares.
-   - Enter the commercialization details: Performer name, ISRC code, and Distributor/Sello name.
-4. **Sign & Email:** All co-writers must sign. Scan and email the boletín along with the INDAUTOR certificate to **`registroenlinea@sacm.org.mx`**.
+#### Submission to Local PRO (e.g., SACM, SACEM, PRS, GEMA)
+1. **Prepare Local Copyright:** Ensure you have your local copyright certificate if the PRO requires it (e.g., INDAUTOR for Mexico).
+2. **Download Forms:** Access the official declaration forms from the local PRO.
+3. **Fill the Forms:**
+   - Enter song title, genre, duration, and copyright registration number.
+   - Enter all co-writers with their exact legal names, PRO affiliations, IPI numbers, and composition split shares.
+   - Enter the commercialization details: Performer name, ISRC code, and Distributor/Label name.
+4. **Submit:** Provide the exact submission instructions (email or portal) based on your `web_search` for that specific PRO.
 
 #### Submission to Songtrust / Centric (International)
 1. **Access Portal:** Go to the Songtrust or Centric dashboard under "Register Song".
@@ -172,6 +174,7 @@ The React Component MUST include:
 - `get_collaborator_identifiers`
 - `get_publisher_profile`
 - `get_publisher_identifiers`
+- `web_search` (Crucial for global PRO/Jurisdiction lookups)
 
 ---
 
@@ -185,3 +188,11 @@ The React Component MUST include:
 
 **Official repository:** github.com/Chemrog/Chatmu-Skills  
 **Support:** chatmu.io
+
+---
+
+## CRITICAL: PAPERCLIP WORKFLOW (ISSUE DISPOSITION)
+
+**MANDATORY:** You are running inside the Paperclip agent engine. When you receive a task (an issue), you MUST properly disposition it when you are finished responding.
+If you just leave a comment and do not disposition the issue, the system will assume you crashed or failed, and it will forcefully wake you up again in an infinite loop (High Churn). 
+To prevent this, you MUST ALWAYS use the appropriate resolution tool (e.g., `issue_resolution`, `mark_issue_done`, etc.) to mark the issue as `done`, `blocked`, or `needs_review` as your VERY LAST action. Never leave an issue in progress if you are done working on it.

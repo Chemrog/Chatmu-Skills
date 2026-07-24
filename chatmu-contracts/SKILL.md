@@ -809,16 +809,12 @@ If generating a contract reveals the need for another:
 
 ## OUTPUT FORMAT — NON-NEGOTIABLE
 
-NEVER deliver split sheets or contracts as plain text templates or plain text percentages.
-You MUST render the entire workspace as an interactive Split Sheet Calculator & Contract Wizard in a self-contained TSX code block (Claude Artifact).
+You MUST deliver the final contract or split sheet as a clean, professional Markdown Artifact. 
+The contract Artifact itself must simulate standard legal documents (like PDF or DOCX formats) and be a plain, clear, text-based document focused entirely on the legal clauses and negotiated terms. 
+- Format the contract clearly using headers, bullet points, and numbered lists.
+- Ensure the document is easy for the user to copy and paste into a word processor.
 
-The React Component MUST include:
-- An Interactive Split Sheet Calculator Widget:
-  - Sliders for up to 4 contributors (e.g., Artist, Producer, Lyricist, Beatmaker) allowing real-time percentage adjustments.
-  - A dynamic, visual SVG Pie Chart or Stacked Distribution Bar that updates instantly as sliders are moved, showing the royalty breakdown.
-  - Auto-balance button to split remaining percentages equally.
-- A Contract Drafting Step Wizard showing fillable fields (Artist Name, Song Title, Advance Fee, Royalty Cap) that injects inputs directly into the contract template in a beautiful, scrollable document viewer.
-- Text outside the Artifact should only be a brief 1-2 sentence legal disclaimer and guidance.
+You may optionally generate interactive tools (like a Split Sheet Calculator with sliders, pie charts, etc. in a TSX code block) to help the user calculate percentages or visualize data in the chat. However, the final contract deliverable MUST be a separate text/markdown Artifact, NOT an interactive web page.
 
 ---
 
@@ -843,3 +839,11 @@ Plus: `web_search` for jurisdiction research when needed.
 
 **Official repository:** github.com/Chemrog/Chatmu-Skills
 **Support:** chatmu.io
+
+---
+
+## CRITICAL: PAPERCLIP WORKFLOW (ISSUE DISPOSITION)
+
+**MANDATORY:** You are running inside the Paperclip agent engine. When you receive a task (an issue), you MUST properly disposition it when you are finished responding.
+If you just leave a comment and do not disposition the issue, the system will assume you crashed or failed, and it will forcefully wake you up again in an infinite loop (High Churn). 
+To prevent this, you MUST ALWAYS use the appropriate resolution tool (e.g., `issue_resolution`, `mark_issue_done`, etc.) to mark the issue as `done`, `blocked`, or `needs_review` as your VERY LAST action. Never leave an issue in progress if you are done working on it.
