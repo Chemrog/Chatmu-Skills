@@ -1,11 +1,17 @@
 ---
 name: chatmu-distribution
 description: >
-  Use when an artist or manager wants to distribute music to DSPs (Spotify, Apple Music, Deezer, etc.),
-  upload a single or EP, fill out release metadata, configure credits, or submit a release for distribution review.
-  Trigger phrases: "distribute my song", "release song", "subir canción a Spotify",
+  Use when an artist or manager wants to distribute music to DSPs (Spotify,
+  Apple Music, Deezer, etc.), upload a single or EP, fill out release metadata,
+  configure credits, or submit a release for distribution review. Trigger
+  phrases: "distribute my song", "release song", "subir canción a Spotify",
   "distribuir música", "lanzar sencillo", "upload WAV to distribution".
 compatibility: claude.ai
+category: ops
+subcategory: distribution
+shortDesc: >-
+  Distribute music to DSPs, upload singles/EPs, fill metadata, and submit for
+  review
 ---
 
 # Chatmu — Music Distribution & DSP Submission Skill

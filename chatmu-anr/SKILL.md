@@ -1,13 +1,22 @@
 ---
 name: chatmu-anr
 description: >
-  Use when scouting emerging talent, checking label rosters,
-  researching record label histories, or analyzing industry tier structures using big data.
-  Trigger phrases: "A&R scouting", "talent discovery",
-  "check label history", "find emerging artists", "artist comparison", "big data".
-tags: ["Big Data", "A&Rs", "Labels"]
-roles: ["Big Data", "A&Rs", "Labels"]
+  Use when scouting emerging talent, checking label rosters, researching record
+  label histories, or analyzing industry tier structures using big data. Trigger
+  phrases: "A&R scouting", "talent discovery", "check label history", "find
+  emerging artists", "artist comparison", "big data".
+tags:
+  - Big Data
+  - A&Rs
+  - Labels
+roles:
+  - Big Data
+  - A&Rs
+  - Labels
 compatibility: claude.ai
+category: analytics
+subcategory: scouting
+shortDesc: Scout emerging talent and analyze label rosters using big data
 ---
 
 # Chatmu — A&R Intelligence Skill
@@ -170,7 +179,7 @@ Generate a structured document titled **"A&R Scouting Report — [Market] — [G
    - `find_similar_artists_advanced` → who does this artist algorithmically compete with
 
 5. Check content signals:
-   - `get_instagram_posts` (limit: 10) → what are they posting, how is it performing
+   - `start_instagram_scrape + get_instagram_scrape_status` (limit: 10) → what are they posting, how is it performing
    - `analyze_instagram_media` on top 2-3 posts → visual aesthetic, audience response, content quality
 
 6. Optional qualitative context (per RULE #4):
@@ -421,7 +430,7 @@ The React Component MUST include:
 
 **Comparison:** `analyze_growth_rates_fixed`, `analyze_cross_platform_performance`
 
-**Content signals:** `get_instagram_posts`, `analyze_instagram_media`, `RAG_artist_context`
+**Content signals:** `start_instagram_scrape + get_instagram_scrape_status`, `analyze_instagram_media`, `RAG_artist_context`
 
 **Market:** `market_potential_analysis`, `get_artist_radio_stats`
 

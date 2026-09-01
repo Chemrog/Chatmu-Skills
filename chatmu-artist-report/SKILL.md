@@ -2,15 +2,17 @@
 name: chatmu-artist-report
 description: >
   Generates artist performance reports for Chatmu — weekly, monthly, or release
-  tracking (single, EP, or album) — in the Pro Indie Music / Chatmu format:
-  half data diagnostic, half actionable content strategy. Use whenever a manager
-  asks for a "weekly report", "monthly report", "release report", an "update on"
-  a song or artist, "how's" a single doing, or a performance update for any
-  artist they manage. Also use if they ask for a report in this format or any
-  variant of that style.
-  Trigger phrases: "weekly report", "monthly report", "release report",
-  "update on", "how's", "performance update".
+  tracking (single, EP, or album) — in the Pro Indie Music / Chatmu format: half
+  data diagnostic, half actionable content strategy. Use whenever a manager asks
+  for a "weekly report", "monthly report", "release report", an "update on" a
+  song or artist, "how's" a single doing, or a performance update for any artist
+  they manage. Also use if they ask for a report in this format or any variant
+  of that style. Trigger phrases: "weekly report", "monthly report", "release
+  report", "update on", "how's", "performance update".
 compatibility: claude.ai
+category: analytics
+subcategory: artist-report
+shortDesc: Creates artist performance reports with data diagnostics and content strategy
 ---
 
 # Chatmu — Artist Report Skill

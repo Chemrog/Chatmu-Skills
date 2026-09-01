@@ -1,6 +1,22 @@
 ---
 name: chatmu-emerging-artist
-description: Metodología de 6 meses para llevar a un artista musical emergente de cero a 1,000 oyentes mensuales, validando el repertorio en redes sociales antes de distribuir en streaming. Usar SIEMPRE que el usuario trabaje con un artista nuevo, sin catálogo distribuido, con menos de 1,000 oyentes mensuales, o pregunte cómo lanzar un proyecto desde cero, validar canciones antes de lanzarlas, estructurar los primeros sencillos, o pida un plan/roadmap/calendario para un artista debutante. Aplica a "artista sin oyentes", "primer lanzamiento", "estrategia para artista nuevo", o artistas del roster de Chatmu sin tracción aún. Trigger for any brand-new or pre-release artist, under 1,000 monthly listeners, or requests for a launch plan/content-validation strategy/roadmap for a debut act.
+description: >-
+  Metodología de 6 meses para llevar a un artista musical emergente de cero a
+  1,000 oyentes mensuales, validando el repertorio en redes sociales antes de
+  distribuir en streaming. Usar SIEMPRE que el usuario trabaje con un artista
+  nuevo, sin catálogo distribuido, con menos de 1,000 oyentes mensuales, o
+  pregunte cómo lanzar un proyecto desde cero, validar canciones antes de
+  lanzarlas, estructurar los primeros sencillos, o pida un
+  plan/roadmap/calendario para un artista debutante. Aplica a "artista sin
+  oyentes", "primer lanzamiento", "estrategia para artista nuevo", o artistas
+  del roster de Chatmu sin tracción aún. Trigger for any brand-new or
+  pre-release artist, under 1,000 monthly listeners, or requests for a launch
+  plan/content-validation strategy/roadmap for a debut act.
+category: ops
+subcategory: artist launch
+shortDesc: >-
+  Metodología de 6 meses para lanzar un artista emergente de cero a 1,000
+  oyentes mensuales
 ---
 
 # Desarrollo de Artista Emergente (0 → 1,000 oyentes/mes)
@@ -21,7 +37,7 @@ Antes de grabar, define el proyecto. Pide o ayuda a construir:
 
 - 5 artistas de referencia que el artista admire + 5 proyectos comparables activos y relevantes hoy (no referencias de hace 10 años).
 - Para cada referencia, analizar: estilo musical, imagen, forma de comunicar, tipo de contenido, audiencia, valores del proyecto, frecuencia de lanzamientos.
-- Si tienes acceso a Chatmu, no infieras esto de memoria: usa get_instagram_posts para traer el contenido reciente de cada referencia y analyze_instagram_media sobre cada post para ver realmente su estética, vestuario y tipo de contenido (ver "Integración con Chatmu" abajo).
+- Si tienes acceso a Chatmu, no infieras esto de memoria: usa start_instagram_scrape + get_instagram_scrape_status para traer el contenido reciente de cada referencia y analyze_instagram_media sobre cada post para ver realmente su estética, vestuario y tipo de contenido (ver "Integración con Chatmu" abajo).
 - Responder a partir del análisis: ¿quién es su público? ¿qué los hizo crecer? ¿qué contenido publican? ¿cómo presentan su música? ¿qué los diferencia? ¿qué patrones se repiten entre todos?
 
 Entregable de la fase: género musical, personalidad artística, estética, público objetivo y diferenciador — documentados en 1 página antes de escribir una sola canción.
@@ -98,8 +114,8 @@ Si algún contenido o canción se viraliza, estas metas pueden superarse antes d
 
 Cuando el artista ya tenga UUID en Chatmu (aunque sea con pocos datos), usa las tools reales en vez de estimar a mano:
 
-- Fase 1 / referencias: find_similar_artists_advanced, find_genre_competitors para encontrar proyectos comparables reales; luego, por cada referencia, get_instagram_posts para traer sus posts recientes y analyze_instagram_media sobre cada uno (imagen o video) para ver realmente estética, vestuario, tipo de contenido y forma de comunicar — en vez de asumirlo o inferirlo de memoria.
-- Fase 3 / validación: get_instagram_posts, analyze_instagram_media para leer performance de contenido publicado; get_platform_audience para trackear crecimiento base.
+- Fase 1 / referencias: find_similar_artists_advanced, find_genre_competitors para encontrar proyectos comparables reales; luego, por cada referencia, start_instagram_scrape + get_instagram_scrape_status para traer sus posts recientes y analyze_instagram_media sobre cada uno (imagen o video) para ver realmente estética, vestuario, tipo de contenido y forma de comunicar — en vez de asumirlo o inferirlo de memoria.
+- Fase 3 / validación: start_instagram_scrape + get_instagram_scrape_status, analyze_instagram_media para leer performance de contenido publicado; get_platform_audience para trackear crecimiento base.
 - Fase 4/5 / decisión y lanzamiento: audience_demographics, get_fans_dna_details para afinar el ángulo de contenido antes del Lanzamiento 1; get_artist_growth_trajectory para proyectar el crecimiento esperado de cada ciclo.
 - Después de cada lanzamiento: analyze_social_to_streaming_conversion, get_artist_current_stats, geographic_growth_analysis para el análisis post-lanzamiento de la fase 5.
 

@@ -1,11 +1,15 @@
 ---
 name: chatmu-publishing
 description: >
-  Use when the artist or label needs to register musical works, navigate publishing royalty setups,
-  understand PRO requirements, register with SACM or Songtrust, or generate bulk publishing spreadsheets.
-  Trigger phrases: "register publishing", "SACM registration", "Songtrust register",
-  "publish song", "PRO metadata sheet", "INDAUTOR", "composition registration".
+  Use when the artist or label needs to register musical works, navigate
+  publishing royalty setups, understand PRO requirements, register with SACM or
+  Songtrust, or generate bulk publishing spreadsheets. Trigger phrases:
+  "register publishing", "SACM registration", "Songtrust register", "publish
+  song", "PRO metadata sheet", "INDAUTOR", "composition registration".
 compatibility: claude.ai
+category: business
+subcategory: publishing
+shortDesc: Register musical works and navigate publishing royalty setups
 ---
 
 # Chatmu — Publishing & Rights Administration Skill

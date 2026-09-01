@@ -1,11 +1,14 @@
 ---
 name: chatmu-release
 description: >
-  Use when planning a music release, distributing songs, establishing release dates,
-  drafting pitches, or generating creative intake templates for artists or labels.
-  Trigger phrases: "launch a song", "release music", "Spotify pitch",
+  Use when planning a music release, distributing songs, establishing release
+  dates, drafting pitches, or generating creative intake templates for artists
+  or labels. Trigger phrases: "launch a song", "release music", "Spotify pitch",
   "release date", "release calendar", "waterfall strategy", "roster calendar".
 compatibility: claude.ai
+category: ops
+subcategory: release
+shortDesc: 'Plan music releases, set dates, draft pitches, and create intake templates'
 ---
 
 # Chatmu — Music Release & Roster Planning Skill
@@ -423,7 +426,7 @@ Do not let the launch cool down, but avoid being invasive or spammy (never just 
 - Honest analysis without judgment: *"Let's look at the data to understand what happened and how we adjust for the next release"*
 - Review: did the hook not land? Was timing the issue? Was the audience not right?
 - Prepare for the next release with a deeper viral content research process
-- Use `get_instagram_posts` + `analyze_instagram_media` to analyze what's working for similar artists in the genre
+- Use `start_instagram_scrape + get_instagram_scrape_status` + `analyze_instagram_media` to analyze what's working for similar artists in the genre
 
 **Publishing Registration Advisory:**
 Remind the user (whether in Artist or Label mode) that once a song is released and commercialized, it must be registered with their PRO (e.g. SACM in Mexico, ASCAP/BMI in USA) and Mechanical admins (e.g. Songtrust/Centric) to collect song-writing royalties.

@@ -1,13 +1,25 @@
 ---
 name: chatmu-analytics
 description: >
-  Use when checking artist numbers, streaming performance,
-  audience demographics, listener location, or weekly briefings.
-  Trigger phrases: "how am I doing", "check my streams",
-  "Spotify stats", "analyze numbers", "weekly stats", "demographic analysis", "big data".
-tags: ["Big Data", "Analytics", "Artists", "Managers"]
-roles: ["Big Data", "Artists", "Managers"]
+  Use when checking artist numbers, streaming performance, audience
+  demographics, listener location, or weekly briefings. Trigger phrases: "how am
+  I doing", "check my streams", "Spotify stats", "analyze numbers", "weekly
+  stats", "demographic analysis", "big data".
+tags:
+  - Big Data
+  - Analytics
+  - Artists
+  - Managers
+roles:
+  - Big Data
+  - Artists
+  - Managers
 compatibility: claude.ai
+category: analytics
+subcategory: performance
+shortDesc: >-
+  Checks artist numbers, streaming performance, demographics, location, weekly
+  briefings
 ---
 
 # Chatmu — Artist Analytics Skill
@@ -157,7 +169,7 @@ One sentence: *"Your fastest-growing market right now is [location] — [strateg
 **Goal:** Understand what content is performing and why.
 
 ### Tools to run:
-- `get_instagram_posts` (limit: 10) → latest Instagram activity
+- `start_instagram_scrape + get_instagram_scrape_status` (limit: 10) → latest Instagram activity
 - `analyze_instagram_media` on the top 2-3 posts by engagement → visual and content analysis
 - `get_platform_audience` (platform: tiktok) → TikTok audience and growth
 
@@ -357,7 +369,7 @@ The React Component MUST include:
 
 **Audience:** `audience_demographics`, `analyze_niche_compatibility`, `engagement_by_location`, `find_similar_artists_advanced`, `get_fans_dna_details`, `analyze_social_to_streaming_conversion`
 
-**Content:** `get_instagram_posts`, `analyze_instagram_media`, `get_platform_audience`
+**Content:** `start_instagram_scrape + get_instagram_scrape_status`, `analyze_instagram_media`, `get_platform_audience`
 
 **Playlists:** `get_artist_active_playlists`, `find_latest_editorial_placements`, `get_artist_playlist_reach`, `search_global_market_playlists`
 

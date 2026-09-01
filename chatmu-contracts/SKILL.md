@@ -1,11 +1,16 @@
 ---
 name: chatmu-contracts
 description: >
-  Use when generating split sheets, drafting producer agreements,
-  work-for-hire templates, or music business contracts.
-  Trigger phrases: "split sheet", "work for hire", "producer agreement",
-  "music contract", "publishing split", "licensing agreement".
+  Use when generating split sheets, drafting producer agreements, work-for-hire
+  templates, or music business contracts. Trigger phrases: "split sheet", "work
+  for hire", "producer agreement", "music contract", "publishing split",
+  "licensing agreement".
 compatibility: claude.ai
+category: legal
+subcategory: contracts
+shortDesc: >-
+  Generate split sheets, producer agreements, work-for-hire templates, and music
+  business contracts
 ---
 
 # Chatmu — Music Contracts Skill

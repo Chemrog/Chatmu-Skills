@@ -1,11 +1,16 @@
 ---
 name: chatmu-show-viability
 description: >
-  Use to calculate live show attendance and determine if a gig in a
-  city is economically viable using the 2% rule.
-  Trigger phrases: "can I play in", "show viability", "2% rule",
-  "gig economics", "profitable to play", "show attendance estimate".
+  Use to calculate live show attendance and determine if a gig in a city is
+  economically viable using the 2% rule. Trigger phrases: "can I play in", "show
+  viability", "2% rule", "gig economics", "profitable to play", "show attendance
+  estimate".
 compatibility: claude.ai
+category: business
+subcategory: touring
+shortDesc: >-
+  Calculate live show attendance and determine gig economic viability using the
+  2% rule
 ---
 
 # Chatmu — Show Viability & Venue Finder Skill

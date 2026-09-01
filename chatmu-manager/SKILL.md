@@ -1,11 +1,16 @@
 ---
 name: chatmu-manager
 description: >
-  Use when acting as a music manager, generating artist briefings,
-  producing presskits (EPK), or reviewing general roster strategy.
-  Trigger phrases: "music manager", "roster briefing", "investment intelligence",
-  "EPK generation", "presskit", "manager briefing".
+  Use when acting as a music manager, generating artist briefings, producing
+  presskits (EPK), or reviewing general roster strategy. Trigger phrases: "music
+  manager", "roster briefing", "investment intelligence", "EPK generation",
+  "presskit", "manager briefing".
 compatibility: claude.ai
+category: business
+subcategory: management
+shortDesc: >-
+  Act as a music manager for artist briefings, EPK generation, and roster
+  strategy
 ---
 
 # Chatmu — Music Manager Skill
