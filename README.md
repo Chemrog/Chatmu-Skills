@@ -114,6 +114,7 @@ Look at the **Skill Library** tables below. Find the skill you want and click th
 | 🎬 **Video Content** | [`chatmu-video-content/`](./chatmu-video-content) | [chatmu-video-content.zip](https://github.com/Chemrog/Chatmu-Skills/raw/main/zips/chatmu-video-content.zip) | Produce lyric videos, visualizers and 9:16 pieces via Chatmu render pipeline. |
 | 🧠 **Fan DNA** | [`chatmu-fan-dna/`](./chatmu-fan-dna) | [chatmu-fan-dna.zip](https://github.com/Chemrog/Chatmu-Skills/raw/main/zips/chatmu-fan-dna.zip) | Psychographic + demographic fan analysis, personas, and social→streaming conversion. |
 | 🎪 **Show Producer** | [`chatmu-show-producer/`](./chatmu-show-producer) | [chatmu-show-producer.zip](https://github.com/Chemrog/Chatmu-Skills/raw/main/zips/chatmu-show-producer.zip) | Produce a show end-to-end: venue, sponsors, poster, opening acts, run-of-show, budget. |
+| 🧭 **Career Roadmap** | [`chatmu-career-roadmap/`](./chatmu-career-roadmap) | [chatmu-career-roadmap.zip](https://github.com/Chemrog/Chatmu-Skills/raw/main/zips/chatmu-career-roadmap.zip) | Define career horizon & tempo (sprint vs long game), then a phased roadmap with a Mermaid timeline. |
 
 ### For Industry Professionals
 
