@@ -66,6 +66,14 @@ Executive. Deck-ready. Every claim is a number.
 
 `scripts/brand_deck_pptx.py` — python-pptx deck generator. Input `/workspace/in/deck.json`, output `/workspace/out/brand_deck_<slug>.pptx`. Run via `execute_python` only.
 
+## Web research (tool-agnostic)
+
+Use web search for discovery and context, not for numbers:
+- Finding who to contact (production companies, supervisors, curators, journalists, sponsors, venues), industry news, briefs, trends, and market context.
+- Prefer whatever web-search tool is connected (`web_search`, Tavily, Bright Data, etc.); use `extract_contacts_from_web` for contact discovery.
+- Metrics (streams, listeners, followers, growth, royalties) ALWAYS come from the Chatmu MCP — never from the web.
+- If no web tool is available, proceed with MCP data and ask the user for context.
+
 ## Email delivery (tool-agnostic)
 
 Outreach is delivered with whatever email the user has connected:
