@@ -65,6 +65,14 @@ Practical, curator-first, no spam. One-shot pitches, not blasts.
 - `find_latest_editorial_placements` scoped to the artist → new editorial adds.
 - Log wins/losses per curator into the CRM for future campaigns.
 
+## Email delivery (tool-agnostic)
+
+Outreach is delivered with whatever email the user has connected:
+1. Chatmu networking tools when available: `networking_create_pitch` (log) + `networking_send_email` / `networking_manage_campaigns`.
+2. Any other email MCP the user has connected (Gmail, Outlook, etc.).
+3. Always prepare a ready-to-paste draft per curator as a fallback.
+Ask the user which channel they prefer before mass-sending.
+
 ## Deliverables
 
 - Playlist opportunity report (chat table or cm-docx / cm-pdf).

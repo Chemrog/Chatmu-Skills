@@ -66,6 +66,14 @@ Executive. Deck-ready. Every claim is a number.
 
 `scripts/brand_deck_pptx.py` — python-pptx deck generator. Input `/workspace/in/deck.json`, output `/workspace/out/brand_deck_<slug>.pptx`. Run via `execute_python` only.
 
+## Email delivery (tool-agnostic)
+
+Outreach is delivered with whatever email the user has connected:
+1. Chatmu networking tools when available: `networking_create_pitch` (log) + `networking_send_email` / `networking_manage_campaigns`.
+2. Any other email MCP the user has connected (Gmail, Outlook, etc.).
+3. Always prepare a ready-to-paste draft per target as a fallback.
+Ask the user which channel they prefer before mass-sending.
+
 ## Deliverables
 
 - Brand deck `.pptx`.

@@ -57,6 +57,14 @@ Compact, professional, station-by-station. No hype.
 
 None required — spins export uses `cm-xlsx` conventions directly.
 
+## Email delivery (tool-agnostic)
+
+Outreach is delivered with whatever email the user has connected:
+1. Chatmu networking tools when available: `networking_create_pitch` (log) + `networking_send_email` / `networking_manage_campaigns`.
+2. Any other email MCP the user has connected (Gmail, Outlook, etc.).
+3. Always prepare a ready-to-paste draft per programmer as a fallback.
+Ask the user which channel they prefer before mass-sending.
+
 ## Deliverables
 
 - Airplay report (`cm-xlsx`: station, market, weekly spins, delta, format).

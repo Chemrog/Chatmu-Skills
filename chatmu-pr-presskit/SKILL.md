@@ -68,6 +68,14 @@ Draft in-chat first (bio 60w / 150w / 300w, one-sheet bullets, highlight tracks,
 
 Executed only via `execute_python` in the sandbox. Never run locally.
 
+## Email delivery (tool-agnostic)
+
+Outreach is delivered with whatever email the user has connected:
+1. Chatmu networking tools when available: `networking_create_pitch` (log) + `networking_send_email` / `networking_manage_campaigns`.
+2. Any other email MCP the user has connected (Gmail, Outlook, etc.).
+3. Always prepare a ready-to-paste draft per outlet as a fallback.
+Ask the user which channel they prefer before mass-sending.
+
 ## Deliverables
 
 - EPK `.docx` + `.pdf` (downloadable).

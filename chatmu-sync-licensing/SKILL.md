@@ -37,6 +37,15 @@ Concise, deal-oriented. Numbers where they belong. Never invent fees, streams, o
 
 ## WORKFLOW
 
+### 0. Intake — ask before acting
+Ask the artist/manager first (do not assume a fixed flow):
+- Do you have a publisher, sync agent, or manager handling placements? What do they cover?
+- Which markets/countries/cities matter to you (e.g. CDMX, LA, Bogotá)? Where have you already sent music or had placements?
+- Do you have existing contacts at production companies, agencies, or supervisors?
+- Is your catalog fully yours (one-stop) or are some songs co-controlled?
+- Do you want outreach sent directly, or drafts you review first?
+Use their answers to focus the research and never duplicate their publisher's territory.
+
 ### 1. Catalog readiness audit
 - `get_artist_songs` → list of releases.
 - For each candidate song: `song_identity_resolver` → confirm ISRC/UPC, then `get_released_song_metadata` and `get_album_metadata`.
@@ -57,6 +66,16 @@ Concise, deal-oriented. Numbers where they belong. Never invent fees, streams, o
 - `networking_create_pitch` for each supervisor with the shortlist.
 - `networking_send_email` (or `networking_manage_campaigns` for a batch) to deliver — always private, short, with WAV links only when requested.
 
+### 3.5 Market research + outreach per market (human-style)
+Most sync opportunities come from local contacts, not cold spam. Do this per market the artist cares about:
+- `web_search` production companies / film & TV agencies / ad agencies / indie studios in each country/city (e.g. "production companies CDMX", "post-production houses Bogotá", "supervisor briefs commercials"). Web is for *qualitative* intel only.
+- `extract_contacts_from_web` on each company's contact / about / team pages → emails and the right person (music supervisor, content producer, creative director).
+- `search_verified_curators` (role = sync supervisor / music supervisor) scoped to the market.
+- `networking_create_contact` per target with notes (company, type, who, how you found them, status).
+- Build a target matrix (company, market, type, contact, status, last touch) — cm-xlsx.
+- Prepare a short, personal email per target: "available catalog", 2-3 fits for what they produce, links, and a clear ask. If the artist has a publisher, coordinate so outreach complements (never bypasses) them.
+- Respect the artist's channel preference (see Email delivery). If they have contacts already, warm them first.
+
 ### 4. Deal terms defaults
 Include in every reply:
 - Master + sync fee (or MFN if the other side leads).
@@ -70,6 +89,14 @@ Include in every reply:
 - Keep a placements matrix (song, project, use, fee, territory, term, contract link).
 - Generate the cue sheet with the standard fields (usage type, duration, writers, publishers, IPI/ISWC, PRO).
 - `get_song_performance_and_charts` to correlate placement dates with streaming lifts.
+
+## Email delivery (tool-agnostic)
+
+Outreach is delivered with whatever email the user has connected:
+1. Chatmu networking tools when available: `networking_create_pitch` (log) + `networking_send_email` / `networking_manage_campaigns`.
+2. Any other email MCP the user has connected (Gmail, Outlook, etc.).
+3. Always prepare a ready-to-paste draft per contact as a fallback.
+Ask the user which channel they prefer before mass-sending.
 
 ## Deliverables
 
