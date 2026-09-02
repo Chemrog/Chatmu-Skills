@@ -108,6 +108,12 @@ gantt
 
 Use real relative dates from today. If the roadmap is about one project/release window instead of a career, adapt the same structure (phases → weeks, `dateFormat YYYY-MM-DD`).
 
+### 4b. Render the timeline to an image (so the user SEES it)
+Writing the mermaid text is not enough — nothing renders it. After step 4, call the **`render_mermaid`** tool passing the same gantt source (the code inside the fences, without the ```mermaid wrapper). It returns a PNG URL. Then:
+- Embed the image in the roadmap file: `![career-timeline](<url>)`.
+- Show the image URL in your chat reply so the user sees the real horizontal timeline.
+If `render_mermaid` is unavailable, fall back to keeping the ```mermaid block and say it will render where mermaid is supported.
+
 ### 5. Persist + export
 - Write everything to the workspace file `career/roadmap.md` (the gantt included) so it renders in the workspace.
 - Offer a `cm-docx` / `cm-pdf` export to share with the label, manager or team.
@@ -120,5 +126,6 @@ Use web search for discovery and context, not for numbers: genre/market directio
 
 - Tempo diagnosis (sprint / build / hybrid) with per-dimension reasoning.
 - Phased roadmap: `career/roadmap.md` with objectives, cadence, milestones, KPIs, and a Mermaid gantt timeline.
+- A rendered PNG of the timeline (`render_mermaid`) shown in the chat and embedded in the roadmap file.
 - Optional `cm-docx` / `cm-pdf` export for sharing.
 - Clear "what we do fast, what we do slowly" summary the artist can act on this quarter.

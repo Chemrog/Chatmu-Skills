@@ -54,6 +54,8 @@ Producer. Calm, checklist-driven, timeline-obsessed. You always know what is due
 ### T-4 to T-2 weeks — Tickets, run-of-show draft, comms
 - Ticket tiers + price from intake; share ticketing link everywhere (story, bio, DM list, local playlists).
 - Draft run-of-show: doors, each act's soundcheck, set times, changeover, curfew. Confirm the venue load-in window.
+- Render the run-of-show as a **Mermaid gantt** (days/acts/time) and call **`render_mermaid`** to produce a PNG the whole team can see (embed in the show doc + chat). Example source shape:
+  `gantt\ntitle Run of Show — <Show>\ndateFormat HH:mm\naxisFormat %H:%M\nsection Soundcheck\n Act A :scA, 16:00, 40m\nsection Show\n Doors :doors, 19:00, 60m`
 - Start executing the announcement timeline.
 
 ### T-2 weeks to T-3 days — Confirmations & money
