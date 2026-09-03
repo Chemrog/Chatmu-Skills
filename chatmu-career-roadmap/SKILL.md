@@ -109,10 +109,11 @@ gantt
 Use real relative dates from today. If the roadmap is about one project/release window instead of a career, adapt the same structure (phases → weeks, `dateFormat YYYY-MM-DD`).
 
 ### 4b. Render the timeline to an image (so the user SEES it)
-Writing the mermaid text is not enough — nothing renders it. After step 4, call the **`render_mermaid`** tool passing the same gantt source (the code inside the fences, without the ```mermaid wrapper). It returns a PNG URL. Then:
-- Embed the image in the roadmap file: `![career-timeline](<url>)`.
-- Show the image URL in your chat reply so the user sees the real horizontal timeline.
-If `render_mermaid` is unavailable, fall back to keeping the ```mermaid block and say it will render where mermaid is supported.
+Writing the mermaid text is not enough — nothing renders it. After step 4, call the **`render_mermaid`** tool passing the same gantt source (the code inside the fences, without the ```mermaid wrapper). It returns a durable URL under `/api/timeline/*.png`. Then:
+- Embed the returned URL in the roadmap file: `![career-timeline](<url>)`.
+- Show the image in your chat reply (markdown image with the returned URL) so the user sees the real horizontal timeline.
+- Do NOT create raw `.svg`/`.png` timeline files in the workspace (e.g. `career/timeline.svg`) — the workspace viewer shows those as text. The rendered `/api/timeline` image is the source of truth for display.
+If `render_mermaid` is unavailable, embed the ```mermaid block and say it will render where mermaid is supported.
 
 ### 5. Persist + export
 - Write everything to the workspace file `career/roadmap.md` (the gantt included) so it renders in the workspace.
