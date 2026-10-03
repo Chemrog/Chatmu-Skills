@@ -45,7 +45,42 @@ Web search (see RULE #4) is for qualitative context only, never for numbers.
 
 ---
 
-## RULE #2 — Pick the right variant
+## RULE #2 — Respect the requested scope
+
+Before choosing a variant or a structure, detect what the user actually asked
+for. The full 9-section report is the default **only when the request is
+generic** ("report on my artist", "how is my project doing", "give me a full
+report"). If the user narrows the request, deliver only what was asked and
+offer the rest at the end in one line.
+
+Narrowing signals (any of these = scoped report, NOT the full 9-section one):
+- Names a specific **platform**: "Spotify report", "how are we doing on Apple
+  Music", "TikTok this week" → only that platform's data.
+- Names a specific **metric or section**: "just the playlists", "demographics
+  only", "who's listening", "the geographic breakdown" → only that section.
+- Names a specific **short time window without asking for depth**: "last 7
+  days on Spotify", "yesterday's numbers", "this weekend" → the streams/
+  listeners/sources for that window, on the platform mentioned (or all if
+  none), without demographics/ideal-listener/strategy unless asked.
+- Asks a **single question** ("did the release land on any editorial
+  playlist?", "how many saves last week?") → answer the question, don't
+  produce a report.
+
+For scoped requests:
+1. Deliver only the requested slice, in the same voice and format rules as
+   the full report (RULE #1, numbers with thousands separator, no emojis).
+2. Close with one line offering to expand: *"¿Quieres que amplíe a todas las
+   plataformas y el reporte completo (audiencia, demográficos, estrategia)?"*
+   — do not auto-expand.
+3. Never fabricate the missing sections just because they exist in the full
+   template. "Always include" in STEP 3 applies only to the full report.
+
+If the user's intent is genuinely ambiguous between scoped and full, ask a
+one-line clarifying question before pulling data.
+
+---
+
+## RULE #2b — Pick the right variant (applies to full reports)
 
 | Type | When | Focus |
 |------|------|-------|
