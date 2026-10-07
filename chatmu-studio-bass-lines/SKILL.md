@@ -12,7 +12,7 @@ category: creative
 subcategory: studio
 shortDesc: "Basslines and 808s that follow the chords and lock with the kick"
 version: "1.0"
-tags: [studio, ableton, bass, bajo, 808, co-producer]
+tags: [studio, ableton, bass, bajo, "808", co-producer]
 requiresTools: ["local_ableton_get_notes", "local_ableton_create_clip", "local_ableton_write_notes", "local_ableton_device_params", "local_ableton_set_device_param"]
 ---
 
