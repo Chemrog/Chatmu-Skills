@@ -7,8 +7,10 @@ description: >
   for a "weekly report", "monthly report", "release report", an "update on" a
   song or artist, "how's" a single doing, or a performance update for any artist
   they manage. Also use if they ask for a report in this format or any variant
-  of that style. Trigger phrases: "weekly report", "monthly report", "release
-  report", "update on", "how's", "performance update".
+  of that style, or an "artist report" / "full artist report" as a PDF for a
+  label. Trigger phrases: "weekly report", "monthly report", "release report",
+  "artist report", "PDF report", "report for the label", "update on", "how's",
+  "performance update".
 compatibility: claude.ai
 category: analytics
 subcategory: artist-report
@@ -16,7 +18,7 @@ shortDesc: Creates artist performance reports with data diagnostics and content 
 ---
 
 # Chatmu — Artist Report Skill
-**Version:** 1.0
+**Version:** 1.1
 **Required MCP:** Chatmu 3.5 MCP (100+ tools)
 **For:** Managers preparing performance deliverables for labels (Pro Indie Music / Chatmu)
 **Repository:** github.com/Chemrog/Chatmu-Skills
@@ -77,6 +79,13 @@ For scoped requests:
 
 If the user's intent is genuinely ambiguous between scoped and full, ask a
 one-line clarifying question before pulling data.
+
+**Explicit section list = full report with those sections.** When the user asks
+for a full report AND lists what to include (e.g. the "Artist Report" quick
+action: monthly listeners, demographics, top cities, 4-week growth, top songs,
+active playlists, cross-platform comparison), that list is the structure.
+Cover every item, in that order, with the same voice and rules. It is not a
+scoped request, and the 9-section template does not override it.
 
 ---
 
@@ -226,11 +235,50 @@ one-sentence interpretation):
 ## Delivery format
 
 - Plain text or simple Markdown, ready to copy/paste or hand to a document.
-- If the manager explicitly asks for a PDF or Word, use the corresponding docx
-  or pdf skill after the final content is ready.
+- If the manager asks for a **PDF**, follow "PDF delivery" below. For Word, use
+  the docx skill after the final content is ready.
 - Numbers always with thousands separator (33,860) and percentages with one
   decimal when it adds precision (8.5%).
 - No emojis. Section headers in bold or as markdown headers — not both.
+
+### PDF delivery (Sandbox + Python)
+
+A PDF report is built in the Python sandbox with the `execute_python` tool:
+charts with `matplotlib`, the document with `reportlab`. **Do NOT use
+`generate_document` for this report**, even though its description mentions
+PDF reports: it cannot embed charts and its layout is too plain for a
+label-facing deliverable. Only fall back to it if `execute_python` fails twice,
+and tell the user the charts were left out.
+
+1. **Gather and compute first** (STEP 1-2). The sandbox has no network and no
+   MCP access: put every figure into the script as Python literals (dicts/
+   lists). Never fetch, estimate, or invent data inside the script.
+2. **One script, one PDF.** Write charts as PNG to `/tmp/` inside the sandbox,
+   build the PDF from them, and write only the PDF to
+   `/workspace/out/<artist-slug>-report-<YYYY-MM-DD>.pdf` (set `outputFiles` to
+   that path).
+3. **Layout (reportlab platypus, A4, 2 cm margins):**
+   - Header block: artist name (large), report type, cutoff date, and the
+     line "Data: Chatmu".
+   - One heading per section, followed by a short table and the one-sentence
+     interpretation. Tables: shaded header row, light row dividers, numbers
+     right-aligned with thousands separators, no cell wider than the page.
+   - Charts go **at the end**, in a "Charts" section, one per page-half, each
+     with a title and a one-line caption saying what to look at.
+   - Page numbers in the footer. A single font family (Helvetica), with
+     sizes 20 / 13 / 10 for title / headings / body.
+4. **Charts (matplotlib):** one idea per chart. Use line charts for growth over
+   time, horizontal bars for rankings (top cities, top songs), and grouped bars
+   for the cross-platform comparison. Avoid pie charts with more than 4
+   slices. Use one consistent palette with a single accent colour, a white
+   background, no 3D, labelled axes, thousands separators on the ticks,
+   `dpi=200`, and `bbox_inches="tight"`. Skip a chart whose data is missing
+   rather than plotting zeros.
+5. **Missing data:** keep the section, write "Data not available on this
+   platform" in it, and leave its chart out.
+6. **Deliver the link:** after the tool returns, paste the PDF's download URL
+   from the tool result as a markdown link, plus a 3-line summary of the
+   headline numbers. Never write a link the tool did not return.
 
 ---
 
