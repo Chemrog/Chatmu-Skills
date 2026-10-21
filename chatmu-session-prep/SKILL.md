@@ -20,7 +20,7 @@ subcategory: studio
 shortDesc: "Prepare an Ableton session to mix: roles, names, order, DRUMS/MELODIC/VOCALS buses, gain staging"
 version: "1.0"
 tags: ["studio", "ableton", "mixing", "mezcla", "session-prep", "gain-staging", "buses", "co-producer"]
-requiresTools: ["local_ableton_snapshot", "local_ableton_tracks", "local_ableton_status", "local_ableton_devices", "local_ableton_device_params", "local_ableton_edit_track", "local_ableton_mixer", "local_ableton_apply", "local_ableton_group_tracks", "local_ableton_load_devices", "local_ableton_set_device_param", "local_ableton_tempo_map", "local_ableton_transport", "local_ableton_song", "local_ableton_undo", "local_ears_ensure_plugin", "local_ears_listen"]
+requiresTools: ["local_ableton_snapshot", "local_ableton_tracks", "local_ableton_status", "local_ableton_devices", "local_ableton_device_params", "local_ableton_edit_track", "local_ableton_mixer", "local_ableton_apply", "local_ableton_group_tracks", "local_ableton_move_track", "local_ableton_load_devices", "local_ableton_set_device_param", "local_ableton_tempo_map", "local_ableton_transport", "local_ableton_song", "local_ableton_undo", "local_ears_ensure_plugin", "local_ears_listen"]
 ---
 
 # Chatmu — Session Prep (Progressive Mixing, part 1)
@@ -74,9 +74,11 @@ If the user just says "mezcla mi canción", run `prep`, deliver, and offer to co
 6. **One listen at a time;** never parallel `local_ears_listen` calls.
 7. **Approvals:** every device load needs an on-screen approval → batch loads with
    `local_ableton_load_devices` (up to 8, ONE approval). Deleting / creating tracks and
-   `local_ableton_group_tracks` ask once per call. Tell the user "aprueba en la app".
-8. **Not available as tools:** reordering tracks (manual: the user drags, you re-verify by
-   name) and Master sends (Live's Master has none).
+   `local_ableton_group_tracks` ask once per call; `local_ableton_move_track` asks once per
+   batch. Tell the user "aprueba en la app".
+8. **Not available as tools:** Master sends (Live's Master has none). Reordering tracks is
+   `local_ableton_move_track` (experimental); if it's missing or fails, the user drags and
+   you re-verify by name.
 
 ---
 
@@ -130,13 +132,17 @@ VOCALS? Any track the user wants outside the tree?
    - Empty/duplicate tracks: only with explicit OK, `local_ableton_edit_track`
      `{ action: "delete", index, expectName }` (approval each). Default: leave them muted at
      the end of the set and list them in the deliverables.
-3. **Order (manual step):** give the user the exact target order as a numbered list of
-   track **names**, top to bottom, family by family:
+3. **Order:** show the user the exact target order as a numbered list of track **names**,
+   top to bottom, family by family:
    DRUMS (Kick → Snare/Clap → Hats → Perc) · BASE (Bass → Guitars) · KEYS · LEAD ·
-   VOCALS (Lead Vox → Doubles → Chops → Ambiences). Then: "Arrastra las pistas en Live a
-   este orden y avísame". When they say done: `local_ableton_tracks` and compare name by
-   name. Show any difference and ask again. Grouping needs each family **contiguous**, so
-   don't group until the order matches.
+   VOCALS (Lead Vox → Doubles → Chops → Ambiences). With their OK, reorder with
+   `local_ableton_move_track` `{ moves: [{ index, expectName, toIndex }, ...] }` (≤ 16
+   moves, ONE approval; each move's indexes refer to the list after the previous moves;
+   a track only moves among its siblings — if the error lists valid `toIndex` values, use
+   one of them). Then `local_ableton_tracks` and compare name by name.
+   **Fallback** (tool missing, disabled or failed): "Arrastra las pistas en Live a este
+   orden y avísame", then re-read and compare. Grouping needs each family **contiguous**,
+   so don't group until the order matches.
 4. **Group proposal:** the bus tree table (built in phase 3):
 
 ```

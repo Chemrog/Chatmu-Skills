@@ -68,8 +68,9 @@ la reviso sin tocar nada?"
    compare, never to certify loudness. Delivery numbers only from an export (phase 7).
 6. **Approvals:** one per device load → load per **bus** (not per track) and batch with
    `local_ableton_load_devices` (≤ 8 loads, ONE approval).
-7. **Not available:** reordering tracks (manual, re-verify by name), Master sends (none in
-   Live), moving devices inside a chain (ask the user to drag).
+7. **Not available:** Master sends (none in Live), moving devices inside a chain (ask the
+   user to drag). Reordering tracks: `local_ableton_move_track` (experimental; if it fails,
+   the user drags and you re-verify by name).
 8. **Bass stays in MELODIC → BASE.** Never a 4th top fader.
 9. One `local_ears_listen` at a time.
 
