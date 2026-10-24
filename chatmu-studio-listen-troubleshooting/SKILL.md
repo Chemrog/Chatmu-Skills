@@ -8,18 +8,19 @@ description: >
   Audio plugin on the Master. Trigger phrases: "escucha", "escuchar", "escucha
   mi sesión", "qué suena", "no suena", "no se escucha", "silencio", "no oigo
   nada", "dale play", "listen", "listen to my track", "it's silent", "nothing
-  plays", "silent_capture", "Session", "Arrangement", "Ableton".
+  plays", "silent_capture", "Session", "Arrangement", "Ableton", "captura
+  de pantalla", "foto de Ableton", "screenshot".
 compatibility: chatmu
 category: creative
 subcategory: studio
 shortDesc: "Listen to the Ableton session reliably: play from the music, Session vs Arrangement, silent captures"
-version: "1.0"
+version: "1.1"
 tags: [studio, ableton, ears, listen, escuchar, troubleshooting, co-producer]
 requiresTools: ["local_ableton_status", "local_ableton_snapshot", "local_ableton_transport", "local_ears_listen", "local_ears_ensure_plugin"]
 ---
 
 # Chatmu Studio — Listen & Troubleshoot
-**Version:** 1.0
+**Version:** 1.1
 **Requires:** Chatmu Desktop (Co-Producer) with the local bridge, Ableton Live, Chatmu Ears.
 
 ## What does this Skill do?
@@ -94,6 +95,23 @@ silence. Can you check the Master volume / that you hear sound in your speakers?
 
 If a `plugin_not_streaming` error comes back: the plugin is missing or Live is not
 playing — use step 4 and step 6.
+
+## LAST RESORT: look at the Ableton window
+
+Only when the OSC state above does not explain it (or the user asks for a "foto" /
+screenshot), call `local_screen_capture` (no arguments). It captures ONLY the Ableton
+Live window, never the full screen, and returns an image (max 1600 px).
+- The first capture of a session asks the user's OK in the app; if they deny it,
+  do NOT ask again — continue with `local_ableton_snapshot` / `local_ableton_status`.
+- If it says the macOS Screen Recording permission is missing, give the user the
+  exact steps it returned (System Settings → Privacy & Security → Screen Recording,
+  enable Chatmu Desktop, reopen the app). Do not retry until they say it is done.
+- If Live is hidden/minimized, ask the user to bring its window to the front.
+- What to look for: the track meters moving (something IS sounding), whether the
+  clips sit in the Session grid or on the Arrangement timeline, where the playhead is,
+  the "Back to Arrangement" button lit.
+- If the result has no image you can see, say so and rely on the snapshot. Never
+  describe a screenshot you did not see.
 
 ## Reporting what you heard
 

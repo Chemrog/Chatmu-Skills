@@ -12,13 +12,13 @@ compatibility: chatmu
 category: creative
 subcategory: studio
 shortDesc: "Tell Session from Arrangement in Ableton and play, launch or move the music correctly"
-version: "1.0"
+version: "1.1"
 tags: [studio, ableton, session, arrangement, co-producer]
 requiresTools: ["local_ableton_snapshot", "local_ableton_fire", "local_ableton_transport", "local_ableton_arrangement"]
 ---
 
 # Chatmu Studio — Session vs Arrangement
-**Version:** 1.0
+**Version:** 1.1
 **Requires:** Chatmu Desktop (Co-Producer) bridge + Ableton Live.
 
 ## The two places music can live
@@ -52,6 +52,10 @@ Key facts:
    - Both → say both, ask which one the user means if it matters.
    - A Session slot with `is_playing` while the user expects the Arrangement →
      that is why the timeline is not heard: `back_to_arranger`.
+4. Still unsure, or the user asks for a screenshot ("toma una foto de Ableton")?
+   `local_screen_capture` returns an image of ONLY the Ableton window (first time per
+   session the user approves it in the app). Use it to confirm which view holds the
+   clips and whether the meters move; never describe an image you could not see.
 
 ## Moving Session ideas onto the timeline
 
