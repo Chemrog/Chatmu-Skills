@@ -6,27 +6,32 @@ description: >
   kit → bass → families → vocal) until the whole song fits in 3 faders DRUMS /
   MELODIC / VOCALS; minimal bus chains (Utility + EQ + compressor only where the
   diagnosis justifies it); depth in three planes F1 front / F2 middle / F3 back
-  with reverb sends; before/after measurement on the same bars; genre loudness
-  and crest-factor targets. Also a review mode that only diagnoses a mix and
+  with reverb sends; every change in real units (dB, Hz, ms) and in a closed
+  loop (measure → apply → measure → keep or undo), per-track levels and
+  masking with Chatmu Ears, sidechain by routing, a reference song as tonal
+  target, and a final check on an exported WAV; genre loudness and
+  crest-factor targets. Also a review mode that only diagnoses a mix and
   changes nothing. Trigger phrases: "mezcla", "mezclar", "mezcla mi canción",
   "mezcla progresiva", "balance", "balancea", "profundidad", "planos", "reverb",
   "compresión en el bus", "EQ", "revisa mi mezcla", "qué le falta a mi mezcla",
-  "diagnóstico de mezcla", "LUFS", "loudness", "mix my song", "mix this",
+  "diagnóstico de mezcla", "se pisan", "enmascaramiento", "el bajo tapa el
+  kick", "la voz no se entiende", "LUFS", "loudness", "mix my song", "mix this",
   "progressive mixing", "balance the mix", "depth", "bus compression", "review
   my mix", "mix review", "what's wrong with my mix", "mix feedback", "Ableton".
 compatibility: chatmu
 category: creative
 subcategory: studio
 shortDesc: "Progressive mix in Ableton: bus chains, kick-to-vocal balance, depth F1/F2/F3, review mode"
-version: "1.0"
-tags: ["studio", "ableton", "mixing", "mezcla", "mix-review", "buses", "depth", "loudness", "co-producer"]
-requiresTools: ["local_ableton_snapshot", "local_ableton_tracks", "local_ableton_status", "local_ableton_devices", "local_ableton_device_params", "local_ableton_browser", "local_ableton_load_devices", "local_ableton_apply", "local_ableton_mixer", "local_ableton_edit_track", "local_ableton_transport", "local_ableton_song", "local_ableton_tempo_map", "local_ableton_undo", "local_ableton_export", "local_ears_listen", "local_ears_analyze_file", "local_ears_render"]
+version: "1.1"
+tags: ["studio", "ableton", "mixing", "mezcla", "mix-review", "buses", "depth", "loudness", "masking", "closed-loop", "co-producer"]
+requiresTools: ["local_ableton_snapshot", "local_ableton_tracks", "local_ableton_status", "local_ableton_devices", "local_ableton_device_params", "local_ableton_browser", "local_ableton_load_devices", "local_ableton_apply", "local_ableton_mixer", "local_ableton_edit_track", "local_ableton_transport", "local_ableton_song", "local_ableton_tempo_map", "local_ableton_undo", "local_ableton_export", "local_ableton_set_device_param", "local_ableton_device_routing", "local_ableton_move_device", "local_ableton_lom", "local_ears_listen", "local_ears_analyze_file", "local_ears_render"]
 ---
 
 # Chatmu — Progressive Mixing (part 2)
-**Version:** 1.0
+**Version:** 1.1
 **Requires:** Chatmu Desktop (Co-Producer) bridge + Ableton Live (AbletonOSC + AbletonMCP control surfaces) + Chatmu Ears.
 **Run first:** `chatmu-session-prep`. **Listening checks:** `chatmu-studio-listen-troubleshooting`.
+**Also:** `chatmu-studio-sidechain`, `chatmu-studio-reference` (tonal target), `chatmu-studio-export` + `chatmu-master-check` (final numbers), `chatmu-master-chain` (after the mix).
 
 ## What this skill does
 
@@ -56,9 +61,11 @@ la reviso sin tocar nada?"
    done). If not, run `chatmu-session-prep` first.
 2. **Identity by name:** re-read `local_ableton_tracks` before every batch; match targets by
    name; pass `expectTrackName` on every load. Live renumbers.
-3. **Plan → OK → batch → measure → log.** Every change logged `target (index + name) ·
-   property · old → new`; undo = re-apply old values with `local_ableton_apply`, or
-   `local_ableton_undo` (say what is undone).
+3. **Closed loop, every change:** plan → OK → **measure before** → apply → **measure after**
+   (same bars, same method) → keep it only if the metric improved AND the user likes it;
+   otherwise `local_ableton_undo` (one step per write; say what is undone) or re-apply the
+   old values with `local_ableton_apply`. Log `target (index + name) · property · old → new
+   · metric before → after`.
 4. **Same bars:** every comparison uses the reference bars from prep (loop via
    `local_ableton_song` `loopStart`/`loopLength`/`loop` + `local_ableton_transport` play
    with the same `fromBeat` + same seconds; confirm with `local_ableton_status` that it is
@@ -68,9 +75,14 @@ la reviso sin tocar nada?"
    compare, never to certify loudness. Delivery numbers only from an export (phase 7).
 6. **Approvals:** one per device load → load per **bus** (not per track) and batch with
    `local_ableton_load_devices` (≤ 8 loads, ONE approval).
-7. **Not available:** Master sends (none in Live), moving devices inside a chain (ask the
-   user to drag). Reordering tracks: `local_ableton_move_track` (experimental; if it fails,
-   the user drags and you re-verify by name).
+7. **Real units, read first.** Before touching a device: `local_ableton_device_params`
+   (exact names, `display_value`, `value_items`). Write with `display` in real units
+   (`local_ableton_set_device_param { trackName, deviceName, param: "1 Frequency A",
+   display: "250 Hz" }`, or `local_ableton_apply` `device_param` + `display`) and answer with
+   what Live read back ("pedí −3 dB → quedó −3.0 dB"). Never write internal values you
+   guessed. Device order: `local_ableton_move_device`. Sidechain: `local_ableton_device_routing`
+   (`chatmu-studio-sidechain`). Not available: Master sends (none in Live).
+   **Never say something "is not exposed"** without `local_ableton_lom describe` first.
 8. **Bass stays in MELODIC → BASE.** Never a 4th top fader.
 9. One `local_ears_listen` at a time.
 
@@ -78,27 +90,41 @@ la reviso sin tocar nada?"
 
 ## Phase 4 — Minimal chains (only where the diagnosis justifies it)
 
-1. **Diagnose per bus:** solo the bus group (`local_ableton_apply` `solo: true` on the group
-   track), play the reference bars, `local_ears_listen` 8–10 s, un-solo. Read spectrum
-   (mud 200–400 Hz, harshness 2–5 kHz, sub rumble on non-bass buses), dynamics/crest,
-   stereo. Optional picture: `local_ears_render` with the capture id.
-2. **Propose per bus** (table: bus · problem heard · device · starting setting). Chain
+1. **Measure every track, not only the mix.** If `local_ears_track_levels` is available in
+   this version, call it on the reference bars (read its own parameter description): it
+   solos each track for a few seconds and returns per-track loudness and band balance, plus
+   **masking pairs** (e.g. kick vs bass at 40–120 Hz, vocal vs synths at 1–4 kHz) with a
+   suggested EQ cut (track, frequency, gain, Q). If the tool isn't there, do it by hand:
+   solo each track (or each bus group) with `local_ableton_apply` `solo: true`, play the
+   reference bars, `local_ears_listen` 6–8 s, un-solo — one listen at a time; compare the
+   band levels of the suspected pairs yourself.
+2. **Diagnose per bus:** read spectrum (mud 200–400 Hz, harshness 2–5 kHz, sub rumble on
+   non-bass buses), dynamics/crest, stereo, and the masking pairs. Compare the balance with
+   **role targets**: kick and bass are the anchor; lead vocal a few LU above the music bed;
+   pads/ambiences clearly below; genre lengths and tables in `chatmu-studio-genre-templates`,
+   a reference song via `chatmu-studio-reference`. Optional picture: `local_ears_render`.
+3. **Propose per bus** (table: bus · problem measured · device · starting setting). Chain
    order, max 3 devices: **Utility → EQ Eight → Compressor** (Glue Compressor is fine on
    DRUMS). No problem → no device. Typical starts (adjust by ear):
    - EQ: high-pass on KEYS / LEAD / VOCALS around 80–120 Hz; one wide cut where mud/harshness
      shows; avoid boosts > 3 dB.
    - Compressor: ratio 2:1–4:1, slow-ish attack on DRUMS (let transients through), aim
      for a few dB of gain reduction; makeup to match level (A/B at equal loudness).
-3. **Check availability:** `local_ableton_browser` `{ path: "audio_effects" }` if a device
+4. **Check availability:** `local_ableton_browser` `{ path: "audio_effects" }` if a device
    might not be in the user's Live edition (fall back to Compressor / EQ Three).
-4. **Load in one batch after OK:** `local_ableton_load_devices` `{ loads: [{ target: "track",
+5. **Load in one batch after OK:** `local_ableton_load_devices` `{ loads: [{ target: "track",
    trackIndex: <group index>, name: "EQ Eight", expectTrackName: "KEYS" }, …] }`. Load in
-   chain order per bus. Check each per-load result.
-5. **Set parameters:** `local_ableton_devices` (device indexes) → `local_ableton_device_params`
-   (exact names, min/max) → one `local_ableton_apply` batch of `{ type: "device_param",
-   track, device, param: "<exact name>", value }`. Never guess indexes or units.
-6. **Measure** the bus again on the same bars; keep the change only if it is better at
-   matched level. Log it.
+   chain order per bus. Check each per-load result; fix the order with
+   `local_ableton_move_device` if a device landed in the wrong place.
+6. **Set parameters in real units** (rule 7): `local_ableton_device_params` → one
+   `local_ableton_apply` batch of `{ type: "device_param", track, device, param: "<exact
+   name>", display: "-3 dB" }`. Report the read-back values.
+7. **Masking fix = closed loop (rule 3):** measure the pair → cut on the less important
+   track (e.g. bass −2 dB at 60 Hz, Q ~1, where the kick lives; synths −2 dB around 2–3 kHz
+   under the vocal) → measure the same pair again (`local_ears_track_levels` or the solo
+   listens) → keep only if the clash went down and the user likes it, else undo.
+8. **Kick vs bass in time** (not only EQ): sidechain the bass from the kick with
+   `chatmu-studio-sidechain` (subtle ducking row).
 
 ## Phase 5 — Progressive mix (bottom-up)
 
@@ -143,9 +169,10 @@ Steps:
    each), then one `local_ableton_load_devices` batch with `target: "return"`,
    `returnIndex`, `name: "Reverb"` (approval once). Returns are FX aux, never top faders;
    leave their volume at 0 dB and their reverbs 100 % wet.
-2. Return device parameters (decay, pre-delay): `local_ableton_apply` `device_param` with
-   `target: "return"` + `returnIndex`; if refused, keep the preset and tell the user which
-   knob to turn.
+2. Return device parameters (decay, pre-delay): `local_ableton_device_params { target:
+   "return", returnIndex, deviceName: "Reverb" }`, then `local_ableton_set_device_param
+   { target: "return", returnIndex, deviceName: "Reverb", param, display: "2.5 s" }` (one
+   call per parameter; `local_ableton_apply` device changes are tracks only).
 3. **Sends:** one `local_ableton_apply` batch of `send` changes (`sendId` A → 0). Never a
    tonal element at 100 % send; typical 0.1–0.4. F1 elements stay at 0 or a touch.
 4. F3 darkening: high-shelf/low-pass on the F3 bus or track EQ (phase 4 rules: only if the
@@ -156,15 +183,19 @@ Steps:
 
 1. **Same-bars A/B:** "after" listen with exactly the prep "before" loop, start beat and
    seconds. Report before → after (indicative).
-2. **Delivery-grade numbers (only if the user wants them, or before saying anything about
-   loudness targets):** `local_ableton_export` `{ action: "plan", start_bar, end_bar,
-   bit_depth: 32 }` → tell the user the plan's announcement (a realtime export plays the
+2. **Verify with a real file (always at the end of a stage):** `local_ableton_export`
+   `{ action: "plan", start_bar, end_bar, bit_depth: 32 }` → tell the user the plan's announcement (a realtime export plays the
    song out loud) → after OK, `action: "start"` (on-screen approval) → poll
    `action: "status"` every ~15 s → `local_ears_analyze_file` `{ path, tool: "diagnose" }`
    (or `loudness` / `dynamics`). Prefer `method: "native"` when available; a `realtime`
    export comes from the same pre-Master-fader stream, so add the Master's `observedDb` to
-   its loudness and say so.
-3. **Compare to the genre target** (table below). At mix stage, the targets are a reference
+   its loudness and say so. These file numbers are the only loudness / true-peak numbers you
+   may state. If no export could be made, the stage is **"no verificado"** with a file.
+   For the whole song, `chatmu-master-check` reads the same file as a delivery check.
+3. **Reference as tonal target** (if the user gave a song): `chatmu-studio-reference` with
+   that exported file vs the reference song; report the band gaps that remain and fix at
+   most 1–2 with the closed loop (then export and measure again).
+4. **Compare to the genre target** (table below). At mix stage, the targets are a reference
    for the final master: report the gap; adding a limiter / mastering on the Master is the
    artist's decision — offer, don't assume.
 
@@ -177,7 +208,7 @@ Steps:
 | Ambient / cinematic | -18 .. -14 | 14–20 dB | dynamics are the point |
 | Acoustic / singer-songwriter | -16 .. -13 | 12–16 dB | no aggressive limiting |
 
-4. Final snapshot: zero solos, zero arms, top faders = DRUMS · MELODIC · VOCALS, no tonal
+5. Final snapshot: zero solos, zero arms, top faders = DRUMS · MELODIC · VOCALS, no tonal
    element at 100 % send, loop/playback restored to the user's previous state.
 
 ## Phase 8 — Deliverables
