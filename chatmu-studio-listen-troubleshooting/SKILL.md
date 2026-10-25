@@ -8,19 +8,19 @@ description: >
   Audio plugin on the Master. Trigger phrases: "escucha", "escuchar", "escucha
   mi sesión", "qué suena", "no suena", "no se escucha", "silencio", "no oigo
   nada", "dale play", "listen", "listen to my track", "it's silent", "nothing
-  plays", "silent_capture", "Session", "Arrangement", "Ableton", "captura
+  plays", "silent_capture", "not_playing", "Session", "Arrangement", "Ableton", "captura
   de pantalla", "foto de Ableton", "screenshot".
 compatibility: chatmu
 category: creative
 subcategory: studio
 shortDesc: "Listen to the Ableton session reliably: play from the music, Session vs Arrangement, silent captures"
-version: "1.1"
-tags: [studio, ableton, ears, listen, escuchar, troubleshooting, co-producer]
-requiresTools: ["local_ableton_status", "local_ableton_snapshot", "local_ableton_transport", "local_ears_listen", "local_ears_ensure_plugin"]
+version: "1.2"
+tags: ["studio", "ableton", "ears", "listen", "escuchar", "troubleshooting", "co-producer"]
+requiresTools: ["local_ableton_status", "local_ableton_snapshot", "local_ableton_transport", "local_ears_listen", "local_ears_ensure_plugin", "local_screen_capture", "local_open_system_settings"]
 ---
 
 # Chatmu Studio — Listen & Troubleshoot
-**Version:** 1.1
+**Version:** 1.2
 **Requires:** Chatmu Desktop (Co-Producer) with the local bridge, Ableton Live, Chatmu Ears.
 
 ## What does this Skill do?
@@ -74,6 +74,17 @@ Answer the user in their language (usually Spanish). Keep it short.
 7. **Listen:** `local_ears_listen` `{ seconds: 8–20 }`. Keep the capture shorter than
    the remaining music (if the music ends 6 s after fromBeat, listen 6 s or loop it).
 
+## `not_playing` and early `silent_capture`
+
+- **`not_playing`** comes back at once (nothing captured) when Live is stopped. It is a
+  valid answer, not a failure: start playback where the music is (step 5) and listen ONCE
+  more, or tell the user "No está sonando nada: ¿le diste play?". Only to hear a
+  `local_synth_note` with Live stopped, pass `allow_stopped: true`.
+- **`silent_capture`** may now arrive after ~6 s (`stopped_after_s`, `silence_abort_s`
+  5–10) instead of the full length, with `cause`, `hint` and what Live shows (isPlaying,
+  cursor vs the last Arrangement clip, Session clips playing). Use those fields first; they
+  usually name the fix. Then the table below.
+
 ## AFTER A `silent_capture`
 
 Run these in order, stop at the first one that explains it, fix it, retry ONCE:
@@ -103,9 +114,10 @@ screenshot), call `local_screen_capture` (no arguments). It captures ONLY the Ab
 Live window, never the full screen, and returns an image (max 1600 px).
 - The first capture of a session asks the user's OK in the app; if they deny it,
   do NOT ask again — continue with `local_ableton_snapshot` / `local_ableton_status`.
-- If it says the macOS Screen Recording permission is missing, give the user the
-  exact steps it returned (System Settings → Privacy & Security → Screen Recording,
-  enable Chatmu Desktop, reopen the app). Do not retry until they say it is done.
+- If it answers `needs_permission` (macOS Screen Recording), Chatmu Desktop shows a
+  **«Permitir»** card and retries for you: tell the user in ONE line to press it. **Never
+  write System Settings paths in text.** Outside Chatmu Desktop, open the exact pane with
+  `local_open_system_settings { pane: "screen_recording" }` and name the switch in one line.
 - If Live is hidden/minimized, ask the user to bring its window to the front.
 - What to look for: the track meters moving (something IS sounding), whether the
   clips sit in the Session grid or on the Arrangement timeline, where the playhead is,
