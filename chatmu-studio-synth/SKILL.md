@@ -5,8 +5,9 @@ description: >
   Chatmu's own synth plugin (VST3): shape its sound ("más brillante", "menos
   reverb", "más aire", "ataque más suave", "más vibrato", "más sucio"), set
   exact parameters, add or remove modulations, play a test note, load or save a
-  preset, or find the audio they dropped on the plugin. Covers installing it and
-  finding the open instance. Trigger phrases: "Chatmu Synth", "el sinte", "el
+  preset, or find the audio they dropped on the plugin (cloning a recording:
+  chatmu-studio-clone-sound). Covers installing it and finding the open
+  instance. Trigger phrases: "Chatmu Synth", "el sinte", "el
   synth", "el sintetizador", "hazlo más brillante", "ábrele el filtro", "quítale
   reverb", "más aire", "toca una nota", "carga este preset", "guarda el preset",
   "solté un audio en el sinte", "make the synth brighter", "synth preset".
@@ -14,15 +15,15 @@ compatibility: chatmu
 category: creative
 subcategory: studio
 shortDesc: "Drive Chatmu Synth: character knobs, exact parameters, modulations, test notes and presets"
-version: "1.0"
-tags: [studio, synth, sinte, chatmu-synth, sound-design, preset, co-producer]
-requiresTools: ["local_synth_status", "local_synth_character", "local_synth_list_params", "local_synth_set_params", "local_synth_get_preset", "local_synth_set_preset", "local_synth_modulate", "local_synth_unmodulate", "local_synth_note", "local_synth_dropped_audio", "local_repair"]
+version: "1.1"
+tags: ["studio", "synth", "sinte", "chatmu-synth", "sound-design", "preset", "co-producer"]
+requiresTools: ["local_synth_status", "local_synth_character", "local_synth_list_params", "local_synth_set_params", "local_synth_get_preset", "local_synth_set_preset", "local_synth_modulate", "local_synth_unmodulate", "local_synth_note", "local_synth_dropped_audio", "local_synth_clone", "local_repair"]
 ---
 
 # Chatmu Studio — Chatmu Synth
-**Version:** 1.0
+**Version:** 1.1
 **Requires:** Chatmu Desktop bridge + Chatmu Synth (VST3) loaded on a track in the user's DAW. Beta: Apple silicon Macs only.
-**Related:** chatmu-studio-listen-troubleshooting (hearing the result), chatmu-studio-compose-core (writing MIDI for it).
+**Related:** chatmu-studio-clone-sound (clone a recording, audio → MIDI), chatmu-studio-sound-design (recipes), chatmu-studio-listen-troubleshooting (hearing the result), chatmu-studio-compose-core (writing MIDI for it).
 
 ## What does this Skill do?
 
@@ -36,12 +37,13 @@ Answer in the user's language (usually Spanish). Short messages.
 ## HARD RULES
 
 1. **Always call it "Chatmu Synth".** Never name the project it was derived from, and never send the user to third-party synth sites or presets.
-2. **Character knobs first.** For any broad request ("brighter", "less reverb", "more air") use `local_synth_character`. It moves relative offsets over the preset's own values: 0 = the preset as it was, so it never destroys a cloned or designed sound. Use `local_synth_set_params` only for a precise, named change.
+2. **Character knobs first.** The 8 knobs are in BOTH the Simple and the Advanced view of the plugin. For any broad request ("brighter", "less reverb", "more air") use `local_synth_character`. It moves relative offsets over the preset's own values: 0 = the preset as it was, so it never destroys a cloned or designed sound. Use `local_synth_set_params` only for a precise, named change.
 3. **Never guess a parameter name.** Call `local_synth_list_params` with a filter (`filter_1`, `env_1`, `osc_1`, `reverb`, `lfo_1`…) before `local_synth_set_params` or `local_synth_modulate`.
 4. **Small steps.** Knobs go from -1 to 1: move 0.2–0.4, check, then adjust. Never jump to ±1 on the first try.
 5. **`local_synth_set_preset` replaces the whole sound.** Before it, offer to save the current one (`local_synth_get_preset` with `save_to`). Never load a preset the user didn't ask for.
-6. **There is no cloning in this version.** If the user asks to clone a recording into the synth, say it's coming in an update; meanwhile you can shape the current preset toward it with the knobs (and listen to both with Chatmu Ears).
-7. **Never invent where a setting lives** in the DAW or the plugin. If it isn't in this skill, say you're not sure.
+6. **Cloning a recording = `chatmu-studio-clone-sound`** (`local_synth_clone`; the Clone button / drop zone is in both the Simple and the Advanced view). "Pásalo a MIDI" = `local_audio_to_midi` (same skill). Never say cloning doesn't exist.
+7. **A guide vocal / a synth that sings the melody is NOT a tool in this version.** A prototype exists; say it's in development, don't promise a date and don't try to fake it.
+8. **Never invent where a setting lives** in the DAW or the plugin. If it isn't in this skill, say you're not sure.
 
 ## Phase 0 — Find the synth (read only)
 
@@ -100,4 +102,4 @@ Call it with only the knobs you move (`{"brightness": 0.3}`); the reply has the 
 
 ## Dropped audio
 
-When the user says "el audio que solté" / "este sonido" after dropping a file on the plugin's Simple view, `local_synth_dropped_audio` gives its path. Today you can analyze it with Chatmu Ears and shape the synth toward it by ear; cloning it automatically comes in a later update (rule 6).
+When the user says "el audio que solté" / "este sonido" after dropping a file on the plugin (drop zone or Clone button, Simple or Advanced view), `local_synth_dropped_audio` gives its path. "Clónalo" → `chatmu-studio-clone-sound` (`local_synth_clone` without `path` uses this file).
