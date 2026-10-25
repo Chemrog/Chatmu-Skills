@@ -9,20 +9,21 @@ description: >
   delivering it. Trigger phrases: "exporta", "exporta la canción", "rebota",
   "rebotar", "saca el master", "quiero el WAV", "dame el audio", "para
   distribuir", "stems", "pistas separadas", "en MP3", "bounce", "render",
-  "export my song", "ponlo en mis descargas".
+  "export my song", "ponlo en mis descargas", "pásalo a Descargas", "cópialo a
+  mi escritorio".
 compatibility: chatmu
 category: creative
 subcategory: studio
 shortDesc: "Export the Ableton song (or a range / stems) to WAV/MP3 with the right range and duration, verified before delivery"
-version: "1.1"
-tags: [studio, ableton, export, bounce, exportar, wav, mp3, stems, co-producer]
-requiresTools: ["local_ableton_status", "local_ableton_snapshot", "local_ableton_export", "local_ears_ensure_plugin", "local_ears_analyze_file"]
+version: "1.2"
+tags: ["studio", "ableton", "export", "bounce", "exportar", "wav", "mp3", "stems", "co-producer"]
+requiresTools: ["local_ableton_status", "local_ableton_snapshot", "local_ableton_export", "local_ears_ensure_plugin", "local_ears_analyze_file", "local_copy_file", "local_list_access"]
 ---
 
 # Chatmu Studio — Export (bounce)
-**Version:** 1.1
+**Version:** 1.2
 **Requires:** Chatmu Desktop bridge + Ableton Live. Realtime needs the **Co-Producer Audio** plugin on the Master. Live's own exporter needs the setting in Chatmu Desktop + macOS Accessibility.
-**Related:** chatmu-studio-listen-troubleshooting (playback/plugin checks), chatmu-studio-session-vs-arrangement.
+**Related:** chatmu-studio-listen-troubleshooting (playback/plugin checks), chatmu-studio-session-vs-arrangement. **Next:** chatmu-master-check (¿listo para distribuir?).
 
 ## What does this Skill do?
 
@@ -39,7 +40,7 @@ Answer in the user's language (usually Spanish). Short messages, tables for the 
 2. **Never pass a range you invented.** Round bar numbers ("1–128", "1–85") are almost always past the end of the music: Live stops and the export aborts with «playback stopped». No range = whole Arrangement up to the end of the last clip, the correct default for "la canción completa".
 3. **The Set's end marker is not the end of the music.** The last beat with audio = max end across all arrangement clips (snapshot). The end locator can sit tens of seconds later.
 4. **Read the tempo before exporting.** If it is not what the user expects (e.g. 151 BPM on a song written at 87), STOP. You have `local_ableton_set_tempo`, but never change tempo without the user saying the exact number.
-5. **Decide the destination folder BEFORE exporting** (see Phase 1). You have no tool to move or copy files afterwards.
+5. **Ask the destination folder BEFORE exporting** (see Phase 1) and export straight there. If they ask afterwards, copy it with `local_copy_file` (never the terminal).
 6. **Realtime plays OUT LOUD.** Announce the duration, get a clear OK, tell the user not to touch Live while it runs.
 7. **Never say "listo" from `state: done` alone.** Check silence, `lostFrames` and the length (Phase 5).
 8. **One export at a time;** it blocks the other Live tools. Poll every ~15 s, not in a tight loop.
@@ -80,7 +81,7 @@ If the plugin is missing and the method will be realtime: say so and offer `inst
 - Default: `~/Music/Chatmu Exports`.
 - "en mis descargas", "para pasármelo al cel", "donde lo encuentre" → pass `folder: "<home>/Downloads"` (absolute path).
 - If that folder is not granted yet, Chatmu Desktop shows an approval card: tell the user "te va a salir un permiso para guardar en Descargas, acéptalo".
-- If they ask AFTER the export to move it: you cannot move or copy files (moving needs the terminal tool, which is off by default and asks approval every time). The honest options: (1) export again into Descargas (repeat the plan + OK), or (2) give them the exact path so they open it in Finder and drag it. Never give instructions for menus or settings that are not in this skill.
+- If they ask AFTER the export ("ponlo en Descargas"): `local_copy_file { source: <exported file>, destination: "~/Downloads" }` (one folder approval at most; never overwrites unless they ask). Copy the MP3 too if there is one. Report the new full path. Prefer copy over `local_move_file` (move needs write access on both folders). Never send them to the terminal or to menus that are not in this skill.
 
 ## Phase 2 — Plan (never skip)
 
@@ -116,12 +117,12 @@ Wait for an explicit OK. A "sí" to an earlier unrelated question is not an OK f
 
 ## Phase 6 — Deliver
 
-Table: file · duration · rate/bit depth · size · **full path**. Plus one honest line on quality (loudness, any gaps). If it has problems, say how much silence and how many gaps and offer the fixes below. Never present a gapped or silent file as the master.
+Table: file · duration · rate/bit depth · size · **full path**. If it is for release ("para distribuir", "para Spotify"), offer `chatmu-master-check` on this file. Plus one honest line on quality (loudness, any gaps). If it has problems, say how much silence and how many gaps and offer the fixes below. Never present a gapped or silent file as the master.
 
 ## Methods: realtime vs Live's exporter
 
 - **Realtime (default):** plays the song through the Co-Producer Audio plugin and records it. Needs the plugin on the Master. Takes as long as the song.
-- **Live's exporter (faster, no playback):** the user turns it on in **Chatmu Desktop → Estudio → panel de Ableton → sección Exportar → casilla «Exportar con el exportador de Live»** (not in Conectores), and grants **Ajustes del Sistema → Privacidad y seguridad → Accesibilidad → Chatmu Desktop**. Then pass `method: "native"` (or leave `auto`). It uses Live's own Export dialog with whatever settings Live remembers; stems still go realtime. If anything does not match, it cancels and falls back to realtime with a warning.
+- **Live's exporter (faster, no playback):** the user turns it on in **Chatmu Desktop → Ajustes → Co-Producer → tarjeta «Ableton Live» → sección «Exportar» → casilla «Exportar con el exportador de Live»** (not in Conectores; if the tool's `methodNote` names another place, use that). It also needs macOS Accessibility: if it's missing, Chatmu Desktop shows a **«Permitir»** card — tell the user in one line to press it. **Never write System Settings paths in text.** Then pass `method: "native"` (or leave `auto`). It uses Live's own Export dialog with whatever settings Live remembers; stems still go realtime. If anything does not match, it cancels and falls back to realtime with a warning.
 - Last resort: the user exports by hand in Live, **File → Export Audio/Video** (Cmd+Shift+R).
 
 ## Failure table (stop at the first row that explains it)
@@ -129,6 +130,7 @@ Table: file · duration · rate/bit depth · size · **full path**. Plus one hon
 | Síntoma | Causa real | Arreglo |
 |---|---|---|
 | «playback stopped», aborts mid-way | range past the end of the music, or transport stopped | recompute the last clip; export without range |
+| `errorCode: "silent_export"` (realtime stopped after ~6 s of silence, Live restored) | the range starts where nothing plays, or the music is in Session | move the range to where the clips are (snapshot) or fix Session vs Arrangement — don't retry the same range |
 | file is silent, `lostFrames: 0` | the export never started playback / music is in Session, not Arrangement | check `isPlaying` in a re-run; chatmu-studio-session-vs-arrangement |
 | hundreds of gaps ~20 ms | realtime stream drops packets | Live's exporter (setting above) or File → Export Audio |
 | file sounds fast / short | Set tempo is not the project tempo | user confirms the tempo; fix in Live |
@@ -156,6 +158,6 @@ Retry at most twice. Three identical failures = infrastructure: change method in
 - Don't pass round bar numbers when the user asked for the whole song.
 - Don't state minutes from beats/bpm arithmetic.
 - Don't call it done from `state: done` alone.
-- Don't promise to move or copy the file afterwards; export where they want it.
+- Don't tell the user to move files by hand or with the terminal: `local_copy_file`.
 - Don't send the user to settings or menus that are not written here.
 - Don't retry a third time without changing method.
