@@ -13,7 +13,7 @@ category: creative
 subcategory: studio
 shortDesc: "Tell Session from Arrangement in Ableton and play, launch or move the music correctly"
 version: "1.1"
-tags: [studio, ableton, session, arrangement, co-producer]
+tags: ["studio", "ableton", "session", "arrangement", "co-producer"]
 requiresTools: ["local_ableton_snapshot", "local_ableton_fire", "local_ableton_transport", "local_ableton_arrangement"]
 ---
 

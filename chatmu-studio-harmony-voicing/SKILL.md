@@ -12,7 +12,7 @@ category: creative
 subcategory: studio
 shortDesc: "Chord progressions by genre with correct numerals, voicings and voice leading"
 version: "1.0"
-tags: [studio, ableton, harmony, chords, acordes, voicing, co-producer]
+tags: ["studio", "ableton", "harmony", "chords", "acordes", "voicing", "co-producer"]
 requiresTools: ["local_ableton_create_clip", "local_ableton_write_notes", "local_ableton_get_notes"]
 ---
 

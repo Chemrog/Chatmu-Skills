@@ -13,7 +13,7 @@ category: creative
 subcategory: studio
 shortDesc: "Compose MIDI in Ableton: clip flow, pitch map, ranges, melody rules"
 version: "1.0"
-tags: [studio, ableton, compose, melody, melodía, midi, co-producer]
+tags: ["studio", "ableton", "compose", "melody", "melodía", "midi", "co-producer"]
 requiresTools: ["local_ableton_snapshot", "local_ableton_create_clip", "local_ableton_write_notes", "local_ableton_get_notes", "local_ableton_fire"]
 ---
 

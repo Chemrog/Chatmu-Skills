@@ -12,7 +12,7 @@ category: creative
 subcategory: studio
 shortDesc: "Swing, timing and velocity humanization for Ableton MIDI, by genre"
 version: "1.0"
-tags: [studio, ableton, humanize, swing, groove, midi, co-producer]
+tags: ["studio", "ableton", "humanize", "swing", "groove", "midi", "co-producer"]
 requiresTools: ["local_ableton_get_notes", "local_ableton_write_notes", "local_ableton_status"]
 ---
 

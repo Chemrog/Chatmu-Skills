@@ -13,7 +13,7 @@ category: creative
 subcategory: studio
 shortDesc: "Genre starting points for Ableton: BPM, keys, chords, drums, sounds, structure"
 version: "1.0"
-tags: [studio, ableton, genre, reggaeton, trap, lofi, house, pop, rnb, co-producer]
+tags: ["studio", "ableton", "genre", "reggaeton", "trap", "lofi", "house", "pop", "rnb", "co-producer"]
 requiresTools: ["local_ableton_snapshot", "local_ableton_set_tempo", "local_ableton_edit_track", "local_ableton_browser", "local_ableton_load_device", "local_ableton_arrangement"]
 ---
 

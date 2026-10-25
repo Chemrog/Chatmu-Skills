@@ -13,7 +13,7 @@ category: creative
 subcategory: studio
 shortDesc: "Record in Ableton with count-in, arming, quantization and Capture MIDI"
 version: "1.0"
-tags: [studio, ableton, record, grabar, co-producer]
+tags: ["studio", "ableton", "record", "grabar", "co-producer"]
 requiresTools: ["local_ableton_record", "local_ableton_tracks", "local_ableton_snapshot"]
 ---
 

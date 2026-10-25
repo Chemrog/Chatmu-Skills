@@ -13,7 +13,7 @@ category: creative
 subcategory: studio
 shortDesc: "Genre-correct drum patterns for Ableton Drum Rack (dembow, trap, house, lo-fi…)"
 version: "1.0"
-tags: [studio, ableton, drums, batería, reggaeton, trap, house, co-producer]
+tags: ["studio", "ableton", "drums", "batería", "reggaeton", "trap", "house", "co-producer"]
 requiresTools: ["local_ableton_snapshot", "local_ableton_create_clip", "local_ableton_write_notes", "local_ableton_load_device"]
 ---
 
