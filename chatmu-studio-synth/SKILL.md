@@ -23,7 +23,7 @@ requiresTools: ["local_synth_status", "local_synth_character", "local_synth_list
 # Chatmu Studio — Chatmu Synth
 **Version:** 1.1
 **Requires:** Chatmu Desktop bridge + Chatmu Synth (VST3) loaded on a track in the user's DAW. Beta: Apple silicon Macs only.
-**Related:** chatmu-studio-clone-sound (clone a recording, audio → MIDI), chatmu-studio-sound-design (recipes), chatmu-studio-listen-troubleshooting (hearing the result), chatmu-studio-compose-core (writing MIDI for it).
+**Related:** chatmu-studio-clone-sound (clone a recording, audio → MIDI), chatmu-studio-sound-design (new sounds: factory library, recipes), chatmu-studio-listen-troubleshooting (hearing the result), chatmu-studio-compose-core (writing MIDI for it).
 
 ## What does this Skill do?
 

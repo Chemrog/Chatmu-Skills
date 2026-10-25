@@ -26,7 +26,7 @@ requiresTools: ["local_synth_status", "local_synth_dropped_audio", "local_synth_
 # Chatmu Studio — Clone a sound (Chatmu Synth) + audio → MIDI
 **Version:** 1.0
 **Requires:** Chatmu Desktop bridge + Chatmu Ears (with timbre clone) + Chatmu Synth (VST3) on a MIDI track. Beta: Apple silicon Macs only.
-**Related:** `chatmu-studio-synth` (knobs, presets, parameters), `chatmu-studio-sound-design` (recipes from scratch), `chatmu-studio-listen-troubleshooting`.
+**Related:** `chatmu-studio-synth` (knobs, presets, parameters), `chatmu-studio-sound-design` (any sound by instrument, genre or character: factory library, recipes), `chatmu-studio-listen-troubleshooting`.
 
 ## What does this Skill do?
 

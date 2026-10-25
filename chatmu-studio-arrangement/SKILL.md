@@ -7,13 +7,14 @@ description: >
   drop, outro) in bars, measures the energy curve per section (loudness with
   Chatmu Ears + density of active tracks), and suggests transitions (risers,
   fills, quitar elementos, drops, cambios) where the energy doesn't move. Only
-  proposes; applies (locators, fills, risers) with the user's OK. Trigger
-  phrases: "cómo está la estructura", "¿cómo está la estructura de mi
-  canción?", "revisa el arreglo", "arreglo", "estructura", "secciones", "mapa
-  de la canción", "pon los locators", "marca las secciones", "se siente plana",
-  "no crece", "le falta un cambio", "el coro no explota", "es muy larga",
-  "transiciones", "song structure", "arrangement review", "sections", "the
-  song feels flat", "Arrangement", "Ableton".
+  proposes; applies (locators, fills, risers) with the user's OK. To plan or
+  build the form of a new song, or jump/record from a section, use
+  chatmu-studio-song-structure instead. Trigger phrases: "cómo está la
+  estructura", "¿cómo está la estructura de mi canción?", "revisa el arreglo",
+  "revisa la estructura", "mapa de la canción", "marca las secciones", "se
+  siente plana", "no crece", "le falta un cambio", "el coro no explota", "es
+  muy larga", "transiciones", "arrangement review", "the song feels flat",
+  "energy curve", "Arrangement".
 compatibility: chatmu
 category: creative
 subcategory: studio
@@ -26,7 +27,7 @@ requiresTools: ["local_ableton_snapshot", "local_ableton_arrangement", "local_ab
 # Chatmu Studio — Arrangement structure
 **Version:** 1.0
 **Requires:** Chatmu Desktop bridge + Ableton Live + Chatmu Ears.
-**Uses:** `chatmu-studio-genre-templates` (typical lengths per genre), `chatmu-studio-drop-buildup` (risers, drops), `chatmu-studio-automation`, `chatmu-studio-drums-by-genre` (fills), `chatmu-studio-session-vs-arrangement`, `chatmu-studio-listen-troubleshooting`.
+**Uses:** `chatmu-studio-song-structure` (planning or building the form, jumping to a section), `chatmu-studio-genre-templates` (typical lengths per genre), `chatmu-studio-drop-buildup` (risers, drops), `chatmu-studio-automation`, `chatmu-studio-drums-by-genre` (fills), `chatmu-studio-session-vs-arrangement`, `chatmu-studio-listen-troubleshooting`.
 
 ## What does this Skill do?
 

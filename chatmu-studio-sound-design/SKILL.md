@@ -16,7 +16,7 @@ description: >
 compatibility: chatmu
 category: creative
 subcategory: studio
-shortDesc: "Any sound in Chatmu Synth: factory library by genre/instrument, classic recipes, design from scratch, or from a reference"
+shortDesc: "Any sound in Chatmu Synth: factory library by genre/instrument, classic recipes, design from scratch, or a reference"
 version: "2.0"
 tags: [studio, synth, sound-design, diseño-sonoro, presets, library, genre, pluck, pad, supersaw, "808", growl, bass, brass, strings, chatmu-synth, co-producer]
 requiresTools: ["local_synth_status", "local_synth_set_preset", "local_synth_set_params", "local_synth_list_params", "local_synth_modulate", "local_synth_unmodulate", "local_synth_get_preset", "local_synth_note", "local_synth_character", "local_ears_listen", "local_ears_ensure_plugin"]
@@ -64,7 +64,7 @@ User → Library). Index: `library.json` in that folder, one entry per preset:
 - **Character:** `Dark` (brightness < 700 Hz) · `Warm` · `Bright` (> 2.5 kHz); `Short` = dies within a second (plucks, stabs, one-shot hits).
 
 How to pick:
-1. Find the entries for the genre + instrument (when `local_synth_find_preset` exists use it; until then, build the path from the name pattern and the folder listing in `library.json`).
+1. Find the entries for the genre + instrument (if the bridge lists a preset-search tool, use it; otherwise build the path from the name pattern and the folder listing in `library.json`).
 2. Match the character words: oscuro/grave/redondo → Dark; cálido/suave → Warm; brillante/agudo/con brillo → Bright; corto/staccato/golpe → Short.
 3. No exact genre? Use the nearest genre for that instrument (reggaetón ↔ tropical ↔ cumbia; trap ↔ drill ↔ phonk; house ↔ techno ↔ EDM; lo-fi ↔ hip-hop ↔ R&B) and say so.
 4. Offer 2–3 candidates when several fit; load the first with `local_synth_set_preset { file }`, play a note in its `register_midi`, let the user switch ("pon el siguiente").
