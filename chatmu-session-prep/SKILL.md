@@ -6,8 +6,13 @@ description: >
   names, a stable mixer order, the bus tree DRUMS / MELODIC / VOCALS (groups),
   gain staging (school A or B), zero armed tracks and solos, sane sends, and a
   before/after measurement on the same bars. Reversible and measurable: it
-  never moves the creative balance and never adds EQ or compression. Trigger
-  phrases: "prepara la sesión", "preparar la sesión para mezclar", "ordena la
+  never moves the creative balance and never adds EQ or compression. Also a
+  "solo ordenar" mode (organize only: names, colors by role, order, groups,
+  empty/duplicate tracks — no gain staging, no buses processing). Trigger
+  phrases: "ordena mi sesión", "ordena mi mezcla", "organiza mi mezcla",
+  "solo ordénala", "ponle nombres y colores", "nombres y colores", "colores
+  por rol", "agrupa lo melódico", "los drums a la izquierda", "quita las
+  pistas vacías", "pistas duplicadas", "prepara la sesión", "preparar la sesión para mezclar", "ordena la
   sesión", "limpia la sesión", "organiza las pistas", "renombra las pistas",
   "agrupa las pistas", "crea los grupos", "buses", "gain staging", "ganancia",
   "headroom", "deja la sesión lista para mezclar", "antes de mezclar",
@@ -18,13 +23,13 @@ compatibility: chatmu
 category: creative
 subcategory: studio
 shortDesc: "Prepare an Ableton session to mix: roles, names, order, DRUMS/MELODIC/VOCALS buses, gain staging"
-version: "1.0"
-tags: ["studio", "ableton", "mixing", "mezcla", "session-prep", "gain-staging", "buses", "co-producer"]
-requiresTools: ["local_ableton_snapshot", "local_ableton_tracks", "local_ableton_status", "local_ableton_devices", "local_ableton_device_params", "local_ableton_edit_track", "local_ableton_mixer", "local_ableton_apply", "local_ableton_group_tracks", "local_ableton_move_track", "local_ableton_load_devices", "local_ableton_set_device_param", "local_ableton_tempo_map", "local_ableton_transport", "local_ableton_song", "local_ableton_undo", "local_ears_ensure_plugin", "local_ears_listen"]
+version: "1.1"
+tags: ["studio", "ableton", "mixing", "mezcla", "session-prep", "gain-staging", "buses", "organize", "ordenar", "co-producer"]
+requiresTools: ["local_ableton_snapshot", "local_ableton_tracks", "local_ableton_status", "local_ableton_devices", "local_ableton_device_params", "local_ableton_edit_track", "local_ableton_mixer", "local_ableton_apply", "local_ableton_group_tracks", "local_ableton_move_track", "local_ableton_load_devices", "local_ableton_set_device_param", "local_ableton_tempo_map", "local_ableton_transport", "local_ableton_song", "local_ableton_undo", "local_ableton_move_device", "local_ableton_lom", "local_ears_ensure_plugin", "local_ears_listen"]
 ---
 
 # Chatmu — Session Prep (Progressive Mixing, part 1)
-**Version:** 1.0
+**Version:** 1.1
 **Requires:** Chatmu Desktop (Co-Producer) bridge + Ableton Live (AbletonOSC + AbletonMCP control surfaces) + Chatmu Ears.
 **Continues with:** `chatmu-mixing-progressive` (bus chains, family mix, depth). **Listening checks:** `chatmu-studio-listen-troubleshooting`.
 
@@ -44,9 +49,15 @@ tables.
 
 | Mode | What runs | Writes |
 |---|---|---|
+| `organize` ("solo ordenar") | phase 0 (recon, no listening needed) + phase 1 (names, colors, order, cleanup) + phase 3 steps 1–3 (groups) → short deliverable | names, colors, order, groups, empty/duplicate tracks (with OK). No faders, no Utility, no sends, no gain staging. |
 | `prep` (**default**) | this skill: phases 0–3, then 7–8 | names, solo/arm cleanup, sends sanitized, groups, gain-staging faders (school base value) + Utility trims. No balance moves, no EQ/comp chains. |
 | `full` | this skill, then `chatmu-mixing-progressive` phases 4–8 | everything |
 | `review` | `chatmu-mixing-progressive` review mode | none (diagnosis only) |
+
+**`organize` triggers:** "ordena mi sesión / mi mezcla", "organiza mi mezcla", "ponle nombres
+y colores", "agrupa lo melódico", "los drums a la izquierda", "solo ordénala". Run only
+organize; at the end offer `prep` ("¿sigo con el gain staging?"). A request that mixes both
+("ordénala y déjala lista para mezclar") is `prep`.
 
 If the user just says "mezcla mi canción", run `prep`, deliver, and offer to continue with
 `full`. Never jump to mixing on a session that has not passed the acceptance criteria below.
@@ -76,13 +87,24 @@ If the user just says "mezcla mi canción", run `prep`, deliver, and offer to co
    `local_ableton_load_devices` (up to 8, ONE approval). Deleting / creating tracks and
    `local_ableton_group_tracks` ask once per call; `local_ableton_move_track` asks once per
    batch. Tell the user "aprueba en la app".
-8. **Not available as tools:** Master sends (Live's Master has none). Reordering tracks is
-   `local_ableton_move_track` (experimental); if it's missing or fails, the user drags and
-   you re-verify by name.
+8. **Not available:** Master sends (Live's Master has none). **Returns and the Master always
+   stay at the right in Live** and can't be moved or grouped: plan around them and say so
+   ("los returns y el Master siempre quedan a la derecha"). Reordering is
+   `local_ableton_move_track`, grouping `local_ableton_group_tracks` (both experimental).
+9. **Permissions: one line, never a path.** If `local_ableton_move_track` /
+   `local_ableton_group_tracks` answer `needs_permission`, Chatmu Desktop shows a
+   **«Permitir»** card in the chat: say in ONE line "Pulsa **Permitir** en la tarjeta de
+   arriba y sigo" and retry when the app says it's granted. **Never write System Settings
+   paths or permission steps in text.** (Outside Chatmu Desktop:
+   `local_open_system_settings { pane }` opens the exact pane, then one line naming the switch.)
+10. **Never say a Live feature "is not exposed"** (track colors, a device option, a routing)
+    without `local_ableton_lom describe` on the object first.
 
 ---
 
 ## Phase 0 — Recon (read only)
+
+`organize` mode: run steps 2, 4 and 5 only (no plugin check, no tempo map, no listening).
 
 1. `local_ears_ensure_plugin` `{ install: false }` (check only) and `local_ableton_status`.
 2. `local_ableton_snapshot` (compact). Keep it as the **"before" photo** for the log.
@@ -132,7 +154,13 @@ VOCALS? Any track the user wants outside the tree?
    - Empty/duplicate tracks: only with explicit OK, `local_ableton_edit_track`
      `{ action: "delete", index, expectName }` (approval each). Default: leave them muted at
      the end of the set and list them in the deliverables.
-3. **Order:** show the user the exact target order as a numbered list of track **names**,
+3. **Colors by role** (organize mode always; prep if the user wants it): one Live palette
+   color per family, the same for every track of the family and its group (e.g. DRUMS red,
+   BASE orange, KEYS yellow, LEAD blue, VOCALS purple, FX gray). `local_ableton_lom
+   { action: "describe", path: "live_set tracks N" }` once to see `color_index` (range and
+   current value), then one `local_ableton_lom { action: "set", path: "live_set tracks
+   \"<name>\"", prop: "color_index", value }` per track (by name). Re-read to confirm.
+4. **Order:** show the user the exact target order as a numbered list of track **names**,
    top to bottom, family by family:
    DRUMS (Kick → Snare/Clap → Hats → Perc) · BASE (Bass → Guitars) · KEYS · LEAD ·
    VOCALS (Lead Vox → Doubles → Chops → Ambiences). With their OK, reorder with
@@ -140,10 +168,11 @@ VOCALS? Any track the user wants outside the tree?
    moves, ONE approval; each move's indexes refer to the list after the previous moves;
    a track only moves among its siblings — if the error lists valid `toIndex` values, use
    one of them). Then `local_ableton_tracks` and compare name by name.
-   **Fallback** (tool missing, disabled or failed): "Arrastra las pistas en Live a este
-   orden y avísame", then re-read and compare. Grouping needs each family **contiguous**,
-   so don't group until the order matches.
-4. **Group proposal:** the bus tree table (built in phase 3):
+   The order is for the track list only: returns and the Master stay at the right
+   (rule 8). If a move answers `needs_permission`: rule 9.
+   **Fallback** (tool missing, disabled or failed for another reason): "Arrastra las pistas
+   en Live a este orden y avísame", then re-read and compare.
+5. **Group proposal:** the bus tree table (built in phase 3):
 
 ```
 DRUMS    ← all drums + percussion
@@ -185,29 +214,36 @@ the fader. The fader is for balance (later, in the mixing skill).
 3. **Trims:** for each track that needs it, a Utility. Batch the loads:
    `local_ableton_load_devices` `{ loads: [{ target: "track", trackIndex, name: "Utility",
    expectTrackName }, …] }` (≤ 8 per call, one approval). Then:
-   - `local_ableton_devices` on each track: if the Utility didn't land **first** and the track
-     has a compressor/saturator before it, ask the user to drag Utility to the start of the
-     chain (no tool moves devices).
-   - `local_ableton_device_params` → find the `Gain` parameter (units / min / max), set it
-     with `local_ableton_set_device_param` (or `local_ableton_apply` `device_param` for
-     several at once). Re-listen: the measurement is the truth, not the parameter number.
+   - `local_ableton_devices` on each track: if the Utility didn't land **first**, move it:
+     `local_ableton_move_device { action: "move", trackName, deviceName: "Utility",
+     expectName: "Utility", position: 0 }` (one undo step).
+   - `local_ableton_device_params` → read the `Gain` parameter (`display_value`), set it in
+     real units with `local_ableton_set_device_param { trackName, deviceName: "Utility",
+     param: "Gain", display: "-3 dB" }` (or `local_ableton_apply` `device_param` +
+     `display` for several at once) and report what Live read back. Re-listen: the
+     measurement is the truth, not the parameter number.
 4. **School A note:** the stream is pre-Master-fader, so it reads about 10 dB hotter than
    what leaves the Master. Compare like with like and say so.
 
 ## Phase 3 — Bus tree (groups) + FX aux + sends
 
-1. Re-read `local_ableton_snapshot`; confirm each family is contiguous and in order.
-2. **Group, inner to outer:** BASE, KEYS, LEAD, then MELODIC (the range spanning those
-   three groups and their children), then DRUMS, then VOCALS. Show the list first and get
-   OK. For each group:
-   `local_ableton_group_tracks` `{ firstIndex, lastIndex, expectNames: [every name in the
-   range, in order], name: "DRUMS" }` (one approval each). It is idempotent (`reused: true`
-   if that range is already one group). **Re-read the snapshot after every group** —
-   indices shift.
-3. **Fallback (the tool is experimental/opt-in; if it is disabled, refused or fails):** ask
+1. Re-read `local_ableton_snapshot` (names, indexes, existing groups).
+2. **Group, inner to outer:** BASE, KEYS, LEAD, then MELODIC (those three groups), then
+   DRUMS, then VOCALS. Show the list first and get OK. For each group:
+   - **Tracks not next to each other** (the usual case before reordering): form (b),
+     `local_ableton_group_tracks { tracks: [{ index, expectName }, …], name: "DRUMS" }` —
+     the bridge first moves them together right after the first listed track, then groups
+     them. No need to reorder by hand first.
+   - **Already contiguous:** form (a), `{ firstIndex, lastIndex, expectNames: [every name
+     in the range, in order], name }`. Idempotent (`reused: true` if that range already is
+     one group).
+   One approval per call (none under «Recomendado»). **Re-read the snapshot after every
+   group** — indices shift (+1 after the group, and form (b) moves tracks). Returns and
+   the Master can't be grouped (rule 8). `needs_permission` → rule 9.
+3. **Fallback (tool disabled, or it failed and undid itself for another reason):** ask
    the user to do it by hand, with the exact names: "En Live, haz clic en **Kick**,
-   Shift+clic en **Perc Shaker**, pulsa **Cmd+G** (Ctrl+G en Windows) y llama al grupo
-   **DRUMS**." One group per message. Then verify with `local_ableton_snapshot`: the group
+   Shift+clic en **Perc Shaker** (si no están juntas: Cmd+clic en cada una), pulsa **Cmd+G**
+   (Ctrl+G en Windows) y llama al grupo **DRUMS**." One group per message. Then verify with `local_ableton_snapshot`: the group
    has `isFoldable: true`, and every child has `isGrouped: true` and `groupTrackIndex` =
    the group's index. Rename with `local_ableton_edit_track` `rename` if needed.
 4. **Group faders at 0 dB** (`local_ableton_mixer` `db: 0`); groups start empty (no devices).
@@ -247,6 +283,13 @@ granted):
 - [ ] Sends sanitized (no tonal element at 100 % reverb).
 - [ ] Before/after measurement on the same bars.
 - [ ] Explicit list of what remains the artist's decision.
+
+## Organize mode — deliverable
+
+Short: the final order (names, family, color), the groups created, what was renamed,
+tracks deleted or left muted at the end, and "los returns y el Master quedan a la derecha".
+Verification is the snapshot (no listening needed: nothing that sounds was changed). Then
+offer `prep`.
 
 ## Don'ts
 
