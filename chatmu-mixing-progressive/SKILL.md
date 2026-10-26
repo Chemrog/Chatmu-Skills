@@ -106,10 +106,11 @@ la reviso sin tocar nada?"
 3. **Propose per bus** (table: bus · problem measured · device · starting setting). Chain
    order, max 3 devices: **Utility → EQ Eight → Compressor** (Glue Compressor is fine on
    DRUMS). No problem → no device. Typical starts (adjust by ear):
-   - EQ: high-pass on KEYS / LEAD / VOCALS around 80–120 Hz; one wide cut where mud/harshness
-     shows; avoid boosts > 3 dB.
-   - Compressor: ratio 2:1–4:1, slow-ish attack on DRUMS (let transients through), aim
-     for a few dB of gain reduction; makeup to match level (A/B at equal loudness).
+   - EQ: follow **chatmu-mix-eq** (frequency map, starting points by source, masking cuts,
+     measure → keep or undo).
+   - Compressor: follow **chatmu-mix-compression** (goal first; threshold set for a target gain
+     reduction, never left at 0 dB; ratio by goal, not 4:1 everywhere; attack/release by source;
+     makeup to equal loudness; measure before/after).
 4. **Check availability:** `local_ableton_browser` `{ path: "audio_effects" }` if a device
    might not be in the user's Live edition (fall back to Compressor / EQ Three).
 5. **Load in one batch after OK:** `local_ableton_load_devices` `{ loads: [{ target: "track",
