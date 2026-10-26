@@ -3,8 +3,9 @@ name: chatmu-master-chain
 description: >
   Use in Co-Producer (Chatmu Desktop + Ableton Live) to build or adjust the
   mastering chain on Live's Master track: gentle EQ, glue compression, optional
-  width/bass mono, and a limiter with the right ceiling, aiming at a loudness
-  target per platform (streaming −14 LUFS, Apple −16, club louder). Sets every
+  width/bass mono, optional saturation and a limiter with a −1 dBTP ceiling,
+  aiming at the genre's competitive loudness (or a reference song the user
+  likes), not at −14 LUFS (that is the streaming playback level). Sets every
   parameter in real units (dB, ms, :1), keeps the Co-Producer Audio plugin
   last, and verifies each step on an exported WAV with chatmu-master-check.
   Trigger phrases: "masterízala", "masteriza mi canción", "hazme el máster",
@@ -17,7 +18,7 @@ compatibility: chatmu
 category: creative
 subcategory: studio
 shortDesc: "Mastering chain on Live's Master: EQ, glue, limiter to a LUFS target, verified on the exported WAV"
-version: "1.0"
+version: "1.1"
 tags: ["studio", "ableton", "master", "mastering", "limiter", "limitador", "loudness", "lufs", "co-producer"]
 requiresTools: ["local_ableton_snapshot", "local_ableton_status", "local_ableton_browser", "local_ableton_load_devices", "local_ableton_device_params", "local_ableton_set_device_param", "local_ableton_move_device", "local_ableton_mixer", "local_ableton_lom", "local_ableton_undo", "local_ableton_export", "local_ears_analyze_file", "local_ears_listen", "local_ears_ensure_plugin"]
 ---
@@ -63,6 +64,9 @@ Answer in the user's language (usually Spanish). Plans as tables; one OK per bat
    the object first (e.g. a Limiter option that isn't a parameter).
 8. **Approvals:** loading devices needs an on-screen approval → load the whole chain in ONE
    `local_ableton_load_devices` call (≤ 8 loads, `target: "master"`).
+9. **Compare at matched loudness.** Louder always sounds better. When you A/B the master vs
+   the mix, or vs a reference, state both LUFS and judge after matching them (turn the louder
+   one down by the difference); never present "it's louder" as "it's better".
 
 ---
 
@@ -71,9 +75,29 @@ Answer in the user's language (usually Spanish). Plans as tables; one OK per bat
 1. `local_ableton_snapshot` → Master chain (devices and order), Master fader (dB), track
    faders, is the mix clipping anywhere obvious.
 2. `local_ears_ensure_plugin { install: false }` → Co-Producer Audio on the Master?
-3. Ask the **destination**: streaming (default, target −14 LUFS integrated, ≤ −1 dBTP),
-   Apple-first (−16), club / DJ (−9 to −7, ≤ −0.3 dBTP), or "lo más fuerte posible sin que
-   se rompa" (stop where crest factor collapses).
+3. **Pick the loudness target** (say it to the user in one line):
+   - **−14 LUFS is NOT a mastering target.** It is the level Spotify/YouTube *play* at:
+     louder masters are turned down, quieter ones (Spotify) up. A master at −14 sounds
+     quiet next to commercial releases in playlists, DJ sets, SoundCloud, TikTok/IG and
+     anywhere without normalization. Measured commercial masters: median about −10.6 LUFS,
+     ~80 % louder than −14; Grammy 2026 nominees up to −6.5 (Bad Bunny "DtMF" −8.0).
+   - **Default = competitive for the genre** (integrated LUFS of the whole song):
+
+     | Genre | Target | Min crest factor |
+     |---|---|---|
+     | Lo-fi, jazz, acoustic, regional/bolero, ballad, cinematic | −13 .. −11 | 9 dB |
+     | Pop, R&B, indie, rock | −10 .. −8 | 8 dB |
+     | Hip-hop, trap, drill | −9 .. −7 | 7 dB |
+     | Reggaetón, urbano latino, dembow, cumbia moderna | −8 .. −6 | 6 dB |
+     | EDM, house, techno (club) | −8 .. −6 | 6 dB |
+   - **Better than the table: a reference.** If the user names or gives a song they want to
+     sound like (`local_ears_analyze_file` on it), target its integrated LUFS ±1 LU and its
+     crest factor, and A/B at matched loudness (rule 9).
+   - **Ceiling** −1.0 dBTP always for streaming (lossy encoders create overs); −0.5 for club
+     masters only if the user asks.
+   - The **crest factor floor** wins over the LUFS target: if the limiter would push the crest
+     below the floor, stop there and say "llega a −9 LUFS sin aplastarse; más fuerte pierde
+     golpe" (louder masters lose about 2 dB of crest on average).
 4. **Before** numbers: if a recent export exists, `chatmu-master-check` on it; otherwise
    export the densest 8–16 bars (chorus/drop) at 32-bit and measure (rule 5).
 
@@ -84,7 +108,8 @@ Answer in the user's language (usually Spanish). Plans as tables; one OK per bat
 | 1 | EQ Eight | only if the diagnosis shows it | high-pass 20–30 Hz ("Low Cut 48" at 25 Hz) if there is sub rumble; ±1–2 dB wide shelves for tilt |
 | 2 | Glue Compressor | glue, not loudness | ratio 2, attack 10–30 ms, release Auto, threshold for 1–2 dB of reduction, makeup to match |
 | 3 | Utility | optional | Bass Mono on (~120 Hz) if the low end is wide; width ≤ 110 % |
-| 4 | Limiter | loudness + ceiling | ceiling −1 dB (club −0.3), gain up until the target, release auto/ short |
+| 4 | Saturator | optional density | soft-clip / analog, drive 1–3 dB, output compensated, Dry/Wet 30–60 %: adds perceived loudness and eases the limiter |
+| 5 | Limiter | loudness + ceiling | ceiling −1 dB true peak, gain up until the target, release auto / short; if it needs > 6 dB, split it: 2–3 dB on a clipper/saturator + the rest on the limiter |
 | last | Co-Producer Audio | Ears + realtime export | must stay last (rule 1) |
 
 - No problem in the diagnosis → skip that device. A master chain can be just the Limiter.
@@ -117,8 +142,8 @@ Glue Compressor `Threshold`, `Ratio`, `Attack`, `Release`, `Makeup`; Limiter `Ga
 2. Distance to target: `target − integrated_lufs`. Move the Limiter `Gain` by that amount
    (in ≤ 2 dB steps when the crest factor is already low).
 3. Re-export the same range, measure. Keep or `local_ableton_undo`.
-4. Stop when: within ±0.5 LU of the target, true peak ≤ ceiling, and crest factor hasn't
-   collapsed (≥ 8 dB pop/rock, ≥ 6 dB electronic). If the target needs more than ~6 dB of
+4. Stop when: within ±0.5 LU of the target (or of the reference), true peak ≤ −1 dBTP, and
+   the crest factor is at or above the genre floor (Phase 0 table). If the target needs more than ~6 dB of
    limiter gain, stop and tell the user the mix needs work first (rule 6).
 5. Quick A/B by ear (optional): play the same bars, `local_ears_listen` with the Limiter on
    and off (`local_ableton_set_device_param { target: "master", deviceName: "Limiter",

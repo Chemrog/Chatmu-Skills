@@ -18,7 +18,7 @@ compatibility: chatmu
 category: creative
 subcategory: studio
 shortDesc: "Is the exported master ready to distribute? LUFS, true peak, dynamics and defects vs each platform"
-version: "1.0"
+version: "1.1"
 tags: ["studio", "ableton", "master", "mastering", "loudness", "lufs", "true-peak", "distribution", "co-producer"]
 requiresTools: ["local_ableton_export", "local_ears_analyze_file", "local_ears_render", "local_list_access", "local_ableton_status", "local_ableton_snapshot"]
 ---
@@ -96,9 +96,10 @@ silence at the start longer than ~1 s, the tail is not cut.
 A master at −8 LUFS plays on Spotify 6 dB quieter: if its crest factor is very low it will
 sound flatter than a −12 LUFS master that kept its punch. That's the useful message.
 
-Genre context (from `chatmu-mixing-progressive`): lofi −16..−14, pop −14..−12, rock −14..−11,
-electronic −12..−9, ambient −18..−14, acoustic −16..−13. Crest factor below ~7 dB on a
-non-electronic song = over-limited.
+Genre context (competitive integrated loudness, see chatmu-master-chain Phase 0): lo-fi /
+acoustic / regional −13..−11, pop / R&B / rock −10..−8, hip-hop / trap −9..−7, reggaetón /
+urbano / EDM −8..−6. A master at −14 is not "wrong", but it will sound quieter than its
+neighbours wherever there is no normalization: say so if the user expects a commercial level.
 
 ## Phase 3 — Verdict
 
