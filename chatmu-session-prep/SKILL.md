@@ -23,9 +23,9 @@ compatibility: chatmu
 category: creative
 subcategory: studio
 shortDesc: "Prepare an Ableton session to mix: roles, names, order, DRUMS/MELODIC/VOCALS buses, gain staging"
-version: "1.1"
+version: "1.2"
 tags: ["studio", "ableton", "mixing", "mezcla", "session-prep", "gain-staging", "buses", "organize", "ordenar", "co-producer"]
-requiresTools: ["local_ableton_snapshot", "local_ableton_tracks", "local_ableton_status", "local_ableton_devices", "local_ableton_device_params", "local_ableton_edit_track", "local_ableton_mixer", "local_ableton_apply", "local_ableton_group_tracks", "local_ableton_move_track", "local_ableton_load_devices", "local_ableton_set_device_param", "local_ableton_tempo_map", "local_ableton_transport", "local_ableton_song", "local_ableton_undo", "local_ableton_move_device", "local_ableton_lom", "local_ears_ensure_plugin", "local_ears_listen"]
+requiresTools: ["local_ableton_snapshot", "local_ableton_tracks", "local_ableton_status", "local_ableton_devices", "local_ableton_device_params", "local_ableton_edit_track", "local_ableton_color", "local_ableton_mixer", "local_ableton_apply", "local_ableton_group_tracks", "local_ableton_move_track", "local_ableton_load_devices", "local_ableton_set_device_param", "local_ableton_tempo_map", "local_ableton_transport", "local_ableton_song", "local_ableton_undo", "local_ableton_move_device", "local_ableton_lom", "local_ears_ensure_plugin", "local_ears_listen"]
 ---
 
 # Chatmu — Session Prep (Progressive Mixing, part 1)
@@ -154,12 +154,21 @@ VOCALS? Any track the user wants outside the tree?
    - Empty/duplicate tracks: only with explicit OK, `local_ableton_edit_track`
      `{ action: "delete", index, expectName }` (approval each). Default: leave them muted at
      the end of the set and list them in the deliverables.
-3. **Colors by role** (organize mode always; prep if the user wants it): one Live palette
-   color per family, the same for every track of the family and its group (e.g. DRUMS red,
-   BASE orange, KEYS yellow, LEAD blue, VOCALS purple, FX gray). `local_ableton_lom
-   { action: "describe", path: "live_set tracks N" }` once to see `color_index` (range and
-   current value), then one `local_ableton_lom { action: "set", path: "live_set tracks
-   \"<name>\"", prop: "color_index", value }` per track (by name). Re-read to confirm.
+3. **Colors by role** (organize mode always; prep if the user wants it): one color per
+   family, the same for every track of the family **and its group**.
+   - **Palette:** use the user's saved color preference (memory or the artist's notes). If
+     there is none, propose the default and ask only this first time: drums red, bass
+     orange, keys/chords yellow, leads/melody green, pads/atmosphere blue, vocals pink (or
+     purple), FX gray; returns stay as they are. When they answer (or say "como quieras"),
+     save it with `save_memory` (e.g. "Colores por rol: drums rojo, bajo naranja…") so you
+     never ask again.
+   - **Apply:** ONE `local_ableton_color` call for the whole session:
+     `{ targets: [{ trackIndex, expectName, color: "rojo" }, ...] }` (names es/en,
+     `#RRGGBB` or palette index 0-69; up to 64). Add `alsoClips: true` when the user wants
+     the clips to match too. The result reports the `colorIndex` Live stored for each one;
+     `local_ableton_tracks` shows each track's `colorIndex` before and after.
+   - A target with `ok: false` (e.g. a renamed track) changed nothing: re-read the tracks
+     and retry only that one.
 4. **Order:** show the user the exact target order as a numbered list of track **names**,
    top to bottom, family by family:
    DRUMS (Kick → Snare/Clap → Hats → Perc) · BASE (Bass → Guitars) · KEYS · LEAD ·
