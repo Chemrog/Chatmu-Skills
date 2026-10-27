@@ -23,7 +23,7 @@ compatibility: chatmu
 category: creative
 subcategory: studio
 shortDesc: "Prepare an Ableton session to mix: roles, names, order, DRUMS/MELODIC/VOCALS buses, gain staging"
-version: "1.2"
+version: "1.3"
 tags: ["studio", "ableton", "mixing", "mezcla", "session-prep", "gain-staging", "buses", "organize", "ordenar", "co-producer"]
 requiresTools: ["local_ableton_snapshot", "local_ableton_tracks", "local_ableton_status", "local_ableton_devices", "local_ableton_device_params", "local_ableton_edit_track", "local_ableton_color", "local_ableton_mixer", "local_ableton_apply", "local_ableton_group_tracks", "local_ableton_move_track", "local_ableton_load_devices", "local_ableton_set_device_param", "local_ableton_tempo_map", "local_ableton_transport", "local_ableton_song", "local_ableton_undo", "local_ableton_move_device", "local_ableton_lom", "local_ears_ensure_plugin", "local_ears_listen"]
 ---
@@ -50,7 +50,7 @@ tables.
 | Mode | What runs | Writes |
 |---|---|---|
 | `organize` ("solo ordenar") | phase 0 (recon, no listening needed) + phase 1 (names, colors, order, cleanup) + phase 3 steps 1–3 (groups) → short deliverable | names, colors, order, groups, empty/duplicate tracks (with OK). No faders, no Utility, no sends, no gain staging. |
-| `prep` (**default**) | this skill: phases 0–3, then 7–8 | names, solo/arm cleanup, sends sanitized, groups, gain-staging faders (school base value) + Utility trims. No balance moves, no EQ/comp chains. |
+| `prep` (**default**) | this skill: phases 0–3, then 7–8 | names, colors by role, solo/arm cleanup, sends sanitized, groups, gain-staging faders (school base value) + Utility trims. No balance moves, no EQ/comp chains. |
 | `full` | this skill, then `chatmu-mixing-progressive` phases 4–8 | everything |
 | `review` | `chatmu-mixing-progressive` review mode | none (diagnosis only) |
 
@@ -154,7 +154,8 @@ VOCALS? Any track the user wants outside the tree?
    - Empty/duplicate tracks: only with explicit OK, `local_ableton_edit_track`
      `{ action: "delete", index, expectName }` (approval each). Default: leave them muted at
      the end of the set and list them in the deliverables.
-3. **Colors by role** (organize mode always; prep if the user wants it): one color per
+3. **Colors by role** (every mode that writes: organize, prep and full; skip only if the user
+   says not to touch colors): one color per
    family, the same for every track of the family **and its group**.
    - **Palette:** use the user's saved color preference (memory or the artist's notes). If
      there is none, propose the default and ask only this first time: drums red, bass
