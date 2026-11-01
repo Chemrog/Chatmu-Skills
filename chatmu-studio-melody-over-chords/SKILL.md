@@ -6,18 +6,17 @@ description: >
   (chords, a loop, a sample converted to MIDI). Builds a harmonic map — which
   chord sounds in each bar, with which exact notes (voicing, inversion), its
   Roman numeral and the local key, including key changes — and then writes
-  the part bar by bar against that map. Trigger phrases: "hazme una melodía",
-  "melodía para estos acordes", "melodía de los primeros 4 compases", "otra
-  variación", "contramelodía", "armonía", "segunda voz", "qué acordes son",
-  "en qué tono está", "qué tonalidad", "analiza los acordes", "cambia de
-  tono", "modulación", "bajo que siga los acordes", "melody over chords",
-  "what chords", "what key", "chord progression", "acordes".
+  the part bar by bar against that map. Trigger phrases: "write a melody",
+  "melody over these chords", "melody for the first 4 bars", "another variation",
+  "counter-melody", "harmony", "second voice", "what chords are these",
+  "what key", "what key is this", "analyze the chords", "change key",
+  "modulation", "bass following the chords", "melody over chords".
 compatibility: chatmu
 category: creative
 subcategory: studio
 shortDesc: "Map the chord of every bar (notes, inversion, local key) and write melodies against it"
 version: "1.0"
-tags: [studio, ableton, melody, melodía, harmony, armonía, acordes, chords, key, tonalidad, co-producer]
+tags: [studio, ableton, melody, harmony, chords, key, co-producer]
 requiresTools: ["local_ableton_snapshot", "local_ableton_get_notes", "local_music_theory", "local_ableton_create_clip", "local_ableton_write_notes", "local_ableton_fire"]
 ---
 
@@ -27,6 +26,11 @@ requiresTools: ["local_ableton_snapshot", "local_ableton_get_notes", "local_musi
 **Read first:** `chatmu-studio-compose-core` (clip flow, pitch map: MIDI 60 = C3 in Live, ranges).
 **Related:** `chatmu-studio-harmony-voicing` (chord vocabulary), `chatmu-studio-bass-lines`,
 `chatmu-studio-song-structure` (which section you are writing for), `chatmu-studio-humanize`.
+
+**Knowledge cards:** `music-kb/10_harmony/functional-harmony.md` (chords and functions) and
+`music-kb/40_melody/hooks.md` (outline, tension, contour, repetition, prosody).
+This skill builds the harmonic map; for hooks and melody types use
+`chatmu-studio-melody-hooks`.
 
 ## Why this skill exists
 
@@ -105,21 +109,21 @@ range and its notes on the strong beats. Your new part must avoid them (or answe
 One line per bar (or half bar), compact:
 
 ```
-Si menor · 88 BPM · 4/4
-c.1  Bm     i    raíz    B1 · F#2 B2 D3      (melodía actual: —)
-c.2  G/B    ♭VI  1ª inv  B1 · G2 B2 D3
-c.3  D      ♭III raíz    D2 · D3 F#3 A3
-c.4  A      ♭VII raíz    A1 · E3 A3 C#4
-c.9  → modula a Mi menor (pivote: G = ♭VI en Si menor = ♭III en Mi menor)
+B minor · 88 BPM · 4/4
+bar 1  Bm     i    root     B1 · F#2 B2 D3      (current melody: —)
+bar 2  G/B    ♭VI  1st inv  B1 · G2 B2 D3
+bar 3  D      ♭III root     D2 · D3 F#3 A3
+bar 4  A      ♭VII root     A1 · E3 A3 C#4
+bar 9  → modulates to E minor (pivot: G = ♭VI in B minor = ♭III in E minor)
 ```
 
-Show the user the short version ("Son 4 compases: Bm – G/B – D – A, en Si menor") and keep
+Show the user the short version ("4 bars: Bm – G/B – D – A, in B minor") and keep
 the full map in your context for writing. If the user corrects a chord, they are right:
 update the map.
 
 ## 2. Write against the map
 
-Work on the bars the user asked for ("los primeros 4 compases" = bars 1–4; "el coro" =
+Work on the bars the user asked for ("the first 4 bars" = bars 1–4; "the chorus" =
 the section's bars from `chatmu-studio-song-structure`). For each bar, from its map line:
 
 1. **Chord tones** = the chord's notes in the melody range (MIDI 60–84 for leads). **Guide

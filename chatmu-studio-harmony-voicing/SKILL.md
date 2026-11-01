@@ -3,22 +3,26 @@ name: chatmu-studio-harmony-voicing
 description: >
   Use in Co-Producer to write chords and chord progressions in Ableton Live
   with correct Roman numerals, voicings and voice leading, by genre and mood
-  (pop, reggaetón, trap, lo-fi, deep house, R&B, cinematic). Trigger phrases:
-  "acordes", "progresión de acordes", "chords", "chord progression", "armonía",
-  "harmony", "voicing", "inversiones", "acordes tristes", "sad chords", "acordes
-  de lo-fi", "jazzy chords", "séptimas", "7ths", "pad", "piano chords".
+  (pop, reggaeton, trap, lo-fi, deep house, R&B, cinematic). Trigger phrases:
+  "chords", "chord progression", "harmony", "voicing", "inversions", "sad chords",
+  "lo-fi chords", "jazzy chords", "7ths", "pad", "piano chords".
 compatibility: chatmu
 category: creative
 subcategory: studio
 shortDesc: "Chord progressions by genre with correct numerals, voicings and voice leading"
 version: "1.0"
-tags: ["studio", "ableton", "harmony", "chords", "acordes", "voicing", "co-producer"]
+tags: ["studio", "ableton", "harmony", "chords", "voicing", "co-producer"]
 requiresTools: ["local_ableton_create_clip", "local_ableton_write_notes", "local_ableton_get_notes"]
 ---
 
 # Chatmu Studio — Harmony & Voicing
-**Version:** 1.0
+**Version:** 1.1
 **Use with:** `chatmu-studio-compose-core` (clip flow + pitch map; MIDI 60 = C3 in Live).
+
+**Knowledge card:** `music-kb/10_harmony/functional-harmony.md` — functions, cadences,
+voice leading, ii-V-I and errors. To choose the progression use
+`chatmu-studio-harmony-functional`; this skill keeps the voicings.
+The tables below are a summary: if they conflict, the card wins.
 
 ## 1. Diatonic chords
 
