@@ -19,8 +19,7 @@ requiresTools: ["local_ableton_create_clip", "local_ableton_write_notes", "local
 **Version:** 1.1
 **Use with:** `chatmu-studio-compose-core` (clip flow + pitch map; MIDI 60 = C3 in Live).
 
-**Knowledge card:** `music-kb/10_harmony/functional-harmony.md` — functions, cadences,
-voice leading, ii-V-I and errors. To choose the progression use
+Functions, cadences and errors live in `chatmu-studio-harmony-functional`. To choose the progression use
 `chatmu-studio-harmony-functional`; this skill keeps the voicings.
 The tables below are a summary: if they conflict, the card wins.
 

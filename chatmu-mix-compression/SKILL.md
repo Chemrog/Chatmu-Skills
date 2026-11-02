@@ -14,7 +14,7 @@ description: >
 compatibility: chatmu
 category: creative
 subcategory: studio
-shortDesc: "Set compressors like an engineer: threshold first, ratio by goal, attack/release by source, target gain reduction, verified"
+shortDesc: "Compressors like an engineer: threshold first, ratio by goal, attack/release by source, target GR, verified"
 version: "1.0"
 tags: [studio, ableton, mixing, mezcla, compression, compresión, compressor, glue, co-producer]
 requiresTools: ["local_ableton_snapshot", "local_ableton_devices", "local_ableton_device_params", "local_ableton_set_device_param", "local_ableton_apply", "local_ableton_load_devices", "local_ableton_undo", "local_ears_track_levels", "local_ears_listen", "local_ableton_transport"]

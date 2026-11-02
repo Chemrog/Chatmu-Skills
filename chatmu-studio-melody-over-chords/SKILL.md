@@ -27,10 +27,10 @@ requiresTools: ["local_ableton_snapshot", "local_ableton_get_notes", "local_musi
 **Related:** `chatmu-studio-harmony-voicing` (chord vocabulary), `chatmu-studio-bass-lines`,
 `chatmu-studio-song-structure` (which section you are writing for), `chatmu-studio-humanize`.
 
-**Knowledge cards:** `music-kb/10_harmony/functional-harmony.md` (chords and functions) and
-`music-kb/40_melody/hooks.md` (outline, tension, contour, repetition, prosody).
-This skill builds the harmonic map; for hooks and melody types use
-`chatmu-studio-melody-hooks`.
+Chords and functions: `chatmu-studio-harmony-functional`.
+This skill builds the harmonic map; for hooks (motif, rhythm, peak, anti-AI check) use
+`chatmu-studio-hook-melody`; to put chords under an existing melody use
+`chatmu-studio-harmonize-melody`.
 
 ## Why this skill exists
 
