@@ -277,7 +277,7 @@ por qué está esa nota, acorde o sonido, no lo escribe.
 | 10 | Chema prueba en Desktop (prioridad: make-song, hook-melody, harmonize-melody, géneros pedidos, mix-by-genre, master-chain) | pendiente |
 | 11 | Merge de esta rama + rama Desktop `chore/studio-keywords-production-skills` (test del linter) → `POST /api/skills/sync` | pendiente, decide Chema |
 
-Resultado: 51 skills `chatmu-studio-*` + 7 de mezcla/master = **58 de producción**, sin duplicados,
+Resultado: 51 skills `chatmu-studio-*` + 8 de mezcla/master/session-prep = **59 de producción**, sin duplicados,
 todas autocontenidas y pasando el linter del Desktop (60/60).
 
 ### Criterio de "hecha"
