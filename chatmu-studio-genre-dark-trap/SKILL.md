@@ -105,7 +105,7 @@ The tonic carries 70–80 % of the time. Chords are moments, often just a dyad o
   for melodic trap.
 - **i – ♭II** (F#m – G): phrygian dread; ♭II for 1 bar in 4.
 - **i – ♭VII – ♭VI – V** descending: epic/dramatic.
-- `local_music_theory` `action: progression` `preset: trap` returns a usable i–♭VI-type loop.
+- `local_music_theory` `action: progression` `genre: trap` returns a usable i–♭VI-type loop.
 - Voicings: sparse — root + 5th low, minor 3rd or 9th an octave up; pads ≥ MIDI 55 so they don't
   mud the 808. Diminished or minor-add9 stabs work; full 7th-chord jazz voicings do not.
 - **Avoid**: major-key I–V–vi–IV, bright IV chords, ii–V–I, a new chord every bar.

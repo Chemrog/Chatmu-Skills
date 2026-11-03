@@ -96,7 +96,7 @@ it starts to crowd the vocal. Drop the kick for the first beat of every 8th bar.
 ## 4. Harmony
 - **Lo-fi / jazzy**: ii7 – V7 – Imaj7 (Gm7 – C7 – Fmaj7), Imaj7 – vi7 – ii7 – V7, or minor
   i9 – iv9 (Dm9 – Gm9) two-chord vamps. One chord per bar; `local_music_theory` `action: progression`
-  `preset: lofi` or `jazz`.
+  `genre: lofi` or `jazz`.
 - **Boom bap**: a 1–2-bar minor loop — i7 – ♭VImaj7 (Dm7 – B♭maj7), i – iv7, or a dorian
   i7 – IV7 (Dm7 – G7) vamp. Soul samples often sit on one chord with a moving inner line.
 - **Modern**: i – ♭VI – ♭VII or R&B-ish iv9 – v7 – i9.

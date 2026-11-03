@@ -91,7 +91,7 @@ Drum Rack: 36 kick, 38 snare, 37 rim, 39 clap, 42 closed hat, 46 open hat, 70 sh
 
 ## 4. Harmony
 - Default **i – ♭VI – ♭III – ♭VII** (Am – F – C – G), 1 chord per bar, 4-bar loop for the whole song.
-  `local_music_theory` `action: progression` `preset: reggaeton`.
+  `local_music_theory` `action: progression` `genre: reggaeton`.
 - Variants: **i – iv – ♭VII – ♭III** (Am – Dm – G – C); **i – ♭VII – ♭VI – ♭VII**; **♭VI – ♭VII – i – i**
   (start on the lift); **i – iv – v – i** (Am – Dm – Em – Am) old-school; harmonic minor
   **i – ♭VI – V** with E major for the hook's leading tone.
