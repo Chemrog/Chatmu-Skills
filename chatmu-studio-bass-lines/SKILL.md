@@ -19,7 +19,7 @@ requiresTools: ["local_ableton_get_notes", "local_ableton_create_clip", "local_a
 # Chatmu Studio — Bass Lines
 **Version:** 1.0
 **Use with:** `chatmu-studio-compose-core` (pitch map: MIDI 60 = C3 in Live),
-`chatmu-studio-harmony-voicing`, `chatmu-studio-drums-by-genre`.
+`chatmu-studio-harmony`, `chatmu-studio-drums-by-genre`.
 
 ## 1. Before writing
 

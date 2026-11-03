@@ -20,7 +20,7 @@ requiresTools: ["local_ableton_snapshot", "local_ableton_create_clip", "local_ab
 # Chatmu Studio — Compose Core
 **Version:** 1.0
 **Requires:** Chatmu Desktop (Co-Producer) bridge + Ableton Live (AbletonMCP control surface).
-**Load with:** `chatmu-studio-harmony-voicing` (chords), `chatmu-studio-drums-by-genre`
+**Load with:** `chatmu-studio-harmony` (chords), `chatmu-studio-drums-by-genre`
 (drums), `chatmu-studio-bass-lines`, `chatmu-studio-humanize`, `chatmu-studio-genre-templates`.
 
 ## The flow (do it in this order)

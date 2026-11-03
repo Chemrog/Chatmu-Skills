@@ -24,10 +24,10 @@ requiresTools: ["local_ableton_snapshot", "local_ableton_get_notes", "local_musi
 **Version:** 1.0
 **Requires:** Chatmu Desktop (Co-Producer) bridge + Ableton Live.
 **Read first:** `chatmu-studio-compose-core` (clip flow, pitch map: MIDI 60 = C3 in Live, ranges).
-**Related:** `chatmu-studio-harmony-voicing` (chord vocabulary), `chatmu-studio-bass-lines`,
+**Related:** `chatmu-studio-harmony` (chord vocabulary), `chatmu-studio-bass-lines`,
 `chatmu-studio-song-structure` (which section you are writing for), `chatmu-studio-humanize`.
 
-Chords and functions: `chatmu-studio-harmony-functional`.
+Chords and functions: `chatmu-studio-harmony`.
 This skill builds the harmonic map; for hooks (motif, rhythm, peak, anti-AI check) use
 `chatmu-studio-hook-melody`; to put chords under an existing melody use
 `chatmu-studio-harmonize-melody`.

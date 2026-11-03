@@ -19,7 +19,7 @@ requiresTools: ["local_ableton_snapshot", "local_ableton_set_tempo", "local_able
 
 # Chatmu Studio — Genre Templates
 **Version:** 1.0
-**Use with:** `chatmu-studio-compose-core`, `chatmu-studio-harmony-voicing`,
+**Use with:** `chatmu-studio-compose-core`, `chatmu-studio-harmony`,
 `chatmu-studio-drums-by-genre`, `chatmu-studio-bass-lines`, `chatmu-studio-humanize`.
 
 ## How to use a template

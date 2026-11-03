@@ -23,7 +23,7 @@ requiresTools: ["local_ableton_snapshot", "local_ableton_arrangement", "local_ab
 # Chatmu Studio — Vocal chops
 **Version:** 1.0
 **Requires:** Chatmu Desktop bridge + Ableton Live 12 (AbletonMCP patched Remote Script 1.10.0-chatmu; audio clips from files need Live 12.0.5+) + Chatmu Ears.
-**Related:** `chatmu-studio-clone-sound` (audio → MIDI), `chatmu-studio-drum-rack` (pads), `chatmu-studio-compose-core` + `chatmu-studio-harmony-voicing` (the melody), `chatmu-studio-humanize`.
+**Related:** `chatmu-studio-clone-sound` (audio → MIDI), `chatmu-studio-drum-rack` (pads), `chatmu-studio-compose-core` + `chatmu-studio-harmony` (the melody), `chatmu-studio-humanize`.
 
 ## What does this Skill do?
 

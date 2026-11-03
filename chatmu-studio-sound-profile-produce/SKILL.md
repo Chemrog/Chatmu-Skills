@@ -23,7 +23,7 @@ requiresTools: ["local_read_file", "local_copy_file", "local_ableton_open_set", 
 # Chatmu Studio — Produce with the sound profile
 **Version:** 1.0
 **Requires:** a sound profile in the artist folder (`chatmu-studio-sound-profile-build`), Ableton Live with the AbletonMCP Remote Script and «Permitir control», Chatmu Ears for the check.
-**Related:** `chatmu-studio-sound-profile-edit`, `chatmu-studio-compose-core`, `chatmu-studio-harmony-voicing`, `chatmu-studio-drums-by-genre`, `chatmu-studio-humanize`, `chatmu-studio-export`, `chatmu-studio-reference`.
+**Related:** `chatmu-studio-sound-profile-edit`, `chatmu-studio-compose-core`, `chatmu-studio-harmony`, `chatmu-studio-drums-by-genre`, `chatmu-studio-humanize`, `chatmu-studio-export`, `chatmu-studio-reference`.
 
 ## What it is (how to say it)
 
@@ -71,7 +71,7 @@ and loudness target (`masters.integratedLufs` median, `truePeakDbtp`).
    (key/BPM from the sample's name in the profile) → then `local_ableton_clip` to warp
    (beats for drums, complex for melodic) and transpose by the shortest way.
 4. MIDI parts: `local_ableton_create_clip` + `local_ableton_write_notes` with a progression
-   from the profile (voicings: `chatmu-studio-harmony-voicing`; feel: `midi.swing16` and
+   from the profile (voicings: `chatmu-studio-harmony`; feel: `midi.swing16` and
    `chatmu-studio-humanize`).
 5. Chains: the template already has them; extra devices with `local_ableton_browser` +
    `local_ableton_load_device(s)`; plug-in presets the artist saved load by name.
