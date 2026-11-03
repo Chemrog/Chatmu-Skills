@@ -15,7 +15,7 @@ category: creative
 subcategory: studio
 shortDesc: "Dark trap and drill: minor/phrygian pedal, half-time drums, hat rolls, gliding 808, sparse hook"
 version: "1.0"
-tags: [studio, ableton, genre, trap, dark-trap, drill, uk-drill, ny-drill, 808, hip-hop]
+tags: [studio, ableton, genre, trap, dark-trap, drill, uk-drill, ny-drill, "808", hip-hop]
 requiresTools:
   - local_ableton_snapshot
   - local_ableton_tracks
