@@ -16,6 +16,7 @@ shortDesc: "Reggaetón: straight dembow, i–♭VI–♭III–♭VII loops, tres
 version: "1.0"
 tags: [studio, ableton, genre, reggaeton, dembow, perreo, latin, urbano, moombahton]
 requiresTools:
+  - local_studio_genre_starter
   - local_ableton_snapshot
   - local_ableton_tracks
   - local_ableton_set_tempo
@@ -173,6 +174,13 @@ Build the motif with `chatmu-studio-hook-melody`; in reggaetón:
 - Over-long reverb on the dembow; a kick with a long boomy tail fighting the bass every beat.
 
 ## Workflow with the tools
+**Start with `local_studio_genre_starter` (`genre: reggaeton`) when you have it.** In one approval it
+adds Drums, Bass and Chords at the end of the set with this genre's real groove, bass rhythm and
+progression, voiced with Chatmu Synth's presets of the genre. Pass the user's `bpm` / `key`.
+Don't rewrite its drum grid: build on top of it (perc layer, riff/hook, arrangement, variations)
+with the steps below from the riff/perc step on. If the tool is missing (older Desktop), follow
+the steps below from the start.
+
 1. `local_ableton_snapshot`; `local_ableton_set_tempo` (94 default).
 2. Tracks (`local_ableton_edit_track` `create_midi`): Dembow, Perc, Bass, Chords, Riff;
    `local_ableton_tracks` to confirm indices.

@@ -16,6 +16,7 @@ shortDesc: "Boom bap, lo-fi and modern hip hop: backbeat with Dilla swing, ghost
 version: "1.0"
 tags: [studio, ableton, genre, hip-hop, boom-bap, lofi, lo-fi, dilla, breakbeat, jazz]
 requiresTools:
+  - local_studio_genre_starter
   - local_ableton_snapshot
   - local_ableton_tracks
   - local_ableton_set_tempo
@@ -167,6 +168,13 @@ Build the motif with `chatmu-studio-hook-melody`; in this family:
 - Lo-fi so muffled the kick disappears; crackle louder than the hats.
 
 ## Workflow with the tools
+**Start with `local_studio_genre_starter` (`genre: boombap`) when you have it.** In one approval it
+adds Drums, Bass and Chords at the end of the set with this genre's real groove, bass rhythm and
+progression, voiced with Chatmu Synth's presets of the genre. Pass the user's `bpm` / `key`.
+Don't rewrite its drum grid: build on top of it (perc layer, riff/hook, arrangement, variations)
+with the steps below from the riff/perc step on. If the tool is missing (older Desktop), follow
+the steps below from the start.
+
 1. `local_ableton_snapshot`; `local_ableton_set_tempo` (90 boom bap / 82 lo-fi).
 2. Tracks (`local_ableton_edit_track` `create_midi`): Drums, Bass, Keys, Texture, (Counter);
    `local_ableton_tracks` for indices.
