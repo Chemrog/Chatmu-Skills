@@ -20,13 +20,13 @@ requiresTools: ["local_ableton_snapshot", "local_ableton_create_clip", "local_ab
 # Chatmu Studio — Compose Core
 **Version:** 1.0
 **Requires:** Chatmu Desktop (Co-Producer) bridge + Ableton Live (AbletonMCP control surface).
-**Load with:** `chatmu-studio-harmony` (chords), `chatmu-studio-drums-by-genre`
-(drums), `chatmu-studio-bass-lines`, `chatmu-studio-humanize`, `chatmu-studio-genre-templates`.
+**Load with:** `chatmu-studio-harmony` (chords), the genre skill (`chatmu-studio-genre-*`)
+(drums), `chatmu-studio-bass-lines`, `chatmu-studio-humanize`, the genre skill (`chatmu-studio-genre-*`).
 
 ## The flow (do it in this order)
 
 1. **Brief.** Genre, tempo, key/scale, mood, length. If two or more are missing ask ONE
-   short question; otherwise use the genre defaults in `chatmu-studio-genre-templates`.
+   short question; otherwise use the genre defaults in the genre skill (`chatmu-studio-genre-*`).
 2. **Read the set:** `local_ableton_snapshot` (add `includeNotes: true` only if you need
    to match existing parts — it can be large). Note the tempo, MIDI tracks and their
    instruments, empty clip slots, and existing clips you must not clash with.
@@ -71,7 +71,7 @@ convention ("C3 in Ableton, middle C").
 | Bass (synth/electric) | 28–55 | roots, fifths, octaves |
 | Chords / keys / pads | 48–79 | no 3rds or 7ths below ~52 (mud) |
 | Lead / melody / vocal-like | 60–84 | sing-able span ~ an octave and a half |
-| Drum Rack | 36–51 | see `chatmu-studio-drums-by-genre` |
+| Drum Rack | 36–51 | see the genre skill (`chatmu-studio-genre-*`) |
 
 Before writing a part, check the neighbouring parts' ranges (`get_notes`) so the
 melody does not sit on top of the chords' top voice and the bass does not double the

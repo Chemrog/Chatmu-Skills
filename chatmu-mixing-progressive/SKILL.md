@@ -101,7 +101,7 @@ la reviso sin tocar nada?"
 2. **Diagnose per bus:** read spectrum (mud 200–400 Hz, harshness 2–5 kHz, sub rumble on
    non-bass buses), dynamics/crest, stereo, and the masking pairs. Compare the balance with
    **role targets**: kick and bass are the anchor; lead vocal a few LU above the music bed;
-   pads/ambiences clearly below; genre lengths and tables in `chatmu-studio-genre-templates`,
+   pads/ambiences clearly below; genre lengths and tables in the genre skill (`chatmu-studio-genre-*`),
    a reference song via `chatmu-studio-reference`. Optional picture: `local_ears_render`.
 3. **Propose per bus** (table: bus · problem measured · device · starting setting). Chain
    order, max 3 devices: **Utility → EQ Eight → Compressor** (Glue Compressor is fine on

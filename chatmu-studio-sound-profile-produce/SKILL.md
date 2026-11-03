@@ -23,7 +23,7 @@ requiresTools: ["local_read_file", "local_copy_file", "local_ableton_open_set", 
 # Chatmu Studio — Produce with the sound profile
 **Version:** 1.0
 **Requires:** a sound profile in the artist folder (`chatmu-studio-sound-profile-build`), Ableton Live with the AbletonMCP Remote Script and «Permitir control», Chatmu Ears for the check.
-**Related:** `chatmu-studio-sound-profile-edit`, `chatmu-studio-compose-core`, `chatmu-studio-harmony`, `chatmu-studio-drums-by-genre`, `chatmu-studio-humanize`, `chatmu-studio-export`, `chatmu-studio-reference`.
+**Related:** `chatmu-studio-sound-profile-edit`, `chatmu-studio-compose-core`, `chatmu-studio-harmony`, the genre skill (`chatmu-studio-genre-*`), `chatmu-studio-humanize`, `chatmu-studio-export`, `chatmu-studio-reference`.
 
 ## What it is (how to say it)
 

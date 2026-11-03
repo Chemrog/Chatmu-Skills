@@ -24,7 +24,7 @@ requiresTools:
 # Chatmu Studio — Breakbeats
 
 **Reference:** the tables and decision tree are at the end of this skill.
-**Related:** `chatmu-studio-drums-by-genre`, `chatmu-studio-humanize`, `chatmu-studio-sampling`.
+**Related:** the genre skill (`chatmu-studio-genre-*`), `chatmu-studio-humanize`, `chatmu-studio-sampling`.
 
 ## When to use
 When the user wants boom bap, lo-fi, hip-hop, funk, DnB, jungle or dubstep drums, or says

@@ -28,7 +28,7 @@ requiresTools:
 # Chatmu Studio — Sampling
 
 **Reference:** the tables and decision tree are at the end of this skill.
-**Related:** `chatmu-studio-drums-by-genre`, `chatmu-studio-humanize`, `chatmu-studio-spatial-panning`.
+**Related:** the genre skill (`chatmu-studio-genre-*`), `chatmu-studio-humanize`, `chatmu-studio-spatial-panning`.
 
 ## When to use
 When the user wants to build a beat from an existing recording, chop a loop, flip a sample,
@@ -45,7 +45,7 @@ or asks whether a sample is "too long" or "clearable".
 5. **Fit tempo**: warp (keep pitch) or re-pitch (change pitch). Say which and why.
 6. **Flip** with devices/params: pitch, reverse, reorder, filter, layer. A flip must change
    the context, not just loop the original.
-7. **Program drums** (`chatmu-studio-drums-by-genre`); leave space for the vocal.
+7. **Program drums** (the genre skill (`chatmu-studio-genre-*`)); leave space for the vocal.
 8. **Humanize** only after the quantized groove works.
 9. **Report** source, bars used, warp mode, flip and clearance status.
 

@@ -6,7 +6,7 @@ description: >
   read and edit pads and their chains, layer kicks, set choke groups so the
   open hi-hat is cut by the closed one, tune the kick to the song's key, level
   and pan pads, and check the kit with Chatmu Ears. Patterns are in
-  chatmu-studio-drums-by-genre. Trigger phrases: "arma el kit", "arma un drum
+  the genre skill (chatmu-studio-genre-*). Trigger phrases: "arma el kit", "arma un drum
   rack", "drum rack", "kit de batería", "cambia el kick", "capas de kick",
   "layer al kick", "afina el kick", "que el kick esté en tono", "choke",
   "grupo de corte", "hi-hat abierto y cerrado", "el rack está vacío", "pads",
@@ -24,7 +24,7 @@ requiresTools: ["local_ableton_snapshot", "local_ableton_browser", "local_ableto
 # Chatmu Studio — Drum Rack (build and tune the kit)
 **Version:** 1.0
 **Requires:** Chatmu Desktop bridge + Ableton Live 12 (AbletonMCP patched Remote Script 1.10.0-chatmu for pads via the LOM) + Chatmu Ears.
-**Patterns:** `chatmu-studio-drums-by-genre` (pad map MIDI 36 = kick, 38 = snare, 42 = closed hat, 46 = open hat…). **Bass vs kick:** `chatmu-studio-bass-lines`, `chatmu-studio-sidechain`.
+**Patterns:** the genre skill (`chatmu-studio-genre-*`) (pad map MIDI 36 = kick, 38 = snare, 42 = closed hat, 46 = open hat…). **Bass vs kick:** `chatmu-studio-bass-lines`, `chatmu-studio-sidechain`.
 
 ## What does this Skill do?
 
@@ -98,7 +98,7 @@ Result: the closed hat cuts the open one, like a real hi-hat.
 
 ## Phase 2 — Test loop
 
-A 1–2 bar Session clip with the genre's pattern (`chatmu-studio-drums-by-genre`), fire it.
+A 1–2 bar Session clip with the genre's pattern (the genre skill (`chatmu-studio-genre-*`)), fire it.
 
 ## Ears verification
 
@@ -112,4 +112,4 @@ kick energy in sub/low, no pad far louder than the rest (peaks), hats not harsh
 
 - Don't leave a rack with 0 chains or pads the pattern needs but are empty.
 - Don't overwrite a pad with `copy_pad` without saying which one and getting OK.
-- Don't duplicate the pattern skills: link `chatmu-studio-drums-by-genre`.
+- Don't duplicate the pattern skills: link the genre skill (`chatmu-studio-genre-*`).

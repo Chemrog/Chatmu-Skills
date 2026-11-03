@@ -148,7 +148,7 @@ the section's bars from `chatmu-studio-arrangement`). For each bar, from its map
    (A A' or A B), one peak per phrase, rests, end the phrase on the root or 3rd of the last
    chord. When the motif repeats over a different chord, keep its rhythm and contour and
    move only the strong-beat notes to the new chord's tones.
-8. **Rhythm** follows the genre (`chatmu-studio-genre-templates`); the harmony only decides
+8. **Rhythm** follows the genre (the genre skill (`chatmu-studio-genre-*`)); the harmony only decides
    the pitches.
 
 ### Bass lines

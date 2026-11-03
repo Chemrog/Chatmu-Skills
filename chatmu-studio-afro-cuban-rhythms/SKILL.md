@@ -23,7 +23,7 @@ requiresTools:
 # Chatmu Studio — Afro-Cuban rhythms
 
 **Reference:** the tables and decision tree are at the end of this skill.
-**Related:** `chatmu-studio-drums-by-genre`, `chatmu-studio-humanize`.
+**Related:** the genre skill (`chatmu-studio-genre-*`), `chatmu-studio-humanize`.
 
 ## When to use
 When the user asks for salsa, son, rumba, songo, merengue, mozambique, a Cuban feel, or a

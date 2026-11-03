@@ -25,7 +25,7 @@ requiresTools: ["local_synth_status", "local_synth_set_preset", "local_synth_set
 # Chatmu Studio — Sound design
 **Version:** 2.0
 **Requires:** Chatmu Desktop bridge + Chatmu Synth open on a MIDI track. Ears for verification.
-**Related:** chatmu-studio-synth (tool details, tweaks), chatmu-studio-genre-templates (which sound fits which genre), chatmu-studio-listen-troubleshooting.
+**Related:** chatmu-studio-synth (tool details, tweaks), the genre skill (chatmu-studio-genre-*) (which sound fits which genre), chatmu-studio-listen-troubleshooting.
 
 ## What does this Skill do?
 
@@ -212,7 +212,7 @@ The goal is the same timbre in Chatmu Synth **plus** the performance as a MIDI c
 
 ## After building
 
-- Offer the obvious next step in one line: "¿Te escribo un patrón para probarlo?" (chatmu-studio-compose-core / bass-lines / drums-by-genre).
+- Offer the obvious next step in one line: "¿Te escribo un patrón para probarlo?" (chatmu-studio-compose-core / bass-lines / the genre skill).
 - Small changes go through `local_synth_character` (brightness, attack, body, air, vibrato, space, wear, volume; −1..1, start with ±0.3).
 - If the user likes it: `local_synth_get_preset { save_to: "~/Music/Chatmu Synth/User/Presets/<name>.vital" }` so it shows in the plugin's browser.
 
