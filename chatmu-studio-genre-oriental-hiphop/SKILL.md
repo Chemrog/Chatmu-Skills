@@ -45,7 +45,7 @@ erase the mode.
 Related: `chatmu-studio-hook-melody` (the hook method — this skill gives it the scale and the
 gestures), `chatmu-studio-drum-rack`, `chatmu-studio-sound-design`, `chatmu-studio-bass-lines`,
 `chatmu-mixing-progressive`. Real maqam/raga with quarter tones and a drone, not fused with hip
-hop: the planned world-scales skill (see MASTER_PLAN_SKILLS.md).
+hop: `chatmu-studio-world-scales`.
 
 ## 1. Brief (ask only what is missing; propose defaults)
 | Decision | Options | Default |
