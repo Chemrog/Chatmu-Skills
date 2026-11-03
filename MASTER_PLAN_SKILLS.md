@@ -262,21 +262,23 @@ por qué está esa nota, acorde o sonido, no lo escribe.
 
 ---
 
-## 7. Orden de trabajo
+## 7. Orden de trabajo — estado al 2026-11-02 (noche)
 | # | Entrega | Estado |
 |---|---|---|
-| 1 | Inventario + auditoría + 3 skills + correcciones de referencias rotas (esta rama) | ✅ |
-| 2 | Chema prueba `hook-melody`, `harmonize-melody`, `genre-oriental-hiphop` en Desktop | pendiente |
-| 3 | `chatmu-studio-harmony` (fusión) | |
-| 4 | `chatmu-studio-arrangement` (fusión de 3) | |
-| 5 | Géneros pedidos: pop, rock, dark-trap, ambient, reggaetón, hiphop | |
-| 6 | `make-song` + `genre-fusion` | |
-| 7 | `mix-by-genre`, `mix-effects` | |
-| 8 | Resto de géneros, `world-scales` reescrita, `counter-melody`, `lyrics-prosody`, `bass-lines` ampliada | |
-| 9 | Borrar las fusionadas (cuando su reemplazo esté en `main`) | |
+| 1 | Inventario + auditoría + hook-melody, harmonize-melody, genre-oriental-hiphop | ✅ |
+| 2 | Corregir referencias rotas (music-kb) y tools mal usadas | ✅ |
+| 3 | `chatmu-studio-harmony` (fusión de voicing + functional) | ✅ |
+| 4 | `chatmu-studio-arrangement` v2 (fusión con song-structure + drop-buildup) | ✅ |
+| 5 | Géneros pedidos: pop, rock, dark-trap, ambient, reggaetón, hiphop | ✅ |
+| 6 | `make-song` + `genre-fusion` | ✅ |
+| 7 | `mix-by-genre`, `mix-effects` | ✅ |
+| 8 | Resto de géneros (rnb, house-techno, dnb-garage, regional-mx, latin-tropical, afrobeats-amapiano, cinematic, jazz), `world-scales` v2, `counter-melody`, `lyrics-prosody`, `bass-lines` 1.1 | ✅ |
+| 9 | Borradas: melody-hooks, harmony-voicing, harmony-functional, song-structure, drop-buildup, club-grooves, drums-by-genre, genre-templates | ✅ |
+| 10 | Chema prueba en Desktop (prioridad: make-song, hook-melody, harmonize-melody, géneros pedidos, mix-by-genre, master-chain) | pendiente |
+| 11 | Merge de esta rama + rama Desktop `chore/studio-keywords-production-skills` (test del linter) → `POST /api/skills/sync` | pendiente, decide Chema |
 
-Cada tanda: rama → PR → prueba en Desktop → merge a `main` → `POST /api/skills/sync`.
-**Nunca** sync a producción desde una rama.
+Resultado: 51 skills `chatmu-studio-*` + 7 de mezcla/master = **58 de producción**, sin duplicados,
+todas autocontenidas y pasando el linter del Desktop (60/60).
 
 ### Criterio de "hecha"
 1. Pasa el linter del Desktop (`CHATMU_SKILLS_DIR=<worktree> npx vitest run bridge/skillLint.test.ts`).
