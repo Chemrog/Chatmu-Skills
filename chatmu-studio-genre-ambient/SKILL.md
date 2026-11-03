@@ -48,7 +48,7 @@ a preset demo, i.e. "AI-made").
 Related: `chatmu-studio-harmony` (voicings), `chatmu-studio-sound-design` and
 `chatmu-studio-synth` (pads/drones), `chatmu-studio-spatial-panning`, `chatmu-mix-effects`
 (reverb/delay), `chatmu-studio-humanize`, `chatmu-studio-arrangement`. Lo-fi hip hop with
-drums in front: `chatmu-studio-genre-lofi` (planned); this skill covers the beatless or
+drums in front: `chatmu-studio-genre-hiphop` (planned); this skill covers the beatless or
 nearly beatless end.
 
 ## 1. Brief (ask only what is missing; propose defaults)
@@ -68,6 +68,8 @@ Meditation/sleep: no pulse, no melody hooks, no surprises, slow everything (see 
 - Think in **long durations**: pad notes 4–16 bars (16–64 beats), drones the whole section.
   Melody notes ≥ 1 beat, often 2–6 beats.
 - Lo-fi chill backgrounds: 70–85 BPM, swing 55–60% on hats, everything softened (§5).
+- Chill-out (downtempo, 80–126 BPM): sparse kick or kick on 1 and 3, soft clap/snare on 2 and 4,
+  soft hats, long simple bass (root, 1–2 bars per note); same no-transient rules apply.
 - Phrase lengths: 8, 16 or 32 bars, and **overlap** sections by 2–4 bars instead of cutting.
 
 ## 3. Harmony: static, modal, slow
