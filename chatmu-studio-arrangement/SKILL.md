@@ -11,7 +11,7 @@ description: >
   "full song", "the song feels flat", "energy curve", "transitions", "make a
   drop", "build-up", "riser", "estructura", "estructura de la canción", "arma
   la canción", "revisa el arreglo", "se siente plana", "no crece", "el coro no
-  explota", "intro", "verso", "pre-coro", "coro", "puente", "drop", "outro",
+  explota", "transiciones", "intro", "verso", "pre-coro", "coro", "puente", "drop", "outro",
   "córrela desde el coro", "graba desde el coro", "hazme un drop", "subida",
   "redoble", "Session", "Arrangement".
 compatibility: chatmu
