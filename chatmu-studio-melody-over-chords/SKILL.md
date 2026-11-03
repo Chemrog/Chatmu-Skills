@@ -25,7 +25,7 @@ requiresTools: ["local_ableton_snapshot", "local_ableton_get_notes", "local_musi
 **Requires:** Chatmu Desktop (Co-Producer) bridge + Ableton Live.
 **Read first:** `chatmu-studio-compose-core` (clip flow, pitch map: MIDI 60 = C3 in Live, ranges).
 **Related:** `chatmu-studio-harmony` (chord vocabulary), `chatmu-studio-bass-lines`,
-`chatmu-studio-song-structure` (which section you are writing for), `chatmu-studio-humanize`.
+`chatmu-studio-arrangement` (which section you are writing for), `chatmu-studio-humanize`.
 
 Chords and functions: `chatmu-studio-harmony`.
 This skill builds the harmonic map; for hooks (motif, rhythm, peak, anti-AI check) use
@@ -124,7 +124,7 @@ update the map.
 ## 2. Write against the map
 
 Work on the bars the user asked for ("the first 4 bars" = bars 1–4; "the chorus" =
-the section's bars from `chatmu-studio-song-structure`). For each bar, from its map line:
+the section's bars from `chatmu-studio-arrangement`). For each bar, from its map line:
 
 1. **Chord tones** = the chord's notes in the melody range (MIDI 60–84 for leads). **Guide
    tones** = the 3rd and the 7th: they say the most about the chord.

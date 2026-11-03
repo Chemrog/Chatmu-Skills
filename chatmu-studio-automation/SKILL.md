@@ -25,7 +25,7 @@ requiresTools: ["local_ableton_snapshot", "local_ableton_devices", "local_ableto
 # Chatmu Studio — Automation
 **Version:** 1.0
 **Requires:** Chatmu Desktop bridge + Ableton Live 12 (AbletonMCP patched Remote Script 1.10.0-chatmu) + Chatmu Ears.
-**Used by:** `chatmu-studio-drop-buildup`, `chatmu-studio-arrangement`. **Related:** `chatmu-studio-record`, `chatmu-studio-synth`.
+**Used by:** `chatmu-studio-arrangement`, `chatmu-studio-arrangement`. **Related:** `chatmu-studio-record`, `chatmu-studio-synth`.
 
 ## What does this Skill do?
 

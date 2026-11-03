@@ -23,7 +23,7 @@ requiresTools: ["local_ableton_snapshot", "local_ableton_tracks", "local_ableton
 # Chatmu Studio — Sidechain & pumping
 **Version:** 1.0
 **Requires:** Chatmu Desktop bridge + Ableton Live 12 (AbletonMCP patched Remote Script 1.10.0-chatmu) + Chatmu Ears.
-**Related:** `chatmu-mixing-progressive` (where it fits in the mix), `chatmu-studio-drop-buildup`, `chatmu-studio-synth`.
+**Related:** `chatmu-mixing-progressive` (where it fits in the mix), `chatmu-studio-arrangement`, `chatmu-studio-synth`.
 
 ## What does this Skill do?
 

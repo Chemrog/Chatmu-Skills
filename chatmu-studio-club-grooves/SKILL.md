@@ -23,7 +23,7 @@ requiresTools:
 # Chatmu Studio — Club grooves
 
 **Reference:** the tables and decision tree are at the end of this skill.
-**Related:** `chatmu-studio-drums-by-genre`, `chatmu-studio-sidechain`, `chatmu-studio-drop-buildup`.
+**Related:** `chatmu-studio-drums-by-genre`, `chatmu-studio-sidechain`, `chatmu-studio-arrangement`.
 
 ## When to use
 When the user asks for house, techno, trance, drum & bass, jungle, dubstep or chill-out,
