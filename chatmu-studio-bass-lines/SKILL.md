@@ -11,13 +11,13 @@ compatibility: chatmu
 category: creative
 subcategory: studio
 shortDesc: "Basslines and 808s that follow the chords and lock with the kick"
-version: "1.0"
+version: "1.1"
 tags: ["studio", "ableton", "bass", "bajo", "808", "co-producer"]
 requiresTools: ["local_ableton_get_notes", "local_ableton_create_clip", "local_ableton_write_notes", "local_ableton_device_params", "local_ableton_set_device_param"]
 ---
 
 # Chatmu Studio — Bass Lines
-**Version:** 1.0
+**Version:** 1.1
 **Use with:** `chatmu-studio-compose-core` (pitch map: MIDI 60 = C3 in Live),
 `chatmu-studio-harmony`, `chatmu-studio-drums-by-genre`.
 
@@ -51,6 +51,19 @@ requiresTools: ["local_ableton_get_notes", "local_ableton_create_clip", "local_a
 | Lo-fi / R&B | root on 1 (long), passing/approach notes on beats 3–4, slides; follow chord tones |
 | Pop | 8th-note root pulses (starts 0, 0.5 … 3.5, duration 0.45) or root on 1 + syncopation on 2.5 |
 | Drum & bass | long sub notes (1–2 bars) or Reese riff on the root/♭3/5th |
+| Rock | 8th-note root pulses locked to the kick (starts 0, 0.5 … 3.5, duration 0.4), approach note on 3.5 into the next chord; follows the guitar riff's rhythm when there is one; MIDI 28–48 |
+| Funk / disco | octave jumps on 16ths (root 0, octave 0.5, root 0.75 …), ghost notes velocity 40–55, rests are part of the groove |
+| R&B / neo-soul | sub-bass root on 1 held ~1.5 beats, chromatic approach on 3.75 into the next root; sometimes the 3rd or 7th of the chord on beat 3; behind the beat by 10–20 ms |
+| Techno | 16th-note rolling bass on the root (off the kick: steps 2–4, 6–8…), or one sustained sub note per bar; few pitch changes |
+| UK garage | swung syncopated bass (starts 0, 0.75, 1.75, 2.5), short notes, octave stabs |
+| Regional mexicano (banda / norteño) | tuba / tololoche "oom-pah": root on 1 and 5th on 3 (or 2 and 4 in 2/4 polka feel: root on 0, 5th on 1), walking runs between chords on the last beat; corridos tumbados: 808-style long root under the requinto |
+| Cumbia | root on 1, 5th on 2.5 / root on 3 (quarter + 8th pattern), very steady; bass follows the güira/guacharaca |
+| Salsa | tumbao: anticipated root on the "and" of 2 (1.5) tied over, 5th on 4 (3); beat 1 is usually silent |
+| Bachata | syncopated arpeggio: root 0, 5th 0.5, octave 1.5, 5th 2 …, slides into chord changes |
+| Afrobeats | syncopated, sparse: root 0, then 1.75 and 2.5 or 3.25; leaves space for the percussion; amapiano: log drum (pitched percussive bass) on 16th-note syncopations with pitch drops |
+| Ambient | drone on the root for 2–8 bars or no bass at all; swell in with slow attack (≥ 300 ms) |
+| Cinematic | low strings/brass on roots and 5ths in whole notes; ostinato in 8ths for tension |
+| Jazz | walking bass: one note per beat, chord tone on 1, scale/chromatic approach on 4 into the next chord's root; MIDI 28–55 |
 
 ## 4. 808 glide (portamento)
 
