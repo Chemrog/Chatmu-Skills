@@ -17,6 +17,7 @@ shortDesc: "House, deep/tech house, techno, melodic techno: 4/4 grids, offbeat b
 version: "1.0"
 tags: [studio, ableton, genre, house, deep-house, tech-house, techno, melodic-techno, trance, club]
 requiresTools:
+  - local_studio_genre_starter
   - local_ableton_snapshot
   - local_ableton_tracks
   - local_ableton_set_tempo
@@ -180,6 +181,13 @@ Seconds per bar = 240 / BPM (124 → 1.94 s; 6 min ≈ 186 bars).
 - 8 bars copied 24 times with zero variation — the machine-loop tell.
 
 ## Workflow with the tools
+**Start with `local_studio_genre_starter` (`genre: house` or `techno`) when you have it.** In one approval it
+adds Drums, Bass and Chords at the end of the set with this genre's real groove, bass rhythm and
+progression, voiced with Chatmu Synth's presets of the genre. Pass the user's `bpm` / `key`.
+Don't rewrite its drum grid: build on top of it (perc layer, riff/hook, arrangement, variations)
+with the steps below from the riff/perc step on. If the tool is missing (older Desktop), follow
+the steps below from the start.
+
 1. `local_ableton_snapshot`; `local_ableton_set_tempo` from §1.
 2. Tracks (`local_ableton_edit_track` `create_midi`): Drums, Bass, Chords/Stab, Lead/Arp, Perc.
 3. Drums (§2) → fire (`local_ableton_fire`) → bass (§5) → fire → chords/stab (§3–4) → fire.

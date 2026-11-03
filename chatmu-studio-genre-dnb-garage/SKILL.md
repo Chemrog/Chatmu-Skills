@@ -16,6 +16,7 @@ shortDesc: "DnB, jungle, UK garage/2-step, dubstep: two-step & half-time grids, 
 version: "1.0"
 tags: [studio, ableton, genre, drum-and-bass, dnb, jungle, uk-garage, 2-step, dubstep, breakbeat]
 requiresTools:
+  - local_studio_genre_starter
   - local_ableton_snapshot
   - local_ableton_tracks
   - local_ableton_set_tempo
@@ -182,6 +183,13 @@ Building on `chatmu-studio-hook-melody`:
 - 2 bars looped for 3 minutes with no switch-ups.
 
 ## Workflow with the tools
+**Start with `local_studio_genre_starter` (`genre: dnb`) when you have it.** In one approval it
+adds Drums, Bass and Chords at the end of the set with this genre's real groove, bass rhythm and
+progression, voiced with Chatmu Synth's presets of the genre. Pass the user's `bpm` / `key`.
+Don't rewrite its drum grid: build on top of it (perc layer, riff/hook, arrangement, variations)
+with the steps below from the riff/perc step on. If the tool is missing (older Desktop), follow
+the steps below from the start.
+
 1. `local_ableton_snapshot`; `local_ableton_set_tempo` (§1).
 2. Tracks (`local_ableton_edit_track` `create_midi`): Drums (or Break + Drums), Sub, Bass
    mids/Reese, Keys/Pad, Vox/FX.
