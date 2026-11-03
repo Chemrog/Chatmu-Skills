@@ -6,7 +6,7 @@ description: >
   (chords, a loop, a sample converted to MIDI). Builds a harmonic map — which
   chord sounds in each bar, with which exact notes (voicing, inversion), its
   Roman numeral and the local key, including key changes — and then writes
-  the part bar by bar against that map. Trigger phrases: "write a melody",
+  the part bar by bar against that map. Trigger phrases: "write a melody", "escribe una melodía", "melodía sobre estos acordes",
   "melody over these chords", "melody for the first 4 bars", "another variation",
   "counter-melody", "harmony", "second voice", "what chords are these",
   "what key", "what key is this", "analyze the chords", "change key",

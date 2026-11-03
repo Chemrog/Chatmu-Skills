@@ -18,6 +18,7 @@ shortDesc: "Jazz: ii–V–I, guide tones, rootless voicings, comping, walking b
 version: "1.0"
 tags: [studio, ableton, genre, jazz, swing, ii-v-i, voicings, walking-bass, bossa, harmony]
 requiresTools:
+  - local_synth_status
   - local_ableton_snapshot
   - local_ableton_set_tempo
   - local_ableton_edit_track
@@ -140,6 +141,21 @@ Use `chatmu-studio-melody-over-chords` and `chatmu-studio-hook-melody`. Jazz spe
 - Swing 8ths in lines; vel ghosting on low-function notes (−15).
 
 ## 9. Sounds
+**Chatmu Synth first (house rule).** Every bass and melodic part (bass/808, keys, pads, plucks,
+leads, brass, strings…) gets **Chatmu Synth with a factory preset of this genre**, not Live's
+stock instruments (Operator, Grand Piano, Electric…), which sound like generic MIDI:
+1. `local_synth_find_preset` with `genre: "Jazz"`, the `instrument` and a `character`. If it
+   returns `fallback: true`, say it's the closest genre.
+2. Load the plugin on the track: searching the browser by name does NOT find plugins, so use
+   `local_ableton_browser` `path: "plugins"` (then its VST3 folder) to get Chatmu Synth's `uri`,
+   and `local_ableton_load_device` with that `uri`.
+3. Right after loading, `local_synth_set_preset { file }` (it goes to the newest instance), then
+   `local_synth_status`: that track's instance must show the `preset_name`. An empty
+   `preset_name` means no preset is loaded yet — never tweak or write on top of that.
+Load every synth track first, then write notes. Live's instruments only when the library has
+nothing for that part (say so). **Drums are not Chatmu Synth** (no noise source, no percussion
+presets): use a Live Drum Rack / kit or samples; a Chatmu Synth 808 can sit under it as the low end.
+
 - `local_synth_find_preset` with `genre: "Jazz"` if listed (else `fallback: true`): `Keys Warm`
   (Rhodes/piano), `Bass Warm` (upright), `Brass` (trumpet/sax), `Guitar Warm` (archtop).
 - Browser (`local_ableton_browser`): `grand piano`, `upright bass`, `jazz kit`, `brushes`,

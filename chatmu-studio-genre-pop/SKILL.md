@@ -17,6 +17,7 @@ shortDesc: "Modern pop: hook in 10 s, pre-chorus lift, high-register chorus, fou
 version: "1.0"
 tags: [studio, ableton, genre, pop, dance-pop, synth-pop, ballad, topline, hook]
 requiresTools:
+  - local_synth_status
   - local_ableton_snapshot
   - local_ableton_tracks
   - local_ableton_set_tempo
@@ -126,6 +127,21 @@ HALF-TIME VERSE: kick 1 8 11, snare step 9 only
 - Ballad: whole/half notes, enters at chorus 1. Details in `chatmu-studio-bass-lines`.
 
 ## 7. Sounds
+**Chatmu Synth first (house rule).** Every bass and melodic part (bass/808, keys, pads, plucks,
+leads, brass, strings…) gets **Chatmu Synth with a factory preset of this genre**, not Live's
+stock instruments (Operator, Grand Piano, Electric…), which sound like generic MIDI:
+1. `local_synth_find_preset` with `genre: "Pop"`, the `instrument` and a `character`. If it
+   returns `fallback: true`, say it's the closest genre.
+2. Load the plugin on the track: searching the browser by name does NOT find plugins, so use
+   `local_ableton_browser` `path: "plugins"` (then its VST3 folder) to get Chatmu Synth's `uri`,
+   and `local_ableton_load_device` with that `uri`.
+3. Right after loading, `local_synth_set_preset { file }` (it goes to the newest instance), then
+   `local_synth_status`: that track's instance must show the `preset_name`. An empty
+   `preset_name` means no preset is loaded yet — never tweak or write on top of that.
+Load every synth track first, then write notes. Live's instruments only when the library has
+nothing for that part (say so). **Drums are not Chatmu Synth** (no noise source, no percussion
+presets): use a Live Drum Rack / kit or samples; a Chatmu Synth 808 can sit under it as the low end.
+
 - `local_synth_find_preset` with `query` like `"pop keys warm"`, `"pop synth bright"`,
   `"pop bass short"`, `"pop pluck"`, `"pop strings"`, `"pop vocal"`. If `fallback: true`,
   say so and load the nearest with `local_synth_set_preset`.
