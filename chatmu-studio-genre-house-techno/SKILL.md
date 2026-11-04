@@ -121,20 +121,20 @@ Building on `chatmu-studio-hook-melody`, the club hook is **rhythmic first**:
 - Sub fundamental 40–70 Hz; the kick owns 50–60 Hz punch, bass sits around it (tune kick to key).
 
 ## 6. Sounds
-**Chatmu Synth first (house rule).** Every bass and melodic part (bass/808, keys, pads, plucks,
-leads, brass, strings…) gets **Chatmu Synth with a factory preset of this genre**, not Live's
+**Chatmu Sound first (house rule).** Every bass and melodic part (bass/808, keys, pads, plucks,
+leads, brass, strings…) gets **Chatmu Sound with a factory preset of this genre**, not Live's
 stock instruments (Operator, Grand Piano, Electric…), which sound like generic MIDI:
 1. `local_synth_find_preset` with `genre: "House"`, the `instrument` and a `character`. If it
    returns `fallback: true`, say it's the closest genre.
 2. Load the plugin on the track: searching the browser by name does NOT find plugins, so use
-   `local_ableton_browser` `path: "plugins"` (then its VST3 folder) to get Chatmu Synth's `uri`,
+   `local_ableton_browser` `path: "plugins"` (then its VST3 folder) to get Chatmu Sound's `uri`,
    and `local_ableton_load_device` with that `uri`.
 3. Right after loading, `local_synth_set_preset { file }` (it goes to the newest instance), then
    `local_synth_status`: that track's instance must show the `preset_name`. An empty
    `preset_name` means no preset is loaded yet — never tweak or write on top of that.
 Load every synth track first, then write notes. Live's instruments only when the library has
-nothing for that part (say so). **Drums are not Chatmu Synth** (no noise source, no percussion
-presets): use a Live Drum Rack / kit or samples; a Chatmu Synth 808 can sit under it as the low end.
+nothing for that part (say so). **Drums are not Chatmu Sound** (no noise source, no percussion
+presets): use a Live Drum Rack / kit or samples; a Chatmu Sound 808 can sit under it as the low end.
 
 - `local_synth_find_preset` with genre words: `"house bass"`, `"deep house keys"`,
   `"techno synth dark"`, `"bass short"`, `"strings"`, `"vocal"`, `"bell"`. If the genre isn't

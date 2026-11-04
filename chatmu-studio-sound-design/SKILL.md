@@ -2,21 +2,21 @@
 name: chatmu-studio-sound-design
 description: >
   Use in Co-Producer (Chatmu Desktop) for ANY sound-design request in Chatmu
-  Synth: a sound by instrument, genre or character ("un bajo de reggaetón
+  Sound: a sound by instrument, genre or character ("un bajo de reggaetón
   oscuro", "una trompeta", "unas cuerdas cinemáticas", "un synth de hyperpop",
   "un pad cálido", "un 808 con punch", "un growl de dubstep", "algo tipo
   trance", "un sonido como de campana pero más sucio", "make me a pluck / pad /
   supersaw / 808 / reese / lead / bell / brass"), or a sound like a recording
   the user has ("quiero este sonido", "esta trompeta pero en MIDI"). Picks the
   best starting point (factory library of ~460 measured presets by genre and
-  instrument, classic recipes, or a reference clone), loads it, shapes it with
+  instrument, classic recipes, or recreating a reference), loads it, shapes it with
   the character knobs and parameters, plays a test note and verifies it with
   Chatmu Ears. For small tweaks of the sound already loaded use
   chatmu-studio-synth.
 compatibility: chatmu
 category: creative
 subcategory: studio
-shortDesc: "Any sound in Chatmu Synth: factory library by genre/instrument, classic recipes, design from scratch, or a reference"
+shortDesc: "Any sound in Chatmu Sound: factory library by genre/instrument, classic recipes, design from scratch, or a reference"
 version: "2.0"
 tags: [studio, synth, sound-design, diseño-sonoro, presets, library, genre, pluck, pad, supersaw, "808", growl, bass, brass, strings, chatmu-synth, co-producer]
 requiresTools: ["local_synth_status", "local_synth_set_preset", "local_synth_set_params", "local_synth_list_params", "local_synth_modulate", "local_synth_unmodulate", "local_synth_get_preset", "local_synth_note", "local_synth_character", "local_ears_listen", "local_ears_ensure_plugin"]
@@ -24,12 +24,12 @@ requiresTools: ["local_synth_status", "local_synth_set_preset", "local_synth_set
 
 # Chatmu Studio — Sound design
 **Version:** 2.0
-**Requires:** Chatmu Desktop bridge + Chatmu Synth open on a MIDI track. Ears for verification.
+**Requires:** Chatmu Desktop bridge + Chatmu Sound open on a MIDI track. Ears for verification.
 **Related:** chatmu-studio-synth (tool details, tweaks), the genre skill (chatmu-studio-genre-*) (which sound fits which genre), chatmu-studio-listen-troubleshooting.
 
 ## What does this Skill do?
 
-Any "hazme un sonido…" ends as a finished, playable Chatmu Synth patch. The agent never
+Any "hazme un sonido…" ends as a finished, playable Chatmu Sound patch. The agent never
 starts from a blank guess: every route starts from something that was rendered and
 measured, then shapes it. Pick the route with the table below, in this order:
 
@@ -49,12 +49,12 @@ redondo, ataque rápido, sin cola"), not parameter dumps.
 2. **Save the user's current sound first** if it is not a factory preset: `local_synth_get_preset { save_to }`.
 3. **Engine units.** `local_synth_set_params` values are engine values. Option parameters take the option index. If you need a parameter not listed in this skill, read its range with `local_synth_list_params { filter }` first; never guess a range.
 4. **Verify before saying it's done.** Play a test note (`local_synth_note`) and listen with Ears when available. Never describe how it sounds if you didn't hear it: say "no lo he escuchado".
-5. **One sound per track.** If the track's Chatmu Synth already has a sound the user likes, ask before replacing it (or create a new MIDI track).
+5. **One sound per track.** If the track's Chatmu Sound already has a sound the user likes, ask before replacing it (or create a new MIDI track).
 6. **No third-party names.** Never say a preset was "taken from" a sample pack or artist. The library is Chatmu's own synthesis.
 
 ## Route 1 — factory library (~460 presets by genre and instrument)
 
-Location: `~/Music/Chatmu Synth/User/Presets/Library/` (also in the plugin's browser under
+Location: `~/Music/Chatmu Sound/User/Presets/Library/` (also in the plugin's browser under
 User → Library). Index: `library.json` in that folder, one entry per preset:
 `{name, genre, instrument, character[], register_midi, file}`.
 
@@ -77,7 +77,7 @@ starting point for a part, but they are generic. For "this exact trumpet" use Ro
 
 ### Route 2A — factory recipe preset (preferred)
 
-The factory presets ship as `.vital` files: `Chatmu Pluck`, `Chatmu Warm Pad`, `Chatmu Supersaw`, `Chatmu 808`, `Chatmu Growl` (folder `~/Music/Chatmu Synth/User/Presets/` or the app's factory folder). They have the exact wavetables (true sine for the 808, square layers for pad and growl).
+The factory presets ship as `.vital` files: `Chatmu Pluck`, `Chatmu Warm Pad`, `Chatmu Supersaw`, `Chatmu 808`, `Chatmu Growl` (folder `~/Music/Chatmu Sound/User/Presets/` or the app's factory folder). They have the exact wavetables (true sine for the 808, square layers for pad and growl).
 
 `local_synth_set_preset { file: "<folder>/Chatmu 808.vital" }`. An ungranted folder raises an approval; tell the user what it is for.
 
@@ -200,21 +200,21 @@ the init patch with invented numbers.
    - Glide → `polyphony 1`, `legato 1` and overlapping notes (see the 808).
    - Distortion / grit → the distortion block (see 808 and growl values for safe drive/mix).
 5. **Test note in the right register, listen, adjust** (rule 4). Two or three rounds at most; then ask the user.
-6. **Save** what they like: `local_synth_get_preset { save_to: "~/Music/Chatmu Synth/User/Presets/<name>.vital" }`.
+6. **Save** what they like: `local_synth_get_preset { save_to: "~/Music/Chatmu Sound/User/Presets/<name>.vital" }`.
 
 ## Route 4 — from a reference recording ("quiero esta trompeta en MIDI")
 
-The goal is the same timbre in Chatmu Synth **plus** the performance as a MIDI clip.
+The goal is the same timbre in Chatmu Sound **plus** the performance as a MIDI clip.
 
-- **When `local_synth_clone` and `local_audio_to_midi` exist** (Chemrog/chatmu-desktop#11 and #5): run the clone on the file (mp3/wav/aiff), which loads the preset, saves it and its "(play)" version to User/Presets, and gives a 0–100 similarity score; then `local_audio_to_midi` writes the melody to a new MIDI track. Report the score in plain words, play the A/B, and offer the "(play)" preset for new notes. For acoustic instruments the clone uses a family model (plucked string, free reed, flute, brass); tell the user which one.
-- **Until then:** say that cloning from audio is not in this version yet. Offer the closest library preset (Route 1, same instrument, match brightness by ear) and, if they want the notes, ask them to use Live's *Convert Melody to New MIDI Track* on the clip.
-- Polyphonic sources (chords, full mixes): the clone and the MIDI are approximate; say so before starting.
+- **When `local_synth_clone` and `local_audio_to_midi` exist** (Chemrog/chatmu-desktop#11 and #5): run the recreation on the file (mp3/wav/aiff), which loads the preset, saves it and its "(play)" version to User/Presets, and gives a 0–100 similarity score; then `local_audio_to_midi` writes the melody to a new MIDI track. Report the score in plain words, play the A/B, and offer the "(play)" preset for new notes. For acoustic instruments the clone uses a family model (plucked string, free reed, flute, brass); tell the user which one.
+- **Until then:** say that recreating from audio is not in this version yet. Offer the closest library preset (Route 1, same instrument, match brightness by ear) and, if they want the notes, ask them to use Live's *Convert Melody to New MIDI Track* on the clip.
+- Polyphonic sources (chords, full mixes): the recreation and the MIDI are approximate; say so before starting.
 
 ## After building
 
 - Offer the obvious next step in one line: "¿Te escribo un patrón para probarlo?" (chatmu-studio-compose-core / bass-lines / the genre skill).
 - Small changes go through `local_synth_character` (brightness, attack, body, air, vibrato, space, wear, volume; −1..1, start with ±0.3).
-- If the user likes it: `local_synth_get_preset { save_to: "~/Music/Chatmu Synth/User/Presets/<name>.vital" }` so it shows in the plugin's browser.
+- If the user likes it: `local_synth_get_preset { save_to: "~/Music/Chatmu Sound/User/Presets/<name>.vital" }` so it shows in the plugin's browser.
 
 ## Verification (rule 4)
 

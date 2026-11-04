@@ -5,7 +5,7 @@ description: >
   compression / pumping / ducking: a Compressor (or Glue Compressor) on the bass,
   pad, synth or bus with its "Audio From" set to the kick (Post FX), values per
   genre (house, EDM, techno, trap, reggaetón), alternatives without routing
-  (Auto Pan / volume shaping, LFO 1/4 in Chatmu Synth), bass-under-kick
+  (Auto Pan / volume shaping, LFO 1/4 in Chatmu Sound), bass-under-kick
   ducking, and an Ears check that it really pumps (level drop on every hit).
   Trigger phrases: "ponle sidechain", "sidechain al bajo", "sidechain desde el
   kick", "que bombee", "bombeo", "que respire con el kick", "ducking", "que el
@@ -98,7 +98,7 @@ clip playing every beat, fader at −inf, and the sidechain source = that track 
 | Route | When | How |
 |---|---|---|
 | Auto Pan / tremolo shape | quick pump on one track, no trigger needed | load the device (find its exact name with `local_ableton_browser` — it varies by Live version), amount 100 %, synced to 1/4, phase 0°; read its params first |
-| Volume shaper in Chatmu Synth | the sound comes from Chatmu Synth | `local_synth_list_params { filter: "lfo_1" }`, then `local_synth_modulate { source: "lfo_1", destination: <the synth's volume/level param from list_params>, amount: -0.3 }`, LFO synced to 1/4 with a ramp shape. Never guess the destination name. |
+| Volume shaper in Chatmu Sound | the sound comes from Chatmu Sound | `local_synth_list_params { filter: "lfo_1" }`, then `local_synth_modulate { source: "lfo_1", destination: <the synth's volume/level param from list_params>, amount: -0.3 }`, LFO synced to 1/4 with a ramp shape. Never guess the destination name. |
 | Bass ducking under the kick only | 808/bass and kick play together | the Compressor route with the trap/reggaetón row (subtle) |
 
 ## Phase 4 — Ears verification (does it really pump?)

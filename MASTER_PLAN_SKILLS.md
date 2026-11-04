@@ -172,7 +172,7 @@ Leyenda: ♻️ reutiliza tal cual · 🔧 se corrige/fusiona desde existentes �
 | `chatmu-studio-arrangement` | 🔧 | `arrangement` + `song-structure` + `drop-buildup` |
 | `chatmu-studio-sampling`, `chatmu-studio-vocal-chops` | ♻️ | sampling corregida |
 
-### 3.4 Géneros (15) — una por familia, con BPM, groove en 16avos, armonía, melodía, sonidos del factory de Chatmu Synth, forma, mezcla objetivo y "qué lo arruina"
+### 3.4 Géneros (15) — una por familia, con BPM, groove en 16avos, armonía, melodía, sonidos del factory de Chatmu Sound, forma, mezcla objetivo y "qué lo arruina"
 | Skill objetivo | Estado | Material existente que absorbe |
 |---|---|---|
 | `chatmu-studio-genre-pop` | 🔧 | sección Pop de `genre-templates` + `drums-by-genre` |

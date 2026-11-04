@@ -49,7 +49,7 @@ the user which:
 | Route | How | When |
 |---|---|---|
 | **A. 12-TET compromise** | Use maqamat without quarter tones (Hijaz, Nahawand, Kurd, Ajam, Nikriz) or the closest 12-TET version | sketches, fusion, no time for setup |
-| **B. Detuned second voice** | Two instances of the same Chatmu Synth preset: voice 1 normal; voice 2 detuned −50 cents (find the oscillator tune/fine parameter with `local_synth_list_params`, set it with `local_synth_set_params`). Put every half-flat note (E½♭, B½♭…) on voice 2 at the 12-TET pitch a semitone **above** the target, so −50 cents lands on it. | real Rast/Bayati/Sikah/Saba melodies, monophonic lines |
+| **B. Detuned second voice** | Two instances of the same Chatmu Sound preset: voice 1 normal; voice 2 detuned −50 cents (find the oscillator tune/fine parameter with `local_synth_list_params`, set it with `local_synth_set_params`). Put every half-flat note (E½♭, B½♭…) on voice 2 at the 12-TET pitch a semitone **above** the target, so −50 cents lands on it. | real Rast/Bayati/Sikah/Saba melodies, monophonic lines |
 | **C. Live's tuning system** | The user loads a maqam tuning file (.scl/.ascl) into Live 12's Tuning (Set-wide); then MIDI notes map to the tuned pitches | exact intonation, the user can do one setup step |
 Never approximate a quarter-tone maqam silently. Ragas need no quarter tones in practice
 (12-TET is acceptable; the *andolan* oscillation is what matters — see ornaments).

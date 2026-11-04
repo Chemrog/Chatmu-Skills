@@ -3,7 +3,7 @@ name: chatmu-studio-guide-vocal
 description: >
   Use in Co-Producer (Chatmu Desktop + Ableton Live) when the user wants to
   HEAR lyrics sung on a melody before recording them: a rough guide vocal
-  (voz guía) made on the user's Mac with the system voice and Chatmu Synth,
+  (voz guía) made on the user's Mac with the system voice and Chatmu Sound,
   put on a new audio track in Live. The melody comes from a MIDI clip in Live,
   a .mid file, or notes the agent writes. It is a sketch to try an idea, not a
   final vocal, and never the agent's own voice in the mix. Trigger phrases:
@@ -15,21 +15,21 @@ description: >
 compatibility: chatmu
 category: creative
 subcategory: studio
-shortDesc: "Guide vocal: hear lyrics sung on a melody (system voice + Chatmu Synth) on a new track in Live"
+shortDesc: "Guide vocal: hear lyrics sung on a melody (system voice + Chatmu Sound) on a new track in Live"
 version: "1.0"
-tags: ["studio", "ableton", "guide-vocal", "voz-guia", "lyrics", "letra", "melody", "chatmu-synth", "co-producer"]
+tags: ["studio", "ableton", "guide-vocal", "voz-guia", "lyrics", "letra", "melody", "chatmu-sound", "co-producer"]
 requiresTools: ["local_sing", "local_ableton_snapshot", "local_ableton_get_notes", "local_ableton_arrangement", "local_music_theory", "local_ableton_transport", "local_doctor", "local_repair"]
 ---
 
 # Chatmu Studio — Guide vocal ("el sinte canta")
 **Version:** 1.0
-**Requires:** Chatmu Desktop bridge + Chatmu Ears installed (its Python) + Chatmu Synth's renderer (ships with the app; beta: Apple silicon) + Ableton Live with «Permitir control» for the track. Without Live the WAV is still made.
+**Requires:** Chatmu Desktop bridge + Chatmu Ears installed (its Python) + Chatmu Sound's renderer (ships with the app) + Ableton Live with «Permitir control» for the track. Without Live the WAV is still made.
 **Related:** `chatmu-studio-melody-over-chords` and `chatmu-studio-compose-core` (write the melody first), `chatmu-studio-record` (record the real vocal over the guide), `chatmu-studio-synth`.
 
 ## What does this Skill do?
 
 "Cántame esta letra con esta melodía" → `local_sing` makes a sung guide (one syllable per
-note, the Mac's system voice shaped onto the melody played by Chatmu Synth, fully local) and
+note, the Mac's system voice shaped onto the melody played by Chatmu Sound, fully local) and
 puts it on a NEW audio track called "Guide vocal" at the melody's start. The user hears how
 the words sit on the melody, then records the real vocal.
 
@@ -97,7 +97,7 @@ syllables (Spanish/English rules: "la-lu-na-se-fue", "you-are-my-sun-shine") aga
 |---|---|---|
 | `too_few_notes` | fewer notes than syllables | add notes or shorten the lyrics; the message lists the syllables |
 | `ears_missing` / `ears_incomplete` | Chatmu Ears' Python is not installed | `local_repair { action: "install_ears" }` (on-screen approval, ~260 MB) |
-| `renderer_missing` | Chatmu Synth's renderer is missing | `local_repair { action: "install_synth" }`; if `local_doctor` doesn't offer it, this Mac's build has no synth and the guide isn't available |
+| `renderer_missing` | Chatmu Sound's renderer is missing | `local_repair { action: "install_synth" }`; if `local_doctor` doesn't offer it, this Mac's build has no synth and the guide isn't available |
 | `sing_missing` | the app doesn't ship the guide-vocal script | Chatmu Desktop needs updating (not the user's fault) |
 | `voice_not_found` | the `voice` given isn't installed | call again without `voice` |
 | `timeout` | very long line | sing it by phrase or section |

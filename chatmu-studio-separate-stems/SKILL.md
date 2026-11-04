@@ -23,7 +23,7 @@ requiresTools: ["local_stems_separate", "local_repair", "local_doctor", "local_l
 # Chatmu Studio — Separate stems
 **Version:** 1.0
 **Requires:** Chatmu Desktop bridge on an Apple silicon Mac; the stem separation add-on (installed once with `local_repair`).
-**Related:** `chatmu-studio-remake-song` (stems → MIDI + Chatmu Synth → Ableton set), `chatmu-studio-clone-sound`, `chatmu-studio-verify-ai`.
+**Related:** `chatmu-studio-remake-song` (stems → MIDI + Chatmu Sound → Ableton set), `chatmu-studio-clone-sound`, `chatmu-studio-verify-ai`.
 
 ## What does this Skill do?
 

@@ -364,13 +364,13 @@ bass go big (full roll, silence, impact); trap drops often use a vocal tag + 808
 
 1. Tracks: `local_ableton_edit_track { action: "create_midi" }` (approval each) and rename.
    Load sounds in ONE `local_ableton_load_devices` call (a drum kit — not a bare
-   "Drum Rack", see `chatmu-studio-drum-rack`; a Chatmu Synth for the riser if the user
+   "Drum Rack", see `chatmu-studio-drum-rack`; a Chatmu Sound for the riser if the user
    has it).
 2. **Snare roll:** a 16-bar Session clip (`local_ableton_create_clip`) with notes from the
    table — quarters → 8ths → 16ths → 32nds, velocity ramping ~60 → 120
    (`local_ableton_write_notes`; pitch per kit, MIDI 38/40 = snare on GM-style kits; check
    the kit's pads).
-3. **Riser:** on a Chatmu Synth track, one long note (or a slow upward line) for the build's
+3. **Riser:** on a Chatmu Sound track, one long note (or a slow upward line) for the build's
    length; noise + rising filter/pitch with `local_synth_list_params` → `local_synth_set_params`
    (or a riser sample the user has). Movement: `chatmu-studio-automation`.
 4. **Impact:** a crash + low hit on bar 1 of the drop (one-bar clip).
