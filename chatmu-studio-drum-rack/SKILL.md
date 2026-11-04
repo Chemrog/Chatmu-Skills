@@ -53,6 +53,19 @@ Answer in the user's language (usually Spanish). Short.
 
 ## Phase 0 — Find or load the kit
 
+**Prefer a Chatmu kit.** The user's library has drum racks built for this — `Chatmu <Genre> Kit 01`
+… `04` for Reggaeton, Trap, Techno, Hip-Hop, Lo-fi, House, Pop, Drill, Phonk, Funk and General.
+Every pad is a sound Chatmu Sound synthesised to match a real one-shot of that genre, so the kit
+already sits in the genre instead of having to be tuned into it. Browse for "Chatmu" first and
+load the kit whose genre matches the request.
+
+Fall back to Live's own kits when the genre has no Chatmu kit yet: regional Mexican / corridos,
+cumbia, R&B, dubstep, drum & bass, afrobeats. Say which you loaded — do not imply a Chatmu kit
+exists for a genre that has none.
+
+The pads follow the usual General-MIDI layout (36 kick, 38 snare, 39 clap, 42 closed hat, 46 open
+hat, 51 808…), so the patterns in the genre skills play them unchanged.
+
 1. `local_ableton_snapshot` → a MIDI track with a Drum Rack? Its device index.
 2. None: create a MIDI track (`local_ableton_edit_track create_midi`, approval), browse
    `local_ableton_browser { path: "drums" }`, load a kit by its exact name (one approval).
