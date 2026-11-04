@@ -17,7 +17,7 @@ shortDesc: "Dark trap and drill: minor/phrygian pedal, half-time drums, hat roll
 version: "1.0"
 tags: [studio, ableton, genre, trap, dark-trap, drill, uk-drill, ny-drill, "808", hip-hop]
 requiresTools:
-  - local_synth_status
+  - local_sound_status
   - local_ableton_snapshot
   - local_ableton_tracks
   - local_ableton_set_tempo
@@ -27,8 +27,8 @@ requiresTools:
   - local_ableton_fire
   - local_ableton_scene_name
   - local_music_theory
-  - local_synth_find_preset
-  - local_synth_set_preset
+  - local_sound_find_preset
+  - local_sound_set_preset
   - local_ableton_browser
   - local_ableton_load_device
   - local_ableton_mixer
@@ -139,24 +139,24 @@ Build the motif with `chatmu-studio-hook-melody`; in this genre:
   or sidechain the 808 by 2–4 dB to the kick (`chatmu-studio-sidechain`).
 
 ## 7. Sounds
-**Chatmu Synth first (house rule).** Every bass and melodic part (bass/808, keys, pads, plucks,
-leads, brass, strings…) gets **Chatmu Synth with a factory preset of this genre**, not Live's
+**Chatmu Sound first (house rule).** Every bass and melodic part (bass/808, keys, pads, plucks,
+leads, brass, strings…) gets **Chatmu Sound with a factory preset of this genre**, not Live's
 stock instruments (Operator, Grand Piano, Electric…), which sound like generic MIDI:
-1. `local_synth_find_preset` with `genre: "Trap"`, the `instrument` and a `character`. If it
+1. `local_sound_find_preset` with `genre: "Trap"`, the `instrument` and a `character`. If it
    returns `fallback: true`, say it's the closest genre.
 2. Load the plugin on the track: searching the browser by name does NOT find plugins, so use
-   `local_ableton_browser` `path: "plugins"` (then its VST3 folder) to get Chatmu Synth's `uri`,
+   `local_ableton_browser` `path: "plugins"` (then its VST3 folder) to get Chatmu Sound's `uri`,
    and `local_ableton_load_device` with that `uri`.
-3. Right after loading, `local_synth_set_preset { file }` (it goes to the newest instance), then
-   `local_synth_status`: that track's instance must show the `preset_name`. An empty
+3. Right after loading, `local_sound_set_preset { file }` (it goes to the newest instance), then
+   `local_sound_status`: that track's instance must show the `preset_name`. An empty
    `preset_name` means no preset is loaded yet — never tweak or write on top of that.
 Load every synth track first, then write notes. Live's instruments only when the library has
-nothing for that part (say so). **Drums are not Chatmu Synth** (no noise source, no percussion
-presets): use a Live Drum Rack / kit or samples; a Chatmu Synth 808 can sit under it as the low end.
+nothing for that part (say so). **Drums are not Chatmu Sound** (no noise source, no percussion
+presets): use a Live Drum Rack / kit or samples; a Chatmu Sound 808 can sit under it as the low end.
 
-- `local_synth_find_preset` with genre words: `query: "808 dark"`, `"bell dark"`, `"flute"`,
+- `local_sound_find_preset` with genre words: `query: "808 dark"`, `"bell dark"`, `"flute"`,
   `"pluck short"`, `"vocal"`, `"strings"`, `"keys dark"`. The factory covers trap/drill
-  well; if `fallback: true`, say so. Load with `local_synth_set_preset`.
+  well; if `fallback: true`, say so. Load with `local_sound_set_preset`.
 - Browser fallbacks (`local_ableton_browser`): search `808`, `trap kit`, `drill`, `bell`,
   `music box`, `choir`. Load with `local_ableton_load_device`.
 - Character: bells with long release + slight detune; flutes breathy; plucks short with

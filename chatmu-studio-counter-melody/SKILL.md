@@ -25,7 +25,7 @@ requiresTools:
   - local_ableton_create_clip
   - local_ableton_write_notes
   - local_ableton_fire
-  - local_synth_find_preset
+  - local_sound_find_preset
 ---
 
 # Chatmu Studio — Counter-melody & second voices
@@ -109,7 +109,7 @@ which instrument. Default if unsure: verse = call-and-response fill, chorus = ha
   (quieter, darker, more reverb — see `chatmu-mix-effects`).
 
 ## Instruments (query words)
-`local_synth_find_preset` with genre + instrument: Strings (Warm) for sustained lines,
+`local_sound_find_preset` with genre + instrument: Strings (Warm) for sustained lines,
 Brass (Bright/Short) for answers, Flute or Bell for descants, Guitar (Short) for fills,
 Vocal for "oh/ah" pads, Keys for soft countermelodies. If it returns `fallback: true`,
 use the Live browser: Strings/Brass ensembles, or a filtered saw for synth genres.
@@ -141,7 +141,7 @@ Velocity: harmony voice 70–90, fills 75–100 (accents up), descant 60–80.
 2. `local_ableton_get_notes` on the lead → range, rests, holds, peak (step 1).
 3. `local_harmony_map` → chord per bar; `local_music_theory` scale → diatonic notes.
 4. Plan the line on paper (type, register, motion), tell the user in one sentence.
-5. `local_synth_find_preset` → sound; create a track/clip with `local_ableton_create_clip`
+5. `local_sound_find_preset` → sound; create a track/clip with `local_ableton_create_clip`
    matching the lead's length.
 6. `local_ableton_write_notes` (pitch/start/duration in beats/velocity). Loop with
    `local_ableton_fire` together with the lead so the user hears both.

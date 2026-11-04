@@ -33,7 +33,7 @@ requiresTools:
   - local_ableton_undo
   - local_music_theory
   - local_harmony_map
-  - local_synth_find_preset
+  - local_sound_find_preset
   - local_ears_listen
   - local_ears_track_levels
 ---
@@ -100,7 +100,7 @@ Build the loop the whole song grows from, in Session view, scene 1 named `Idea`
 For each layer:
 1. Create the track (`local_ableton_edit_track` `create_midi`), name it by role (`Drums`,
    `808`, `Chords`, `Hook`), choose the sound from the genre skill
-   (`local_synth_find_preset` first).
+   (`local_sound_find_preset` first).
 2. Get the notes from the specialist skill's method (`local_music_theory` for scales,
    progressions and drum patterns — never compute MIDI by hand), `local_ableton_create_clip`,
    `local_ableton_write_notes`.

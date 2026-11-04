@@ -3,7 +3,7 @@ name: chatmu-studio-verify-ai
 description: >
   Use in Co-Producer (Chatmu Desktop) when the user wants to MEASURE how much a
   song's audio reads as AI-generated with Chatmu's AI music detector, before
-  and/or after remaking it (stems, Chatmu Synth, re-recording), and understand
+  and/or after remaking it (stems, Chatmu Sound, re-recording), and understand
   what the number means. Uploads the audio to the user's own Chatmu account
   only after they agree, runs the detector, and explains that it measures the
   AUDIO, not who composed the song. Trigger phrases: "¿esto suena a IA?",

@@ -16,7 +16,7 @@ shortDesc: "Boom bap, lo-fi and modern hip hop: backbeat with Dilla swing, ghost
 version: "1.0"
 tags: [studio, ableton, genre, hip-hop, boom-bap, lofi, lo-fi, dilla, breakbeat, jazz]
 requiresTools:
-  - local_synth_status
+  - local_sound_status
   - local_ableton_snapshot
   - local_ableton_tracks
   - local_ableton_set_tempo
@@ -26,8 +26,8 @@ requiresTools:
   - local_ableton_fire
   - local_ableton_scene_name
   - local_music_theory
-  - local_synth_find_preset
-  - local_synth_set_preset
+  - local_sound_find_preset
+  - local_sound_set_preset
   - local_ableton_browser
   - local_ableton_load_device
   - local_ableton_mixer
@@ -128,22 +128,22 @@ Build the motif with `chatmu-studio-hook-melody`; in this family:
 - Bass velocity follows the kick's: loud on beat 1, softer on syncopations.
 
 ## 7. Sounds
-**Chatmu Synth first (house rule).** Every bass and melodic part (bass/808, keys, pads, plucks,
-leads, brass, strings…) gets **Chatmu Synth with a factory preset of this genre**, not Live's
+**Chatmu Sound first (house rule).** Every bass and melodic part (bass/808, keys, pads, plucks,
+leads, brass, strings…) gets **Chatmu Sound with a factory preset of this genre**, not Live's
 stock instruments (Operator, Grand Piano, Electric…), which sound like generic MIDI:
-1. `local_synth_find_preset` with `genre: "Hip-Hop"`, the `instrument` and a `character`. If it
+1. `local_sound_find_preset` with `genre: "Hip-Hop"`, the `instrument` and a `character`. If it
    returns `fallback: true`, say it's the closest genre.
 2. Load the plugin on the track: searching the browser by name does NOT find plugins, so use
-   `local_ableton_browser` `path: "plugins"` (then its VST3 folder) to get Chatmu Synth's `uri`,
+   `local_ableton_browser` `path: "plugins"` (then its VST3 folder) to get Chatmu Sound's `uri`,
    and `local_ableton_load_device` with that `uri`.
-3. Right after loading, `local_synth_set_preset { file }` (it goes to the newest instance), then
-   `local_synth_status`: that track's instance must show the `preset_name`. An empty
+3. Right after loading, `local_sound_set_preset { file }` (it goes to the newest instance), then
+   `local_sound_status`: that track's instance must show the `preset_name`. An empty
    `preset_name` means no preset is loaded yet — never tweak or write on top of that.
 Load every synth track first, then write notes. Live's instruments only when the library has
-nothing for that part (say so). **Drums are not Chatmu Synth** (no noise source, no percussion
-presets): use a Live Drum Rack / kit or samples; a Chatmu Synth 808 can sit under it as the low end.
+nothing for that part (say so). **Drums are not Chatmu Sound** (no noise source, no percussion
+presets): use a Live Drum Rack / kit or samples; a Chatmu Sound 808 can sit under it as the low end.
 
-- `local_synth_find_preset`: `query: "keys warm"`, `"lofi keys"`, `"hiphop bass"`, `"guitar warm"`,
+- `local_sound_find_preset`: `query: "keys warm"`, `"lofi keys"`, `"hiphop bass"`, `"guitar warm"`,
   `"strings warm"`, `"brass"`, `"flute"`, `"lofi bass"`. Say so when it returns `fallback: true`.
 - Browser fallbacks (`local_ableton_browser`): `boom bap kit`, `lofi kit`, `vinyl`, `crackle`,
   `electric piano`, `upright bass`, `break`. Load with `local_ableton_load_device`.
