@@ -79,7 +79,7 @@ Answer the user in their language (usually Spanish). Keep it short.
 - **`not_playing`** comes back at once (nothing captured) when Live is stopped. It is a
   valid answer, not a failure: start playback where the music is (step 5) and listen ONCE
   more, or tell the user "No está sonando nada: ¿le diste play?". Only to hear a
-  `local_synth_note` with Live stopped, pass `allow_stopped: true`.
+  `local_sound_note` with Live stopped, pass `allow_stopped: true`.
 - **`silent_capture`** may now arrive after ~6 s (`stopped_after_s`, `silence_abort_s`
   5–10) instead of the full length, with `cause`, `hint` and what Live shows (isPlaying,
   cursor vs the last Arrangement clip, Session clips playing). Use those fields first; they

@@ -17,13 +17,13 @@ subcategory: studio
 shortDesc: "Sidechain and pumping in Live: Compressor from the kick (Post FX), values by genre, verified with Ears"
 version: "1.0"
 tags: ["studio", "ableton", "sidechain", "pumping", "bombeo", "ducking", "compressor", "mixing", "co-producer"]
-requiresTools: ["local_ableton_snapshot", "local_ableton_tracks", "local_ableton_devices", "local_ableton_load_devices", "local_ableton_device_params", "local_ableton_set_device_param", "local_ableton_device_routing", "local_ableton_move_device", "local_ableton_lom", "local_ableton_apply", "local_ableton_undo", "local_ableton_transport", "local_ableton_song", "local_ableton_status", "local_ears_listen", "local_ears_render", "local_synth_list_params", "local_synth_modulate", "local_synth_unmodulate", "local_ableton_browser"]
+requiresTools: ["local_ableton_snapshot", "local_ableton_tracks", "local_ableton_devices", "local_ableton_load_devices", "local_ableton_device_params", "local_ableton_set_device_param", "local_ableton_device_routing", "local_ableton_move_device", "local_ableton_lom", "local_ableton_apply", "local_ableton_undo", "local_ableton_transport", "local_ableton_song", "local_ableton_status", "local_ears_listen", "local_ears_render", "local_sound_list_params", "local_sound_modulate", "local_sound_unmodulate", "local_ableton_browser"]
 ---
 
 # Chatmu Studio — Sidechain & pumping
 **Version:** 1.0
 **Requires:** Chatmu Desktop bridge + Ableton Live 12 (AbletonMCP patched Remote Script 1.10.0-chatmu) + Chatmu Ears.
-**Related:** `chatmu-mixing-progressive` (where it fits in the mix), `chatmu-studio-arrangement`, `chatmu-studio-synth`.
+**Related:** `chatmu-mixing-progressive` (where it fits in the mix), `chatmu-studio-arrangement`, `chatmu-studio-sound`.
 
 ## What does this Skill do?
 
@@ -98,7 +98,7 @@ clip playing every beat, fader at −inf, and the sidechain source = that track 
 | Route | When | How |
 |---|---|---|
 | Auto Pan / tremolo shape | quick pump on one track, no trigger needed | load the device (find its exact name with `local_ableton_browser` — it varies by Live version), amount 100 %, synced to 1/4, phase 0°; read its params first |
-| Volume shaper in Chatmu Sound | the sound comes from Chatmu Sound | `local_synth_list_params { filter: "lfo_1" }`, then `local_synth_modulate { source: "lfo_1", destination: <the synth's volume/level param from list_params>, amount: -0.3 }`, LFO synced to 1/4 with a ramp shape. Never guess the destination name. |
+| Volume shaper in Chatmu Sound | the sound comes from Chatmu Sound | `local_sound_list_params { filter: "lfo_1" }`, then `local_sound_modulate { source: "lfo_1", destination: <the synth's volume/level param from list_params>, amount: -0.3 }`, LFO synced to 1/4 with a ramp shape. Never guess the destination name. |
 | Bass ducking under the kick only | 808/bass and kick play together | the Compressor route with the trap/reggaetón row (subtle) |
 
 ## Phase 4 — Ears verification (does it really pump?)

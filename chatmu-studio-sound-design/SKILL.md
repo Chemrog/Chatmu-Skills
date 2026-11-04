@@ -12,20 +12,20 @@ description: >
   instrument, classic recipes, or recreating a reference), loads it, shapes it with
   the character knobs and parameters, plays a test note and verifies it with
   Chatmu Ears. For small tweaks of the sound already loaded use
-  chatmu-studio-synth.
+  chatmu-studio-sound.
 compatibility: chatmu
 category: creative
 subcategory: studio
 shortDesc: "Any sound in Chatmu Sound: factory library by genre/instrument, classic recipes, design from scratch, or a reference"
 version: "2.0"
 tags: [studio, synth, sound-design, diseño-sonoro, presets, library, genre, pluck, pad, supersaw, "808", growl, bass, brass, strings, chatmu-synth, co-producer]
-requiresTools: ["local_synth_status", "local_synth_set_preset", "local_synth_set_params", "local_synth_list_params", "local_synth_modulate", "local_synth_unmodulate", "local_synth_get_preset", "local_synth_note", "local_synth_character", "local_ears_listen", "local_ears_ensure_plugin"]
+requiresTools: ["local_sound_status", "local_sound_set_preset", "local_sound_set_params", "local_sound_list_params", "local_sound_modulate", "local_sound_unmodulate", "local_sound_get_preset", "local_sound_note", "local_sound_character", "local_ears_listen", "local_ears_ensure_plugin"]
 ---
 
 # Chatmu Studio — Sound design
 **Version:** 2.0
 **Requires:** Chatmu Desktop bridge + Chatmu Sound open on a MIDI track. Ears for verification.
-**Related:** chatmu-studio-synth (tool details, tweaks), the genre skill (chatmu-studio-genre-*) (which sound fits which genre), chatmu-studio-listen-troubleshooting.
+**Related:** chatmu-studio-sound (tool details, tweaks), the genre skill (chatmu-studio-genre-*) (which sound fits which genre), chatmu-studio-listen-troubleshooting.
 
 ## What does this Skill do?
 
@@ -46,9 +46,9 @@ redondo, ataque rápido, sin cola"), not parameter dumps.
 ## HARD RULES
 
 1. **Start from a clean patch.** Load a whole preset (Routes 1, 2A, 4) or do the reset of Route 2B. Never apply a recipe on top of another sound: leftovers (an LFO on the cutoff, reverb, osc 2) ruin it.
-2. **Save the user's current sound first** if it is not a factory preset: `local_synth_get_preset { save_to }`.
-3. **Engine units.** `local_synth_set_params` values are engine values. Option parameters take the option index. If you need a parameter not listed in this skill, read its range with `local_synth_list_params { filter }` first; never guess a range.
-4. **Verify before saying it's done.** Play a test note (`local_synth_note`) and listen with Ears when available. Never describe how it sounds if you didn't hear it: say "no lo he escuchado".
+2. **Save the user's current sound first** if it is not a factory preset: `local_sound_get_preset { save_to }`.
+3. **Engine units.** `local_sound_set_params` values are engine values. Option parameters take the option index. If you need a parameter not listed in this skill, read its range with `local_sound_list_params { filter }` first; never guess a range.
+4. **Verify before saying it's done.** Play a test note (`local_sound_note`) and listen with Ears when available. Never describe how it sounds if you didn't hear it: say "no lo he escuchado".
 5. **One sound per track.** If the track's Chatmu Sound already has a sound the user likes, ask before replacing it (or create a new MIDI track).
 6. **No third-party names.** Never say a preset was "taken from" a sample pack or artist. The library is Chatmu's own synthesis.
 
@@ -67,7 +67,7 @@ How to pick:
 1. Find the entries for the genre + instrument (if the bridge lists a preset-search tool, use it; otherwise build the path from the name pattern and the folder listing in `library.json`).
 2. Match the character words: oscuro/grave/redondo → Dark; cálido/suave → Warm; brillante/agudo/con brillo → Bright; corto/staccato/golpe → Short.
 3. No exact genre? Use the nearest genre for that instrument (reggaetón ↔ tropical ↔ cumbia; trap ↔ drill ↔ phonk; house ↔ techno ↔ EDM; lo-fi ↔ hip-hop ↔ R&B) and say so.
-4. Offer 2–3 candidates when several fit; load the first with `local_synth_set_preset { file }`, play a note in its `register_midi`, let the user switch ("pon el siguiente").
+4. Offer 2–3 candidates when several fit; load the first with `local_sound_set_preset { file }`, play a note in its `register_midi`, let the user switch ("pon el siguiente").
 5. Then shape (Route 3, step 3).
 
 Acoustic instruments in the library (Brass, Flute, Strings, Guitar, Accordion) are a good
@@ -79,19 +79,19 @@ starting point for a part, but they are generic. For "this exact trumpet" use Ro
 
 The factory presets ship as `.vital` files: `Chatmu Pluck`, `Chatmu Warm Pad`, `Chatmu Supersaw`, `Chatmu 808`, `Chatmu Growl` (folder `~/Music/Chatmu Sound/User/Presets/` or the app's factory folder). They have the exact wavetables (true sine for the 808, square layers for pad and growl).
 
-`local_synth_set_preset { file: "<folder>/Chatmu 808.vital" }`. An ungranted folder raises an approval; tell the user what it is for.
+`local_sound_set_preset { file: "<folder>/Chatmu 808.vital" }`. An ungranted folder raises an approval; tell the user what it is for.
 
 If the file is not there, use Route 2B. It needs no files and sounds almost the same (verified).
 
 ### Route 2B — build from the init sound with the tools
 
-1. **Reset** with `local_synth_set_params`:
+1. **Reset** with `local_sound_set_params`:
    - `osc_2_on 0, osc_3_on 0, filter_1_on 0, filter_2_on 0, sample_on 0`
    - `chorus_on 0, delay_on 0, reverb_on 0, distortion_on 0, compressor_on 0, eq_on 0, flanger_on 0, phaser_on 0, filter_fx_on 0`
    - `osc_1_distortion_type 0, osc_1_unison_voices 1, legato 0, polyphony 8`
 
-   Then remove every active modulation (`local_synth_get_preset` lists them → `local_synth_unmodulate`). Osc 1 keeps the init saw, which is what the recipes expect.
-2. **Apply the recipe** below: one `local_synth_set_params` with the `set` list, then one `local_synth_modulate` per modulation.
+   Then remove every active modulation (`local_sound_get_preset` lists them → `local_sound_unmodulate`). Osc 1 keeps the init saw, which is what the recipes expect.
+2. **Apply the recipe** below: one `local_sound_set_params` with the `set` list, then one `local_sound_modulate` per modulation.
 3. **Test note** in the sound's register (pluck/supersaw C4–C5 = notes 60–72, pad a chord around C4, 808 C1–A1 = notes 24–33, growl F1 = 29).
 4. **Listen** (rule 4) and compare with the "Should sound like" line.
 
@@ -181,7 +181,7 @@ the init patch with invented numbers.
    - register (sub/bass → 808/Bass; mid → Keys/Synth/Brass; high → Bell/Flute),
    - texture (clean → Warm presets; wide and dense → supersaw; talking/moving → growl).
 2. **Load it** (clean patch, rule 1).
-3. **Shape with the character knobs first** (`local_synth_character`, each −1..1, steps of ±0.3):
+3. **Shape with the character knobs first** (`local_sound_character`, each −1..1, steps of ±0.3):
 
    | User says | Knob |
    |---|---|
@@ -193,28 +193,28 @@ the init patch with invented numbers.
    | más espacio / reverb / más seco | `space` + / − |
    | más sucio / viejo / lo-fi | `wear` + |
 
-4. **Then precise moves** with `local_synth_set_params` / `local_synth_modulate`, only on parameters this skill or chatmu-studio-synth documents, or after reading the range (rule 3). Typical:
-   - Movement over time → an LFO or envelope on `filter_1_cutoff` / wave frame (`local_synth_modulate`), tempo-synced like the growl.
+4. **Then precise moves** with `local_sound_set_params` / `local_sound_modulate`, only on parameters this skill or chatmu-studio-sound documents, or after reading the range (rule 3). Typical:
+   - Movement over time → an LFO or envelope on `filter_1_cutoff` / wave frame (`local_sound_modulate`), tempo-synced like the growl.
    - Metallic / bell-like → an osc 2 a non-octave interval above (+7, +19 semitones) at low level; shorter decay.
    - Detune / width → unison voices and spread (see supersaw values).
    - Glide → `polyphony 1`, `legato 1` and overlapping notes (see the 808).
    - Distortion / grit → the distortion block (see 808 and growl values for safe drive/mix).
 5. **Test note in the right register, listen, adjust** (rule 4). Two or three rounds at most; then ask the user.
-6. **Save** what they like: `local_synth_get_preset { save_to: "~/Music/Chatmu Sound/User/Presets/<name>.vital" }`.
+6. **Save** what they like: `local_sound_get_preset { save_to: "~/Music/Chatmu Sound/User/Presets/<name>.vital" }`.
 
 ## Route 4 — from a reference recording ("quiero esta trompeta en MIDI")
 
 The goal is the same timbre in Chatmu Sound **plus** the performance as a MIDI clip.
 
-- **When `local_synth_clone` and `local_audio_to_midi` exist** (Chemrog/chatmu-desktop#11 and #5): run the recreation on the file (mp3/wav/aiff), which loads the preset, saves it and its "(play)" version to User/Presets, and gives a 0–100 similarity score; then `local_audio_to_midi` writes the melody to a new MIDI track. Report the score in plain words, play the A/B, and offer the "(play)" preset for new notes. For acoustic instruments the clone uses a family model (plucked string, free reed, flute, brass); tell the user which one.
+- **When `local_sound_recreate` and `local_audio_to_midi` exist** (Chemrog/chatmu-desktop#11 and #5): run the recreation on the file (mp3/wav/aiff), which loads the preset, saves it and its "(play)" version to User/Presets, and gives a 0–100 similarity score; then `local_audio_to_midi` writes the melody to a new MIDI track. Report the score in plain words, play the A/B, and offer the "(play)" preset for new notes. For acoustic instruments the clone uses a family model (plucked string, free reed, flute, brass); tell the user which one.
 - **Until then:** say that recreating from audio is not in this version yet. Offer the closest library preset (Route 1, same instrument, match brightness by ear) and, if they want the notes, ask them to use Live's *Convert Melody to New MIDI Track* on the clip.
 - Polyphonic sources (chords, full mixes): the recreation and the MIDI are approximate; say so before starting.
 
 ## After building
 
 - Offer the obvious next step in one line: "¿Te escribo un patrón para probarlo?" (chatmu-studio-compose-core / bass-lines / the genre skill).
-- Small changes go through `local_synth_character` (brightness, attack, body, air, vibrato, space, wear, volume; −1..1, start with ±0.3).
-- If the user likes it: `local_synth_get_preset { save_to: "~/Music/Chatmu Sound/User/Presets/<name>.vital" }` so it shows in the plugin's browser.
+- Small changes go through `local_sound_character` (brightness, attack, body, air, vibrato, space, wear, volume; −1..1, start with ±0.3).
+- If the user likes it: `local_sound_get_preset { save_to: "~/Music/Chatmu Sound/User/Presets/<name>.vital" }` so it shows in the plugin's browser.
 
 ## Verification (rule 4)
 
@@ -228,7 +228,7 @@ With the track playing (or a test note looped in a clip), `local_ears_listen` 8 
 | 808 | strong low end (most of the energy under 100 Hz), "boom" at each hit |
 | Growl | regular wow-wow in time with the song |
 
-If something's off (e.g. the pad sounds narrow), re-read the patch with `local_synth_get_preset` and compare with the recipe: usually a leftover from the previous sound (rule 1).
+If something's off (e.g. the pad sounds narrow), re-read the patch with `local_sound_get_preset` and compare with the recipe: usually a leftover from the previous sound (rule 1).
 
 ## Don'ts
 

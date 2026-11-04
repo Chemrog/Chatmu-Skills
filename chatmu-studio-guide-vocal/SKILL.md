@@ -24,7 +24,7 @@ requiresTools: ["local_sing", "local_ableton_snapshot", "local_ableton_get_notes
 # Chatmu Studio — Guide vocal ("el sinte canta")
 **Version:** 1.0
 **Requires:** Chatmu Desktop bridge + Chatmu Ears installed (its Python) + Chatmu Sound's renderer (ships with the app) + Ableton Live with «Permitir control» for the track. Without Live the WAV is still made.
-**Related:** `chatmu-studio-melody-over-chords` and `chatmu-studio-compose-core` (write the melody first), `chatmu-studio-record` (record the real vocal over the guide), `chatmu-studio-synth`.
+**Related:** `chatmu-studio-melody-over-chords` and `chatmu-studio-compose-core` (write the melody first), `chatmu-studio-record` (record the real vocal over the guide), `chatmu-studio-sound`.
 
 ## What does this Skill do?
 
@@ -97,7 +97,7 @@ syllables (Spanish/English rules: "la-lu-na-se-fue", "you-are-my-sun-shine") aga
 |---|---|---|
 | `too_few_notes` | fewer notes than syllables | add notes or shorten the lyrics; the message lists the syllables |
 | `ears_missing` / `ears_incomplete` | Chatmu Ears' Python is not installed | `local_repair { action: "install_ears" }` (on-screen approval, ~260 MB) |
-| `renderer_missing` | Chatmu Sound's renderer is missing | `local_repair { action: "install_synth" }`; if `local_doctor` doesn't offer it, this Mac's build has no synth and the guide isn't available |
+| `renderer_missing` | Chatmu Sound's renderer is missing | `local_repair { action: "install_sound" }`; if `local_doctor` doesn't offer it, this Mac's build has no synth and the guide isn't available |
 | `sing_missing` | the app doesn't ship the guide-vocal script | Chatmu Desktop needs updating (not the user's fault) |
 | `voice_not_found` | the `voice` given isn't installed | call again without `voice` |
 | `timeout` | very long line | sing it by phrase or section |

@@ -17,7 +17,7 @@ subcategory: studio
 shortDesc: "Remake a song as an editable Live set: stems, MIDI + Chatmu Sound recreations, tempo, vocals as audio"
 version: "1.0"
 tags: ["studio", "remake", "rehacer", "stems", "multitrack", "audio-to-midi", "chatmu-sound", "recreate", "clone", "ableton", "co-producer"]
-requiresTools: ["local_stems_separate", "local_synth_clone", "local_audio_to_midi", "local_synth_status", "local_ableton_set_tempo", "local_ableton_edit_track", "local_ableton_tracks", "local_ableton_load_device", "local_ableton_create_audio_clip", "local_ableton_clip", "local_ableton_mixer", "local_ableton_color", "local_ableton_group_tracks", "local_ableton_snapshot", "local_repair", "local_doctor"]
+requiresTools: ["local_stems_separate", "local_sound_recreate", "local_audio_to_midi", "local_sound_status", "local_ableton_set_tempo", "local_ableton_edit_track", "local_ableton_tracks", "local_ableton_load_device", "local_ableton_create_audio_clip", "local_ableton_clip", "local_ableton_mixer", "local_ableton_color", "local_ableton_group_tracks", "local_ableton_snapshot", "local_repair", "local_doctor"]
 ---
 
 # Chatmu Studio — Remake a song (audio → stems → MIDI + Chatmu Sound → Live set)
@@ -59,7 +59,7 @@ Answer in the user's language (usually Spanish). Short messages: one line per ph
 
 - The file: the user names/attaches it (WAV, AIFF, FLAC, MP3, M4A…).
 - `local_ableton_snapshot` → Live reachable and control enabled; note the current track count.
-- `local_synth_status` → Chatmu Sound installed? If not: `local_repair { action: "install_synth" }`
+- `local_sound_status` → Chatmu Sound installed? If not: `local_repair { action: "install_sound" }`
   (approval; Live must rescan plug-ins). Without it, the plan falls back to "MIDI only + stems
   as audio" (say so).
 - If any tool fails: `local_doctor` → the repair it names.
@@ -101,11 +101,11 @@ Order matters: **tempo first** (MIDI positions are computed from seconds at the 
    path }` → `local_ableton_clip` set `warping=false` (they are already at the song's speed;
    unwarped, everything stays in sync). Reference copies: mute them with `local_ableton_mixer`.
 3. **Synth tracks**, one stem at a time:
-   1. `local_synth_status` → remember the open instances' ports.
+   1. `local_sound_status` → remember the open instances' ports.
    2. `local_ableton_edit_track { action: "create_midi" }`, rename it ("Bajo"), then
       `local_ableton_load_device { trackIndex, name: "Chatmu Sound" }`.
-   3. `local_synth_status` again → the NEW port is this track's instance.
-   4. `local_synth_clone { path: <stem>, instrument_hint, port, track, name: "<Song> <Part>" }`
+   3. `local_sound_status` again → the NEW port is this track's instance.
+   4. `local_sound_recreate { path: <stem>, instrument_hint, port, track, name: "<Song> <Part>" }`
       → loads the "(play)" preset, saves it in the user's library, writes the MIDI on that track.
       Resume with `{ job_id }` while `running`. Keep `score`, `recipe`, `model`, `midi`.
    5. If the recreation fails or `score.final` < 35: keep the stem as audio on that track's place and

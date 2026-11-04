@@ -22,13 +22,13 @@ subcategory: studio
 shortDesc: "Recreate a recording's sound in Chatmu Sound (plucked/sustained recipe) and turn audio into MIDI in Live"
 version: "1.0"
 tags: ["studio", "synth", "sinte", "chatmu-sound", "recreate", "recrear", "clone", "clonar", "audio-to-midi", "sound-design", "co-producer"]
-requiresTools: ["local_synth_status", "local_synth_dropped_audio", "local_synth_clone", "local_audio_to_midi", "local_synth_character", "local_synth_get_preset", "local_synth_set_preset", "local_synth_note", "local_ableton_snapshot", "local_ableton_arrangement", "local_ableton_lom", "local_ears_analyze_file", "local_ears_listen", "local_list_access", "local_repair"]
+requiresTools: ["local_sound_status", "local_sound_dropped_audio", "local_sound_recreate", "local_audio_to_midi", "local_sound_character", "local_sound_get_preset", "local_sound_set_preset", "local_sound_note", "local_ableton_snapshot", "local_ableton_arrangement", "local_ableton_lom", "local_ears_analyze_file", "local_ears_listen", "local_list_access", "local_repair"]
 ---
 
 # Chatmu Studio — Recreate a sound (Chatmu Sound) + audio → MIDI
 **Version:** 1.0
 **Requires:** Chatmu Desktop bridge + Chatmu Ears (with sound recreation) + Chatmu Sound (VST3) on a MIDI track.
-**Related:** `chatmu-studio-remake-song` (a whole song: stems → one recreated sound + MIDI per instrument → Live set), `chatmu-studio-separate-stems` (isolate one instrument first when it's inside a full mix), `chatmu-studio-synth` (knobs, presets, parameters), `chatmu-studio-sound-design` (any sound by instrument, genre or character: factory library, recipes), `chatmu-studio-listen-troubleshooting`.
+**Related:** `chatmu-studio-remake-song` (a whole song: stems → one recreated sound + MIDI per instrument → Live set), `chatmu-studio-separate-stems` (isolate one instrument first when it's inside a full mix), `chatmu-studio-sound` (knobs, presets, parameters), `chatmu-studio-sound-design` (any sound by instrument, genre or character: factory library, recipes), `chatmu-studio-listen-troubleshooting`.
 
 ## What does this Skill do?
 
@@ -52,7 +52,7 @@ per poll.
 4. **Nothing is overwritten.** The recreation saves new presets (`<Name>.vital` and
    `<Name> (play).vital`) in `~/Music/Chatmu Sound/User/Presets`; a taken name gets " 2".
    But loading a recreated sound REPLACES the sound in the open instance: if the current sound
-   matters, save it first (`local_synth_get_preset { save_to }`, see `chatmu-studio-synth`).
+   matters, save it first (`local_sound_get_preset { save_to }`, see `chatmu-studio-sound`).
 5. **Live's API can't write pitch bend or CC1.** The MIDI written in Live has the notes
    only. The expression (bends, vibrato, dynamics) is in `expression.mid` next to the
    renders: the user drags it into a clip if they want the "performance" version. Don't
@@ -64,15 +64,17 @@ per poll.
 
 ## Phase 0 — Find the audio and the synth (read only)
 
+Chatmu Desktop 0.1.76 and older name these tools `local_synth_*` (`local_synth_clone` = `local_sound_recreate`): if only the old names are in your tool list, use them the same way.
+
 | Where the audio is | What to pass |
 |---|---|
-| Dropped on the plugin (Simple or Advanced view, drop zone or "Recreate audio…" button) | nothing: `local_synth_clone` uses it. Check with `local_synth_dropped_audio` (`exists: true`). |
+| Dropped on the plugin (Simple or Advanced view, drop zone or "Recreate audio…" button) | nothing: `local_sound_recreate` uses it. Check with `local_sound_dropped_audio` (`exists: true`). |
 | A file (Descargas, Escritorio, chat attachment) | `path` (wav, aiff, flac, mp3, m4a; mp3/m4a are converted locally). Ungranted folder → the app asks once: "acepta el permiso para leer esa carpeta". |
 | An audio clip in Live | recreate: read its file path with `local_ableton_lom { action: "get", path: "live_set tracks N clip_slots M clip", props: ["file_path"] }` (Session) and pass it as `path`. MIDI: `local_audio_to_midi` takes `track` + `clip` / `arrangement_clip` directly. |
 
-Then `local_synth_status`: one reachable instance → use it; several → ask which track (pass
+Then `local_sound_status`: one reachable instance → use it; several → ask which track (pass
 `port`); none → ask the user to load **Chatmu Sound** on a MIDI track (installation: see
-`chatmu-studio-synth`, Phase 0).
+`chatmu-studio-sound`, Phase 0).
 
 ## Phase 1 — Choose the recipe (automatic, explain it)
 
@@ -90,7 +92,7 @@ leave it out.
 
 ## Phase 2 — Recreate
 
-`local_synth_clone { path?, instrument_hint, name?, port? }` (defaults: 60 iterations, loads
+`local_sound_recreate { path?, instrument_hint, name?, port? }` (defaults: 60 iterations, loads
 the "(play)" preset, writes the phrase as MIDI on the synth's track).
 - Takes ~30–90 s. If the result has `status: "running"` + `job_id`, call again with
   `{ job_id }` only (no path) until it's done. Tell the user once: "Estoy recreando el sonido (≈1 min)".
@@ -114,11 +116,11 @@ the "(play)" preset, writes the phrase as MIDI on the synth's track).
 
 ## Phase 4 — Fine-tune by ear
 
-1. Play it: fire the MIDI clip it wrote (or `local_synth_note` in the instrument's range).
-2. Ask "¿qué le falta?" and map it with `local_synth_character` (knobs in both the Simple and
+1. Play it: fire the MIDI clip it wrote (or `local_sound_note` in the instrument's range).
+2. Ask "¿qué le falta?" and map it with `local_sound_character` (knobs in both the Simple and
    Advanced views): brillo, ataque, cuerpo, aire, vibrato, espacio, desgaste, volumen.
    Steps 0.2–0.3. Knobs are offsets over the recreated sound (0 = as recreated), so they never destroy it.
-3. To keep a tweak: save it under a new name with `local_synth_get_preset { save_to:
+3. To keep a tweak: save it under a new name with `local_sound_get_preset { save_to:
    "~/Music/Chatmu Sound/User/Presets/<Name> v2.vital" }` (never over the recreated preset).
 
 ## Audio → MIDI (`local_audio_to_midi`)
@@ -132,7 +134,7 @@ the "(play)" preset, writes the phrase as MIDI on the synth's track).
   The result says which: tell the user plainly.
 - Timing follows the Set's tempo from the start of the file; a warped/trimmed clip may not
   line up exactly: say so if it's a clip from Live.
-- Natural pairing: "clónalo y pásalo a MIDI" = `local_synth_clone` (already writes MIDI on
+- Natural pairing: "clónalo y pásalo a MIDI" = `local_sound_recreate` (already writes MIDI on
   the synth track). Use `local_audio_to_midi` for a different instrument or a separate track.
 
 ## Phase 5 — Errors

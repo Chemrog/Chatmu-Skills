@@ -66,7 +66,7 @@ C: delgada o con errores).
 | Skill | Calidad | Veredicto |
 |---|---|---|
 | `chatmu-studio-sound-design` (v2, de Chema) | A | Mantener |
-| `chatmu-studio-synth` | A | Mantener |
+| `chatmu-studio-sound` | A | Mantener |
 | `chatmu-studio-clone-sound` | A | Mantener |
 | `chatmu-studio-sound-profile-build` / `-edit` / `-produce` | A | Mantener (las tres) |
 | `chatmu-studio-separate-stems` | A | Mantener |

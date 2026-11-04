@@ -20,7 +20,7 @@ subcategory: studio
 shortDesc: "Song form end to end: plan sections and energy, build scenes/locators, review the arrangement, build-ups and drops"
 version: "2.0"
 tags: ["studio", "ableton", "arrangement", "arreglo", "estructura", "structure", "sections", "energy", "drop", "build-up"]
-requiresTools: ["local_ableton_snapshot", "local_ableton_edit_track", "local_ableton_scene_name", "local_ableton_fire", "local_ableton_arrangement", "local_ableton_transport", "local_ableton_song", "local_ableton_record", "local_ableton_tempo_map", "local_ableton_status", "local_ears_listen", "local_ears_analyze_file", "local_ears_render", "local_ableton_create_clip", "local_ableton_write_notes", "local_ableton_undo", "local_ableton_lom", "local_ableton_load_devices", "local_synth_list_params", "local_synth_set_params"]
+requiresTools: ["local_ableton_snapshot", "local_ableton_edit_track", "local_ableton_scene_name", "local_ableton_fire", "local_ableton_arrangement", "local_ableton_transport", "local_ableton_song", "local_ableton_record", "local_ableton_tempo_map", "local_ableton_status", "local_ears_listen", "local_ears_analyze_file", "local_ears_render", "local_ableton_create_clip", "local_ableton_write_notes", "local_ableton_undo", "local_ableton_lom", "local_ableton_load_devices", "local_sound_list_params", "local_sound_set_params"]
 ---
 
 # Chatmu Studio — Arrangement (form, review, build-ups and drops)
@@ -371,7 +371,7 @@ bass go big (full roll, silence, impact); trap drops often use a vocal tag + 808
    (`local_ableton_write_notes`; pitch per kit, MIDI 38/40 = snare on GM-style kits; check
    the kit's pads).
 3. **Riser:** on a Chatmu Sound track, one long note (or a slow upward line) for the build's
-   length; noise + rising filter/pitch with `local_synth_list_params` → `local_synth_set_params`
+   length; noise + rising filter/pitch with `local_sound_list_params` → `local_sound_set_params`
    (or a riser sample the user has). Movement: `chatmu-studio-automation`.
 4. **Impact:** a crash + low hit on bar 1 of the drop (one-bar clip).
 5. Audition in Session first (`local_ableton_fire`), then with OK place each clip:

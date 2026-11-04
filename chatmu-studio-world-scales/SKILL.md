@@ -24,11 +24,11 @@ requiresTools:
   - local_ableton_create_clip
   - local_ableton_write_notes
   - local_ableton_fire
-  - local_synth_find_preset
-  - local_synth_set_preset
-  - local_synth_list_params
-  - local_synth_set_params
-  - local_synth_modulate
+  - local_sound_find_preset
+  - local_sound_set_preset
+  - local_sound_list_params
+  - local_sound_set_params
+  - local_sound_modulate
 ---
 
 # Chatmu Studio — World scales (maqam and raga)
@@ -49,7 +49,7 @@ the user which:
 | Route | How | When |
 |---|---|---|
 | **A. 12-TET compromise** | Use maqamat without quarter tones (Hijaz, Nahawand, Kurd, Ajam, Nikriz) or the closest 12-TET version | sketches, fusion, no time for setup |
-| **B. Detuned second voice** | Two instances of the same Chatmu Sound preset: voice 1 normal; voice 2 detuned −50 cents (find the oscillator tune/fine parameter with `local_synth_list_params`, set it with `local_synth_set_params`). Put every half-flat note (E½♭, B½♭…) on voice 2 at the 12-TET pitch a semitone **above** the target, so −50 cents lands on it. | real Rast/Bayati/Sikah/Saba melodies, monophonic lines |
+| **B. Detuned second voice** | Two instances of the same Chatmu Sound preset: voice 1 normal; voice 2 detuned −50 cents (find the oscillator tune/fine parameter with `local_sound_list_params`, set it with `local_sound_set_params`). Put every half-flat note (E½♭, B½♭…) on voice 2 at the 12-TET pitch a semitone **above** the target, so −50 cents lands on it. | real Rast/Bayati/Sikah/Saba melodies, monophonic lines |
 | **C. Live's tuning system** | The user loads a maqam tuning file (.scl/.ascl) into Live 12's Tuning (Set-wide); then MIDI notes map to the tuned pitches | exact intonation, the user can do one setup step |
 Never approximate a quarter-tone maqam silently. Ragas need no quarter tones in practice
 (12-TET is acceptable; the *andolan* oscillation is what matters — see ornaments).
@@ -123,7 +123,7 @@ light/folk. Alap (opening) has no tala: slow, free, drone only.
 |---|---|---|
 | Kan / grace | raga, maqam | a 32nd (0.125 beat) neighbour note just before the main note, velocity −20 |
 | Meend / slide | raga | no pitch bend: enable glide/portamento on the synth and overlap the two notes by a 32nd; or a quick 2–3 note chromatic run into the target |
-| Andolan | raga (Bhairav r/d, Darbari g/d) | slow oscillation: `local_synth_modulate` an LFO (~3–5 Hz, small amount) to the oscillator tune on that voice, or alternate the note with its lower neighbour in 8th-triplets very softly |
+| Andolan | raga (Bhairav r/d, Darbari g/d) | slow oscillation: `local_sound_modulate` an LFO (~3–5 Hz, small amount) to the oscillator tune on that voice, or alternate the note with its lower neighbour in 8th-triplets very softly |
 | Gamak | raga | fast oscillation between two notes: alternating 16ths/32nds, accent on the main note |
 | Murki | raga | quick turn: upper–main–lower–main as 32nds |
 | Trill / mordent | maqam | main–upper alternations in 32nds on the first half of a long note |
@@ -131,9 +131,9 @@ light/folk. Alap (opening) has no tala: slow, free, drone only.
 One or two ornaments per phrase, on structural notes — never on every note.
 
 ## 6. Instruments and sounds
-Search first with `local_synth_find_preset` (flute for bansuri/ney, strings for sarangi/violin,
+Search first with `local_sound_find_preset` (flute for bansuri/ney, strings for sarangi/violin,
 guitar/pluck for oud/sitar/santoor); the factory has no dedicated Indian/Arabic genre, so the
-result is a nearest match — say it. Load with `local_synth_set_preset`. Keep the melody
+result is a nearest match — say it. Load with `local_sound_set_preset`. Keep the melody
 **monophonic**; octave doubling only.
 Registers: bansuri/ney MIDI 60–86 · sitar/oud 50–77 · sarangi/violin 55–84 · tanpura 40–55.
 

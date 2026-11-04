@@ -17,7 +17,7 @@ shortDesc: "House, deep/tech house, techno, melodic techno: 4/4 grids, offbeat b
 version: "1.0"
 tags: [studio, ableton, genre, house, deep-house, tech-house, techno, melodic-techno, trance, club]
 requiresTools:
-  - local_synth_status
+  - local_sound_status
   - local_ableton_snapshot
   - local_ableton_tracks
   - local_ableton_set_tempo
@@ -27,8 +27,8 @@ requiresTools:
   - local_ableton_fire
   - local_ableton_scene_name
   - local_music_theory
-  - local_synth_find_preset
-  - local_synth_set_preset
+  - local_sound_find_preset
+  - local_sound_set_preset
   - local_ableton_browser
   - local_ableton_load_device
   - local_ableton_device_routing
@@ -47,7 +47,7 @@ like a loop from a machine. Tempo first: the same pattern at the wrong BPM is a 
 genre.
 
 Related: `chatmu-studio-drum-rack`, `chatmu-studio-sidechain` (routing + Ears proof),
-`chatmu-studio-bass-lines`, `chatmu-studio-synth`, `chatmu-studio-arrangement`,
+`chatmu-studio-bass-lines`, `chatmu-studio-sound`, `chatmu-studio-arrangement`,
 `chatmu-studio-humanize`, `chatmu-mixing-progressive`. Breakbeat genres: `chatmu-studio-genre-dnb-garage`.
 
 ## 1. Brief (ask only what is missing; propose defaults)
@@ -124,22 +124,22 @@ Building on `chatmu-studio-hook-melody`, the club hook is **rhythmic first**:
 **Chatmu Sound first (house rule).** Every bass and melodic part (bass/808, keys, pads, plucks,
 leads, brass, strings…) gets **Chatmu Sound with a factory preset of this genre**, not Live's
 stock instruments (Operator, Grand Piano, Electric…), which sound like generic MIDI:
-1. `local_synth_find_preset` with `genre: "House"`, the `instrument` and a `character`. If it
+1. `local_sound_find_preset` with `genre: "House"`, the `instrument` and a `character`. If it
    returns `fallback: true`, say it's the closest genre.
 2. Load the plugin on the track: searching the browser by name does NOT find plugins, so use
    `local_ableton_browser` `path: "plugins"` (then its VST3 folder) to get Chatmu Sound's `uri`,
    and `local_ableton_load_device` with that `uri`.
-3. Right after loading, `local_synth_set_preset { file }` (it goes to the newest instance), then
-   `local_synth_status`: that track's instance must show the `preset_name`. An empty
+3. Right after loading, `local_sound_set_preset { file }` (it goes to the newest instance), then
+   `local_sound_status`: that track's instance must show the `preset_name`. An empty
    `preset_name` means no preset is loaded yet — never tweak or write on top of that.
 Load every synth track first, then write notes. Live's instruments only when the library has
 nothing for that part (say so). **Drums are not Chatmu Sound** (no noise source, no percussion
 presets): use a Live Drum Rack / kit or samples; a Chatmu Sound 808 can sit under it as the low end.
 
-- `local_synth_find_preset` with genre words: `"house bass"`, `"deep house keys"`,
+- `local_sound_find_preset` with genre words: `"house bass"`, `"deep house keys"`,
   `"techno synth dark"`, `"bass short"`, `"strings"`, `"vocal"`, `"bell"`. If the genre isn't
   in the factory you get `fallback: true` — say so. Characters: Warm for deep house keys/pads,
-  Dark for techno, Short for stabs and bass. Load with `local_synth_set_preset`.
+  Dark for techno, Short for stabs and bass. Load with `local_sound_set_preset`.
 - Browser (`local_ableton_browser` → `local_ableton_load_device`): kits `909`, `808`, `house`,
   `techno`; one-shots `clap`, `ride`, `organ`, `stab`, `chord`; devices `Auto Filter`, `Echo`,
   `Reverb`, `Saturator`, `Compressor`, `Glue Compressor`. Classic palette: 909 kick/clap/hats,
