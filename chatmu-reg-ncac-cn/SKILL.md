@@ -28,7 +28,8 @@ version: "1.0"
 - Descarga / formulario: https://register.ccopyright.com.cn/registration.html#/registerOpus
 
 **Formatos y links:**
-- No hay link directo; busca 'Formularios' o 'Descargas' en el portal.
+- [作品登记 (obras)](https://register.ccopyright.com.cn/registration.html#/registerOpus) (online)
+- [CPCC English](https://www.ccopyright.com/en/index.php?optionid=1005) (guide)
 - Auth detectado: unknown
 - URL final de login: https://register.ccopyright.com.cn/registration.html#/registerOpus
 

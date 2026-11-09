@@ -25,10 +25,11 @@ version: "1.0"
 - Formularios: Depósito (e-Soleau), Registro SACEM
 - Costo: consultar
 - En línea: sí
-- Descarga / formulario: https://www.inpi.fr
+- Descarga / formulario: https://www.inpi.fr/realiser-demarches/propriete-intellectuelle/deposer-une-e-soleau-ou-un-entiercement
 
 **Formatos y links:**
-- No hay link directo; busca 'Formularios' o 'Descargas' en el portal.
+- [Déposer une e-Soleau / entiercement](https://www.inpi.fr/realiser-demarches/propriete-intellectuelle/deposer-une-e-soleau-ou-un-entiercement) (online)
+- [Portail e-procédures INPI](https://procedures.inpi.fr/) (online)
 - Auth detectado: form
 - URL final de login: https://www.inpi.fr
 

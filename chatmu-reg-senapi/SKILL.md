@@ -25,10 +25,12 @@ version: "1.0"
 - Formularios: Registro de obra
 - Costo: consultar
 - En línea: sí
-- Descarga / formulario: https://www.senapi.gob.bo
+- Descarga / formulario: https://www.senapi.gob.bo/tramites/registro-de-obras-artisticas-obras-musicales-obras-dramaticas-obras-coreograficas
 
 **Formatos y links:**
-- No hay link directo; busca 'Formularios' o 'Descargas' en el portal.
+- [Trámite: Registro de Obras Artísticas/Musicales](https://www.senapi.gob.bo/tramites/registro-de-obras-artisticas-obras-musicales-obras-dramaticas-obras-coreograficas) (guide)
+- [Formulario PI-100 (SIPI)](https://sipi.senapi.gob.bo/formularios/pi100) (online)
+- [Trámite en Gob.bo](https://www.gob.bo/tramites/registro-de-obras-artisticas-obras-musicales-obras-dramaticas-obras-coreograficas-pantomimicas-pintura-dibujo-y-otras) (guide)
 - Auth detectado: form
 - URL final de login: https://www.senapi.gob.bo
 

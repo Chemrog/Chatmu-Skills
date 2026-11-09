@@ -25,10 +25,11 @@ version: "1.0"
 - Formularios: Form XIV, Statement of Particulars
 - Costo: ₹
 - En línea: sí
-- Descarga / formulario: https://www.copyright.gov.in
+- Descarga / formulario: https://ipindia.gov.in/pages/copyright/apply/e-filing-services/form-xiv
 
 **Formatos y links:**
-- No hay link directo; busca 'Formularios' o 'Descargas' en el portal.
+- [Form XIV para e-filing](https://ipindia.gov.in/pages/copyright/apply/e-filing-services/form-xiv) (online)
+- [Form XIV (PDF)](https://copyright.gov.in/Documents/Form-XIV-Registration%20of%20Copyright.pdf) (pdf)
 - Auth detectado: form
 - URL final de login: https://ipindia.gov.in/
 

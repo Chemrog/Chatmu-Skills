@@ -25,10 +25,12 @@ version: "1.0"
 - Formularios: Copyright registration
 - Costo: consultar
 - En línea: sí
-- Descarga / formulario: https://www.kecobo.go.ke
+- Descarga / formulario: https://nrr.copyright.go.ke/
 
 **Formatos y links:**
-- No hay link directo; busca 'Formularios' o 'Descargas' en el portal.
+- [National Rights Registry (NRR)](https://nrr.copyright.go.ke/) (online)
+- [Copyright registration (KECOBO)](https://copyright.go.ke/index.php/our-services/copyright-registration) (guide)
+- [eCitizen](https://copyright.ecitizen.go.ke/) (online)
 - Auth detectado: unknown
 - URL final de login: https://www.kecobo.go.ke
 

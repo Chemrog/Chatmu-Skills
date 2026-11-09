@@ -25,10 +25,11 @@ version: "1.0"
 - Formularios: 著作権登録
 - Costo: consultar
 - En línea: sí
-- Descarga / formulario: https://www.bunka.go.jp
+- Descarga / formulario: https://www.bunka.go.jp/english/policy/copyright/
 
 **Formatos y links:**
-- No hay link directo; busca 'Formularios' o 'Descargas' en el portal.
+- [Copyright system (Agency for Cultural Affairs)](https://www.bunka.go.jp/english/policy/copyright/) (guide)
+- [JASRAC — creators](https://www.jasrac.or.jp/en/creators/) (guide)
 - Auth detectado: form
 - URL final de login: https://www.bunka.go.jp
 

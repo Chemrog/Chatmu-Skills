@@ -25,10 +25,11 @@ version: "1.0"
 - Formularios: el formulario que indique el portal
 - Costo: consultar
 - En línea: no / parcial
-- Descarga / formulario: https://www.gov.uk/government/organisations/intellectual-property-office
+- Descarga / formulario: https://www.gov.uk/copyright
 
 **Formatos y links:**
-- No hay link directo; busca 'Formularios' o 'Descargas' en el portal.
+- [Copyright (GOV.UK)](https://www.gov.uk/copyright) (guide)
+- [IPO](https://www.gov.uk/government/organisations/intellectual-property-office) (guide)
 - Auth detectado: otp
 - URL final de login: https://www.gov.uk/government/organisations/intellectual-property-office
 

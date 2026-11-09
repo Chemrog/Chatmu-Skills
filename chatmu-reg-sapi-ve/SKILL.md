@@ -25,10 +25,11 @@ version: "1.0"
 - Formularios: Registro de obra
 - Costo: consultar
 - En línea: sí
-- Descarga / formulario: https://www.sapi.gob.ve
+- Descarga / formulario: https://sapi.gob.ve/derecho-de-autor/
 
 **Formatos y links:**
-- No hay link directo; busca 'Formularios' o 'Descargas' en el portal.
+- [Derecho de Autor (SAPI)](https://sapi.gob.ve/derecho-de-autor/) (guide)
+- [WEBPI (sistema en línea)](https://webpi.sapi.gob.ve/) (online)
 - Auth detectado: form
 - URL final de login: https://sapi.gob.ve/
 

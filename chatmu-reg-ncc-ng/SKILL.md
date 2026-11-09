@@ -25,10 +25,11 @@ version: "1.0"
 - Formularios: Copyright registration
 - Costo: consultar
 - En línea: sí
-- Descarga / formulario: https://www.copyright.gov.ng
+- Descarga / formulario: https://www.eregistration.copyright.gov.ng/
 
 **Formatos y links:**
-- No hay link directo; busca 'Formularios' o 'Descargas' en el portal.
+- [Nigerian Copyright eRegistration (NCeRS)](https://www.eregistration.copyright.gov.ng/) (online)
+- [Nigerian Copyright Commission](https://copyright.gov.ng/) (guide)
 - Auth detectado: otp
 - URL final de login: https://www.copyright.gov.ng
 

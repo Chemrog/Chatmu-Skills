@@ -25,10 +25,12 @@ version: "1.0"
 - Formularios: Registro de obra
 - Costo: consultar
 - En línea: sí
-- Descarga / formulario: https://www.dinapi.gov.py
+- Descarga / formulario: https://www.dinapi.gov.py/registro-de-derechos-de-autor-y-derechos-conexos-x/
 
 **Formatos y links:**
-- No hay link directo; busca 'Formularios' o 'Descargas' en el portal.
+- [Registro de Derechos de Autor y Conexos](https://www.dinapi.gov.py/registro-de-derechos-de-autor-y-derechos-conexos-x/) (online)
+- [Derecho de Autor — registro](https://www.dinapi.gov.py/portal/v3/derecho-de-autor/registro/) (guide)
+- [Joaju (sistema en línea)](https://joaju.dinapi.gov.py/) (online)
 - Auth detectado: form
 - URL final de login: https://www.dinapi.gov.py
 

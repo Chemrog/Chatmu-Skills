@@ -28,7 +28,7 @@ version: "1.0"
 - Descarga / formulario: https://www.wipo.int/en/web/country-profiles/directory-ip-offices
 
 **Formatos y links:**
-- No hay link directo; busca 'Formularios' o 'Descargas' en el portal.
+- [WIPO — Directory of IP Offices](https://www.wipo.int/en/web/country-profiles/directory-ip-offices) (guide)
 - Auth detectado: form
 - URL final de login: https://www.wipo.int/en/web/country-profiles/directory-ip-offices
 

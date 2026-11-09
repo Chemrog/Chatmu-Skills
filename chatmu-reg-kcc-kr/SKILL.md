@@ -25,10 +25,11 @@ version: "1.0"
 - Formularios: 저작권 등록
 - Costo: consultar
 - En línea: sí
-- Descarga / formulario: https://www.copyright.or.kr
+- Descarga / formulario: https://www.copyright.or.kr/business/registration/index.do
 
 **Formatos y links:**
-- No hay link directo; busca 'Formularios' o 'Descargas' en el portal.
+- [저작권 등록 (KCC)](https://www.copyright.or.kr/business/registration/index.do) (online)
+- [Korea Copyright Commission (EN)](https://www.copyright.or.kr/eng/main.do) (guide)
 - Auth detectado: sso
 - URL final de login: https://www.copyright.or.kr/main.do
 
