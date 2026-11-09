@@ -25,6 +25,12 @@ version: "1.0"
 - Formularios: Registro de obra musical
 - Costo: consultar
 - En línea: sí
+- Descarga / formulario: https://www.registroenlinea.gov.co/musical.aspx
+
+**Formatos y links:**
+- [Registro en línea — obra musical](https://www.registroenlinea.gov.co/musical.aspx) (online)
+- [Portal de registro virtual](https://www.registroenlinea.gov.co/portal.aspx) (online)
+- [Guía DNDA](https://www.derechodeautor.gov.co/es/registro-de-obras-musicales) (guide)
 - Auth detectado: form
 - URL final de login: https://www.derechodeautor.gov.co/es
 

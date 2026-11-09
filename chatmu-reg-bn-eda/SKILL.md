@@ -25,6 +25,11 @@ version: "1.0"
 - Formularios: Registro de obra intelectual, Formulário EDA
 - Costo: consultar
 - En línea: sí
+- Descarga / formulario: https://www.gov.br/pt-br/servicos/registrar-ou-averbar-direitos-autorais-na-biblioteca-nacional
+
+**Formatos y links:**
+- [Registrar ou averbar direitos autorais](https://www.gov.br/pt-br/servicos/registrar-ou-averbar-direitos-autorais-na-biblioteca-nacional) (online)
+- [Documentos do EDA](https://www.gov.br/bn/pt-br/atuacao/direitos-autorais-1/documentos-do-eda-2) (docs)
 - Auth detectado: form
 - URL final de login: https://www.gov.br/bn/pt-br
 

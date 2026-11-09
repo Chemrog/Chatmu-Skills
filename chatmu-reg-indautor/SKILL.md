@@ -25,6 +25,12 @@ version: "1.0"
 - Formularios: RPDA-01 (obra literaria o artística), Obra musical con o sin letra, Indarelin (en línea)
 - Costo: ~$300 MXN
 - En línea: sí
+- Descarga / formulario: https://www.gob.mx/public/tramites/detalleTramite.xhtml?homoclave=INDAUTOR-01-001
+
+**Formatos y links:**
+- [RPDA-01 (obra literaria o artística)](https://www.uam.mx/oag/daj/formatos/2022/RPDA-01.pdf) (pdf)
+- [RPDA-01-A1](https://www.uam.mx/oag/daj/formatos/2022/RPDA-01-A1.pdf) (pdf)
+- [Trámite oficial gob.mx](https://www.gob.mx/public/tramites/detalleTramite.xhtml?homoclave=INDAUTOR-01-001) (online)
 - Auth detectado: form
 - URL final de login: https://www.gob.mx/public/tramites/detalleTramite.xhtml?homoclave=INDAUTOR-01-001
 

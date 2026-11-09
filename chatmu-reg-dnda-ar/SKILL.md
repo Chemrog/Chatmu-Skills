@@ -25,6 +25,10 @@ version: "1.0"
 - Formularios: Registro de obra musical, Formulario de solicitud
 - Costo: consultar
 - En línea: sí
+- Descarga / formulario: https://www.argentina.gob.ar/servicio/registrar-una-cancion-o-un-album-musical
+
+**Formatos y links:**
+- [Registrar una canción o álbum](https://www.argentina.gob.ar/servicio/registrar-una-cancion-o-un-album-musical) (online)
 - Auth detectado: form
 - URL final de login: https://www.argentina.gob.ar/justicia/derechodeautor
 

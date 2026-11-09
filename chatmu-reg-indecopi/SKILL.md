@@ -25,6 +25,11 @@ version: "1.0"
 - Formularios: Registro de obra musical
 - Costo: consultar
 - En línea: sí
+- Descarga / formulario: https://www.gob.pe/institucion/indecopi/pages/10562-registrar-una-obra-en-el-indecopi
+
+**Formatos y links:**
+- [Registrar una obra en INDECOPI](https://www.gob.pe/institucion/indecopi/pages/10562-registrar-una-obra-en-el-indecopi) (online)
+- [Formato F-DDA-03 (PDF)](https://www.gob.pe/institucion/indecopi/informes-publicaciones/3204165-formato-f-dda-03) (pdf)
 - Auth detectado: form
 - URL final de login: https://www.gob.pe/indecopi
 

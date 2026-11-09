@@ -25,6 +25,11 @@ version: "1.0"
 - Formularios: eCO registration, Form SR (sound recording), Form PA (performing arts)
 - Costo: $45-$85
 - En línea: sí
+- Descarga / formulario: https://www.copyright.gov/registration/
+
+**Formatos y links:**
+- [eCO Registration (en línea)](https://www.copyright.gov/registration/) (online)
+- [Sound Recordings / Form SR (guía)](https://www.copyright.gov/register/sound.html) (guide)
 - Auth detectado: form
 - URL final de login: https://www.copyright.gov/registration/
 

@@ -25,6 +25,10 @@ version: "1.0"
 - Formularios: el formulario que indique el portal
 - Costo: consultar
 - En línea: no / parcial
+- Descarga / formulario: https://www.wipo.int/en/web/country-profiles/directory-ip-offices
+
+**Formatos y links:**
+- No hay link directo; busca 'Formularios' o 'Descargas' en el portal.
 - Auth detectado: form
 - URL final de login: https://www.wipo.int/en/web/country-profiles/directory-ip-offices
 

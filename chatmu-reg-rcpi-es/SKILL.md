@@ -25,6 +25,12 @@ version: "1.0"
 - Formularios: Solicitud de inscripción
 - Costo: consultar
 - En línea: sí
+- Descarga / formulario: https://www.cultura.gob.es/cultura/areas/propiedadintelectual/mc/rpi/registro-obras/impresos-solicitud.html
+
+**Formatos y links:**
+- [Impresos de solicitud (PDF)](https://www.cultura.gob.es/cultura/areas/propiedadintelectual/mc/rpi/registro-obras/impresos-solicitud.html) (pdf)
+- [Solicitud telemática](https://www.cultura.gob.es/cultura/areas/propiedadintelectual/mc/rpi/solicitud-telematica.htm) (online)
+- [Sede electrónica RPI](https://sede.mcu.gob.es/rpi4/webpages/publico/presentacion.seam) (online)
 - Auth detectado: form
 - URL final de login: https://www.cultura.gob.es/portada.html
 

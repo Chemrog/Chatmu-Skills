@@ -25,6 +25,10 @@ version: "1.0"
 - Formularios: Depósito (e-Soleau), Registro SACEM
 - Costo: consultar
 - En línea: sí
+- Descarga / formulario: https://www.inpi.fr
+
+**Formatos y links:**
+- No hay link directo; busca 'Formularios' o 'Descargas' en el portal.
 - Auth detectado: form
 - URL final de login: https://www.inpi.fr
 

@@ -25,6 +25,10 @@ version: "1.0"
 - Formularios: el formulario que indique el portal
 - Costo: consultar
 - En línea: no / parcial
+- Descarga / formulario: https://www.ipaustralia.gov.au
+
+**Formatos y links:**
+- No hay link directo; busca 'Formularios' o 'Descargas' en el portal.
 - Auth detectado: form
 - URL final de login: https://www.ipaustralia.gov.au
 

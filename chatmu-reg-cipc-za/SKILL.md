@@ -25,6 +25,10 @@ version: "1.0"
 - Formularios: Copyright registration
 - Costo: consultar
 - En línea: sí
+- Descarga / formulario: https://www.cipc.co.za
+
+**Formatos y links:**
+- No hay link directo; busca 'Formularios' o 'Descargas' en el portal.
 - Auth detectado: form
 - URL final de login: https://www.cipc.co.za
 

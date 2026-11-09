@@ -25,6 +25,11 @@ version: "1.0"
 - Formularios: Solicitud de registro de obra musical
 - Costo: consultar
 - En línea: sí
+- Descarga / formulario: https://www.patrimoniocultural.gob.cl/servicios/inscribe-obras-intelectuales-en-linea
+
+**Formatos y links:**
+- [Inscribe obras intelectuales en línea](https://www.patrimoniocultural.gob.cl/servicios/inscribe-obras-intelectuales-en-linea) (online)
+- [Inscribe obras (guía)](https://www.propiedadintelectual.gob.cl/servicios/1-inscribe-obras) (guide)
 - Auth detectado: unknown
 - URL final de login: https://www.registropi.cl
 

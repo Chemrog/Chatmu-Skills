@@ -25,6 +25,10 @@ version: "1.0"
 - Formularios: Регистрация
 - Costo: consultar
 - En línea: sí
+- Descarga / formulario: https://www.rospatent.gov.ru
+
+**Formatos y links:**
+- No hay link directo; busca 'Formularios' o 'Descargas' en el portal.
 - Auth detectado: otp
 - URL final de login: https://rospatent.gov.ru/ru
 

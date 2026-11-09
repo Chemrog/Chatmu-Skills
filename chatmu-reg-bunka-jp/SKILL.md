@@ -25,6 +25,10 @@ version: "1.0"
 - Formularios: 著作権登録
 - Costo: consultar
 - En línea: sí
+- Descarga / formulario: https://www.bunka.go.jp
+
+**Formatos y links:**
+- No hay link directo; busca 'Formularios' o 'Descargas' en el portal.
 - Auth detectado: form
 - URL final de login: https://www.bunka.go.jp
 

@@ -25,6 +25,12 @@ version: "1.0"
 - Formularios: Registro de obra
 - Costo: consultar
 - En línea: sí
+- Descarga / formulario: https://registro.propiedadintelectual.gob.ec/solicitudes/
+
+**Formatos y links:**
+- [Solicitudes en línea (SENADI)](https://registro.propiedadintelectual.gob.ec/solicitudes/) (online)
+- [Trámite obras artísticas y musicales](https://www.gob.ec/senadi/tramites/registro-obras-artisticas-musicales-unico-personas-naturales-juridicas-ya-sean-nacionales-extranjeras) (guide)
+- [Requisitos](https://www.derechosintelectuales.gob.ec/requisitos/) (guide)
 - Auth detectado: form
 - URL final de login: https://www.derechosintelectuales.gob.ec/
 

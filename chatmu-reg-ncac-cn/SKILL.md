@@ -25,6 +25,10 @@ version: "1.0"
 - Formularios: 作品登记
 - Costo: consultar
 - En línea: sí
+- Descarga / formulario: https://register.ccopyright.com.cn/registration.html#/registerOpus
+
+**Formatos y links:**
+- No hay link directo; busca 'Formularios' o 'Descargas' en el portal.
 - Auth detectado: unknown
 - URL final de login: https://register.ccopyright.com.cn/registration.html#/registerOpus
 
