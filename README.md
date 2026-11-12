@@ -13,7 +13,7 @@
 </p>
 
 
-# Chatmu Skills — Claude AI Skill Library
+# Chatmu Skills Library
 
 > **AI for the industry. Humans for the music.**
 
