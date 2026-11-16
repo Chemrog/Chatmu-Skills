@@ -1,208 +1,176 @@
 ---
 name: chatmu-show-viability
 description: >
-  Use to calculate live show attendance and determine if a gig in a city is
-  economically viable using the 2% rule. Trigger phrases: "can I play in", "show
-  viability", "2% rule", "gig economics", "profitable to play", "show attendance
-  estimate".
+  Use to estimate how many tickets an artist can realistically sell in a city and
+  whether a show is viable. Starts from the 2% rule, then adjusts it with the
+  artist's own past shows, growth, timing, competition, market and fan signals.
+  Trigger phrases: "can I play in", "show viability", "2% rule", "how many tickets",
+  "where should I tour", "gig economics", "profitable to play", "show attendance estimate",
+  "venue size for".
 compatibility: claude.ai
 category: business
 subcategory: touring
 shortDesc: >-
-  Calculate live show attendance and determine gig economic viability using the
-  2% rule
+  Realistic ticket estimates per city: 2% rule as the baseline, calibrated with the
+  artist's past shows, growth, dates and market
 ---
 
-# Chatmu — Show Viability & Venue Finder Skill
-**Version:** 1.1
-**Required MCP:** Chatmu 3.5 MCP (100+ tools)
-**For:** Artists, managers, and booking agents evaluating whether a live show in a specific city makes sense
+# Chatmu — Show Viability & Ticket Estimate Skill
+**Version:** 2.0
+**Required MCP:** Chatmu MCP
+**For:** Artists, managers, booking agents and promoters deciding where to play, how big, and when
 **Repository:** github.com/Chemrog/Chatmu-Skills
 
 ---
 
 ## What does this Skill do?
 
-You apply the same industry standard that experienced managers and booking agents use — but almost never share publicly — to tell an artist honestly whether a show in a specific city is economically viable, which venues fit their actual audience size, and how to find the right contacts to make it happen.
+It answers: **"How many tickets can this artist realistically sell in this city, in which venue size, and is it worth doing?"** — with a range (conservative / realistic / optimistic), the math shown, and the reasons behind every adjustment.
 
-This is not about discouraging artists from performing. It's about making sure they perform in the right context, at the right size, at the right time — so they sell out instead of playing to an empty room.
+The 2% rule is the **starting point**, not the answer. The answer gets more precise with every real data point: the artist's own past shows, their growth, the date, the market and the competition.
 
 ---
 
-## THE INDUSTRY STANDARD — The 2% Rule
+## THE METHOD — 3 layers
 
-This is the benchmark used by professional booking agents and managers worldwide. Chatmu formalizes it so artists can make data-driven decisions instead of guessing.
+### Layer 1 — Baseline: the 2% rule
 
-**A show is economically viable in a city when EITHER of these conditions is met:**
+`Monthly Spotify listeners in the city × 2% = baseline attendance`
 
-**Condition A:** The artist has **10,000 or more monthly Spotify listeners** in that specific city
-→ At 10K listeners, a 200-capacity show is realistic and sellable
+- 2% of 5,000 = 100 → minimum viable paid show
+- 2% of 10,000 = 200 → comfortable show
+- 2% of 50,000 = 1,000 → mid-size venue
 
-**Condition B:** **2% of the artist's monthly listeners in that city equals 100 people or more**
-→ 2% of 5,000 = 100 → minimum viable threshold
-→ 2% of 10,000 = 200 → comfortable show
-→ 2% of 50,000 = 1,000 → mid-size venue territory
+Why 2%: most listeners are casual, many never go to concerts, and ticket price, distance and timing filter the rest. It is the industry rule of thumb (strongest in the US, where Apple Music also matters).
 
-**Why 2%? Why not 10% or 20%?**
-When an artist asks this, explain it directly:
-*"The music industry standard is that roughly 2% of your monthly listeners in a city will actually show up and buy a ticket to a show. This accounts for casual listeners, people who stream but don't attend concerts, geographic spread within the city, and ticket price friction. A sold-out 200-person show is more valuable than a half-empty 500-person venue — financially and for the artist's reputation."*
+**Viability thresholds (applied to the final realistic number, not only to the baseline):**
+| Realistic attendance | Verdict |
+|---|---|
+| ≥ 200 | ✅ Viable |
+| 100–199 | ✅ Viable, small room |
+| 50–99 | ⚠️ Borderline — small room or free show |
+| < 50 | 🔴 Not yet for a paid show |
 
-**The most common beginner mistake — always address this proactively:**
-*"A lot of artists see 10,000 listeners in a city and think they can fill a 10,000-person venue, or even a 1,000-person one. The data says otherwise. 10,000 listeners = ~200 people who will actually show up. Book the 200-cap venue, sell it out, and that show builds real momentum. Book the 1,000-cap venue with the same audience and it feels like a failure even if 200 people came."*
+### Layer 2 — Calibrate with the artist's own history (the most important layer)
+
+**Always ask the user for it before giving the final number** (one short question, skippable):
+
+> "Do you have results from past shows? For each one: city, date, venue capacity, tickets sold and average price. Also useful: how many tickets each buyer usually purchases. If you don't have it, no problem — I'll estimate with the other signals."
+
+If they give past shows:
+1. For each past show: `own conversion = tickets sold ÷ monthly listeners in that city`.
+   - Use the current city listeners from `artist_top_geographic_data` and correct for growth since that show (`geographic_growth_analysis` / `get_artist_growth_trajectory`). Say it's an approximation.
+2. Blend it with the 2% depending on how much evidence there is:
+   - 1 show in the city → 1/3 own conversion + 2/3 the 2% (one show can be a fluke)
+   - 2–3 shows → 1/2 + 1/2
+   - 4+ shows → 3/4 own + 1/4 the 2%
+   - No show in that city but shows elsewhere → use the artist's average own conversion across cities, blended 1/2 with 2%.
+3. Sold out last time? Real demand was higher than the tickets sold → push the estimate up.
+4. Tickets per buyer (usually ~2: almost nobody goes alone) helps translate fans into tickets and to size presales and CRM campaigns.
+
+**If they don't have it**, do NOT stop: keep the 2% baseline and go to Layer 3 with every other signal. Also run `get_artist_live_history` (city filter) to at least know when and in which venues they played before.
+
+### Layer 3 — Adjust for the context of this show
+
+Apply each signal that you can verify. Show every adjustment and its reason. These are starting ranges, to be replaced by the artist's real data when available.
+
+**Pushes the estimate UP**
+| Signal | How to check | Typical effect |
+|---|---|---|
+| City listeners grew > 20% in the last 90 days | `geographic_growth_analysis` | +10–25% |
+| 12+ months since the last show in the city | `get_artist_live_history` | +10–20% |
+| Last show there sold out | user | +15–30% |
+| Home market / strong local identity | country of the artist | +20–50% |
+| New album or single in the last 3 months | `get_artist_albums` | +5–15% |
+| High fan intensity (followers ÷ monthly listeners high, strong engagement in the city) | `get_platform_audience`, `engagement_by_location` | +10–20% |
+| Friday/Saturday, spring or Sep–Nov | proposed date | +5–10% |
+| Paydays (Mexico: quincena 15th / last day; US: tax refunds Feb–Apr) | date | +5% |
+| Large Latino/diaspora population (Latin artists in US) | city knowledge | +10–30% |
+
+**Pushes the estimate DOWN**
+| Signal | How to check | Typical effect |
+|---|---|---|
+| Played the same city < 6 months ago | `get_artist_live_history` | −20–40% |
+| Another date of the same tour < 150 km and < 30 days away | tour plan | −10–30% |
+| January, Dec 20–Jan 6, Easter week (LatAm), major local holidays | date | −15–30% |
+| Big competing event that night (playoffs, same-genre concert, local festival) | ask / search | −10–25% |
+| Audience is playlist-driven or one viral song (> 50% of streams on one track) | `get_artist_songs`, `get_artist_active_playlists` | −20–40% |
+| 21+ venue (US) with a young audience | `audience_demographics` | −10–30% |
+| Ticket price high for local income | user | −10–30% |
+| Outdoor venue in rain/extreme heat season | date + city | affects attendance more than sales |
+| Context: immigration enforcement fear (Latin audiences in US), security issues, economic shock | news | −10–30% |
+
+Combine multiplicatively, cap the total adjustment at ×0.5 – ×2.0, and cap the final number at venue capacity.
+
+**Output range:**
+- Conservative = realistic × 0.75
+- Realistic (P50) = baseline × history calibration × context adjustments
+- Optimistic = realistic × 1.3
+
+**Confidence label:** High (own past shows in that city) · Medium (own shows elsewhere) · Low (only streaming data).
+
+### Cities that don't appear in the data
+
+`artist_top_geographic_data` only returns the artist's top cities. If the target city is missing:
+- Say so: the city is below the artist's top markets, so the audience is smaller than the last city in the list.
+- Estimate a ceiling: listeners < the smallest city shown.
+- For Latin artists in the US, check diaspora size and YouTube/social engagement by location; consider similar artists who already play there (`find_similar_artists_advanced` + their geographic data).
+- Mark confidence as Low.
 
 ---
 
 ## RULE #1 — Always be honest, never be harsh
 
-If the data shows a show isn't viable yet, say so — but frame it constructively. The goal is not to discourage the artist. It's to redirect their energy toward what will actually move their career forward.
-
-**Tone for non-viable results:**
-Never say "you can't play there" or "you're not ready." Say:
-*"Based on your current audience in [city], the data suggests this show would be a financial risk right now. Here's what that means and what I'd recommend instead."*
-
-Then offer a real alternative — not just a consolation.
-
----
+If the data says a paid show isn't viable yet, say it constructively: *"Based on your current audience in [city], this show would be a financial risk right now. Here's what I'd recommend instead."* Always give a real alternative.
 
 ## RULE #2 — Non-viable doesn't mean don't play
 
-There are legitimate reasons to play a show even when the 2% threshold isn't met:
+Free show to grow the base, opening for a bigger local act, showcase, or a smaller room. Always offer these when the paid show doesn't make sense.
 
-- **Practice and stage experience** — especially for newer artists
-- **Free or low-cost shows** — building a local audience without financial risk
-- **Opening act opportunity** — supporting a larger artist who already fills the venue
-- **Industry showcase** — label or booking agent attendance can justify the economics
+## RULE #3 — Multi-night strategy
 
-Always present these alternatives when the data doesn't support a paid ticketed show.
+- Realistic 600–1,500: consider 2–3 nights in a smaller room instead of one big room (less risk, "Sold out ×2").
+- 10,000+: multiple arena dates can beat one stadium.
+- Never recommend absurd math (10 nights in a 100-cap room). Cap at 2–3 nights.
 
----
+## RULE #4 — Always show the math
 
-## RULE #3 — The Multi-Night Strategy (Residencies vs. Arenas)
-
-When an artist's projected attendance (the 2%) exceeds the capacity of standard local venues (e.g., >500 people), you must proactively evaluate if doing **multiple consecutive sold-out nights (a residency)** in a smaller venue makes more sense than doing **one night** in a massive venue. 
-
-**Guidelines for recommending multiple sold-outs:**
-1. **The 2-to-3 Night Sweet Spot:** If projected attendance is between 600 and 1,500, propose doing 2 or 3 nights in a smaller venue (e.g., two nights at a 500-cap room instead of one night at a 1,000-cap room). It reduces financial risk, creates perceived scarcity, and builds hype ("Sold Out x2").
-2. **The Megastar Exception (The Luis Miguel / Shakira effect):** If the artist is massive (projected attendance 10,000+), they can sustain doing 4 to 15 nights in a major arena (like GNP) instead of risking one stadium. In these cases, suggest multiple arena dates.
-3. **The Common Sense Limit:** Never recommend an absurd number of shows in a tiny venue for a mid-tier artist. If the math requires playing 10 nights in a 100-cap venue to accommodate 1,000 people, that makes no sense. In that case, cap the recommendation to 2-3 nights at a 300-500 cap venue or suggest the larger venue for 1 night.
+Baseline → calibration → each adjustment with its reason → range → venue size. A number without explanation is useless to a manager.
 
 ---
 
 ## THE FULL WORKFLOW
 
-### Step 1 — Identify the artist and the city
+### Step 1 — Artist and cities
+- `search_chatmu_artists_db` → UUID
+- Cities: the ones the user names, or all top cities if they ask "where can I play".
+- Ask (once, all together, all optional): past show results, proposed dates, ticket price. Continue with what you have.
 
-Required inputs:
-- Artist name → `search_chatmu_artists_db` → UUID
-- Target city (can be one city or multiple)
+### Step 2 — Pull the data
+1. `artist_top_geographic_data` → monthly listeners per city
+2. `geographic_growth_analysis` → growth per city
+3. `get_artist_live_history` → past shows per city (dates, venues)
+4. `artist_current_stats`, `get_platform_audience` (spotify) → global listeners, followers
+5. `audience_demographics` → age (for 21+ venues)
+6. `engagement_by_location` → social engagement by city (when available)
+7. `get_artist_songs` → concentration on one hit
 
-If the user hasn't specified a city: *"Which city or cities are you thinking about?"*
+### Step 3 — Estimate per city
+Apply the 3 layers. For each city produce: listeners, baseline (2%), calibration used, adjustments, range, confidence, verdict, recommended venue size (realistic rounded to nearest 50) and whether to charge or play free.
 
----
+Free vs paid:
+- Realistic ≥ 100 → paid
+- 50–99 → small paid room or free/low-cost show to build the base
+- < 50 → free show, opening slot, or wait and grow the city
 
-### Step 2 — Pull the audience data for that city
-
-1. `artist_top_geographic_data` (days: 30) → get monthly listeners per city
-2. Find the target city in the results
-3. Note the exact monthly listener count for that city
-
-If the city doesn't appear in the top cities list:
-*"[City] isn't showing up in your top listener markets right now, which means your audience there is relatively small — likely under a few hundred monthly listeners. Let me show you which cities ARE strong for you instead."*
-→ Show the top 5 cities from the data as alternatives
-
----
-
-### Step 3 — Apply the 2% Rule and deliver the verdict
-
-**Calculate:**
-- 2% of listeners in that city = projected attendance
-- Check: is it ≥ 100 people? AND/OR is the listener count ≥ 10,000?
-
-**Then deliver one of four verdicts:**
-
----
-
-#### VERDICT A — Clearly Viable (2% ≥ 200 people OR listeners ≥ 10,000)
-
-*"✅ [City] is viable. Here's the math:"*
-
-```
-Monthly listeners in [city]:     [X]
-Project attendance (2%):       [X × 0.02] people
-Recommended venue capacity:      [2% figure, rounded to nearest 50]
-Verdict:                         VIABLE — book with confidence
-```
-
-*"With [X] monthly listeners in [city], you can realistically fill a [capacity]-person venue. That's the sweet spot — aim for sold out, not half-full."*
-
-→ Proceed to Step 4 (Venue Search)
-
----
-
-#### VERDICT B — Borderline Viable (2% = 50–99 people)
-
-*"⚠️ [City] is borderline. Here's the honest picture:"*
-
-```
-Monthly listeners in [city]:     [X]
-Projected attendance (2%):       [X × 0.02] people
-Recommended venue capacity:      50–80 person room
-Verdict:                         BORDERLINE — proceed with caution
-```
-
-*"You have enough of an audience in [city] to do a small, intimate show — think a 50–80 person room. At this size, you can still sell out and have a great night. What you want to avoid is booking a 200-person venue and having it feel empty."*
-
-*"Two options: (1) book a small room and aim for a sold-out intimate show, or (2) wait 2–3 months, focus on growing your [city] audience with targeted content, and revisit this when the numbers are stronger."*
-
-→ Ask: *"Do you want to see small venues for this size, or would you rather focus on growing the audience first?"*
-→ If yes to venues → proceed to Step 4 with min_capacity set to 50
-→ If no → pivot to content strategy recommendation for that city
-
----
-
-#### VERDICT C — Not Yet Viable (2% < 50 people)
-
-*"🔴 [City] isn't ready for a paid ticketed show yet — and here's why that matters."*
-
-```
-Monthly listeners in [city]:     [X]
-Projected attendance (2%):       [X × 0.02] people
-Verdict:                         NOT VIABLE for a paid ticketed show
-```
-
-Deliver the honest truth with respect:
-*"With [X] monthly listeners in [city], roughly [2% figure] people would realistically show up to a paid show. That's not enough to fill even the smallest venue economically. Playing to 10–20 people in a room built for 100 is demoralizing — for you and for the few fans who showed up."*
-
-**Then immediately offer the constructive path:**
-
-1. **Build the audience first** — targeted content and social strategy for [city]. In 60–90 days, recheck the numbers.
-2. **Play for free or at a low-cost event** — a free show, an open mic, or a local event. Zero financial risk, real stage experience, and you start building a local fanbase.
-3. **Open for someone** — find an artist who already has 10K+ listeners in [city] and pitch yourself as the opening act. You get the stage, the exposure, and none of the financial risk.
-
-*"Chatmu and industry professionals define the 2% rule as the economic threshold for a viable ticketed show. It's not a judgment on your talent — it's the math that determines whether you walk away from a show having made money or having lost it."*
-
-→ Ask: *"Would you like me to find artists in [city] you could potentially open for? Or would you rather look at which cities ARE ready for you right now?"*
-
----
-
-#### VERDICT D — City not in data / insufficient data
-
-*"I don't have enough listener data for [city] to run the 2% calculation accurately."*
-
-Options:
-1. Show which cities DO have enough data and suggest those instead
-2. Recommend building toward [city] intentionally with targeted content
-
----
-
-### Step 4 — Venue Search (only for Verdict A or B, or if user explicitly chooses to proceed)
+### Step 4 — Venue Search (only for viable or borderline cities, or if the user explicitly asks)
 
 **Calculate the right capacity range:**
 
 ```
-Target capacity (primary):    2% of listeners, rounded to nearest 50
-Buffer range (secondary):     up to 3× the 2% figure (optimistic scenario)
-Stretch range (shown but flagged): 4–5× the 2% figure (labeled as "aspirational")
+Target capacity (primary):    realistic estimate, rounded to nearest 50
+Buffer range (secondary):     up to 3× the realistic estimate (optimistic scenario)
+Stretch range (shown but flagged): 4–5× the realistic estimate (labeled as "aspirational")
 ```
 
 **Run the venue search:**
@@ -210,17 +178,17 @@ Stretch range (shown but flagged): 4–5× the 2% figure (labeled as "aspiration
 1. `search_live_music_venues` with:
    - city: target city
    - genre: artist's primary genre
-   - min_capacity: set to ~50% of the 2% figure (to catch smaller venues too)
+   - min_capacity: set to ~50% of the realistic estimate (to catch smaller venues too)
 
 2. From the results, categorize each venue into three tiers:
 
-**Tier 1 — Perfect fit** (capacity within 80–150% of the 2% projection)
+**Tier 1 — Perfect fit** (capacity within 80–150% of the realistic estimate)
 → These are the venues to prioritize. Realistic sold-out potential.
 
-**Tier 2 — Possible** (capacity within 151–300% of the 2% projection)
+**Tier 2 — Possible** (capacity within 151–300% of the realistic estimate)
 → Doable but requires stronger promotion. Flag as "ambitious."
 
-**Tier 3 — Aspirational** (capacity over 300% of the 2% projection)
+**Tier 3 — Aspirational** (capacity over 300% of the realistic estimate)
 → Include for reference but be honest: *"This venue is bigger than what your current audience supports. It's a future goal, not a current recommendation."*
 
 ---
@@ -242,13 +210,13 @@ Present below the map, sorted from most viable to least viable:
 
 | # | Venue | Capacity | Tier | Sold-out likelihood | Est. attendance needed | Notes |
 |---|-------|----------|------|--------------------|-----------------------|-------|
-| 1 | [Name] | [cap] | ✅ Perfect fit | High | [2% figure] | Best match |
-| 2 | [Name] | [cap] | ✅ Perfect fit | High | [2% figure] | — |
-| 3 | [Name] | [cap] | ⚠️ Ambitious | Medium | [2% + promotion] | Needs strong push |
+| 1 | [Name] | [cap] | ✅ Perfect fit | High | [realistic estimate] | Best match |
+| 2 | [Name] | [cap] | ✅ Perfect fit | High | [realistic estimate] | — |
+| 3 | [Name] | [cap] | ⚠️ Ambitious | Medium | [realistic + promotion] | Needs strong push |
 | 4 | [Name] | [cap] | 🔲 Aspirational | Low | [stretch figure] | Future goal |
 
 **Sold-out likelihood calculation:**
-- Projected attendance ÷ venue capacity × 100 = sellout %
+- Realistic estimate ÷ venue capacity × 100 = sellout %
 - ≥ 80% = High
 - 50–79% = Medium
 - < 50% = Low
@@ -280,7 +248,7 @@ Each `extract_contacts_from_web` call costs 1 AI credit and takes time. Letting 
 ### "Show me where I CAN play" (artist doesn't have a city in mind)
 
 1. `artist_top_geographic_data` → get all cities with listener data
-2. Apply 2% rule to every city in the results
+2. Apply the 3-layer method to every city in the results
 3. Rank cities by viability:
 
 | City | Monthly Listeners | Projected Attendance | Venue Size | Verdict |
@@ -306,38 +274,36 @@ If the artist is in Verdict C territory for their target city:
 **Always:**
 - Show the math explicitly — don't just give a verdict, show the calculation
 - Present alternatives whenever a show isn't viable — never leave the artist with just a "no"
-- Mention that the 2% standard comes from real industry practice: *"This is the benchmark professional booking agents and managers use — it's not arbitrary, it's the math that determines whether a show is profitable."*
+- Explain that the 2% rule is the industry baseline and that the estimate gets more precise with the artist's real show results
 - Celebrate when the numbers work: *"[City] looks strong — this is exactly the kind of data that makes a booking agent take a meeting."*
 
 **Never:**
 - Use discouraging language: "you're not ready," "your audience is too small," "nobody will come"
 - Skip the alternative path when a show isn't viable
-- Show venues without first establishing viability — venue size recommendations without the 2% context are meaningless
+- Show venues without first establishing viability — venue size recommendations without the attendance estimate are meaningless
 - Recommend a venue larger than 3× the projected attendance without flagging the risk
 
 ---
 
-## OUTPUT FORMAT — NON-NEGOTIABLE
 
-NEVER deliver viability math or venue recommendations as plain text or standard markdown.
-You MUST render the entire analysis as a premium, interactive Gig Economics & Venue Matching Dashboard in a self-contained TSX code block (Claude Artifact).
+---
 
-The React Component MUST include:
-- An interactive Viability Meter Widget (a visual speedometer or progress gauge showing the Viability Percentage based on the 2% Spotify listeners rule, with a clear verdict label: "Viable" in green, "Borderline" in orange, or "Not Viable" in red).
-- A gorgeous Venue Roster Table with interactive tabs to filter venues by tier:
-  - Tier 1: Perfect Fit (80-150% capacity match)
-  - Tier 2: Ambitious (151-300% capacity match)
-  - Tier 3: Aspirational (300%+ capacity)
-- Interactive venue matching cards with estimated attendance sliders, projected tickets sold, and a "View Booking Contact" button that reveals promoter email templates and extracted contact details.
-- Text outside the Artifact should only be a brief 1-2 sentence summary of the verdict.
+## OUTPUT FORMAT
+
+- If the user asks for a PDF, deliver a PDF. If they ask for a dashboard/artifact, build an interactive artifact. Otherwise, a clear report in the chat.
+- Every report MUST include:
+  1. Prioritized city table: City · Monthly listeners · Baseline (2%) · Realistic range (conservative–realistic–optimistic) · Confidence · Recommended venue size · Paid or free · Verdict
+  2. For the top cities: the adjustments applied and why (one line each)
+  3. Venue suggestions per tier (when requested)
+  4. "What would make this more precise": the data the user can share (past show results, tickets per buyer, ticket price, dates, Apple Music city data, CRM/fan list) — always end with this.
+- Short text outside the document: the 1–2 sentence verdict.
 
 ---
 
 ## MCP TOOLS USED BY THIS SKILL
 
-`search_chatmu_artists_db`, `artist_top_geographic_data`, `search_live_music_venues`, `extract_contacts_from_web`, `networking_create_contact`, `find_similar_artists_advanced`, `artist_current_stats`
+`search_chatmu_artists_db`, `artist_top_geographic_data`, `geographic_growth_analysis`, `get_artist_growth_trajectory`, `get_artist_live_history`, `artist_current_stats`, `get_platform_audience`, `audience_demographics`, `engagement_by_location`, `get_artist_songs`, `get_artist_albums`, `get_artist_active_playlists`, `search_live_music_venues`, `extract_contacts_from_web`, `networking_create_contact`, `find_similar_artists_advanced`
 
-**Tools this Skill does NOT use:** Distribution tools, editorial playlist tools, RAG context, A&R discovery tools — those belong to other Skills.
 
 ---
 
