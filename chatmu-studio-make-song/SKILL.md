@@ -19,6 +19,8 @@ tags: [studio, ableton, song, production, workflow, co-producer]
 requiresTools:
   - local_ableton_status
   - local_ableton_snapshot
+  - local_ableton_load_device
+  - local_ableton_browser
   - local_ableton_tracks
   - local_ableton_set_tempo
   - local_ableton_edit_track
@@ -97,10 +99,20 @@ Build the loop the whole song grows from, in Session view, scene 1 named `Idea`
 | Ambient, cinematic | pad/texture → harmony → motif → (light pulse) |
 | The user brought a melody | melody → `chatmu-studio-harmonize-melody` → drums → bass |
 
+**The user's own sounds come first.** If the user mentions their libraries, kits, presets,
+VSTs/plugins, a folder ("librerías/reggae") or a template, browse them BEFORE choosing any
+sound: `local_ableton_browser` path `user_folders` (their Places folders), `user_library`
+(presets, templates, samples) and `plugins` (their VST/AU). Load by the `uri` you found
+(`local_ableton_load_device`), not by guessing a name. Never substitute a stock Live device
+for something the user asked to use; if you can't find it, say so and ask (one question,
+with what you did find). A template file can't be opened from here: tell the user to open
+it in Live (File → New from Template / open the .als) and continue in that set.
+
 For each layer:
 1. Create the track (`local_ableton_edit_track` `create_midi`), name it by role (`Drums`,
-   `808`, `Chords`, `Hook`), choose the sound from the genre skill
-   (`local_sound_find_preset` first).
+   `808`, `Chords`, `Hook`), choose the sound from the user's libraries if they asked for
+   them, otherwise from the genre skill (`local_sound_find_preset` first). The instrument
+   goes first in the chain; effects after it.
 2. Get the notes from the specialist skill's method (`local_music_theory` for scales,
    progressions and drum patterns — never compute MIDI by hand), `local_ableton_create_clip`,
    `local_ableton_write_notes`.
@@ -137,6 +149,12 @@ read louder/denser).
 **Approval 2:** "Full arrangement ready (2:45). Listen through; tell me what to move,
 lengthen or cut." Change only what they ask.
 
+**Gate before mixing — every track must sound.** `local_ableton_snapshot`: every track
+has a clip with notes (or audio) and an instrument with sound — no Simpler/Sampler without a
+sample (a load that returns a `warning` about a missing sample is NOT done), no empty Drum
+Rack pads on the parts you programmed, no muted tracks you didn't mean to mute. Fix that
+first; never mix or master a silent track.
+
 ## Phase 4 — Mix
 `chatmu-session-prep` (names, colours, buses, gain staging) → `chatmu-mix-by-genre` targets
 measured with `local_ears_track_levels` → fixes with `chatmu-mixing-progressive`,
@@ -158,6 +176,9 @@ do next (record a real vocal over the guide, replace a synth with a player, etc.
 - **Explain in producer words**, one line per decision; no theory lectures unless asked.
 - **Never overwrite** existing clips or tracks; new material goes in new tracks/slots.
 - **Ear over rules:** if the user likes something that breaks a rule, keep it.
+- **Don't burn the user's credits on retries:** if a device/sample name fails twice, stop
+  searching by name — browse the folder and load by `uri`, or ask. Measure loudness once
+  per change (at most one re-measure); repeating the same measurement changes nothing.
 - **Never claim** a part is "professional" or "finished" without having listened
   (`local_ears_listen`) and, for the master, measured the exported file.
 - **Honest limits:** guide vocals are sketches; 12-TET only (no quarter tones); some genres

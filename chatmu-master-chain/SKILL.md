@@ -75,7 +75,12 @@ Answer in the user's language (usually Spanish). Plans as tables; one OK per bat
 1. `local_ableton_snapshot` → Master chain (devices and order), Master fader (dB), track
    faders, is the mix clipping anywhere obvious.
 2. `local_ears_ensure_plugin { install: false }` → Co-Producer Audio on the Master?
-3. **Pick the loudness target** (say it to the user in one line):
+3. **Sanity check before any limiting:** if the mix measures far below the target (e.g.
+   −25 LUFS or lower before the master chain), the problem is upstream, not the master:
+   silent tracks (Simpler with no sample, empty pads, clips with no notes), muted tracks or
+   faders way down. Stop, fix the source (`local_ableton_snapshot`), then come back. Never
+   hand over a master more than 3 LU away from the chosen target without saying why.
+4. **Pick the loudness target** (say it to the user in one line):
    - **−14 LUFS is NOT a mastering target.** It is the level Spotify/YouTube *play* at:
      louder masters are turned down, quieter ones (Spotify) up. A master at −14 sounds
      quiet next to commercial releases in playlists, DJ sets, SoundCloud, TikTok/IG and
@@ -88,6 +93,7 @@ Answer in the user's language (usually Spanish). Plans as tables; one OK per bat
      | Lo-fi, jazz, acoustic, regional/bolero, ballad, cinematic | −13 .. −11 | 9 dB |
      | Pop, R&B, indie, rock | −10 .. −8 | 8 dB |
      | Hip-hop, trap, drill | −9 .. −7 | 7 dB |
+     | Reggae, roots, dub, lovers rock | −11 .. −9 | 8 dB |
      | Reggaetón, urbano latino, dembow, cumbia moderna | −8 .. −6 | 6 dB |
      | EDM, house, techno (club) | −8 .. −6 | 6 dB |
    - **Better than the table: a reference.** If the user names or gives a song they want to
@@ -98,7 +104,7 @@ Answer in the user's language (usually Spanish). Plans as tables; one OK per bat
    - The **crest factor floor** wins over the LUFS target: if the limiter would push the crest
      below the floor, stop there and say "llega a −9 LUFS sin aplastarse; más fuerte pierde
      golpe" (louder masters lose about 2 dB of crest on average).
-4. **Before** numbers: if a recent export exists, `chatmu-master-check` on it; otherwise
+5. **Before** numbers: if a recent export exists, `chatmu-master-check` on it; otherwise
    export the densest 8–16 bars (chorus/drop) at 32-bit and measure (rule 5).
 
 ## Phase 1 — Plan the chain (table, then OK)
